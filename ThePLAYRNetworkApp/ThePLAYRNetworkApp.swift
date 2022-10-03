@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 
+
 enum Tab {
     case home
     case calendar
@@ -76,9 +77,12 @@ struct ThePLAYRNetworkApp: App {
                     }
                 }
             }
+
             .environmentObject(authViewModel)
             .environmentObject(homeViewModel)
         }
+        
+        
     }
 }
 

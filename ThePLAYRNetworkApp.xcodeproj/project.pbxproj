@@ -55,12 +55,12 @@
 		CF26301A28EB0E4100CAD20D /* DiscoverFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26301428EB0E4100CAD20D /* DiscoverFilterRow.swift */; };
 		CF26301C28EB0EA500CAD20D /* TrainerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26301B28EB0EA500CAD20D /* TrainerProfile.swift */; };
 		CF26301E28EB137F00CAD20D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26301D28EB137F00CAD20D /* Message.swift */; };
-		CF26302328EB13F300CAD20D /* SuggestedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26302028EB13F300CAD20D /* SuggestedRow.swift */; };
-		CF26302428EB13F300CAD20D /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26302128EB13F300CAD20D /* NewMessageView.swift */; };
-		CF26302528EB13F300CAD20D /* SuggestedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26302228EB13F300CAD20D /* SuggestedItem.swift */; };
 		CF2AF79828BE360000A19E9D /* SessionTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2AF79728BE360000A19E9D /* SessionTab.swift */; };
 		CF68C58828B5002D005FBEFD /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C58728B5002D005FBEFD /* AvailabilityView.swift */; };
 		CF68C58A28B5091B005FBEFD /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C58928B5091B005FBEFD /* DatePicker.swift */; };
+		CF6D8F2B28EB4D1E00468888 /* SuggestedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */; };
+		CF6D8F2C28EB4D1E00468888 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2928EB4D1E00468888 /* NewMessageView.swift */; };
+		CF6D8F2D28EB4D1E00468888 /* SuggestedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */; };
 		CF8996BD28B3DC29004FA414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8996BC28B3DC29004FA414 /* Assets.xcassets */; };
 		CF8996BF28B3DE7C004FA414 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8996BE28B3DE7C004FA414 /* GoogleService-Info.plist */; };
 		CFB3384A28AE85E400610F42 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3384928AE85E400610F42 /* TrainingView.swift */; };
@@ -136,12 +136,12 @@
 		CF26301428EB0E4100CAD20D /* DiscoverFilterRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverFilterRow.swift; sourceTree = "<group>"; };
 		CF26301B28EB0EA500CAD20D /* TrainerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerProfile.swift; sourceTree = "<group>"; };
 		CF26301D28EB137F00CAD20D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		CF26302028EB13F300CAD20D /* SuggestedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedRow.swift; sourceTree = "<group>"; };
-		CF26302128EB13F300CAD20D /* NewMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
-		CF26302228EB13F300CAD20D /* SuggestedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedItem.swift; sourceTree = "<group>"; };
 		CF2AF79728BE360000A19E9D /* SessionTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTab.swift; sourceTree = "<group>"; };
 		CF68C58728B5002D005FBEFD /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		CF68C58928B5091B005FBEFD /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedRow.swift; sourceTree = "<group>"; };
+		CF6D8F2928EB4D1E00468888 /* NewMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedItem.swift; sourceTree = "<group>"; };
 		CF8996BC28B3DC29004FA414 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8996BE28B3DE7C004FA414 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CFB3384928AE85E400610F42 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 		32862F2A2892526700CDFB3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CF26301F28EB13F300CAD20D /* ComposeMessage */,
+				CF6D8F2728EB4D1E00468888 /* ComposeMessage */,
 				CF26300E28EB0E4100CAD20D /* Discover */,
 				CFD3C91828E77F86004B53E7 /* Specialist */,
 				CFD3C90528E77E5D004B53E7 /* Messages */,
@@ -400,15 +400,14 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		CF26301F28EB13F300CAD20D /* ComposeMessage */ = {
+		CF6D8F2728EB4D1E00468888 /* ComposeMessage */ = {
 			isa = PBXGroup;
 			children = (
-				CF26302028EB13F300CAD20D /* SuggestedRow.swift */,
-				CF26302128EB13F300CAD20D /* NewMessageView.swift */,
-				CF26302228EB13F300CAD20D /* SuggestedItem.swift */,
+				CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */,
+				CF6D8F2928EB4D1E00468888 /* NewMessageView.swift */,
+				CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */,
 			);
-			name = ComposeMessage;
-			path = "../../../../Backup /ThePlayrNetworkThird/ThePLAYRNetwork/Views/ComposeMessage";
+			path = ComposeMessage;
 			sourceTree = "<group>";
 		};
 		CFB3384B28AE8EF000610F42 /* Training */ = {
@@ -607,9 +606,9 @@
 				32862F2C2892527900CDFB3B /* LoginView.swift in Sources */,
 				32D019C628D1825A00E3C601 /* PlayersYouMayKnowRow.swift in Sources */,
 				CFD3C91428E77E5D004B53E7 /* MessageItem.swift in Sources */,
-				CF26302428EB13F300CAD20D /* NewMessageView.swift in Sources */,
+				CF6D8F2C28EB4D1E00468888 /* NewMessageView.swift in Sources */,
 				32862F352892577B00CDFB3B /* HomeView.swift in Sources */,
-				CF26302328EB13F300CAD20D /* SuggestedRow.swift in Sources */,
+				CF6D8F2B28EB4D1E00468888 /* SuggestedRow.swift in Sources */,
 				CFD3C91028E77E5D004B53E7 /* MessageRow.swift in Sources */,
 				CF26301C28EB0EA500CAD20D /* TrainerProfile.swift in Sources */,
 				320314152894F99A00141300 /* PlayerAttendingCircles.swift in Sources */,
@@ -624,7 +623,7 @@
 				CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */,
 				CF1A19B728BFE8F200D82DC8 /* SearchViewModel.swift in Sources */,
 				CF26301628EB0E4100CAD20D /* DiscoverView.swift in Sources */,
-				CF26302528EB13F300CAD20D /* SuggestedItem.swift in Sources */,
+				CF6D8F2D28EB4D1E00468888 /* SuggestedItem.swift in Sources */,
 				32EA5CAD2894851200A70A7B /* TopBar.swift in Sources */,
 				CF11A2CE28B63DB700309E04 /* ReviewItemView.swift in Sources */,
 				326A0DCB28CF890700459BBB /* PostItem.swift in Sources */,
@@ -794,6 +793,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -825,6 +825,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -45,8 +45,8 @@ struct ThePLAYRNetworkApp: App {
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
                         
                         NavigationView {
-                          CalendarView()
-                 
+                         // CalendarView()
+             TrainersView()
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         

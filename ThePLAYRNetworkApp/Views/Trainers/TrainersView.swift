@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TrainersView: View {
     var body: some View {
-        VStack{
+        ScrollView {
             VStack(alignment: .leading){
                 TrainerProfile()
                 
@@ -96,10 +96,11 @@ struct TrainersView: View {
             
             Divider()
             
-            
+            HighlightedClasses()
+              .padding(.horizontal, 5)
             
         }
-        Spacer()
+
     }
 }
 

@@ -56,6 +56,7 @@
 		CF26301C28EB0EA500CAD20D /* TrainerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26301B28EB0EA500CAD20D /* TrainerProfile.swift */; };
 		CF26301E28EB137F00CAD20D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26301D28EB137F00CAD20D /* Message.swift */; };
 		CF2AF79828BE360000A19E9D /* SessionTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2AF79728BE360000A19E9D /* SessionTab.swift */; };
+		CF67125128EC57B3002426AB /* HighlightedClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67125028EC57B3002426AB /* HighlightedClasses.swift */; };
 		CF68C58828B5002D005FBEFD /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C58728B5002D005FBEFD /* AvailabilityView.swift */; };
 		CF68C58A28B5091B005FBEFD /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF68C58928B5091B005FBEFD /* DatePicker.swift */; };
 		CF6D8F2B28EB4D1E00468888 /* SuggestedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */; };
@@ -137,6 +138,7 @@
 		CF26301B28EB0EA500CAD20D /* TrainerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerProfile.swift; sourceTree = "<group>"; };
 		CF26301D28EB137F00CAD20D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CF2AF79728BE360000A19E9D /* SessionTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTab.swift; sourceTree = "<group>"; };
+		CF67125028EC57B3002426AB /* HighlightedClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightedClasses.swift; sourceTree = "<group>"; };
 		CF68C58728B5002D005FBEFD /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		CF68C58928B5091B005FBEFD /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedRow.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			children = (
 				CF26300B28EB0C9000CAD20D /* TrainersView.swift */,
 				CF26301B28EB0EA500CAD20D /* TrainerProfile.swift */,
+				CF67125028EC57B3002426AB /* HighlightedClasses.swift */,
 			);
 			path = Trainers;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				32EA5CA9289316FD00A70A7B /* CreateGameView.swift in Sources */,
 				32EA5CB3289489FB00A70A7B /* HomeSheetView.swift in Sources */,
 				CFB3385328AE932900610F42 /* Session.swift in Sources */,
+				CF67125128EC57B3002426AB /* HighlightedClasses.swift in Sources */,
 				CF26301728EB0E4100CAD20D /* DiscoverFilterItem.swift in Sources */,
 				CF2AF79828BE360000A19E9D /* SessionTab.swift in Sources */,
 				326A0DC928CF88F200459BBB /* NetworkView.swift in Sources */,

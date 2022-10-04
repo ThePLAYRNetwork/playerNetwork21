@@ -12,7 +12,7 @@ struct RecommendedItem: View {
         ZStack(alignment: .bottom){
             // VStack(spacing: 0) {
             HStack{
-                Image("powerlifting")
+                Image("powerLifting")
                     .resizable()
                     .opacity(0.65)
                     .frame(width: 252, height: 170)

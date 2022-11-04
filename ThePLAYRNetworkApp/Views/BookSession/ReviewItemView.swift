@@ -21,7 +21,7 @@ struct ReviewItemView: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 Text("Charles Do")
-                    .font(.body)
+                    .font(.system(size: 16))
                     .fontWeight(.semibold)
                 HStack {
                     ForEach(0...3, id: \.self) { star in
@@ -43,7 +43,7 @@ struct ReviewItemView: View {
                 
                 Text("Lorem ipsum dolor sit amet, consectetur a Ut enim ad minim veniam, quis nostrud exercitation ullamco.")
                     .multilineTextAlignment(.leading)
-                    .font(.body)
+                    .font(.system(size: 16))
             }
             
         }

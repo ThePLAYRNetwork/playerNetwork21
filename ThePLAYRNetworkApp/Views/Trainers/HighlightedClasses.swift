@@ -15,9 +15,9 @@ struct HighlightedClasses: View {
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding(.bottom, -2)
- 
             
-//first HStack
+            
+            //first HStack
             HStack {
                 //First card
                 ZStack(alignment: .bottomLeading){
@@ -90,7 +90,7 @@ struct HighlightedClasses: View {
             
             
             
-//second HStack
+            //second HStack
             HStack {
                 //third card
                 ZStack(alignment: .bottomLeading){
@@ -124,31 +124,32 @@ struct HighlightedClasses: View {
                 .shadow(radius: 3)
                 
                 
-                
-                ZStack(alignment: .bottomLeading) {
-                   Rectangle()
-                        .frame(width: 180, height: 54)
-                        .foregroundColor(Color("AccentColor"))
-                        .cornerRadius(5)
+                VStack {
                     
-                    
-                    Button {
+                    ZStack(alignment: .center) {
+                        Rectangle()
+                            .frame(width: 180, height: 54)
+                            .foregroundColor(Color("AccentColor"))
+                            .cornerRadius(5)
                         
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text("Request Custom")
-                            Text("Session")
+                        
+                        Button {
+                            
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text("Request Custom")
+                                Text("Session")
+                            }
+                            .font(.system(size: 14))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
                         }
-                        .font(.system(size: 14))
-                        .fontWeight(.semibold)
-                        .padding(.leading, 7)
-                        .padding(.bottom, 4)
-                        .foregroundColor(.white)
                     }
+                    Spacer()
                 }
             }
-  
-//View all classes
+            
+            //View all classes
             
             HStack {
                 Text("View all classes")
@@ -156,7 +157,7 @@ struct HighlightedClasses: View {
             }
             .font(.system(size: 16))
             .foregroundColor(Color("AccentColor"))
-  
+            
         }
     }
 }

@@ -9,20 +9,23 @@ import SwiftUI
 
 struct ReviewsView: View {
     var body: some View {
-        ScrollView{
+   
             VStack(alignment: .leading) {
                 //Nearby
                 Text("Reviews")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                    .font(.system(size: 20, weight: .semibold))
+                
                 
                 HStack {
                     Text("4.6")
+                        .font(.system(size: 16))
                     
                     Image(systemName: "star.fill")
+                        .font(.system(size: 16))
                         .foregroundColor(.black)
                     
-                    Text("30+")
+                    Text("(30+)")
+                        .font(.system(size: 16))
                 }
                 
                 
@@ -33,8 +36,8 @@ struct ReviewsView: View {
                 
                 
             }
-            .padding()
-        }
+            .padding(.horizontal, 4)
+   
     }
 }
 

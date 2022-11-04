@@ -45,89 +45,6 @@ struct TrainingView: View {
                     }
                 }
                 
-                
-                
-                //Triners
-                Text("Triners")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                
-                
-                HStack {
-                    RoundedRectangle(cornerRadius: 4)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .overlay(
-                            GeometryReader { geometry in
-                                Image("joseph")
-                                    .resizable()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                    .opacity(0.6)
-                                
-                                
-                            } .overlay(
-                                Text("Joseph")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .bold))
-                                    .offset(x: -10, y: +30)
-                            )
-                        )
-                    
-                    RoundedRectangle(cornerRadius: 4)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .overlay(
-                            GeometryReader { geometry in
-                                Image("ty")
-                                    .resizable()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                    .opacity(0.6)
-                            } .overlay(
-                                Text("Ty")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .bold))
-                                    .offset(x: -30, y: +30)
-                            )
-                        )
-                    
-                    RoundedRectangle(cornerRadius: 4)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .overlay(
-                            GeometryReader { geometry in
-                                Image("christopher")
-                                    .resizable()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                    .opacity(0.6)
-                            } .overlay(
-                                Text("Christopher")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 12, weight: .bold))
-                                    .offset(x: -5, y: +30)
-                            )
-                        )
-                    
-                    RoundedRectangle(cornerRadius: 4)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .overlay(
-                            GeometryReader { geometry in
-                                Image("jacob")
-                                    .resizable()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                    .opacity(0.6)
-                            } .overlay(
-                                Text("Jacob")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .bold))
-                                    .offset(x: -10, y: +30)
-                            )
-                        )
-                    
-                    
-                }
-                
                 //Specialist
                 Text("Specialist")
                     .font(.title)
@@ -217,6 +134,90 @@ struct TrainingView: View {
                     
                 }
                 .foregroundColor(Color("red"))
+                
+                
+                //Triners
+                Text("Triners")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                
+                
+                HStack {
+                    RoundedRectangle(cornerRadius: 4)
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(
+                            GeometryReader { geometry in
+                                Image("joseph")
+                                    .resizable()
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                    .opacity(0.6)
+                                
+                                
+                            } .overlay(
+                                Text("Joseph")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 16, weight: .bold))
+                                    .offset(x: -10, y: +30)
+                            )
+                        )
+                    
+                    RoundedRectangle(cornerRadius: 4)
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(
+                            GeometryReader { geometry in
+                                Image("ty")
+                                    .resizable()
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                    .opacity(0.6)
+                            } .overlay(
+                                Text("Ty")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 16, weight: .bold))
+                                    .offset(x: -30, y: +30)
+                            )
+                        )
+                    
+                    RoundedRectangle(cornerRadius: 4)
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(
+                            GeometryReader { geometry in
+                                Image("christopher")
+                                    .resizable()
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                    .opacity(0.6)
+                            } .overlay(
+                                Text("Christopher")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 12, weight: .bold))
+                                    .offset(x: -5, y: +30)
+                            )
+                        )
+                    
+                    RoundedRectangle(cornerRadius: 4)
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(
+                            GeometryReader { geometry in
+                                Image("jacob")
+                                    .resizable()
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                    .opacity(0.6)
+                            } .overlay(
+                                Text("Jacob")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 16, weight: .bold))
+                                    .offset(x: -10, y: +30)
+                            )
+                        )
+                    
+                    
+                }
+                
+             
                 
             }
             .padding(.horizontal)

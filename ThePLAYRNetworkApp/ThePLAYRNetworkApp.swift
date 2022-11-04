@@ -24,6 +24,7 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var createViewModel = CreateViewModel()
     @State private var selection: Tab = .home
     
+    
     init() {
         FirebaseApp.configure()
     }
@@ -45,8 +46,8 @@ struct ThePLAYRNetworkApp: App {
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
                         
                         NavigationView {
-                         // CalendarView()
-             TrainersView()
+                            CalendarView()
+                            
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         
@@ -77,7 +78,7 @@ struct ThePLAYRNetworkApp: App {
                     }
                 }
             }
-
+            
             .environmentObject(authViewModel)
             .environmentObject(homeViewModel)
         }

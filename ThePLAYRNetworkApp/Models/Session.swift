@@ -9,5 +9,7 @@ import Foundation
 
 struct Session: Codable {
     var sessionTitle: String
+    var sessionPrice: Int = 50
+  //  var sessionDescription: String?
     
 }

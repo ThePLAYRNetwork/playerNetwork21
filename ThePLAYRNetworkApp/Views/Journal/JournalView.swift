@@ -1,0 +1,138 @@
+//
+//  JournalView.swift
+//  ThePLAYRNetworkApp
+//
+//  Created by Timmy Nguyen on 10/21/22.
+//
+
+import SwiftUI
+
+struct JournalView: View {
+    // state object owns it, observed object just watches the state object?
+    @StateObject var journalViewModel = JournalViewModel()
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                BackButton()
+                
+                Text("Journal")
+                    .font(.system(size: 24, weight: .semibold))
+                    .padding(.bottom, 9)
+                
+                TabView {
+                    CourtTabItem(journalViewModel: journalViewModel, isHeatMap: false)
+                    CourtTabItem(journalViewModel: journalViewModel, isHeatMap: true)
+                    JournalChartView()
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never)) // .always
+    //            .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .frame(height: 430)
+//                .border(.green)
+                .padding(.bottom, 20)
+
+                VStack(alignment: .leading, spacing: 0) {
+                    CustomSegmentedControl(
+                        selectedIndex: $journalViewModel.selectedNotes,
+                        options: ["Notes", "Drills", "Trends"],
+                        spacing: 0
+                    )
+                    .font(.system(size: 20))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 15)
+                    
+                    // Replace Text
+                    if journalViewModel.selectedNotes == 0 {
+                        Text("Showing notes")
+                    } else if journalViewModel.selectedNotes == 1 {
+                        Text("Showing Drills")
+                    } else {
+                        Text("Showing Trends")
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Button(action: {}) {
+                            Image(systemName: "list.bullet")
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {}) {
+                            Image("camera")
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {}) {
+                            Image("pencil")
+                        }
+                    }
+                    .padding(.top)
+                }
+                .frame(height: 200)
+                .padding()
+                .background {
+                    RoundedRectangle(cornerRadius: 17)
+                        .fill(Color.ui.journal_background)
+                }
+                
+                Spacer()
+            }
+            .padding()
+        }
+    }
+}
+
+struct JournalView_Previews: PreviewProvider {
+    static var previews: some View {
+        JournalView()
+    }
+}
+
+struct BackButton: View {
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        // button takes primary color
+        Button(action: dismiss.callAsFunction) { // need .callAsFunction for some reason
+            Image(systemName: "arrow.left")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size: 21))
+                .padding([.top, .leading])
+        }
+    }
+}
+
+struct CustomSegmentedControl: View {
+    @Binding var selectedIndex: Int
+    var options: [String]
+    let color = Color.black
+    let spacing: CGFloat
+    
+    var body: some View {
+        HStack(spacing: spacing) {
+            ForEach(options.indices, id:\.self) { index in
+                let isSelected = selectedIndex == index
+                
+                Text(options[index])
+//                    .font(.system(size: 12, weight: .medium))
+                    .fontWeight(.medium)
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 8)
+                    .background(Capsule().fill(isSelected ? Color.ui.journal_black_bg : .clear))
+                    .foregroundColor(isSelected ? .white : .red)
+                    .onTapGesture {
+                        withAnimation(.interactiveSpring(
+                            response: 0.1, dampingFraction: 1.5, blendDuration: 0.5)) {
+                                selectedIndex = index
+                        }
+                    }
+            }
+        }
+        .background {
+            Capsule().fill(Color.ui.journal_control_background)
+        }
+    }
+}

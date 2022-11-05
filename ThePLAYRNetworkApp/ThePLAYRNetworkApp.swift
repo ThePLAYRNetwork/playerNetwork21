@@ -92,7 +92,7 @@ extension Color {
     
     struct UI {
         let primary = Color("red")
-        let secondary = Color("secondary_purple")
+        let secondary = Color("secondary")
         let light_gray = Color("light_gray")
         let lighter_gray = Color("lighter_gray")
         let button_gray_background = Color("button_gray_background")

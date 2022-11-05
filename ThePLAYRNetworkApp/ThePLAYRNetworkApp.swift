@@ -99,5 +99,18 @@ extension Color {
         let text_placeholder = Color("text_placeholder")
         let card_gray = Color("card_gray")
         let subheading_text = Color("subheading_text")
+        
+        let heat_red = Color("heat_red")
+        let heat_yellow = Color("heat_yellow")
+        let heat_green = Color("heat_green")
+        
+        let court_selected = Color("court_selected")
+        
+        let journal_card = Color("journal_card")
+        
+        let attempt_line = Color("attempt_line")
+        
+        let journal_picker_bg = Color("journal_picker_bg")
+        let button_black = Color("button_black")
     }
 }

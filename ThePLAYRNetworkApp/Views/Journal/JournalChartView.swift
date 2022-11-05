@@ -24,7 +24,7 @@ struct DailyScore: Identifiable {
     }
 }
 
-var data: [DailyScore] = [
+var dailyScoreData: [DailyScore] = [
     DailyScore(category: "Right Corner", score: 5, attempt: 6, year: 2023, month: 10, day: 4),
     DailyScore(category: "Right Corner", score: 5, attempt: 7, year: 2023, month: 10, day: 5),
     DailyScore(category: "Right Corner", score: 6, attempt: 6, year: 2023, month: 10, day: 6),
@@ -41,7 +41,7 @@ struct JournalChartView: View {
             Text("Right Corner")
                 .font(.system(size: 16, weight: .medium))
             
-            Chart(data) {
+            Chart(dailyScoreData) {
                 LineMark(
                     x: .value("Day", $0.date),
                     y: .value("Attempts", $0.attempt),

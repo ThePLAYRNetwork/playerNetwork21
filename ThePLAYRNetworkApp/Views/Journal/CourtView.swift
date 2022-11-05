@@ -24,7 +24,7 @@ struct CourtView: View {
                 return Color.ui.heat_green
             }
         } else {
-            return journalViewModel.courtData.selection == section ? Color.ui.journal_selected : Color.white
+            return journalViewModel.courtData.selection == section ? Color.ui.court_selected : Color.white
         }
     }
         

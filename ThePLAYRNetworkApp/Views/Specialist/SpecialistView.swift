@@ -21,29 +21,32 @@ struct SpecialistView: View {
         ZStack(alignment: .top) {
             Map(coordinateRegion: $region)
             
-            SpecialistSheetView()
-
             VStack(spacing: 0) {
-                VStack(alignment: .leading) {
-                    Button(action: {}) {
-                        Image(systemName: "arrow.backward")
-                            .resizable()
-                            .frame(width: 21, height: 18)
+                VStack {
+                    VStack(alignment: .leading) {
+                        Button(action: {}) {
+                            Image(systemName: "arrow.backward")
+                                .resizable()
+                                .frame(width: 21, height: 18)
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.bottom)
+                        
+                        Text("Weight Specialists")
+                            .font(.system(size: 24, weight: .bold))
+                        
+                        SearchBar(text: $searchText)
                     }
-                    .buttonStyle(.plain)
-                    .padding(.bottom)
+                    .padding([.top, .horizontal])
                     
-                    Text("Weight Specialists")
-                        .font(.system(size: 24, weight: .bold))
-                    
-                    SearchBar(text: $searchText)
+                    DiscoverFilterRow()
                 }
-                .padding([.top, .horizontal])
+                .background()
                 
-                DiscoverFilterRow()
-                
+                SpecialistSheetView()
+                    .zIndex(-1) // Top layer.
+//                    .border(.red)
             }
-            .background(Color.white)
         }
     }
 }

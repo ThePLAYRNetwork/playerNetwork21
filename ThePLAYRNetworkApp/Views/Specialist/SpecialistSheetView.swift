@@ -15,7 +15,9 @@ struct SpecialistSheetView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                Spacer()
+                
+                // Content
+                SpecialistColumn()
                 
                 // List Handle
                 HStack(alignment: .center) {
@@ -34,14 +36,15 @@ struct SpecialistSheetView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: geometry.size.height) // height of sheet == size of screen
-            .background(Color.white)
+            .background()
             .clipShape(RoundedRectangle(cornerRadius: 30))
             .offset(
                 x: 0,
-                y: expandList ? -geometry.size.height * 0.30 : -geometry.size.height * 0.70
+                y: expandList ? 0: -500 + 20    // 20 is height of list handle
             )
             .offset(x: 0, y: self.yDragTranslation)
-            .animation(.spring())
+//            .animation(.spring())
+            .animation(.spring(response: 0.55, dampingFraction: 0.825, blendDuration: 0))
             .gesture(
                 DragGesture().onChanged { value in
                     self.yDragTranslation = value.translation.height
@@ -54,6 +57,10 @@ struct SpecialistSheetView: View {
             )
             .shadow(radius: 1)
         }
+        .frame(height: 500)
+        .border(.red)
+//        .background(.clear)
+
     }
 }
 

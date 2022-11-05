@@ -39,7 +39,7 @@ struct CourtTabItem: View {
                         .foregroundColor(.white)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 8)
-                        .background(Capsule().fill(Color.ui.journal_black_bg))
+                        .background(Capsule().fill(Color.ui.primary))
                 }
                 .buttonStyle(.plain)
             }
@@ -54,7 +54,7 @@ struct CourtTabItem: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 17)
-                .fill(Color.ui.journal_background)
+                .fill(Color.ui.journal_card)
         }
     }
 }

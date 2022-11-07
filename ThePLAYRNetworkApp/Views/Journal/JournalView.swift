@@ -23,10 +23,10 @@ struct JournalView: View {
                 TabView {
                     CourtTabItem(journalViewModel: journalViewModel, isHeatMap: false)
                     CourtTabItem(journalViewModel: journalViewModel, isHeatMap: true)
-                    JournalChartView()
+                    JournalChartTabItem(journalViewModel: journalViewModel)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never)) // .always
-    //            .indexViewStyle(.page(backgroundDisplayMode: .always))
+//                .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .frame(height: 430)
 //                .border(.green)
                 .padding(.bottom, 20)
@@ -37,13 +37,12 @@ struct JournalView: View {
                         options: ["Notes", "Drills", "Trends"],
                         spacing: 0
                     )
-                    .font(.system(size: 20))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 15)
                     
                     // Replace Text
                     if journalViewModel.selectedNotes == 0 {
-                        Text("Showing notes")
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
                     } else if journalViewModel.selectedNotes == 1 {
                         Text("Showing Drills")
                     } else {
@@ -117,10 +116,9 @@ struct CustomSegmentedControl: View {
                 let isSelected = selectedIndex == index
                 
                 Text(options[index])
-//                    .font(.system(size: 12, weight: .medium))
-                    .fontWeight(.medium)
-                    .padding(.vertical, 2)
-                    .padding(.horizontal, 8)
+                    .font(.system(size: 12, weight: .semibold))
+                    .padding(.vertical, 3)
+                    .padding(.horizontal, 10)
                     .background(Capsule().fill(isSelected ? Color.ui.button_black : .clear))
                     .foregroundColor(isSelected ? .white : .red)
                     .onTapGesture {

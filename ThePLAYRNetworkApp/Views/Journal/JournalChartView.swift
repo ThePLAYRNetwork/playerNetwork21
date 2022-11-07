@@ -37,9 +37,18 @@ var dailyScoreData: [DailyScore] = [
 // series used for disguinshing between lines. First part is just a description, second part is the distinguishable
 struct JournalChartView: View {
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
+            
             Text("Right Corner")
                 .font(.system(size: 16, weight: .medium))
+                .padding(.bottom, 3)
+            
+            VStack(alignment: .leading) {
+                Label("Attempts", image: "attempts_legend_icon")
+                Label("Scores", image: "score_legend_icon")
+            }
+            .font(.system(size: 8))
+            .padding(.bottom)
             
             Chart(dailyScoreData) {
                 LineMark(
@@ -73,13 +82,16 @@ struct JournalChartView: View {
                 "Attempts": Color.ui.attempt_line,
                 "Score": Color.ui.secondary
             ])
-            .chartLegend(position: .top, alignment: .leading, spacing: 20)
             .chartYAxis {
                 AxisMarks(position: .leading)
             }
+            .chartLegend(.hidden)
         }
         .padding()
+        .frame(height: 275)
         .border(.black)
+        .background(.white)
+
     }
 }
 

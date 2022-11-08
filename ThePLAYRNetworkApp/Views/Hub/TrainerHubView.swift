@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TrainerHubView: View {
+//    @Binding var selectedIndex: Int
+//    @ObservedObject var journalViewModel = JournalViewModel()
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -18,9 +21,17 @@ struct TrainerHubView: View {
                     .frame(height: 300)
                     .padding()
                     .overlay(
-                    HubChartView()
-                        .frame(height: 290)
-                        .padding()
+                        VStack {
+                            HubChartView()
+                                .frame(height: 290)
+                                .padding()
+//                            CustomSegmentedControl(
+//                                selectedIndex: $journalViewModel.selectedDateType,
+//                                options: ["W", "M", "Y"],
+//                                spacing: 30.0
+//                            )
+                            
+                        }
                     )
                 
                 
@@ -104,9 +115,11 @@ struct TrainerHubView: View {
 }
 
 struct TrainerHubView_Previews: PreviewProvider {
+    @Binding var selectedIndex: Int
     static var previews: some View {
-        TrainerHubView()
-        // AtAGlanceView()
+      //  TrainerHubView(selectedIndex: JournalViewModel)
+        AtAGlanceView()
+        
         
         
     }
@@ -173,5 +186,45 @@ struct AtAGlanceView: View {
         .cornerRadius(10)
         .padding(.vertical, 10)
         .padding(.horizontal)
+    }
+}
+
+
+
+
+
+struct CustomSegmentedControl: View {
+    @Binding var selectedIndex: Int
+    var options: [String]
+    let color = Color.black
+    let spacing: CGFloat
+    
+    var body: some View {
+        HStack(spacing: spacing) {
+            ForEach(options.indices, id:\.self) { index in
+                let isSelected = selectedIndex == index
+                
+                Text(options[index])
+                //                    .font(.system(size: 12, weight: .medium))
+                    .fontWeight(.medium)
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 8)
+                    .background(Capsule().fill(isSelected ? Color.black : .clear))
+                //                    .background(Capsule().fill(isSelected ? Color.ui.journal_black_bg : .clear))
+                    .foregroundColor(isSelected ? .white : .red)
+                    .onTapGesture {
+                        withAnimation(.interactiveSpring(
+                            response: 0.1, dampingFraction: 1.5, blendDuration: 0.5)) {
+                                selectedIndex = index
+                            }
+                    }
+            }
+        }
+        .background {
+            Capsule()
+                .fill(Color.gray)
+            
+            //  .fill(Color.ui.journal_control_background)
+        }
     }
 }

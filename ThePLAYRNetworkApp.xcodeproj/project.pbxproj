@@ -72,6 +72,8 @@
 		CFB3384F28AE8F2B00610F42 /* NearbySessionsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3384E28AE8F2B00610F42 /* NearbySessionsRow.swift */; };
 		CFB3385128AE92B100610F42 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3385028AE92B100610F42 /* TrainingViewModel.swift */; };
 		CFB3385328AE932900610F42 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3385228AE932900610F42 /* Session.swift */; };
+		CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740B29192A72005D8506 /* JournalViewModel.swift */; };
+		CFBE740E29192AA0005D8506 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740D29192AA0005D8506 /* Court.swift */; };
 		CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75E4628F9A453004AB852 /* SessionView.swift */; };
 		CFCFF74C28AABB78002F1D30 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF74B28AABB78002F1D30 /* CalendarView.swift */; };
 		CFCFF75128AACB3C002F1D30 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75028AACB3C002F1D30 /* DateValue.swift */; };
@@ -158,6 +160,8 @@
 		CFB3384E28AE8F2B00610F42 /* NearbySessionsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbySessionsRow.swift; sourceTree = "<group>"; };
 		CFB3385028AE92B100610F42 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
 		CFB3385228AE932900610F42 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CFBE740B29192A72005D8506 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
+		CFBE740D29192AA0005D8506 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		CFC75E4628F9A453004AB852 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		CFCFF74B28AABB78002F1D30 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CFCFF75028AACB3C002F1D30 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 				32862F2A2892526700CDFB3B /* Views */,
 				CF8996BC28B3DC29004FA414 /* Assets.xcassets */,
 				32862F0B28923EE200CDFB3B /* Preview Content */,
+				CFBE740B29192A72005D8506 /* JournalViewModel.swift */,
 			);
 			path = ThePLAYRNetworkApp;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				CFCFF75228AAD6BA002F1D30 /* Task.swift */,
 				3271214A28CF83790056E304 /* Post.swift */,
 				CF26301D28EB137F00CAD20D /* Message.swift */,
+				CFBE740D29192AA0005D8506 /* Court.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */,
 				32862F442892590D00CDFB3B /* UpcomingGameItem.swift in Sources */,
 				CF5FA7A22912C1F900DEE7DB /* HubChartView.swift in Sources */,
 				CFD3C91528E77E5D004B53E7 /* ConversationColumnView.swift in Sources */,
@@ -644,6 +651,7 @@
 				32862F352892577B00CDFB3B /* HomeView.swift in Sources */,
 				CF6D8F2B28EB4D1E00468888 /* SuggestedRow.swift in Sources */,
 				CFD2F2FB28FDA90400D57A89 /* BookSessionDate.swift in Sources */,
+				CFBE740E29192AA0005D8506 /* Court.swift in Sources */,
 				CFD3C91028E77E5D004B53E7 /* MessageRow.swift in Sources */,
 				CF26301C28EB0EA500CAD20D /* TrainerProfile.swift in Sources */,
 				320314152894F99A00141300 /* PlayerAttendingCircles.swift in Sources */,

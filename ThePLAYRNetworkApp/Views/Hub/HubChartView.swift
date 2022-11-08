@@ -27,13 +27,13 @@ struct DailyEarnings: Identifiable {
 
 
 var data: [DailyEarnings] = [
-    DailyEarnings(category: "Earnings", projected: 5, current: 6, year: 2023, month: 10, day: 4),
-    DailyEarnings(category: "Earnings", projected: 5, current: 7, year: 2023, month: 10, day: 5),
-    DailyEarnings(category: "Earnings", projected: 6, current: 6, year: 2023, month: 10, day: 6),
-    DailyEarnings(category: "Earnings", projected: 5, current: 7, year: 2023, month: 10, day: 7),
-    DailyEarnings(category: "Earnings", projected: 8, current: 8, year: 2023, month: 10, day: 8),
-    DailyEarnings(category: "Earnings", projected: 10, current: 10, year: 2023, month: 10, day: 9),
-    DailyEarnings(category: "Earnings", projected: 8, current: 10, year: 2023, month: 10, day: 10)
+    DailyEarnings(category: "Earnings", projected: 230, current: 100, year: 2023, month: 10, day: 4),
+    DailyEarnings(category: "Earnings", projected: 150, current: 300, year: 2023, month: 10, day: 5),
+    DailyEarnings(category: "Earnings", projected: 280, current: 100, year: 2023, month: 10, day: 6),
+    DailyEarnings(category: "Earnings", projected: 140, current: 200, year: 2023, month: 10, day: 7),
+    DailyEarnings(category: "Earnings", projected: 190, current: 250, year: 2023, month: 10, day: 8),
+    DailyEarnings(category: "Earnings", projected: 100, current: 180, year: 2023, month: 10, day: 9),
+    DailyEarnings(category: "Earnings", projected: 280, current: 260, year: 2023, month: 10, day: 10)
 ]
 
 
@@ -44,7 +44,8 @@ struct HubChartView: View {
         VStack(alignment: .leading) {
             Text("Earnings")
                 .font(.system(size: 16, weight: .medium))
-
+            Text("Jul 11 - 17,2022")
+                .font(.system(size: 16, weight: .medium))
             Chart(data) {
                 LineMark(
                     x: .value("Day", $0.date),
@@ -55,7 +56,7 @@ struct HubChartView: View {
                 .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .square, dash: [6]))
                 .symbol {
                     Circle()
-                        .fill(Color.ui.primary)
+                        .fill(Color("subheading_text"))
                         .frame(width: 7)
                 }
 
@@ -68,13 +69,13 @@ struct HubChartView: View {
                 .lineStyle(StrokeStyle(lineWidth: 3))
                 .symbol {
                     Circle()
-                        .fill(Color.ui.secondary)
+                        .fill(Color("purple"))
                         .frame(width: 7)
                 }
             }
             // maps to data name
             .chartForegroundStyleScale([
-                "Current": Color.ui.primary,
+                "Current": Color("subheading_text"),
                 "Projected": Color("purple")
             ])
             .chartLegend(position: .top, alignment: .leading, spacing: 20)
@@ -83,7 +84,7 @@ struct HubChartView: View {
             }
         }
         .padding()
-        .border(.black)
+       
     }
 }
 

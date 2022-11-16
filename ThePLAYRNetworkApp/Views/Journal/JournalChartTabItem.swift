@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+func didDismiss() {
+    // Handle the dismissing action.
+}
+
 struct JournalChartTabItem: View {
     @ObservedObject var journalViewModel: JournalViewModel
+    @State private var isShowingSheet = false
 
     var body: some View {
         VStack(spacing: 12) {
@@ -20,7 +25,9 @@ struct JournalChartTabItem: View {
                 
                 Spacer()
                 
-                Button(action: {}) {
+                Button(action: {
+                    isShowingSheet.toggle()
+                }) {
                     Text("Input Data")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.white)
@@ -29,14 +36,28 @@ struct JournalChartTabItem: View {
                         .background(Capsule().fill(Color.ui.primary))
                 }
                 .buttonStyle(.plain)
+                .sheet(isPresented: $isShowingSheet,
+                       onDismiss: didDismiss) {
+                    InputDataView(journalViewModel: journalViewModel)
+                        .presentationDetents([.medium])
+                        .presentationDragIndicator(.visible)
+                }
             }
             
-            JournalChartView()
+            JournalChartView(journalViewModel: journalViewModel) // could use environment
 
             HStack {
-                Button(action: {}) {
+                Menu {
+                    Picker(selection: $journalViewModel.selectedCourtSection) {
+                        ForEach(CourtSection.allCases) { value in
+                            Text(value.rawValue) // use associated string
+                                .tag(value)
+                                .font(.largeTitle)
+                        }
+                    } label: {}
+                } label: {
                     HStack {
-                        Text("Right Corner")
+                        Text(journalViewModel.selectedCourtSection.rawValue)
                             .font(.system(size: 14, weight: .semibold))
 
                         Image(systemName: "chevron.down")
@@ -49,7 +70,6 @@ struct JournalChartTabItem: View {
                     .padding(.horizontal, 8)
                     .background(Capsule().fill(Color.ui.button_black))
                 }
-                .buttonStyle(.plain)
 
                 Spacer()
                 

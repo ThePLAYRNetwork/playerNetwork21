@@ -47,7 +47,6 @@ struct ThePLAYRNetworkApp: App {
                         
                         NavigationView {
                             CalendarView()
-                            
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         

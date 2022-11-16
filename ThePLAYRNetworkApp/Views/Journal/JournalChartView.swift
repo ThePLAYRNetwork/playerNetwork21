@@ -36,10 +36,12 @@ var dailyScoreData: [DailyScore] = [
 
 // series used for disguinshing between lines. First part is just a description, second part is the distinguishable
 struct JournalChartView: View {
+    @ObservedObject var journalViewModel: JournalViewModel
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             
-            Text("Right Corner")
+            Text(journalViewModel.selectedCourtSection.rawValue)
                 .font(.system(size: 16, weight: .medium))
                 .padding(.bottom, 3)
             
@@ -97,7 +99,7 @@ struct JournalChartView: View {
 
 struct JournalChartView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalChartView()
+        JournalChartView(journalViewModel: JournalViewModel())
             .frame(width: 335, height: 264)
     }
 }

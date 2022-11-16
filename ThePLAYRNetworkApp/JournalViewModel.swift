@@ -13,4 +13,5 @@ class JournalViewModel: ObservableObject {
     @Published var selectedDisplay: Int = 0 // 0 is ratio, 1 is percentage
     @Published var selectedNotes: Int = 0
     @Published var selectedDateType: Int = 0
+    @Published var selectedCourtSection: CourtSection = .leftCorner
 }

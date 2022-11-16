@@ -111,5 +111,7 @@ extension Color {
         
         let journal_picker_bg = Color("journal_picker_bg")
         let button_black = Color("button_black")
+        
+        let input_field_bg = Color("input_field_bg")
     }
 }

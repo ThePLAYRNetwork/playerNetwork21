@@ -27,14 +27,15 @@ struct DailyEarnings: Identifiable {
 
 
 var data: [DailyEarnings] = [
-    DailyEarnings(category: "Earnings", projected: 5, current: 6, year: 2023, month: 10, day: 4),
-    DailyEarnings(category: "Earnings", projected: 5, current: 7, year: 2023, month: 10, day: 5),
-    DailyEarnings(category: "Earnings", projected: 6, current: 6, year: 2023, month: 10, day: 6),
-    DailyEarnings(category: "Earnings", projected: 5, current: 7, year: 2023, month: 10, day: 7),
-    DailyEarnings(category: "Earnings", projected: 8, current: 8, year: 2023, month: 10, day: 8),
-    DailyEarnings(category: "Earnings", projected: 10, current: 10, year: 2023, month: 10, day: 9),
-    DailyEarnings(category: "Earnings", projected: 8, current: 10, year: 2023, month: 10, day: 10)
+    DailyEarnings(category: "Earnings", projected: 100, current: 100, year: 2023, month: 10, day: 4),
+    DailyEarnings(category: "Earnings", projected: 300, current: 300, year: 2023, month: 10, day: 5),
+    DailyEarnings(category: "Earnings", projected: 280, current: 100, year: 2023, month: 10, day: 6),
+    DailyEarnings(category: "Earnings", projected: 140, current: 200, year: 2023, month: 10, day: 7),
+    DailyEarnings(category: "Earnings", projected: 190, current: 250, year: 2023, month: 10, day: 8),
+    DailyEarnings(category: "Earnings", projected: 100, current: 180, year: 2023, month: 10, day: 9),
+    DailyEarnings(category: "Earnings", projected: 280, current: 260, year: 2023, month: 10, day: 10)
 ]
+    
 
 
 
@@ -43,19 +44,46 @@ struct HubChartView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Earnings")
-                .font(.system(size: 16, weight: .medium))
-
+                .font(.system(size: 16, weight: .semibold))
+            
+            HStack {
+                Text("Jul 11 - 17,2022")
+                    .font(.system(size: 16, weight: .semibold))
+                
+                Spacer()
+                
+                Image(systemName: "chevron.left")
+                    .resizable()
+                    .frame(width: 5.97, height: 11)
+                    .foregroundColor(Color.ui.subheading_text)
+                
+                Text("Today")
+                    .font(.system(size: 16))
+                    .foregroundColor(Color.ui.subheading_text)
+                
+                
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .frame(width: 5.97, height: 11)
+                    .foregroundColor(Color.ui.subheading_text)
+                    
+                
+            }
+     
             Chart(data) {
                 LineMark(
                     x: .value("Day", $0.date),
                     y: .value("Current", $0.current),
                     series: .value("Shot Type", "A")
                 )
+                
+              
                 .foregroundStyle(by: .value("Total Current", "Current")) // label
                 .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .square, dash: [6]))
+             
                 .symbol {
                     Circle()
-                        .fill(Color.ui.primary)
+                        .fill(Color("subheading_text"))
                         .frame(width: 7)
                 }
 
@@ -64,26 +92,66 @@ struct HubChartView: View {
                     y: .value("Projected", $0.projected),
                     series: .value("Shot Type", "B")
                 )
-                .foregroundStyle(by: .value("Shots Made", "Projected")) // label
+                
+                .foregroundStyle(by: .value("Shots Made", "Projected"))
+                
+                // label
                 .lineStyle(StrokeStyle(lineWidth: 3))
                 .symbol {
                     Circle()
-                        .fill(Color.ui.secondary)
+                        .fill(Color("purple"))
                         .frame(width: 7)
                 }
+                
             }
+        
+        
             // maps to data name
             .chartForegroundStyleScale([
-                "Current": Color.ui.primary,
+                "Current": Color("subheading_text"),
                 "Projected": Color("purple")
             ])
+            
+            
+            .chartXAxis(content: {
+                AxisMarks {_ in
+                    
+//                    AxisGridLine(
+//                        centered: false,
+//                        stroke: StrokeStyle(lineWidth: 4))
+//                            .foregroundStyle(Color.black)
+//
+    
+                    AxisValueLabel(verticalSpacing: 0)
+                        .foregroundStyle(.black)
+                        .font(.system(size: 12, weight: .semibold))
+                        
+                        
+
+                }
+            })
+      
             .chartLegend(position: .top, alignment: .leading, spacing: 20)
             .chartYAxis {
-                AxisMarks(position: .leading)
+ 
+                AxisMarks(position: .leading)  {_ in
+    
+                    
+                    AxisValueLabel(horizontalSpacing: 25)
+                        .foregroundStyle(.black)
+                        .font(.system(size: 12, weight: .semibold))
+
+                }
+       
+
             }
+            
+  
+          
         }
-        .padding()
-        .border(.black)
+   
+     
+       
     }
 }
 

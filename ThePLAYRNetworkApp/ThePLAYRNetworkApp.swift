@@ -48,11 +48,11 @@ struct ThePLAYRNetworkApp: App {
                         
                         NavigationView {
                             //   CalendarView()
-                       //     TrainerHubView()
-                         CurrentBookingsView(selectedDay: $selectedDay)
-                      //  CancelTraining()
-                         //   SuccessCancelView(selectedDay: $selectedDay)
-                         //   ActiveSessionsView()
+                        TrainerHubView()
+                        // CurrentBookingsView(selectedDay: $selectedDay)
+                //    CancelTraining()
+                  //      SuccessCancelView(selectedDay: $selectedDay)
+                          // ActiveSessionsView()
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         

@@ -47,12 +47,9 @@ struct ThePLAYRNetworkApp: App {
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
                         
                         NavigationView {
-                            //   CalendarView()
-                        TrainerHubView()
-                        // CurrentBookingsView(selectedDay: $selectedDay)
-                //    CancelTraining()
-                  //      SuccessCancelView(selectedDay: $selectedDay)
-                          // ActiveSessionsView()
+                          //  CalendarView()
+                            //  ClientManagementView()
+   ClientProfile()
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         
@@ -109,6 +106,7 @@ extension Color {
         let heat_yellow = Color("heat_yellow")
         let heat_green = Color("heat_green")
         
+        let green = Color("green")
         let court_selected = Color("court_selected")
         
         let journal_card = Color("journal_card")

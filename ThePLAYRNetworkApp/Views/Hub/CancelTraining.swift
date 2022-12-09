@@ -19,12 +19,12 @@ struct CancelTraining: View {
                 VStack(alignment: .leading) {
                     Text("Cancel Session")
                         .font(.system(size: 24))
-                        .fontWeight(.semibold)
-                        .padding(.leading, 17)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
                         .padding(.top, 5)
                     
                     Text("Defense Training")
-                        .font(.title)
+                        .font(.system(size: 20))
                         .fontWeight(.semibold)
                         .padding(.bottom, -5)
                     
@@ -52,7 +52,7 @@ struct CancelTraining: View {
                     
                     Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
                         .multilineTextAlignment(.leading)
-                        .padding(.vertical, 4)
+                        .padding(.vertical, -6)
                     
                     
                     HStack{

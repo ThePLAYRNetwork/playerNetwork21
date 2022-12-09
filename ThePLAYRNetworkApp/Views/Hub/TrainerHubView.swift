@@ -20,10 +20,11 @@ struct TrainerHubView: View {
                 .padding(.bottom, -5)
             
             VStack(alignment: .leading) {
-                
-                AtAGlanceView()
-                
-                
+                NavigationLink(destination: ActiveSessionsView()) {
+                    
+                    AtAGlanceView()
+                    
+                }
                 
                 ZStack {
                     VStack {
@@ -174,12 +175,10 @@ struct AtAGlanceView: View {
                     Text("2")
                         .foregroundColor(.white)
                         .font(.system(size: 24))
-                    NavigationLink(destination: ActiveSessionsView()) {
+                    
                         Text("Active Sessions")
                             .foregroundColor(.white)
                             .font(.system(size: 16))
-                    }
-                    
                 }
                 
                 Divider()

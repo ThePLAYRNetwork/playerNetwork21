@@ -48,7 +48,9 @@ struct ThePLAYRNetworkApp: App {
                         
                         NavigationView {
 
+
                             CalendarView()
+
 
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
@@ -106,6 +108,7 @@ extension Color {
         let heat_yellow = Color("heat_yellow")
         let heat_green = Color("heat_green")
         
+        let green = Color("green")
         let court_selected = Color("court_selected")
         
         let journal_card = Color("journal_card")

@@ -22,6 +22,7 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var authViewModel = AuthViewModel()
     @StateObject private var homeViewModel = HomeViewModel()
     @StateObject private var createViewModel = CreateViewModel()
+    @State var selectedDay: Int = 4
     @State private var selection: Tab = .home
     
     
@@ -46,8 +47,7 @@ struct ThePLAYRNetworkApp: App {
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
                         
                         NavigationView {
-                            CreateSessionView()
-//                            CalendarView()
+                            CalendarView()
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         
@@ -102,6 +102,7 @@ extension Color {
         let heat_red = Color("heat_red")
         let heat_yellow = Color("heat_yellow")
         let heat_green = Color("heat_green")
+        let green = Color("green")
         let court_selected = Color("court_selected")
         let journal_card = Color("journal_card")
         let attempt_line = Color("attempt_line")
@@ -113,5 +114,6 @@ extension Color {
         let cards = Color("cards")
         let tags = Color("tags")
         let times = Color("times")
+        let input_field_bg = Color("input_field_bg")
     }
 }

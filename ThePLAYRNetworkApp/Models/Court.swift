@@ -21,6 +21,7 @@ struct Court {
     }
 }
 
+
 enum CourtSection: String, CaseIterable, Identifiable {
     case leftCorner = "Left Corner"
     case leftShortCorner = "Left Short Corner"
@@ -38,6 +39,7 @@ enum CourtSection: String, CaseIterable, Identifiable {
     case rightShot = "Right Shot"
     var id: Self { self }
 }
+
 
 extension Court {
     static private var score = [5, 3, 4, 5, 2, 3, 4, 2, 2, 5, 3, 3, 6, 5]

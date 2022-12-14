@@ -5,6 +5,10 @@
 //  Created by Timmy Nguyen on 11/15/22.
 //
 
+// CalendarTrainerView has to be in scrollview
+// CalendarView
+// horzontal padding?
+
 import SwiftUI
 
 struct CreateSessionView: View {
@@ -169,8 +173,10 @@ struct CreateSessionView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Session Availability".uppercased())
                         .font(.system(size: 12))
-
-                    Button(action: {}) {
+                    
+                    NavigationLink {
+                        SelectDayView()
+                    } label: {
                         HStack {
                             Text("Select Days")
                             
@@ -178,13 +184,13 @@ struct CreateSessionView: View {
                             
                             Image(systemName: "chevron.right")
                         }
-                    }
-                    .foregroundColor(.black)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 20)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color.ui.input_field_bg)
+                        .foregroundColor(.black)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 20)
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.ui.input_field_bg)
+                        }
                     }
                 }
                 

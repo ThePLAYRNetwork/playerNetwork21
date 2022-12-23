@@ -133,13 +133,15 @@ struct CreateGameTopSection: View {
 
 struct CoverImageRow: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Cover Image")
+        VStack(alignment: .leading, spacing: 3) {
+            Text("Cover Image".uppercased())
+                .font(.system(size: 12))
+
             HStack {
                 RoundedRectangle(cornerRadius: 4)
                     .aspectRatio(1.0, contentMode: .fit) // to keep square shape
                     .overlay {
-                        Image(systemName: "photo.on.rectangle.angled")
+                        Image("photos")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 34, height: 34)
@@ -320,9 +322,9 @@ struct CreateButton: View {
                         Text("Create")
                             .foregroundColor(.white)
                             .padding([.vertical], 7)
-                            .padding([.horizontal], 30)
+                            .padding([.horizontal], 15)
                             .background {
-                                RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
                                     .foregroundColor(Color("red"))
                             }
                     }

@@ -4,6 +4,7 @@
 //
 //  Created by Timmy Nguyen on 10/21/22.
 //
+
 import Foundation
 import SwiftUI
 
@@ -19,6 +20,26 @@ struct Court {
         self.attempts = attempts
     }
 }
+
+
+enum CourtSection: String, CaseIterable, Identifiable {
+    case leftCorner = "Left Corner"
+    case leftShortCorner = "Left Short Corner"
+    case paint = "Paint"
+    case rightShortCorner = "Right Short Corner"
+    case rightCorner = "Right Corner"
+    case leftMidRange = "Left Mid Range"
+    case rightMidRange = "Right Mid Range"
+    case freeThrow = "Free Throw"
+    case middleMidRange = "Middle Mid Range"
+    case leftWing = "Left Wing"
+    case topOfTheKey = "Top of the Key"
+    case rightWing = "Right Wing"
+    case leftShot = "Left Shot"
+    case rightShot = "Right Shot"
+    var id: Self { self }
+}
+
 
 extension Court {
     static private var score = [5, 3, 4, 5, 2, 3, 4, 2, 2, 5, 3, 3, 6, 5]

@@ -47,9 +47,12 @@ struct ThePLAYRNetworkApp: App {
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
                         
                         NavigationView {
+
                             CalendarView()
+
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
+                        
                         
                         NavigationView {
                             CreateGameView()
@@ -99,6 +102,8 @@ extension Color {
         let input_field_bg = Color("input_field_bg")
         let messages_bg = Color("messages_bg")
         let suggestions_bg = Color("suggestions_bg")
+        let background_gray = Color("backgroundGray")
+
         
         let tags = Color("tags")
         let divider_lines = Color("divider_lines")
@@ -145,6 +150,9 @@ extension Color {
         let button_gray_background = Color("button_gray_background")
         let text_placeholder = Color("text_placeholder")
         let card_gray = Color("card_gray")
+        
+
+
         let heat_red = Color("heat_red")
         let heat_yellow = Color("heat_yellow")
         let heat_green = Color("heat_green")

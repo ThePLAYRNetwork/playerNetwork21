@@ -104,7 +104,7 @@ struct BackButton: View {
     }
 }
 
-struct CustomSegmentedControl: View {
+struct JournalCustomSegmentedControl: View {
     @Binding var selectedIndex: Int
     var options: [String]
     let color = Color.black

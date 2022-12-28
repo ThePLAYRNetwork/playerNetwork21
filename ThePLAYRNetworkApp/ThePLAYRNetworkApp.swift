@@ -47,9 +47,7 @@ struct ThePLAYRNetworkApp: App {
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
                         
                         NavigationView {
-
                             CalendarView()
-
                         }
                         .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
                         
@@ -113,6 +111,10 @@ extension Color {
         let subheading_text = Color("subheading_text")
         let search_bar = Color("search_bar")
         
+        let selector_bg = Color("selector_bg")
+        
+        let overlay_bg = Color("overlay_bg")
+        
         // red
         let signifies = Color("signifies")
         let interactable = Color("interactable")
@@ -143,6 +145,7 @@ extension Color {
         let court_color_green = Color("court_color_green")
         let court_color_yellow = Color("court_color_yellow")
         let scroll_wheel = Color("scroll_wheel")
+        let facebook_bg = Color("facebook_bg")
         
         // delete later?
         let light_gray = Color("light_gray")

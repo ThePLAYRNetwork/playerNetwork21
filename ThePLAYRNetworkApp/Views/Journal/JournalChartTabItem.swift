@@ -76,7 +76,7 @@ struct JournalChartTabItem: View {
             }
             .padding(.bottom, 8)
             
-            CustomSegmentedControl(
+            JournalCustomSegmentedControl(
                 selectedIndex: $journalViewModel.selectedDateType,
                 options: ["W", "M", "Y"],
                 spacing: 20.0

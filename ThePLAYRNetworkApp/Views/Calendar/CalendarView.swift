@@ -18,13 +18,12 @@ struct CalendarView: View {
                 
                 
                 CalendarTrainerView(interval: DateInterval(start: .distantPast, end: .distantFuture))
-                Divider()
+                 Divider()
+                EventItem()
+                EventItem()
+                EventItem()
                 
-                ForEach(0...5, id: \.self) { event in
-                    EventItem()
-                        .padding(.horizontal)
-                }
-                padding()
+
                 
                 
                 Spacer()

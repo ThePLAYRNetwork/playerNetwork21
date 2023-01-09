@@ -37,7 +37,7 @@ struct JournalView: View {
                         options: ["Notes", "Drills", "Trends"],
                         spacing: 0
                     )
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 12))
                     .padding(.bottom, 15)
                     
                     // Replace Text
@@ -81,26 +81,13 @@ struct JournalView: View {
             }
             .padding()
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct JournalView_Previews: PreviewProvider {
     static var previews: some View {
         JournalView()
-    }
-}
-
-struct BackButton: View {
-    @Environment(\.dismiss) private var dismiss
-    
-    var body: some View {
-        // button takes primary color
-        Button(action: dismiss.callAsFunction) { // need .callAsFunction for some reason
-            Image(systemName: "arrow.left")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 21))
-                .padding([.top, .leading])
-        }
     }
 }
 

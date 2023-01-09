@@ -17,6 +17,10 @@ struct ConfirmGameView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
+                Text("Confirm Game")
+                    .font(.system(size: 24, weight: .bold))
+                    .padding(.bottom, 20)
+                
                 CoverImage()
                 
                 ConfirmTitleSection(game: game)
@@ -24,16 +28,22 @@ struct ConfirmGameView: View {
                 ConfirmGameDetails(game: game)
                 
                 ConfirmInvitedPlayers(samplePlayers: $samplePlayers)
+                    .padding(.top, 20)
                 
-                MapGameView()
-                    .frame(height: 400)
-                    .padding(.bottom, 20)
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .foregroundColor(Color("light_gray"))
+                    .frame(height: 100)
+                    .padding(.top, 19)
+                
+//                MapGameView()
+//                    .frame(height: 400)
+//                    .padding(.bottom, 20)
                 
                 ConfirmButtons(game: game)
+                    .padding(.top)
             }
             .font(.system(size: 16))
             .padding()
-            .navigationTitle("Confirm Game")
         }
     }
     
@@ -70,8 +80,10 @@ struct ConfirmTitleSection: View {
         
         Text("\(game.startDate) at \(game.startTime) - \(game.endTime)")
             .padding(.bottom, 4)
+            .font(.system(size: 16, weight: .medium))
         
         Text(game.location)
+            .font(.system(size: 16, weight: .medium))
             .padding(.bottom, 20)
     }
 }
@@ -80,24 +92,18 @@ struct ConfirmGameDetails: View {
     let game: Game
     
     var body: some View {
-        Text("Game Details")
-            .font(.system(size: 20))
-            .bold()
-            .padding(.bottom, 5)
-        
-        Text(game.description)
-            .padding(.bottom)
-        
-        HStack(spacing: 4) {
-            Text("10")
-            Text("Players Maximum")
-                .foregroundColor(.gray)
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Game Details")
+                .font(.system(size: 20))
+                .bold()
+            
+            Text(game.description)
+                .padding(.top, 5)
+            
+            TagView(tags: game.getTagList())
+                .font(.footnote)
+                .padding(.top, 10)
         }
-        .font(.system(size: 12))
-        
-        TagView(tags: game.getTagList())
-            .font(.footnote)
-            .padding(.bottom, 20)
     }
 }
 
@@ -105,13 +111,23 @@ struct ConfirmInvitedPlayers: View {
     @Binding var samplePlayers: [String]
     
     var body: some View {
-        Text("Invited Players")
-            .font(.system(size: 20))
-            .bold()
-            .padding(.bottom, 7)
-        
-        InvitedTagView(players: $samplePlayers)
-            .padding(.bottom, 20)
+        VStack(alignment: .leading, spacing: 0) {
+            
+            Text("Invited Players")
+                .font(.system(size: 20))
+                .bold()
+                .padding(.bottom, 7)
+            
+            InvitedTagView(players: $samplePlayers)
+            
+            HStack(spacing: 4) {
+                Text("10")
+                Text("Players Maximum")
+                    .foregroundColor(.gray)
+            }
+            .font(.system(size: 12))
+            .padding(.top, 8)
+        }
     }
 }
 
@@ -137,13 +153,6 @@ struct ConfirmButtons: View {
 //
             NavigationLink(destination: HomeView()) {
                 Text("Create")
-                    .foregroundColor(.white)
-                    .padding([.top, .bottom], 7)
-                    .padding([.leading, .trailing], 30)
-                    .background {
-                        RoundedRectangle(cornerRadius: 7, style: .continuous)
-                            .foregroundColor(Color("red"))
-                    }
                     .onTapGesture {
                         dismiss()
                         createGameViewModel.createGame(game: game)
@@ -151,6 +160,7 @@ struct ConfirmButtons: View {
                         authViewModel.selection = Tab.home
                     }
             }
+            .buttonStyle(CustomButton(color: .red, size: .small))
         }
     }
 }

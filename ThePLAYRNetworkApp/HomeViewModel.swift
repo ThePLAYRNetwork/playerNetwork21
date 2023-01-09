@@ -103,7 +103,7 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 }
             }
     }
-    
+        
     func checkIfLocationServicesIsEnabled() {
         // 1. Check if user enabled locations
         if CLLocationManager.locationServicesEnabled() {

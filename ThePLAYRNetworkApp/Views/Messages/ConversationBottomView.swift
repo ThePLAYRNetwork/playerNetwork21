@@ -24,11 +24,11 @@ struct ConversationBottomView: View {
                 Image(systemName: "camera.fill")
                     .frame(height: 24)
 
-//                TextField("Write a message...", text: $message, axis: .vertical)
-//                    .padding(7)
-//                    .background(.regularMaterial)
-//                    .font(.system(size: 14))
-//                
+                TextField("Write a message...", text: $message, axis: .vertical)
+                    .padding(7)
+                    .background(.regularMaterial)
+                    .font(.system(size: 14))
+                
                 Image(systemName: "mic.fill")
                     .frame(height: 24)
 

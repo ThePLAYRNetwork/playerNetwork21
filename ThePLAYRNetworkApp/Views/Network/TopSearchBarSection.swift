@@ -12,9 +12,7 @@ struct TopSearchBarSection: View {
 
     var body: some View {
         VStack(alignment: .leading){
-            Image(systemName: "arrow.backward")
-                .font(.title)
-            
+            BackButton()
             
             HStack{
                 SearchBar(text: $viewModel.searchText)
@@ -36,18 +34,6 @@ struct TopSearchBarSection: View {
                         .foregroundColor(.red)
                         .offset(x: +5, y: -5)
                 }
-            }
-            
-            
-            
-            HStack{
-                Circle()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(.gray.opacity(0.3))
-               
-                
-                Text("What's on your mind?")
-                    .fontWeight(.bold)
             }
         }
         .padding()

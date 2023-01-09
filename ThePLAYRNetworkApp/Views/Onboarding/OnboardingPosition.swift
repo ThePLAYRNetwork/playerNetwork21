@@ -15,29 +15,34 @@ struct OnboardingPosition: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            //            createPlayerHeader()
-            PositionRow(selectedPosition: $selectedPosition)
-            
-            PlayerStyleCarousel()
-                .padding(.top, 30)
+            createPlayerHeader()
             
             Spacer()
             
-            Button {
-            } label: {
-                Text("Finish")
-                    .font(.system(size: 24, weight: .medium))
-                    .foregroundColor(.white)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 80)
-                    .background {
-                        RoundedRectangle(cornerRadius: 34)
-                            .fill(Color.ui.interactable)
-                    }
+            VStack(spacing: 0) {
+                PositionRow(selectedPosition: $selectedPosition)
+                
+                PlayerStyleCarousel()
+                    .padding(.top, 30)
+                
+                Spacer()
+                
+                Button(action: {}) {
+                    Text("Finish")
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 80)
+                        .background {
+                            RoundedRectangle(cornerRadius: 34)
+                                .fill(Color.ui.interactable)
+                        }
+                }
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
+            .padding()
         }
-        .padding()
+        .ignoresSafeArea()
     }
 }
 
@@ -102,7 +107,7 @@ struct PositionCell: View {
         return position == selectedPosition ? Color.ui.interactable : Color.ui.subheading_text
     }
 }
-    
+
 struct OnboardingPosition_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingPosition()
@@ -126,8 +131,8 @@ class Store: ObservableObject {
         items.append(ProPlayer(id: 3, image: Image("stephen")))
         items.append(ProPlayer(id: 4, image: Image("stephen")))
         items.append(ProPlayer(id: 5, image: Image("stephen")))
-
-
+        
+        
     }
 }
 
@@ -143,9 +148,9 @@ struct PlayerStyleCarousel: View {
             Text("Which best describes your playing style?".uppercased())
                 .font(.system(size: 12, weight: .medium))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom)
+                .padding(.bottom, 10)
             
-//            Text("Current index: \(snappedItem)")
+            //            Text("Current index: \(snappedItem)")
             
             ZStack {
                 ForEach(store.items) { item in
@@ -183,7 +188,7 @@ struct PlayerStyleCarousel: View {
             )
             .padding(.top, 12)
         }
-
+        
     }
     
     func distance(_ item: Int) -> Double {
@@ -193,8 +198,8 @@ struct PlayerStyleCarousel: View {
     func myXOffset(_ item: Int) -> Double {
         let angle = Double.pi * 2 / Double(store.items.count) * distance(item)
         return sin(angle) * 250 // 300
-//        return sin(angle) * 350 // v2
-
+        //        return sin(angle) * 350 // v2
+        
     }
     
 }

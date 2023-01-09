@@ -10,14 +10,53 @@ import SwiftUI
 struct SheetButtonRow: View {
     var body: some View {
         HStack {
-            RoundedRectangle(cornerRadius: 4)
-                .aspectRatio(1.0, contentMode: .fit)
-            RoundedRectangle(cornerRadius: 4)
-                .aspectRatio(1.0, contentMode: .fit)
-            RoundedRectangle(cornerRadius: 4)
-                .aspectRatio(1.0, contentMode: .fit)
-            RoundedRectangle(cornerRadius: 4)
-                .aspectRatio(1.0, contentMode: .fit)
+            NavigationLink {
+                TrainingView()
+            } label: {
+                RoundedRectangle(cornerRadius: 4)
+                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay {
+                        Image("training_icon")
+                    }
+            }
+            .buttonStyle(.plain) // lessens white flash when clicked
+
+            NavigationLink {
+                NetworkView()
+            } label: {
+               RoundedRectangle(cornerRadius: 4)
+                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay {
+                        Image("network_icon")
+                    }
+            }
+            .buttonStyle(.plain)
+            
+            NavigationLink {
+                DiscoverView()
+            } label: {
+                RoundedRectangle(cornerRadius: 4)
+                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay {
+                        Image("discover_icon")
+                    }
+            }
+            .buttonStyle(.plain)
+
+            NavigationLink {
+                JournalView()
+            } label: {
+                RoundedRectangle(cornerRadius: 4)
+                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay {
+                        Image("journal_icon")
+                    }
+            }
+            .buttonStyle(.plain)
         }
         .foregroundColor(Color.ui.primary)
     }

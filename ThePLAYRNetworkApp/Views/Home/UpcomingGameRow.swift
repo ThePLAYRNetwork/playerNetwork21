@@ -13,15 +13,15 @@ struct UpcomingGameRow: View {
     var items: [Game]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(categoryName)
-                .font(.system(size: 20))
+                .font(.system(size: 24))
                 .fontWeight(.semibold)
                 .padding(.leading, 20)
-                .padding(.top, 5)
+                .padding(.bottom, 13)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(alignment: .top, spacing: 15) { // could use reg
+                HStack(alignment: .top, spacing: 15) { // could use reg
                     ForEach(items, id: \.id) { game in
                         NavigationLink {
                             GameDetailView(
@@ -37,9 +37,11 @@ struct UpcomingGameRow: View {
                     }
                 }
                 .padding([.leading, .trailing], 20)
+                .padding(.bottom, 5) // to show shadow
+                .frame(height: 250)
             }
         }
-        .frame(height: 290)
+//        .frame(height: 300)
     }
 }
 

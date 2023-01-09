@@ -9,10 +9,12 @@ import SwiftUI
 
 struct DiscoverView: View {
     var body: some View {
-        VStack {
-            DiscoverTopSection()
-            EventsRow()
-            
+        ScrollView(.vertical) {
+            VStack {
+                DiscoverTopSection()
+                EventsRow()
+                
+            }
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)

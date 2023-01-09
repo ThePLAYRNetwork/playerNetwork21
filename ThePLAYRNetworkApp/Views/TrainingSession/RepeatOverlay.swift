@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-enum RepeatOption: String, CaseIterable, Identifiable {
-    case does_not_repeat = "Does not repeat"
-    case every_day = "Every day"
-    case every_week = "Every week"
-    case bi_weekly = "Bi-weekly"
-    case every_month = "Every month"
-    
-    var id: Self { self }
-}
-
 struct RepeatOverlay: View {
     @Binding var selectedOption: RepeatOption
     @Binding var isShowingSheet: Bool

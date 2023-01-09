@@ -32,7 +32,7 @@ struct JournalChartTabItem: View {
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.white)
                         .padding(.vertical, 2)
-                        .padding(.horizontal, 8)
+                        .padding(.horizontal, 10)
                         .background(Capsule().fill(Color.ui.primary))
                 }
                 .buttonStyle(.plain)
@@ -79,8 +79,9 @@ struct JournalChartTabItem: View {
             JournalCustomSegmentedControl(
                 selectedIndex: $journalViewModel.selectedDateType,
                 options: ["W", "M", "Y"],
-                spacing: 20.0
+                spacing: 16.0
             )
+            .font(.system(size: 12))
         }
         .padding()
         .background {

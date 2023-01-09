@@ -16,7 +16,7 @@ struct MessageRow: View {
           
                 ForEach(0...8, id: \ .self) { message in
                     
-                    NavigationLink(destination: FullMessageView()) {
+                    NavigationLink(destination: ConversationView()) {
                         MessageItem()
                     }
                     

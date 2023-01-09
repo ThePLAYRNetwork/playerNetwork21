@@ -17,7 +17,7 @@ struct ConversationHeaderView: View {
             Spacer()
             HStack(spacing: 0) {
                 Button(action: { dismiss() }) {
-                    Image(systemName: "chevron.left")
+                    Image("back_arrow_black")
                         .padding(.trailing, 28)
                 }
                 .buttonStyle(.plain)

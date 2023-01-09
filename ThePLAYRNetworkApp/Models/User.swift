@@ -12,7 +12,7 @@ struct User: Codable {
     var name: String
     var email: String
     var username: String
-    
+        
     init(id: String = "", name: String = "", email: String = "", username: String = "") {
         self.id = id
         self.name = name

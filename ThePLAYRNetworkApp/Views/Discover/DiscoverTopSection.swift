@@ -15,8 +15,8 @@ struct DiscoverTopSection: View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 HStack {
-                    Image(systemName: "arrow.backward")
-                        .font(.title)
+                    BackButton()
+                    
                     Spacer()
                 }
                 ZStack {

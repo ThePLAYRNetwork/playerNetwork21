@@ -21,6 +21,7 @@ struct HomeSheetView: View {
                 
                 SheetButtonRow()
                     .padding()
+                
                 // List Handle
                 HStack(alignment: .center) {
                     Rectangle()

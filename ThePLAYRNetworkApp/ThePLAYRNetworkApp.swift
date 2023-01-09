@@ -64,9 +64,9 @@ struct ThePLAYRNetworkApp: App {
                         
                         
                         NavigationView {
-                            NetworkView()
+                            MessagesView()
                         }
-                        .tabItem { Label("Inbox", systemImage: "briefcase") }.tag(Tab.inbox)
+                        .tabItem { Label("Message", systemImage: "message") }.tag(Tab.inbox)
                         
                         NavigationView {
                             ProfileView()
@@ -151,7 +151,7 @@ extension Color {
         let light_gray = Color("light_gray")
         let lighter_gray = Color("lighter_gray")
         let button_gray_background = Color("button_gray_background")
-        let text_placeholder = Color("text_placeholder")
+        let placeholders = Color("placeholders")
         let card_gray = Color("card_gray")
         
 

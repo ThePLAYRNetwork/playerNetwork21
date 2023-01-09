@@ -28,7 +28,7 @@ struct PlayersYouMayKnowItem: View {
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
             }
-            .buttonStyle(SmallRedButton())
+            .buttonStyle(CustomButton(color: .red, size: .small))
         }
         .padding(.top, 14)
         .padding(.bottom, 9)
@@ -50,18 +50,18 @@ struct PlayersYouMayKnowItem: View {
     }
 }
 
-struct SmallRedButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.horizontal, 14)
-            .padding(.vertical, 2)
-            .background {
-                RoundedRectangle(cornerRadius: 7)
-                    .fill(configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor)
-            }
-            .foregroundColor(.white)
-    }
-}
+//struct SmallRedButton: ButtonStyle {
+//    func makeBody(configuration: Configuration) -> some View {
+//        configuration.label
+//            .padding(.horizontal, 14)
+//            .padding(.vertical, 2)
+//            .background {
+//                RoundedRectangle(cornerRadius: 7)
+//                    .fill(configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor)
+//            }
+//            .foregroundColor(.white)
+//    }
+//}
 
 struct PlayersYouMayKnowItem_Previews: PreviewProvider {
     static var previews: some View {

@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum Day: String, CaseIterable, Identifiable {
-    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
-    var id: Self { self }
-}
-
 struct TrainingSessionCollection: Identifiable {
     var id = UUID() // change later
     var data: [TrainingSession]
@@ -47,4 +42,19 @@ extension TrainingSessionCollection {
     
     static let sampleSession = TrainingSessionCollection(data: sampleData)
 
+}
+
+enum Day: String, CaseIterable, Identifiable {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+    var id: Self { self }
+}
+
+enum RepeatOption: String, CaseIterable, Identifiable {
+    case does_not_repeat = "Does not repeat"
+    case every_day = "Every day"
+    case every_week = "Every week"
+    case bi_weekly = "Bi-weekly"
+    case every_month = "Every month"
+    
+    var id: Self { self }
 }

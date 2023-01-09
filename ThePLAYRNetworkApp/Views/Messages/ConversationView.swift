@@ -20,8 +20,9 @@ struct ConversationView: View {
         }
         .sheet(isPresented: $showingOptions) {
             ConversationMoreOverlay()
-              //  .presentationDetents([.fraction(0.35)])
+                .presentationDetents([.fraction(0.35)])
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

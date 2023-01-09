@@ -12,7 +12,13 @@
 import SwiftUI
 
 struct CreateSessionView: View {
-    @State private var username: String = ""
+    @State var sessionName: String = ""
+    @State var location: String = ""
+    @State var price: String = ""
+    @State var dateStart: String = ""
+    @State var dateEnd: String = ""
+    @State var duration: String = ""
+    @State var details: String = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,15 +33,9 @@ struct CreateSessionView: View {
                     
                     TextField(
                         "Training",
-                        text: $username
+                        text: $sessionName
                     )
-                    .disableAutocorrection(true)
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 9)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color.ui.input_field_bg)
-                    }
+                    .modifier(CreateLabel())
                 }
                 
                 HStack {
@@ -47,17 +47,10 @@ struct CreateSessionView: View {
                             Image("location")
                             TextField(
                                 "Ex. Courts",
-                                text: $username
+                                text: $location
                             )
-                            .textInputAutocapitalization(.never)
-                            .disableAutocorrection(true)
                         }
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 9)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.ui.input_field_bg)
-                        }
+                        .modifier(CreateLabel())
                     }
                     .frame(width: geometry.size.width * 0.60)
                     
@@ -69,17 +62,10 @@ struct CreateSessionView: View {
                             Image("location")
                             TextField(
                                 "$0.00",
-                                text: $username
+                                text: $price
                             )
-                            .textInputAutocapitalization(.never)
-                            .disableAutocorrection(true)
                         }
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 9)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.ui.input_field_bg)
-                        }
+                        .modifier(CreateLabel())
                     }
                 }
                 
@@ -92,17 +78,10 @@ struct CreateSessionView: View {
                             Image("calendar")
                             TextField(
                                 "MM/DD/YY",
-                                text: $username
+                                text: $dateStart
                             )
-                            .textInputAutocapitalization(.never)
-                            .disableAutocorrection(true)
                         }
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 9)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.ui.input_field_bg)
-                        }
+                        .modifier(CreateLabel())
                     }
                     .frame(width: geometry.size.width * 0.33)
                     
@@ -114,17 +93,10 @@ struct CreateSessionView: View {
                             Image("calendar")
                             TextField(
                                 "MM/DD/YY",
-                                text: $username
+                                text: $dateEnd
                             )
-                            .textInputAutocapitalization(.never)
-                            .disableAutocorrection(true)
                         }
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 9)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.ui.input_field_bg)
-                        }
+                        .modifier(CreateLabel())
                     }
                     
                     VStack(alignment: .leading, spacing: 3) {
@@ -135,17 +107,10 @@ struct CreateSessionView: View {
                             Image("duration")
                             TextField(
                                 "00.00",
-                                text: $username
+                                text: $duration
                             )
-                            .textInputAutocapitalization(.never)
-                            .disableAutocorrection(true)
                         }
-                        .padding(.vertical, 6)
-                        .padding(.horizontal, 9)
-                        .background {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.ui.input_field_bg)
-                        }
+                        .modifier(CreateLabel())
                     }
                 }
                 
@@ -155,17 +120,10 @@ struct CreateSessionView: View {
 
                     TextField(
                         "List any details important to this session.",
-                        text: $username,
+                        text: $details,
                         axis: .vertical
                     )
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 9)
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color.ui.input_field_bg)
-                    }
+                    .modifier(CreateLabel())
                 }
                 
                 CoverImageRow()
@@ -208,5 +166,21 @@ struct CreateSessionView: View {
 struct CreateSessionView_Previews: PreviewProvider {
     static var previews: some View {
         CreateSessionView()
+    }
+}
+
+
+
+struct CreateLabel: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(Color.ui.subheading_text)
+            .disableAutocorrection(true)
+            .padding(.vertical, 6)
+            .padding(.horizontal, 9)
+            .background {
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(Color.ui.input_field_bg)
+            }
     }
 }

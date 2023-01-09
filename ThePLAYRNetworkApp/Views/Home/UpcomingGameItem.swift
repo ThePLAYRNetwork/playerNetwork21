@@ -15,24 +15,29 @@ struct UpcomingGameItem: View {
             ZStack {
                 Image("basketball")
                     .resizable()
-                    .frame(width: 295, height: 163)
                     .opacity(0.65)
+                
                 HStack {
                     VStack(alignment: .leading) {
                         Text(game.startDate)
                             .font(.system(size: 20))
                             .bold()
+                        
                         Text("\(game.startTime) - \(game.endTime)")
                             .fontWeight(.semibold)
+                        
                         Spacer()
+                        
                         Text(game.title)
                             .fontWeight(.bold)
+                        
                         Text(game.location)
                             .fontWeight(.semibold)
                     }
                     .font(.system(size: 16))
                     .foregroundColor(.white)
                     .padding()
+                    
                     Spacer()
                 }
             }
@@ -43,7 +48,7 @@ struct UpcomingGameItem: View {
                     Text("12 Joined")
                         .font(.system(size: 16))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("red"))
+                        .foregroundColor(Color.ui.buttons)
                     Spacer()
                     PlayerAttendingCircles()
                 }

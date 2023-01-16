@@ -14,7 +14,6 @@ struct GameDetailView: View {
     @State private var region = MKCoordinateRegion()
     @State var trackingMode = MapUserTrackingMode.follow
     let game: Game
-    let location: Location
     
     var body: some View {
         ScrollView {
@@ -27,7 +26,10 @@ struct GameDetailView: View {
                 Divider()
                     .padding(.top, 14)
                 
-                GameDetailBottomSection(trackingMode: $trackingMode, region: $region, location: location)
+//                GameDetailBottomSection(trackingMode: $trackingMode, region: $region)
+//                    .padding(.top, 4)
+                
+                GameDetailBottomSection()
                     .padding(.top, 4)
                 
                 Spacer()
@@ -35,18 +37,18 @@ struct GameDetailView: View {
         }
         .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.top)
-        .onAppear {
-            self.region = MKCoordinateRegion(
-                center: self.location.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-        }
+//        .onAppear {
+//            self.region = MKCoordinateRegion(
+//                center: self.location.coordinate,
+//                span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+//        }
     }
 }
 
 struct GameDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            GameDetailView(game: Game.sampleGames[0], location: Location())
+            GameDetailView(game: Game.sampleGames[0])
             //                .environmentObject(HomeViewModel()) // dunno why i need this, i dont use it in this view
         }
     }

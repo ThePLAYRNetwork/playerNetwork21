@@ -58,7 +58,6 @@ struct SpecialistSheetView: View {
             .shadow(radius: 1)
         }
         .frame(height: 500)
-        .border(.red)
 //        .background(.clear)
 
     }

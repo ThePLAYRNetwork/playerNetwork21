@@ -10,6 +10,7 @@ import FirebaseFirestore
 import MapKit
 import GeoFire
 import FirebaseAuth
+import SwiftUI
 
 // note: cant chain .whereField to get surrounding coordinates
 class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -22,6 +23,8 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var showingGamePosted = false
     @Published private var locationManager: CLLocationManager?
     private var db = Firestore.firestore()
+    
+    @Published var path = NavigationPath()
     
     func fetchNearbyLocations() {
         guard let locationManager = locationManager else {

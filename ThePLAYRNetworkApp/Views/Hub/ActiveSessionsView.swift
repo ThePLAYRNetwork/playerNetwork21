@@ -11,6 +11,9 @@ struct ActiveSessionsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
+                BackButton()
+                    .padding()
+                
                 Text("Training Sessions")
                     .font(.system(size: 24))
                     .fontWeight(.semibold)
@@ -26,6 +29,7 @@ struct ActiveSessionsView: View {
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

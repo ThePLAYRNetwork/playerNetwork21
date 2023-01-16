@@ -1,17 +1,13 @@
 //
-//  CreateSessionView.swift
+//  EditTrainingView.swift
 //  ThePLAYRNetworkApp
 //
-//  Created by Timmy Nguyen on 11/15/22.
+//  Created by Timmy Nguyen on 1/15/23.
 //
-
-// CalendarTrainerView has to be in scrollview
-// CalendarView
-// horzontal padding?
 
 import SwiftUI
 
-struct CreateSessionView: View {
+struct EditTrainingView: View {
     @State var sessionName: String = ""
     @State var location: String = ""
     @State var price: String = ""
@@ -25,7 +21,7 @@ struct CreateSessionView: View {
             VStack(alignment: .leading, spacing: 20) {
                 BackButton()
                 
-                Text("Create Training")
+                Text("Edit Training")
                     .font(.system(size: 24))
                     .bold()
                 
@@ -156,9 +152,22 @@ struct CreateSessionView: View {
                 
                 Spacer()
                 
-                Button("Create", action: {})
-                    .buttonStyle(CustomButton(color: .red, size: .small))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                HStack {
+                    Image("trash")
+                    
+                    Rectangle()
+                        .fill(Color.ui.divider_lines)
+                        .frame(width: 2, height: 33)
+                        .padding(.leading, 4)
+                    
+                    Spacer()
+                    
+                    Button("Cancel", action: {})
+                        .buttonStyle(CustomButton(color: .white, size: .small))
+                    
+                    Button("Save Changes", action: {})
+                        .buttonStyle(CustomButton(color: .red, size: .small))
+                }
             }
             .padding()
         }
@@ -166,24 +175,8 @@ struct CreateSessionView: View {
     }
 }
 
-struct CreateSessionView_Previews: PreviewProvider {
+struct EditTrainingView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateSessionView()
-    }
-}
-
-
-
-struct CreateLabel: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .foregroundColor(Color.ui.subheading_text)
-            .disableAutocorrection(true)
-            .padding(.vertical, 6)
-            .padding(.horizontal, 9)
-            .background {
-                RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.ui.input_field_bg)
-            }
+        EditTrainingView()
     }
 }

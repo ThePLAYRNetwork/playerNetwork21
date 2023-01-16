@@ -9,14 +9,6 @@ import SwiftUI
 import FirebaseCore
 
 
-enum Tab {
-    case home
-    case calendar
-    case create
-    case inbox
-    case profile
-}
-
 @main
 struct ThePLAYRNetworkApp: App {
     @StateObject private var authViewModel = AuthViewModel()
@@ -25,23 +17,20 @@ struct ThePLAYRNetworkApp: App {
     @State var selectedDay: Int = 4
     @State private var selection: Tab = .home
     
-    
     init() {
         FirebaseApp.configure()
     }
-    @State private var text = ""
-    
+            
     var body: some Scene {
         WindowGroup {
             Group {
                 // If user is loggedin, show main app, else show login screen
                 if authViewModel.isLoggedIn {
                     TabView(selection: $authViewModel.selection) {
-                        NavigationView {
+                        NavigationStack(path: $homeViewModel.path) {
                             HomeView()
-                                .onAppear() {
-                                    // Ask user for permission to use location
-                                    homeViewModel.checkIfLocationServicesIsEnabled()
+                                .navigationDestination(for: Game.self) { game in
+                                    GameDetailView(game: game)
                                 }
                         }
                         .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
@@ -79,13 +68,20 @@ struct ThePLAYRNetworkApp: App {
                     }
                 }
             }
-            
             .environmentObject(authViewModel)
             .environmentObject(homeViewModel)
         }
         
         
     }
+}
+
+enum Tab {
+    case home
+    case calendar
+    case create
+    case inbox
+    case profile
 }
 
 extension Color {
@@ -165,5 +161,6 @@ extension Color {
         let attempt_line = Color("attempt_line")
         let journal_picker_bg = Color("journal_picker_bg")
         let button_black = Color("button_black")
+
     }
 }

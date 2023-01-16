@@ -26,11 +26,7 @@ struct NearbySessionsRow: View {
                     ForEach(items, id: \.id) { game in
                         NavigationLink {
                             GameDetailView(
-                                game: game,
-                                location: Location(
-                                    name: game.title,
-                                    coordinate: CLLocationCoordinate2D(
-                    latitude: game.latitude, longitude: game.longitude))
+                                game: game
                             )
                         } label: {
                             UpcomingGameItem(game: game)

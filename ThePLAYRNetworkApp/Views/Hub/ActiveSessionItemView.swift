@@ -109,8 +109,9 @@ struct ActiveSessionItemView: View {
             
             HStack {
                 Spacer()
-                Button {
-                 
+                
+                NavigationLink {
+                    EditTrainingView()
                 } label: {
                     Text("Edit")
                         .font(.system(size: 16))
@@ -119,7 +120,6 @@ struct ActiveSessionItemView: View {
                         .frame(width: 60, height: 33)
                         .background(Color("AccentColor"))
                         .background(in: RoundedRectangle(cornerRadius: 10))
-                    
                 }
                 
                 Button {

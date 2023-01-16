@@ -133,8 +133,8 @@ struct HighlightedClasses: View {
                             .cornerRadius(5)
                         
                         
-                        Button {
-                            
+                        NavigationLink {
+                            TrainersClassesView()
                         } label: {
                             VStack(alignment: .leading) {
                                 Text("Request Custom")
@@ -150,14 +150,12 @@ struct HighlightedClasses: View {
             }
             
             //View all classes
-            
             HStack {
                 Text("View all classes")
                 Image(systemName: "chevron.right")
             }
             .font(.system(size: 16))
             .foregroundColor(Color("AccentColor"))
-            
         }
     }
 }

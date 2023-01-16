@@ -13,6 +13,8 @@ struct TrainerHubView: View {
     
     var body: some View {
         ScrollView {
+            BackButton()
+            
             Text("Trainer Hub")
                 .font(.system(size: 24))
                 .fontWeight(.semibold)
@@ -62,10 +64,12 @@ struct TrainerHubView: View {
                         .aspectRatio(1.0, contentMode: .fit)
                         .frame(width: 89, height: 89)
                         .overlay(
-                            Image("cross.square")
-                                .resizable()
-                                .frame(width: 46.94, height: 47.18)
-                                .padding(.top, 10)
+                            NavigationLink(destination: CreateSessionView()) {
+                                Image("cross.square")
+                                    .resizable()
+                                    .frame(width: 46.94, height: 47.18)
+                                    .padding(.top, 10)
+                            }
                         )
                     
                     
@@ -91,10 +95,12 @@ struct TrainerHubView: View {
                         .aspectRatio(1.0, contentMode: .fit)
                         .frame(width: 89, height: 89)
                         .overlay(
-                            Image("personSearch")
-                                .resizable()
-                                .frame(width: 46.94, height: 47.18)
-                                .padding(.top, 10)
+                            NavigationLink(destination: ClientManagementView()) {
+                                Image("personSearch")
+                                    .resizable()
+                                    .frame(width: 46.94, height: 47.18)
+                                    .padding(.top, 10)
+                            }
                         )
                     
                     
@@ -102,10 +108,13 @@ struct TrainerHubView: View {
                         .aspectRatio(1.0, contentMode: .fit)
                         .frame(width: 89, height: 89)
                         .overlay(
-                            Image("book")
-                                .resizable()
-                                .frame(width: 46.94, height: 47.18)
-                                .padding(.top, 10)
+                            NavigationLink(destination: NotesView()) {
+                                Image("book")
+                                    .resizable()
+                                    .frame(width: 46.94, height: 47.18)
+                                    .padding(.top, 10)
+                            }
+                            
                         )
                     
                 }
@@ -137,6 +146,7 @@ struct TrainerHubView: View {
                     )
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Game: Codable {
+
+// must be hashable for navigaiton destination
+struct Game: Codable, Hashable {
     var id: String
     var startDate: String
     var startTime: String
@@ -77,12 +79,6 @@ extension Game {
             sport: "Basketball"
         ),
         Game(id: "ads09adu0s", startDate: "July 23", startTime: "5:00 PM", title: "Game 2", location: "Thurgood Marshall college"),
-        Game(id: "sad8asaduw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego"),
-        Game(id: "sasad8asdaauw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego"),
-        Game(id: "sasadsd8auw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego"),
-        Game(id: "sad8asdauw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego"),
-        Game(id: "sadasd8auw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego"),
-        Game(id: "sadsaad8auw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego"),
-        Game(id: "saasdd8auw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego")
+        Game(id: "sad8asaduw9da", startDate: "July 26", startTime: "6:00 PM", title: "Game 3", location: "UC San Diego")
     ]
 }

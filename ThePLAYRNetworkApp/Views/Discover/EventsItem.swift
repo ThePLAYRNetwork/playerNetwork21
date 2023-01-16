@@ -51,8 +51,8 @@ struct EventsItem: View {
                 
                 Spacer()
                 
-                Button {
-                    //action code
+                NavigationLink {
+                    SessionView(session: Session(sessionTitle: ""))
                 } label: {
                     Text("View")
                         .font(.system(size: 21))

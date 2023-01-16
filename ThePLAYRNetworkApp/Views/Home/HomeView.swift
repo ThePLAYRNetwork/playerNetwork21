@@ -32,6 +32,10 @@ struct HomeView: View {
         }
         .navigationTitle("")
         .navigationBarHidden(true)
+        .onAppear() {
+            // Ask user for permission to use location
+            homeViewModel.checkIfLocationServicesIsEnabled()
+        }
     }
 }
 

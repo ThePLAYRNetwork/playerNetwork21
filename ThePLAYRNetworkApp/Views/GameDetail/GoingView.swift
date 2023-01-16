@@ -17,9 +17,7 @@ struct GoingView: View {
                 .padding(.top, 22)
             
             VStack(spacing: 16) {
-                ForEach(1..<10) {_ in
-                    GoingCell()
-                }
+                GoingCell()
                 
             }
             .padding(.top, 20)

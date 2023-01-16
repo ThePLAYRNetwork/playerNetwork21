@@ -13,8 +13,7 @@ struct SessionView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            
-            
+                
             VStack(alignment: .leading, spacing: 0) {
                 Image("powerLifting")
                     .resizable()
@@ -45,11 +44,13 @@ struct SessionView: View {
                 
                 VStack {
                     Divider()
+                    
                     BookTrainingButton(price: 50)
                 }
                 .background(.white)
                 .frame(height: 50)
             }
+
         }
     }
 }

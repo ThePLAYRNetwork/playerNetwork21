@@ -72,7 +72,7 @@ struct CustomButton: ButtonStyle {
         case .red:
             return .white
         case .white:
-            return Color.ui.buttons
+            return Color.ui.green
         case .black:
             return .white
         }
@@ -85,7 +85,7 @@ struct CustomButton: ButtonStyle {
         case .white:
             return .white
         case .black:
-            return Color.ui.buttons
+            return Color.ui.green
         }
     }
     
@@ -94,9 +94,9 @@ struct CustomButton: ButtonStyle {
         case .red:
             return Color.ui.primary
         case .white:
-            return Color.ui.buttons
+            return Color.ui.green
         case .black:
-            return Color.ui.buttons
+            return Color.ui.green
         }
     }
 }

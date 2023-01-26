@@ -13,7 +13,7 @@ struct NewMessageView: View {
         
         VStack(alignment: .leading) {
             ZStack{
-                Color("lighter_gray")
+                Color.ui.grayD9D9D9
                 
                 HStack{
                     Spacer()
@@ -21,7 +21,7 @@ struct NewMessageView: View {
                         dismiss()
                     } label: {
                         Text("Cancel")
-                            .foregroundColor(Color("red"))
+                            .foregroundColor(Color.ui.primary)
                             .font(.system(size: 14))
                          .padding(.trailing)
                     }
@@ -50,7 +50,7 @@ struct NewMessageView: View {
                     Image(systemName: "plus.circle")
                         .resizable()
                         .frame(width: 19, height: 19)
-                        .foregroundColor(Color("red"))
+                        .foregroundColor(Color.ui.primary)
                     
                     
                 }
@@ -65,7 +65,6 @@ struct NewMessageView: View {
                 
                 SuggestedRow()
             }
-            .background(.white)
         }
         
         .navigationBarTitleDisplayMode(.inline)

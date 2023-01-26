@@ -39,7 +39,7 @@ struct HomeSheetView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: geometry.size.height) // height of sheet == size of screen
-            .background(Color.white)
+            .background(Color.ui.whiteBg)
             .clipShape(RoundedRectangle(cornerRadius: 30))
             .offset(
                 x: 0,

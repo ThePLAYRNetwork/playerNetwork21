@@ -34,7 +34,7 @@ struct ConversationHeaderView: View {
                     Text("Point Guard @school, San Diego")
                         .font(.system(size: 12))
                         .fontWeight(.medium)
-                        .foregroundColor(Color.ui.subheading_text)
+                        .foregroundColor(Color.ui.gray959595)
                     
                 }
                 Spacer()

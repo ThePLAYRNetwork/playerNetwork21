@@ -74,9 +74,9 @@ struct PlayerProfileOptions: View {
                         }
                         
                         .padding()
-                        .tint(Color.ui.subheading_text)
+                        .tint(Color.ui.gray959595)
                         .frame(width: 122, height: 50)
-                        .background(Color.ui.journal_card)
+                        .background(Color.ui.grayF6F6F6)
                         .cornerRadius(10)
                     }
                     .onTapGesture {
@@ -115,9 +115,9 @@ struct PlayerProfileOptions: View {
                     }
                     
                     .padding()
-                    .tint(Color.ui.subheading_text)
+                    .tint(Color.ui.gray959595)
                     .frame(width: 122, height: 50)
-                    .background(Color.ui.journal_card)
+                    .background(Color.ui.grayF6F6F6)
                     .cornerRadius(10)
                 }
                 .onTapGesture {
@@ -153,9 +153,9 @@ struct PlayerProfileOptions: View {
                     }
                     
                     .padding()
-                    .tint(Color.ui.subheading_text)
+                    .tint(Color.ui.gray959595)
                     .frame(width: 122, height: 50)
-                    .background(Color.ui.journal_card)
+                    .background(Color.ui.grayF6F6F6)
                     .cornerRadius(10)
                 }
                 .onTapGesture {
@@ -191,7 +191,7 @@ struct PlayerProfileOptions: View {
                     }
                     
                 }
-                .foregroundColor(Color.ui.journal_card)
+                .foregroundColor(Color.ui.grayF6F6F6)
                 .pickerStyle(.segmented)
                 .frame(width: 380, height: 50)
                 .cornerRadius(10)
@@ -214,7 +214,7 @@ struct PlayerProfileOptions: View {
                     ForEach(skillLevel, id: \.self) {
                         Text($0)
                     }
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                     
                 }
                 .pickerStyle(.segmented)
@@ -249,9 +249,9 @@ struct PlayerProfileOptions: View {
                     }
                     
                     .padding()
-                    .tint(Color.ui.subheading_text)
+                    .tint(Color.ui.gray959595)
                     .frame(width: 380, height: 50)
-                    .background(Color.ui.journal_card)
+                    .background(Color.ui.grayF6F6F6)
                     .cornerRadius(10)
                 }
                 .onTapGesture {

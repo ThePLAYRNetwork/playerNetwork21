@@ -129,7 +129,7 @@ struct HighlightedClasses: View {
                     ZStack(alignment: .center) {
                         Rectangle()
                             .frame(width: 180, height: 54)
-                            .foregroundColor(Color("AccentColor"))
+                            .foregroundColor(Color.ui.primary)
                             .cornerRadius(5)
                         
                         
@@ -156,7 +156,7 @@ struct HighlightedClasses: View {
                 Image(systemName: "chevron.right")
             }
             .font(.system(size: 16))
-            .foregroundColor(Color("AccentColor"))
+            .foregroundColor(Color.ui.primary)
             
         }
     }

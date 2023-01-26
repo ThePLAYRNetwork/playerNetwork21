@@ -13,7 +13,7 @@ struct ClientProfileTopView: View {
             HStack{
                 Circle()
                     .frame(width:115, height: 115)
-                    .foregroundColor(Color.ui.light_gray)
+                    .foregroundColor(Color.ui.grayD9D9D9)
                 
                 
                 
@@ -68,7 +68,7 @@ struct ClientProfileTopView: View {
                         
                         Circle()
                             .frame(width: 33, height: 33)
-                            .foregroundColor(Color("light_gray"))
+                            .foregroundColor(Color.ui.grayD9D9D9)
                             .overlay {
                                 Circle().stroke(.white)
                             }

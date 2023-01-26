@@ -53,7 +53,7 @@ struct ConfirmGameView_Previews: PreviewProvider {
 struct CoverImage: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .foregroundColor(Color("light_gray"))
+            .foregroundColor(Color.ui.grayD9D9D9)
             .frame(height: 212)
             .padding(.bottom, 20)
     }
@@ -142,7 +142,7 @@ struct ConfirmButtons: View {
                     .padding([.leading, .trailing], 30)
                     .background {
                         RoundedRectangle(cornerRadius: 7, style: .continuous)
-                            .foregroundColor(Color("red"))
+                            .foregroundColor(Color.ui.primary)
                     }
                     .onTapGesture {
                         dismiss()

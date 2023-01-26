@@ -43,7 +43,7 @@ struct AttributeRatingView: View {
     @State var rating: Int = 3
     var maximumRating = 5
     var primaryColor = Color.ui.accent
-    var secondaryColor = Color.black
+    var secondaryColor = Color.ui.blackWhite
     
     var body: some View {
         HStack {

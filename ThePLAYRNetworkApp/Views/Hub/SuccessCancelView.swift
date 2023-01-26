@@ -35,7 +35,7 @@ struct SuccessCancelView: View {
                             let isSelected = selectedDay == day
                             
                             Text(days[day])
-                                .foregroundColor(isSelected ? .black : Color.ui.subheading_text )
+                                .foregroundColor(isSelected ? .black : Color.ui.gray959595)
                                 .fontWeight(isSelected ? .semibold : .regular)
                                 .underline(isSelected ? true : false, color: Color.ui.primary)
                             
@@ -68,11 +68,11 @@ struct SuccessCancelView: View {
                             
                             Text("10:00am - 11:00am")
                         }
-                        .foregroundColor(Color.ui.subheading_text)
+                        .foregroundColor(Color.ui.gray959595)
                         
                         HStack {
                             Text("Booked by")
-                                .foregroundColor(Color.ui.subheading_text)
+                                .foregroundColor(Color.ui.gray959595)
                             
                             
                             Text("Alex Allens")
@@ -108,7 +108,7 @@ struct SuccessCancelView: View {
                                     .foregroundColor(.white)
                                     .fontWeight(.semibold)
                                     .frame(width: 131, height: 33)
-                                    .background(Color("AccentColor"))
+                                    .background(Color.ui.primary)
                                     .background(in: RoundedRectangle(cornerRadius: 5))
                             }
                         }
@@ -118,7 +118,7 @@ struct SuccessCancelView: View {
                     .padding()
                 }
             }
-            .background(showingAlert ? Color("background") : .clear)
+            .background(showingAlert ? Color.ui.black_light : .clear)
             if showingAlert {
                 AlertView(showingAlert: $showingAlert)
             }

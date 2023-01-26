@@ -53,6 +53,7 @@ struct TrainingView: View {
                 
                 HStack {
                     RoundedRectangle(cornerRadius: 4)
+                        .foregroundColor(Color.ui.primary)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {
@@ -60,10 +61,11 @@ struct TrainingView: View {
                                     .resizable()
                                     .frame(width: 45, height: 45)
                                     .padding(.top, 10)
+                                   
                                 
                                 VStack(alignment: .leading) {
                                     Text("Skills")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.ui.white)
                                         .font(.system(size: 16, weight: .bold))
                                         .offset(x: -15)
                                 }
@@ -72,8 +74,8 @@ struct TrainingView: View {
                     
                     
                     RoundedRectangle(cornerRadius: 4)
+                        .foregroundColor(Color.ui.primary)
                         .aspectRatio(1.0, contentMode: .fit)
-                    
                         .overlay(
                             VStack {
                                 Image("cone")
@@ -83,7 +85,7 @@ struct TrainingView: View {
                                 
                                 VStack(alignment: .leading) {
                                     Text("Agility")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.ui.white)
                                         .font(.system(size: 16, weight: .bold))
                                         .offset(x: -15)
                                 }
@@ -94,6 +96,7 @@ struct TrainingView: View {
                     
                     
                     RoundedRectangle(cornerRadius: 4)
+                        .foregroundColor(Color.ui.primary)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {
@@ -104,7 +107,7 @@ struct TrainingView: View {
                                 
                                 VStack(alignment: .leading) {
                                     Text("Weight")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.ui.white)
                                         .font(.system(size: 16, weight: .bold))
                                         .offset(x: -10)
                                 }
@@ -114,6 +117,7 @@ struct TrainingView: View {
                     
                     
                     RoundedRectangle(cornerRadius: 4)
+                        .foregroundColor(Color.ui.primary)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {
@@ -124,7 +128,7 @@ struct TrainingView: View {
                                 
                                 VStack(alignment: .leading) {
                                     Text("All in One")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.ui.white)
                                         .font(.system(size: 16, weight: .bold))
                                         .offset(x: -3)
                                 }
@@ -133,7 +137,7 @@ struct TrainingView: View {
                     
                     
                 }
-                .foregroundColor(Color("red"))
+                .foregroundColor(Color.primary)
                 
                 
                 //Triners
@@ -229,6 +233,7 @@ struct TrainingView: View {
 
 struct TrainingView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingView()
+        TrainingView().preferredColorScheme(.dark)
+       // TrainingView()
     }
 }

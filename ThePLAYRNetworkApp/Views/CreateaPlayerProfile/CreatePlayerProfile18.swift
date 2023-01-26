@@ -47,7 +47,7 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Player")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 1 ? Color.ui.primary : Color.ui.subheading_text)
+                                    .foregroundColor(selectedCard == 1 ? Color.ui.primary : Color.ui.gray959595)
                                     .padding(.top)
                                 Spacer()
                             }
@@ -58,7 +58,7 @@ struct CreatePlayerProfile18: View {
                             )
                             
                             .overlay(
-                                selectedCard == 1 ? Color.clear : Color.ui.background_gray
+                                selectedCard == 1 ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
@@ -78,7 +78,7 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Coach")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 2 ? Color.ui.primary : Color.ui.subheading_text)
+                                    .foregroundColor(selectedCard == 2 ? Color.ui.primary : Color.ui.gray959595)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
@@ -88,7 +88,7 @@ struct CreatePlayerProfile18: View {
                             )
                             
                             .overlay(
-                                selectedCard == 2 ? Color.clear : Color.ui.background_gray
+                                selectedCard == 2 ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
@@ -106,7 +106,7 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Trainer")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 3 ? Color.ui.primary : Color.ui.subheading_text)
+                                    .foregroundColor(selectedCard == 3 ? Color.ui.primary : Color.ui.gray959595)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
@@ -116,7 +116,7 @@ struct CreatePlayerProfile18: View {
                             )
                             
                             .overlay(
-                                selectedCard == 3 ? Color.clear : Color.ui.background_gray
+                                selectedCard == 3 ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }

@@ -117,7 +117,7 @@ struct ActiveSessionItemView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .frame(width: 60, height: 33)
-                        .background(Color("AccentColor"))
+                        .background(Color.ui.primary)
                         .background(in: RoundedRectangle(cornerRadius: 10))
                     
                 }
@@ -130,7 +130,7 @@ struct ActiveSessionItemView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .frame(width: 174, height: 33)
-                        .background(Color("AccentColor"))
+                        .background(Color.ui.primary)
                         .background(in: RoundedRectangle(cornerRadius: 10))
                     
                 }
@@ -145,8 +145,8 @@ struct ActiveSessionItemView: View {
         .frame(maxWidth: .infinity ,maxHeight: 211)
         .background(
             RoundedRectangle(cornerRadius: 5)
-                .foregroundColor(Color.ui.journal_card)
-                .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5) 
+                .foregroundColor(Color.ui.grayF6F6F6)
+                .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5) 
         )
         .padding(.horizontal)
         .padding(.vertical, 5)

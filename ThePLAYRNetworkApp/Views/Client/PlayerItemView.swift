@@ -15,7 +15,7 @@ struct PlayerItemView: View {
                 ZStack(alignment: .topTrailing){
                     Circle()
                         .strokeBorder(Color.ui.primary, lineWidth: 2)
-                        .background(Circle().fill(Color.ui.light_gray))
+                        .background(Circle().fill(Color.ui.grayD9D9D9))
                         .frame(width:46, height:46)
                         
                     Circle()

@@ -48,6 +48,7 @@ struct ProfileView: View {
             }
             .padding(.top)
         }
+        .background(Color.ui.whiteBg)
     }
 }
 
@@ -62,7 +63,7 @@ extension ProfileView {
         var body: some View {
             HStack(spacing: 20) {
                 Circle()
-                    .fill(Color.ui.placeholders)
+                    .fill(Color.ui.grayD9D9D9)
                     .frame(width: 115)
                 
                 VStack(alignment: .leading, spacing: 0) {
@@ -123,7 +124,7 @@ extension ProfileView {
                         .frame(maxWidth: .infinity)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.ui.buttons)
+                                .fill(Color.ui.black)
                         }
                 }
                 .buttonStyle(.plain)
@@ -136,7 +137,7 @@ extension ProfileView {
                             .frame(maxWidth: .infinity)
                             .background {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.ui.buttons)
+                                    .fill(Color.ui.black)
                             }
                     }
                     .buttonStyle(.plain)
@@ -148,7 +149,7 @@ extension ProfileView {
                             .frame(maxWidth: .infinity)
                             .background {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.ui.buttons)
+                                    .fill(Color.ui.black)
                             }
                     }
                     .buttonStyle(.plain)

@@ -34,7 +34,7 @@ struct DayCell: View {
                 Button(action: { addTime() }) {
                     Image(systemName: "plus")
                         .font(.system(size: 9))
-                        .foregroundColor(Color.ui.subheading_text)
+                        .foregroundColor(Color.ui.gray959595)
                 }
             }
         }

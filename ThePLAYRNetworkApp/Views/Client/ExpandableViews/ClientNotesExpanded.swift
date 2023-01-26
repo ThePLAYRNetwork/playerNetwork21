@@ -16,7 +16,7 @@ struct ClientNotesExpanded: View {
         ZStack(alignment: .bottom) {
                 TextEditor(text: $notesEditorText)
                     .frame(height: 213)
-                    .colorMultiply(Color.ui.journal_card)
+                    .colorMultiply(Color.ui.grayF6F6F6)
                     .cornerRadius(5)
                 
                 

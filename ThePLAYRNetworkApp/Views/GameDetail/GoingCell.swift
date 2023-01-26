@@ -10,7 +10,7 @@ import SwiftUI
 struct GoingCell: View {
     var body: some View {
         HStack {
-            Circle().fill(Color.ui.placeholders)
+            Circle().fill(Color.ui.grayD9D9D9)
                 .frame(width: 50)
             
             Text("Kevin J. Adams")

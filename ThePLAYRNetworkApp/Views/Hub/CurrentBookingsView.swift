@@ -36,7 +36,7 @@ struct CurrentBookingsView: View {
                         let isSelected = selectedDay == day
                         
                         Text(days[day])
-                            .foregroundColor(isSelected ? .black : Color.ui.subheading_text )
+                            .foregroundColor(isSelected ? .black : Color.ui.gray959595)
                             .fontWeight(isSelected ? .semibold : .regular)
                             .underline(isSelected ? true : false, color: Color.ui.primary)
                           

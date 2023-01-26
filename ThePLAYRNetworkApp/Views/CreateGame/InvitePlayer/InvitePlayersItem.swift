@@ -14,8 +14,8 @@ struct InvitePlayersItem: View {
     var body: some View {
         HStack {
             Circle()
-                .foregroundColor(Color("lighter_gray"))
-                .frame(width: 30, height: 30)
+                .foregroundColor(Color.ui.grayD9D9D9)
+                .frame(width: 46, height: 46)
             Text(player.name)
             Spacer()
             Image(systemName: "checkmark")
@@ -25,7 +25,7 @@ struct InvitePlayersItem: View {
                 .background {
                     Circle()
                         .strokeBorder(.gray, lineWidth: 1)
-                        .background(invitedPlayers.contains(player.id) ? Circle().fill(Color.ui.secondary) : Circle().fill(.clear))
+                        .background(invitedPlayers.contains(player.id) ? Circle().fill(Color.ui.accent) : Circle().fill(.clear))
                         .frame(width: 19, height: 19)
                 }
         }

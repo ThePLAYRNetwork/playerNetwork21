@@ -36,7 +36,7 @@ struct InputDataView: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-        .background(Color.ui.button_black)
+        .background(Color.ui.black)
         }
     }
 }

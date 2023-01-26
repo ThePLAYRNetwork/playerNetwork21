@@ -59,7 +59,7 @@ struct EventsItem: View {
                         .bold()
                         .foregroundColor(.white)
                         .frame(width: 95, height: 30)
-                        .background(Color("AccentColor"))
+                        .background(Color.ui.primary)
                         .cornerRadius(5)
                 }
             }

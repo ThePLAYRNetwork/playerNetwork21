@@ -68,7 +68,7 @@ struct JournalChartTabItem: View {
                     .foregroundColor(.white)
                     .padding(.vertical, 3)
                     .padding(.horizontal, 8)
-                    .background(Capsule().fill(Color.ui.button_black))
+                    .background(Capsule().fill(Color.ui.black))
                 }
 
                 Spacer()
@@ -86,7 +86,7 @@ struct JournalChartTabItem: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 17)
-                .fill(Color.ui.journal_card)
+                .fill(Color.ui.grayF6F6F6)
         }
     }
 }

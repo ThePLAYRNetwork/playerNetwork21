@@ -67,8 +67,8 @@ struct ClientBookedSessionExpanded: View {
             .padding()
             .background(
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(Color.ui.journal_card)
-                .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)
+                .foregroundColor(Color.ui.grayF6F6F6)
+                .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)
             
         )
         }

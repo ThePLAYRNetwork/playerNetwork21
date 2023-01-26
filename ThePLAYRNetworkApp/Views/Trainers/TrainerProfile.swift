@@ -38,7 +38,7 @@ struct TrainerProfile: View {
                                 .foregroundColor(.black)
                                 .font(.system(size: 12))
                                 .frame(width: 60, height: 18)
-                                .background(Color("lighter_gray"))
+                                .background(Color.ui.grayD9D9D9)
                                 .cornerRadius(5)
                             
                         }
@@ -52,7 +52,7 @@ struct TrainerProfile: View {
                                 .foregroundColor(.black)
                                 .font(.system(size: 12))
                                 .frame(width: 60, height: 18)
-                                .background(Color("lighter_gray"))
+                                .background(Color.ui.grayD9D9D9)
                                 .cornerRadius(5)
                             
                             

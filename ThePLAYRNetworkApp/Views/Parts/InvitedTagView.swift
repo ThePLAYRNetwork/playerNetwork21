@@ -69,7 +69,7 @@ struct InvitedTagView: View {
         .padding([.leading, .trailing], 10)
         .padding([.top, .bottom], 5)
         .font(.body)
-        .background(Color.ui.secondary)
+        .background(Color.ui.accent)
         .foregroundColor(Color.white)
         .cornerRadius(3)
     }

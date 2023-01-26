@@ -13,7 +13,7 @@ struct PlayersYouMayKnowItem: View {
     var body: some View {
         VStack(spacing: 0) {
             Circle()
-                .fill(Color.ui.light_gray)
+                .fill(Color.ui.grayD9D9D9)
                 .frame(width: 72, height: 72)
                 
             Text(user.name)
@@ -57,7 +57,7 @@ struct PlayersYouMayKnowItem: View {
 //            .padding(.vertical, 2)
 //            .background {
 //                RoundedRectangle(cornerRadius: 7)
-//                    .fill(configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor)
+//                    .fill(configuration.isPressed ? Color.ui.primary.opacity(0.5) : Color.ui.primary)
 //            }
 //            .foregroundColor(.white)
 //    }

@@ -147,7 +147,7 @@ struct CreateSessionView: View {
                         .padding(.horizontal, 20)
                         .background {
                             RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.ui.input_field_bg)
+                                .fill(Color.ui.grayF6F6F6)
                         }
                     }
                 }
@@ -174,13 +174,13 @@ struct CreateSessionView_Previews: PreviewProvider {
 struct CreateLabel: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(Color.ui.subheading_text)
+            .foregroundColor(Color.ui.gray959595)
             .disableAutocorrection(true)
             .padding(.vertical, 6)
             .padding(.horizontal, 9)
             .background {
                 RoundedRectangle(cornerRadius: 5)
-                    .fill(Color.ui.input_field_bg)
+                    .fill(Color.ui.grayF6F6F6)
             }
     }
 }

@@ -55,17 +55,17 @@ struct HubChartView: View {
                 Image(systemName: "chevron.left")
                     .resizable()
                     .frame(width: 5.97, height: 11)
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                 
                 Text("Today")
                     .font(.system(size: 16))
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                 
                 
                 Image(systemName: "chevron.right")
                     .resizable()
                     .frame(width: 5.97, height: 11)
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                     
                 
             }
@@ -83,7 +83,7 @@ struct HubChartView: View {
              
                 .symbol {
                     Circle()
-                        .fill(Color("subheading_text"))
+                        .fill(Color.ui.gray959595)
                         .frame(width: 7)
                 }
 
@@ -99,7 +99,7 @@ struct HubChartView: View {
                 .lineStyle(StrokeStyle(lineWidth: 3))
                 .symbol {
                     Circle()
-                        .fill(Color("purple"))
+                        .fill(Color.ui.accent)
                         .frame(width: 7)
                 }
                 
@@ -108,8 +108,8 @@ struct HubChartView: View {
         
             // maps to data name
             .chartForegroundStyleScale([
-                "Current": Color("subheading_text"),
-                "Projected": Color("purple")
+                "Current": Color.ui.gray959595,
+                "Projected": Color.ui.accent
             ])
             
             

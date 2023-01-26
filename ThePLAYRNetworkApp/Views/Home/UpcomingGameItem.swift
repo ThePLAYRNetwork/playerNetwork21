@@ -48,7 +48,7 @@ struct UpcomingGameItem: View {
                     Text("12 Joined")
                         .font(.system(size: 16))
                         .fontWeight(.semibold)
-                        .foregroundColor(Color.ui.buttons)
+                        .foregroundColor(Color.ui.black)
                     Spacer()
                     PlayerAttendingCircles()
                 }
@@ -56,12 +56,12 @@ struct UpcomingGameItem: View {
                 .frame(width: 295, height: 77)
                 .background {
                     Rectangle()
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.ui.grayF6F6F6)
                 }
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .circular))
-        .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+        .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
     }
 }
 

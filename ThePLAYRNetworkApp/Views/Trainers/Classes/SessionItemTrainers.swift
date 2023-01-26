@@ -14,7 +14,7 @@ struct SessionItemTrainers: View {
             VStack (alignment: .leading){
                 HStack(alignment: .top) {
                     Image(systemName: "circle")
-                        //.foregroundColor(Color("purple"))
+                        //.foregroundColor(Color.ui.accent)
                         .frame(width: 20, height: 20)
                     
                     
@@ -50,7 +50,7 @@ struct SessionItemTrainers: View {
             VStack (alignment: .leading){
                 HStack(alignment: .top) {
                     Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(Color("purple"))
+                        .foregroundColor(Color.ui.accent)
                         .frame(width: 20, height: 20)
                     
                     
@@ -110,7 +110,7 @@ struct CapsuleTime: View {
                             .strokeBorder(selectedTime ? .clear : .gray)
                             .background(
                                 Capsule()
-                                    .foregroundColor(selectedTime ? Color("purple") : .clear)
+                                    .foregroundColor(selectedTime ? Color.ui.accent : .clear)
                             )
          
                             .frame(width: 105, height: 26)

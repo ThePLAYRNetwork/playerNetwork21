@@ -29,18 +29,18 @@ struct CreatePlayerProfileView: View {
                 
                 VStack(alignment: .center) {
                     Circle()
-                        .foregroundColor(Color.ui.light_gray)
+                        .foregroundColor(Color.ui.grayD9D9D9)
                         .frame(width: 120, height: 120)
                     
                     Text("Choose a Profile Photo")
                         .font(.system(size: 12))
-                        .foregroundColor(Color.ui.light_gray)
+                        .foregroundColor(Color.ui.grayD9D9D9)
                 }
                 .padding(.bottom)
                 
             }
             .frame(height: 281)
-            .background(Color.ui.button_black)
+            .background(Color.ui.black)
             .clipShape(RoundedShape(corners: [.bottomRight]))
             .clipShape(RoundedShape(corners: [.bottomLeft]))
 
@@ -57,7 +57,7 @@ struct CreatePlayerProfileView: View {
                     )
                     .padding()
                     .frame(width:184, height: 50)
-                    .background(Color.ui.journal_card)
+                    .background(Color.ui.grayF6F6F6)
                     .cornerRadius(10)
                 }
                 
@@ -72,7 +72,7 @@ struct CreatePlayerProfileView: View {
                     )
                     .padding()
                     .frame(width:184, height: 50)
-                    .background(Color.ui.journal_card)
+                    .background(Color.ui.grayF6F6F6)
                     .cornerRadius(10)
                 }
                 
@@ -91,7 +91,7 @@ struct CreatePlayerProfileView: View {
                 )
                 .padding()
                 .frame(width:378, height: 50)
-                .background(Color.ui.journal_card)
+                .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
                 
             }

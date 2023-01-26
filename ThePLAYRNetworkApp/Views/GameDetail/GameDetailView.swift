@@ -33,6 +33,7 @@ struct GameDetailView: View {
                 Spacer()
             }
         }
+        .background(Color.ui.whiteBg)
         .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.top)
         .onAppear {

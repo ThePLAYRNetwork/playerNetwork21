@@ -17,7 +17,7 @@ struct ClientDefenceTrainingItem: View {
                 Text("Owes $50.00")
                     .font(.system(size: 12))
                     .padding(.trailing,4)
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
         
             }
             VStack(alignment: .leading){
@@ -59,8 +59,8 @@ struct ClientDefenceTrainingItem: View {
             .padding()
             .background(
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(Color.ui.journal_card)
-                .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)
+                .foregroundColor(Color.ui.grayF6F6F6)
+                .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)
             
         )
         }

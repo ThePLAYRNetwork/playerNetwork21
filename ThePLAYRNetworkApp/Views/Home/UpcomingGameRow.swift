@@ -19,6 +19,7 @@ struct UpcomingGameRow: View {
                 .fontWeight(.semibold)
                 .padding(.leading, 20)
                 .padding(.bottom, 13)
+                .foregroundColor(Color.ui.black)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 15) { // could use reg

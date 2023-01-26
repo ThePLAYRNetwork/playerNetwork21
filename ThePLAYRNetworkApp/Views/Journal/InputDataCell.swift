@@ -37,7 +37,7 @@ struct InputDataCell: View {
         .padding(.leading)
         .fontWeight(.medium)
         .foregroundColor(.white)
-        .background(Color.ui.button_black)
+        .background(Color.ui.black)
         .frame(height: 40)
     }
 }

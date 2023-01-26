@@ -60,7 +60,6 @@
 		CF2D173E2940D2F60068D29D /* ExpandableClientProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D173D2940D2F60068D29D /* ExpandableClientProfile.swift */; };
 		CF3A964A2927AF8400940E1F /* ActiveSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A96492927AF8400940E1F /* ActiveSessionsView.swift */; };
 		CF3A964C2927AFBB00940E1F /* ActiveSessionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A964B2927AFBB00940E1F /* ActiveSessionItemView.swift */; };
-		CF49139B28F717BB00552A84 /* EventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49139A28F717BB00552A84 /* EventItem.swift */; };
 		CF582AE5296C3DC800B06C8D /* InvitePlayersItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF582AE3296C3DC800B06C8D /* InvitePlayersItem.swift */; };
 		CF582AE6296C3DC800B06C8D /* InvitePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF582AE4296C3DC800B06C8D /* InvitePlayersView.swift */; };
 		CF582AE9296C3DD600B06C8D /* ConfirmGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF582AE8296C3DD600B06C8D /* ConfirmGameView.swift */; };
@@ -88,6 +87,16 @@
 		CF6B678F296C534D00BEC347 /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B678E296C534D00BEC347 /* TrainingSession.swift */; };
 		CF6B6791296C539800BEC347 /* ProfileMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6790296C539800BEC347 /* ProfileMedia.swift */; };
 		CF6B6793296C539C00BEC347 /* PlayerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6792296C539C00BEC347 /* PlayerAttributes.swift */; };
+		CF6B679D296C559A00BEC347 /* DayOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6795296C559A00BEC347 /* DayOverlay.swift */; };
+		CF6B679E296C559A00BEC347 /* RepeatOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6796296C559A00BEC347 /* RepeatOverlay.swift */; };
+		CF6B679F296C559A00BEC347 /* SelectDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6797296C559A00BEC347 /* SelectDayCell.swift */; };
+		CF6B67A0296C559A00BEC347 /* SelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6798296C559A00BEC347 /* SelectDayView.swift */; };
+		CF6B67A1296C559A00BEC347 /* SelectDayCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B6799296C559A00BEC347 /* SelectDayCard.swift */; };
+		CF6B67A2296C559A00BEC347 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B679A296C559A00BEC347 /* DayCell.swift */; };
+		CF6B67A3296C559A00BEC347 /* RepeatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B679B296C559A00BEC347 /* RepeatCell.swift */; };
+		CF6B67A4296C559A00BEC347 /* CreateSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B679C296C559A00BEC347 /* CreateSessionView.swift */; };
+		CF6B67AC296C6FB400BEC347 /* EventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67AB296C6FB400BEC347 /* EventItem.swift */; };
+		CF6B67AE296C6FD900BEC347 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B67AD296C6FD900BEC347 /* CalendarView.swift */; };
 		CF6D8F2B28EB4D1E00468888 /* SuggestedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */; };
 		CF6D8F2C28EB4D1E00468888 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2928EB4D1E00468888 /* NewMessageView.swift */; };
 		CF6D8F2D28EB4D1E00468888 /* SuggestedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */; };
@@ -112,7 +121,6 @@
 		CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740B29192A72005D8506 /* JournalViewModel.swift */; };
 		CFBE740E29192AA0005D8506 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740D29192AA0005D8506 /* Court.swift */; };
 		CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75E4628F9A453004AB852 /* SessionView.swift */; };
-		CFCFF74C28AABB78002F1D30 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF74B28AABB78002F1D30 /* CalendarView.swift */; };
 		CFCFF75128AACB3C002F1D30 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75028AACB3C002F1D30 /* DateValue.swift */; };
 		CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75228AAD6BA002F1D30 /* Task.swift */; };
 		CFD2F2FB28FDA90400D57A89 /* BookSessionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */; };
@@ -172,6 +180,7 @@
 		32EA5CAA2893178700A70A7B /* MapGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameView.swift; sourceTree = "<group>"; };
 		32EA5CAC2894851200A70A7B /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		32EA5CB2289489FB00A70A7B /* HomeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSheetView.swift; sourceTree = "<group>"; };
+		CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThePLAYRNetworkApp.entitlements; sourceTree = "<group>"; };
 		CF0EEC1D28B3A88F009D019E /* RecommendedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItem.swift; sourceTree = "<group>"; };
 		CF11A2CD28B63DB700309E04 /* ReviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemView.swift; sourceTree = "<group>"; };
 		CF11A2CF28B64E1500309E04 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
@@ -196,7 +205,6 @@
 		CF2D173D2940D2F60068D29D /* ExpandableClientProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableClientProfile.swift; sourceTree = "<group>"; };
 		CF3A96492927AF8400940E1F /* ActiveSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionsView.swift; sourceTree = "<group>"; };
 		CF3A964B2927AFBB00940E1F /* ActiveSessionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionItemView.swift; sourceTree = "<group>"; };
-		CF49139A28F717BB00552A84 /* EventItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItem.swift; sourceTree = "<group>"; };
 		CF582AE3296C3DC800B06C8D /* InvitePlayersItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitePlayersItem.swift; sourceTree = "<group>"; };
 		CF582AE4296C3DC800B06C8D /* InvitePlayersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitePlayersView.swift; sourceTree = "<group>"; };
 		CF582AE8296C3DD600B06C8D /* ConfirmGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmGameView.swift; sourceTree = "<group>"; };
@@ -224,6 +232,16 @@
 		CF6B678E296C534D00BEC347 /* TrainingSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingSession.swift; sourceTree = "<group>"; };
 		CF6B6790296C539800BEC347 /* ProfileMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMedia.swift; sourceTree = "<group>"; };
 		CF6B6792296C539C00BEC347 /* PlayerAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAttributes.swift; sourceTree = "<group>"; };
+		CF6B6795296C559A00BEC347 /* DayOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOverlay.swift; sourceTree = "<group>"; };
+		CF6B6796296C559A00BEC347 /* RepeatOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatOverlay.swift; sourceTree = "<group>"; };
+		CF6B6797296C559A00BEC347 /* SelectDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDayCell.swift; sourceTree = "<group>"; };
+		CF6B6798296C559A00BEC347 /* SelectDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDayView.swift; sourceTree = "<group>"; };
+		CF6B6799296C559A00BEC347 /* SelectDayCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDayCard.swift; sourceTree = "<group>"; };
+		CF6B679A296C559A00BEC347 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		CF6B679B296C559A00BEC347 /* RepeatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatCell.swift; sourceTree = "<group>"; };
+		CF6B679C296C559A00BEC347 /* CreateSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionView.swift; sourceTree = "<group>"; };
+		CF6B67AB296C6FB400BEC347 /* EventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventItem.swift; sourceTree = "<group>"; };
+		CF6B67AD296C6FD900BEC347 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CF6D8F2828EB4D1E00468888 /* SuggestedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedRow.swift; sourceTree = "<group>"; };
 		CF6D8F2928EB4D1E00468888 /* NewMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedItem.swift; sourceTree = "<group>"; };
@@ -248,7 +266,6 @@
 		CFBE740B29192A72005D8506 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		CFBE740D29192AA0005D8506 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		CFC75E4628F9A453004AB852 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
-		CFCFF74B28AABB78002F1D30 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CFCFF75028AACB3C002F1D30 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		CFCFF75228AAD6BA002F1D30 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSessionDate.swift; sourceTree = "<group>"; };
@@ -320,6 +337,7 @@
 		32862F0428923EE200CDFB3B /* ThePLAYRNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */,
 				32862F0528923EE200CDFB3B /* ThePLAYRNetworkApp.swift */,
 				32862F2F289252AF00CDFB3B /* AuthViewModel.swift */,
 				32862F36289257C700CDFB3B /* HomeViewModel.swift */,
@@ -366,6 +384,7 @@
 				CF1A19B128BFE49B00D82DC8 /* BookSession */,
 				CF1A19B828BFE97D00D82DC8 /* Network */,
 				CF26300A28EB0C5C00CAD20D /* Trainers */,
+				CF6B6794296C559A00BEC347 /* TrainingSession */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -570,6 +589,22 @@
 			path = Journal;
 			sourceTree = "<group>";
 		};
+		CF6B6794296C559A00BEC347 /* TrainingSession */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B6795296C559A00BEC347 /* DayOverlay.swift */,
+				CF6B6796296C559A00BEC347 /* RepeatOverlay.swift */,
+				CF6B6797296C559A00BEC347 /* SelectDayCell.swift */,
+				CF6B6798296C559A00BEC347 /* SelectDayView.swift */,
+				CF6B6799296C559A00BEC347 /* SelectDayCard.swift */,
+				CF6B679A296C559A00BEC347 /* DayCell.swift */,
+				CF6B679B296C559A00BEC347 /* RepeatCell.swift */,
+				CF6B679C296C559A00BEC347 /* CreateSessionView.swift */,
+			);
+			name = TrainingSession;
+			path = ThePLAYRNetworkApp/Views/TrainingSession;
+			sourceTree = SOURCE_ROOT;
+		};
 		CF6D8F2728EB4D1E00468888 /* ComposeMessage */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,8 +657,8 @@
 		CFCFF74D28AABE27002F1D30 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				CFCFF74B28AABB78002F1D30 /* CalendarView.swift */,
-				CF49139A28F717BB00552A84 /* EventItem.swift */,
+				CF6B67AD296C6FD900BEC347 /* CalendarView.swift */,
+				CF6B67AB296C6FB400BEC347 /* EventItem.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -810,12 +845,12 @@
 				32862F2E2892529A00CDFB3B /* SignupView.swift in Sources */,
 				3271214B28CF83790056E304 /* Post.swift in Sources */,
 				32D019C828D1829400E3C601 /* PlayersYouMayKnowItem.swift in Sources */,
+				CF6B67A1296C559A00BEC347 /* SelectDayCard.swift in Sources */,
 				CF3A964A2927AF8400940E1F /* ActiveSessionsView.swift in Sources */,
 				3279EB2928B02E140061C146 /* InvitedTagView.swift in Sources */,
 				CF26301828EB0E4100CAD20D /* DiscoverTopSection.swift in Sources */,
 				CF6B6791296C539800BEC347 /* ProfileMedia.swift in Sources */,
 				32862F482892597900CDFB3B /* SheetButtonRow.swift in Sources */,
-				CFCFF74C28AABB78002F1D30 /* CalendarView.swift in Sources */,
 				CFDE4A7429421EBD008D4398 /* ClientBookedSessionExpanded.swift in Sources */,
 				32862F37289257C700CDFB3B /* HomeViewModel.swift in Sources */,
 				CF6B6785296C52FA00BEC347 /* CourtTabItem.swift in Sources */,
@@ -851,9 +886,11 @@
 				CF582AE5296C3DC800B06C8D /* InvitePlayersItem.swift in Sources */,
 				CFD3C91028E77E5D004B53E7 /* MessageRow.swift in Sources */,
 				CF26301C28EB0EA500CAD20D /* TrainerProfile.swift in Sources */,
+				CF6B67A3296C559A00BEC347 /* RepeatCell.swift in Sources */,
 				CF6B6776296C52A000BEC347 /* GameDetailBottomSection.swift in Sources */,
 				320314152894F99A00141300 /* PlayerAttendingCircles.swift in Sources */,
 				CF1A19B528BFE66700D82DC8 /* TopSearchBarSection.swift in Sources */,
+				CF6B67A2296C559A00BEC347 /* DayCell.swift in Sources */,
 				CF0EEC1E28B3A88F009D019E /* RecommendedItem.swift in Sources */,
 				CFD3C90F28E77E5D004B53E7 /* ConversationView.swift in Sources */,
 				CF3A964C2927AFBB00940E1F /* ActiveSessionItemView.swift in Sources */,
@@ -880,6 +917,7 @@
 				CFDE4A7A29422271008D4398 /* SessionHistoryItem.swift in Sources */,
 				CFB3385328AE932900610F42 /* Session.swift in Sources */,
 				CF2D173E2940D2F60068D29D /* ExpandableClientProfile.swift in Sources */,
+				CF6B67A0296C559A00BEC347 /* SelectDayView.swift in Sources */,
 				CFE2B77129490CC000ACF890 /* CreatePlayerProfile18.swift in Sources */,
 				CF2D173C2940CB320068D29D /* ClientDefenceTrainingItem.swift in Sources */,
 				CF67125128EC57B3002426AB /* HighlightedClasses.swift in Sources */,
@@ -892,17 +930,20 @@
 				32862F42289258F100CDFB3B /* UpcomingGameRow.swift in Sources */,
 				CF26301528EB0E4100CAD20D /* EventsRow.swift in Sources */,
 				CFD3C91B28E77F86004B53E7 /* SpecialistView.swift in Sources */,
+				CF6B679E296C559A00BEC347 /* RepeatOverlay.swift in Sources */,
 				32862F40289258B900CDFB3B /* Game.swift in Sources */,
 				32862F332892530300CDFB3B /* User.swift in Sources */,
 				CF6B678B296C531A00BEC347 /* Specialist.swift in Sources */,
 				CF6B6789296C52FA00BEC347 /* InputDataCell.swift in Sources */,
 				CFDE4A7629421EE3008D4398 /* ClientSessionHistoryExpanded.swift in Sources */,
 				CFEA82092926934A00B377FD /* AlertView.swift in Sources */,
+				CF6B67AC296C6FB400BEC347 /* EventItem.swift in Sources */,
 				CF90D8B428EF1599009BD09D /* CalendarTrainerView.swift in Sources */,
 				CFD3C91628E77E5D004B53E7 /* ConversationBottomView.swift in Sources */,
 				CF2D173A2940B9500068D29D /* ClientProfile.swift in Sources */,
 				CFEE7A382937828D00A52B50 /* PlayerRowView.swift in Sources */,
 				CF90D8B228EF0E45009BD09D /* TrainersClassesView.swift in Sources */,
+				CF6B679D296C559A00BEC347 /* DayOverlay.swift in Sources */,
 				CFD3C91128E77E5D004B53E7 /* FullMessageView.swift in Sources */,
 				321D6B5E28985CD0005EC2EF /* CreateViewModel.swift in Sources */,
 				CFD3C91C28E77F86004B53E7 /* SpecialistSheetView.swift in Sources */,
@@ -911,7 +952,10 @@
 				CFF22B8B293660A300F28C62 /* ActiveBookingsRowView.swift in Sources */,
 				CFF22B8929365FA600F28C62 /* ActiveBookingsItemView.swift in Sources */,
 				CF1A19B328BFE4E700D82DC8 /* SearchBar.swift in Sources */,
+				CF6B67AE296C6FD900BEC347 /* CalendarView.swift in Sources */,
 				32862F0628923EE200CDFB3B /* ThePLAYRNetworkApp.swift in Sources */,
+				CF6B67A4296C559A00BEC347 /* CreateSessionView.swift in Sources */,
+				CF6B679F296C559A00BEC347 /* SelectDayCell.swift in Sources */,
 				CF26301E28EB137F00CAD20D /* Message.swift in Sources */,
 				CFCFF75128AACB3C002F1D30 /* DateValue.swift in Sources */,
 				32862F3C2892586F00CDFB3B /* MapView.swift in Sources */,
@@ -919,7 +963,6 @@
 				325A9198289AF6DF00AFC18D /* ProfileView.swift in Sources */,
 				323A336928ADD0030075A5A1 /* TagView.swift in Sources */,
 				CF582AE9296C3DD600B06C8D /* ConfirmGameView.swift in Sources */,
-				CF49139B28F717BB00552A84 /* EventItem.swift in Sources */,
 				CF832A292923EF97007AF744 /* DefenseTrainingRowView.swift in Sources */,
 				CF6B6778296C52A400BEC347 /* GameDetailTopSection.swift in Sources */,
 				CF737FFC29520B6F00363601 /* PlayerProfileOptions.swift in Sources */,
@@ -1049,6 +1092,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePLAYRNetworkApp/ThePLAYRNetworkApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePLAYRNetworkApp/Preview Content\"";
@@ -1081,6 +1125,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ThePLAYRNetworkApp/ThePLAYRNetworkApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePLAYRNetworkApp/Preview Content\"";

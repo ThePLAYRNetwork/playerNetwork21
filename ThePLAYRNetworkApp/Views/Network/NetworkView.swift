@@ -53,5 +53,5 @@ struct NetworkView_Previews: PreviewProvider {
 var divider: some View {
     Rectangle()
         .frame(height: 7)
-        .foregroundColor(Color.ui.lighter_gray)
+        .foregroundColor(Color.ui.grayD9D9D9)
 }

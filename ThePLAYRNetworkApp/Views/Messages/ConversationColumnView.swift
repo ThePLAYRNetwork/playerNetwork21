@@ -23,7 +23,7 @@ struct ConversationCell: View {
     var body: some View {
         HStack(alignment: .top, spacing: 9) {
             Circle()
-                .fill(Color.ui.light_gray)
+                .fill(Color.ui.grayD9D9D9)
                 .frame(width: 30, height: 30)
             
             VStack(alignment: .leading, spacing: 5) {
@@ -32,7 +32,7 @@ struct ConversationCell: View {
                     Spacer()
                     Text(Date.now.formatted(date: .omitted, time: .shortened))
                 }
-                .foregroundColor(Color.ui.subheading_text)
+                .foregroundColor(Color.ui.gray959595)
                 .font(.system(size: 12))
                 
                 Text(ConversationCell.sampleText)

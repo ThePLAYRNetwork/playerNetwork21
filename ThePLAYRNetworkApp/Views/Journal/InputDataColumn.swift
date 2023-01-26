@@ -34,7 +34,7 @@ struct InputDataColumn: View {
                 }
 
             }
-            .background(Color.ui.button_black)
+            .background(Color.ui.black)
         }
     }
 }

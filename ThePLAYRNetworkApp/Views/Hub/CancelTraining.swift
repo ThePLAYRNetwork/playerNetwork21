@@ -57,7 +57,7 @@ struct CancelTraining: View {
                     
                     HStack{
                         Text("Booked by")
-                            .foregroundColor(Color.ui.subheading_text)
+                            .foregroundColor(Color.ui.gray959595)
                         Text("Alex Allens")
                             .foregroundColor(.black)
                     }
@@ -77,7 +77,7 @@ struct CancelTraining: View {
                     
                     TextEditor(text: $textEditorText)
                         .frame(height: 213)
-                        .colorMultiply(Color.ui.journal_card)
+                        .colorMultiply(Color.ui.grayF6F6F6)
                         .cornerRadius(5)
 
                     Spacer()

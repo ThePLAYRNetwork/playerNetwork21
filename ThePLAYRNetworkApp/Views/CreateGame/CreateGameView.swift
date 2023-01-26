@@ -145,6 +145,7 @@ struct CreateGameView: View {
                 .padding()
             }
         }
+        .background(Color.ui.whiteBg)
     }
 }
 
@@ -189,7 +190,7 @@ struct CoverImageRow: View {
                     .aspectRatio(1.0, contentMode: .fit)
                 
             }
-            .foregroundColor(Color("lighter_gray"))
+            .foregroundColor(Color.ui.grayECECEC)
         }
     }
 }
@@ -216,7 +217,7 @@ struct PlayerLevelRow: View {
                             Text(PlayerLevel.recreation.rawValue.capitalized)
                                 .foregroundColor(selection == .recreation ? Color.white : .gray)
                         }
-                        .foregroundColor(selection == .recreation ? Color.ui.secondary : Color.ui.lighter_gray)
+                        .foregroundColor(selection == .recreation ? Color.ui.accent : Color.ui.grayD9D9D9)
                 }
                 .disabled(selection == .recreation)
                 
@@ -226,7 +227,7 @@ struct PlayerLevelRow: View {
                             Text(PlayerLevel.competitive.rawValue.capitalized)
                                 .foregroundColor(selection == .competitive ? Color.white : .gray)
                         }
-                        .foregroundColor(selection == .competitive ? Color.ui.secondary : Color.ui.lighter_gray)
+                        .foregroundColor(selection == .competitive ? Color.ui.accent : Color.ui.grayD9D9D9)
                 }
                 .disabled(selection == .competitive)
 
@@ -236,13 +237,13 @@ struct PlayerLevelRow: View {
                             Text(PlayerLevel.elite.rawValue.capitalized)
                                 .foregroundColor(selection == .elite ? Color.white : .gray)
                         }
-                        .foregroundColor(selection == .elite ? Color.ui.secondary : Color.ui.lighter_gray)
+                        .foregroundColor(selection == .elite ? Color.ui.accent : Color.ui.grayD9D9D9)
                 }
                 .disabled(selection == .elite)
             }
             .frame(height: 30)
             .font(.system(size: 12))
-            .foregroundColor(Color("lighter_gray"))
+            .foregroundColor(Color.ui.grayD9D9D9)
         }
     }
 }
@@ -257,46 +258,46 @@ struct GameOptions: View {
                 .overlay {
                     HStack {
                         Text("Indoor")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.ui.black)
                         Spacer()
                         Toggle("Indoor", isOn: $game.isIndoor)
                             .labelsHidden()
-                            .tint(Color.ui.secondary)
+                            .tint(Color.ui.accent)
                     }
                     .padding([.trailing, .leading])
                 }
-                .foregroundColor(Color.ui.input_field_bg)
+                .foregroundColor(Color.ui.grayF6F6F6)
 
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: 40)
                 .overlay {
                     HStack {
                         Text("Spectators Allowed")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.ui.black)
                         Spacer()
                         Toggle("Spectators Allowed", isOn: $game.spectatorsAllowed)
                             .labelsHidden()
-                            .tint(Color.ui.secondary)
+                            .tint(Color.ui.accent)
 
                     }
                     .padding([.trailing, .leading])
                 }
-                .foregroundColor(Color.ui.input_field_bg)
+                .foregroundColor(Color.ui.grayF6F6F6)
 
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: 40)
                 .overlay {
                     HStack {
-                        Text("Public Game")
-                            .foregroundColor(.black)
+                        Text("Private Game")
+                            .foregroundColor(Color.ui.black)
                         Spacer()
-                        Toggle("Public Game", isOn: $game.isPublic)
+                        Toggle("Private Game", isOn: $game.isPublic)
                             .labelsHidden()
-                            .tint(Color.ui.secondary)
+                            .tint(Color.ui.accent)
                     }
                     .padding([.trailing, .leading])
                 }
-                .foregroundColor(Color.ui.input_field_bg)
+                .foregroundColor(Color.ui.grayF6F6F6)
 
             NavigationLink(destination: InvitePlayersView()) {
                 RoundedRectangle(cornerRadius: 8)
@@ -304,14 +305,14 @@ struct GameOptions: View {
                     .overlay {
                         HStack {
                             Text("Invite Players")
-                                .foregroundColor(.black)
+                                .foregroundColor(Color.ui.black)
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
                         }
                         .padding([.trailing, .leading])
                     }
-                    .foregroundColor(Color.ui.input_field_bg)
+                    .foregroundColor(Color.ui.grayF6F6F6)
             }
             .buttonStyle(PlainButtonStyle()) // rmeove default config
         }
@@ -333,7 +334,7 @@ struct CreateButton: View {
                             .padding([.horizontal], 15)
                             .background {
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .foregroundColor(Color("red"))
+                                    .foregroundColor(Color.ui.primary)
                             }
                     }
             }

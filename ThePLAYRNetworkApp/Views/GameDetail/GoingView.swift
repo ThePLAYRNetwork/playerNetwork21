@@ -28,6 +28,7 @@ struct GoingView: View {
         }
         .padding()
         .navigationBarBackButtonHidden(true)
+        .background(Color.ui.whiteBg)
     }
 }
 

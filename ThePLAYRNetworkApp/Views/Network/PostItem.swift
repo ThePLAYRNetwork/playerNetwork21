@@ -14,7 +14,7 @@ struct PostItem: View {
         VStack(spacing: 0) {
             HStack(alignment: .top) {
                 Circle()
-                    .fill(Color.ui.light_gray)
+                    .fill(Color.ui.grayD9D9D9)
                     .frame(width: 51, height: 51)
                 
                 VStack(alignment: .leading, spacing: 0) {
@@ -43,7 +43,7 @@ struct PostItem: View {
             
             HStack {
                 Circle()
-                    .fill(Color.ui.light_gray)
+                    .fill(Color.ui.grayD9D9D9)
                     .frame(width: 14, height: 14)
                 
                 Text("10")

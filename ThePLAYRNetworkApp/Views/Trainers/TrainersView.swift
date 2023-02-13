@@ -11,8 +11,11 @@ struct TrainersView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
-                TrainerProfile()
+                BackButton()
                 
+                TrainerProfile()
+                    .padding(.top)
+
                 HStack {
                     HStack(spacing: -4) {
                         ForEach(0..<3) { i in
@@ -100,7 +103,7 @@ struct TrainersView: View {
               .padding(.horizontal, 5)
             
         }
-
+        .navigationBarBackButtonHidden(true)
     }
 }
 

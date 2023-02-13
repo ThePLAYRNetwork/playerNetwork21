@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SelectDayView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var date = Date()
     @State var trainingSessionCollection: TrainingSessionCollection = TrainingSessionCollection.sampleSession
     
@@ -15,8 +16,12 @@ struct SelectDayView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    Image(systemName: "arrow.left")
-                        .bold()
+                    Button(action: { dismiss() }) {
+                        Image(systemName: "arrow.left")
+                            .bold()
+                    }
+                    .buttonStyle(.plain)
+                    
                     Text("Session Availability")
                         .fontWeight(.bold)
                 }
@@ -73,6 +78,7 @@ struct SelectDayView: View {
                     .padding([.top, .trailing])
             }
         }
+        .navigationBarBackButtonHidden(true)
         
     }
 }

@@ -19,8 +19,12 @@ struct NotesView: View {
     @State var text = ""
     @State var notes = sampleNotes
     @State var newNote = Note(text: "", createdAt: Date())
+    
     var body: some View {
         VStack {
+            BackButton()
+                .padding(.bottom)
+            
             HStack {
                 SearchBar(text: $text)
                 
@@ -56,6 +60,7 @@ struct NotesView: View {
             
         }
         .padding()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

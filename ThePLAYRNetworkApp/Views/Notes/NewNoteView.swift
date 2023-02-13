@@ -16,9 +16,16 @@ struct NewNoteView: View {
         let description = textParts.count >= 2 ? textParts[1...].joined() : "No desc"
         
         VStack {
-            Text(note.createdAt.formatted(date: .abbreviated, time: .shortened))
-                .font(.system(size: 12))
-                .foregroundColor(Color.ui.subheading_text)
+            
+            ZStack {
+                BackButton()
+                    .foregroundColor(.black)
+                
+                Text(note.createdAt.formatted(date: .abbreviated, time: .shortened))
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.ui.subheading_text)
+                
+            }
             
             TextEditor(text: $note.text)
 
@@ -43,6 +50,7 @@ struct NewNoteView: View {
             }
         }
         .padding()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

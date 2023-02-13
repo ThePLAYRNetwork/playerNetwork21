@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoingView: View {
     var body: some View {
+
       // NavigationView {
             VStack(alignment: .leading, spacing: 0) {
                 //  BackButton()
@@ -24,6 +25,7 @@ struct GoingView: View {
                     
                 }
                 .padding(.top, 20)
+
                 
                 Spacer()
             }

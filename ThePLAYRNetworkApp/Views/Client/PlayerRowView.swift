@@ -18,8 +18,14 @@ struct PlayerRowView: View {
                 .padding(.leading)
             
             ForEach(0..<3, id: \.self) { player in
-                PlayerItemView()
-                    .padding(.vertical, -2)
+                NavigationLink {
+                    ClientProfile()
+                } label: {
+                    PlayerItemView()
+                        .padding(.vertical, -2)
+                }
+                .buttonStyle(.plain)
+
             }
         }
     }

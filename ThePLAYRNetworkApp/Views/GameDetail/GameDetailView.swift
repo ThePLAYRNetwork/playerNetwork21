@@ -14,9 +14,9 @@ struct GameDetailView: View {
     @State private var region = MKCoordinateRegion()
     @State var trackingMode = MapUserTrackingMode.follow
     let game: Game
-    let location: Location
     
     var body: some View {
+
       //  NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
@@ -43,13 +43,14 @@ struct GameDetailView: View {
                     span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
             }
    //    }
+
     }
 }
 
 struct GameDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            GameDetailView(game: Game.sampleGames[0], location: Location())
+            GameDetailView(game: Game.sampleGames[0])
             //                .environmentObject(HomeViewModel()) // dunno why i need this, i dont use it in this view
         }
     }

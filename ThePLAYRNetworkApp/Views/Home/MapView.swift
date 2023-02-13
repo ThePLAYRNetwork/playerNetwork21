@@ -17,14 +17,15 @@ struct MapView: View {
             showsUserLocation: true,
             userTrackingMode: $trackingMode,
             annotationItems: homeViewModel.locations) { location in
-                MapAnnotation(coordinate: location.coordinate) {
-                    // Note: Should fetch game data from CloudKit when clicking pin.
-                    NavigationLink(destination: GameDetailView(game: Game(), location: location)) {
-                            PinView()
-                        }
-                    }
-                }
-            .animation(.easeIn)
+            MapAnnotation(coordinate: location.coordinate) {
+                // Note: Should fetch game data from CloudKit when clicking pin.
+                //                    NavigationLink(destination: GameDetailView(game: Game(), location: location)) {
+                //                            PinView()
+                //                        }
+                //                    }
+            }
+            //            .animation(.easeIn)
+        }
     }
 }
 

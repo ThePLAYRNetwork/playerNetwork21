@@ -24,13 +24,7 @@ struct SpecialistView: View {
             VStack(spacing: 0) {
                 VStack {
                     VStack(alignment: .leading) {
-                        Button(action: {}) {
-                            Image(systemName: "arrow.backward")
-                                .resizable()
-                                .frame(width: 21, height: 18)
-                        }
-                        .buttonStyle(.plain)
-                        .padding(.bottom)
+                        BackButton()
                         
                         Text("Weight Specialists")
                             .font(.system(size: 24, weight: .bold))
@@ -38,8 +32,9 @@ struct SpecialistView: View {
                         SearchBar(text: $searchText)
                     }
                     .padding([.top, .horizontal])
+                    .padding(.bottom)
                     
-                    DiscoverFilterRow()
+//                    DiscoverFilterRow()
                 }
                 .background()
                 
@@ -48,6 +43,7 @@ struct SpecialistView: View {
 //                    .border(.red)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

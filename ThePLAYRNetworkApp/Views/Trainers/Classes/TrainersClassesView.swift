@@ -8,53 +8,58 @@
 import SwiftUI
 
 struct TrainersClassesView: View {
-
+    
     
     var body: some View {
         ScrollView {
+            
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-            HStack {
-                Image("christopherJones")
-                    .resizable()
-                    .frame(width: 96, height: 96)
-                
-                
-                
-                VStack(alignment: .leading, spacing: 5) {
+                    BackButton()
+                        .padding(.top)
                     
-                    Text("Christopher Jones")
-                        .font(.system(size: 24))
-                        .fontWeight(.bold)
-                    
-                    
-                    
-                    Text("Professional Trainer")
-                        .font(.system(size: 16))
-                    Text("Strength & Weight Specialist")
-                        .font(.system(size: 16))
-                    Text("San Diego, CA")
-                        .font(.system(size: 16))
-                    
+                    HStack {
+                        Image("christopherJones")
+                            .resizable()
+                            .frame(width: 96, height: 96)
+                        
+                        
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            
+                            Text("Christopher Jones")
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                            
+                            
+                            
+                            Text("Professional Trainer")
+                                .font(.system(size: 16))
+                            Text("Strength & Weight Specialist")
+                                .font(.system(size: 16))
+                            Text("San Diego, CA")
+                                .font(.system(size: 16))
+                            
+                        }
+                        
+                    }
+                    .padding(.top)
                 }
-                
-            }
-        }
                 .padding(.leading, 30)
-              
+                
                 Divider()
- 
+                
                 
                 VStack {
                     CalendarTrainerView(interval: DateInterval(start: .distantPast, end: .distantFuture))
                     //    .padding(.horizontal, 20)
-                        
+                    
                     
                     
                     
                     
                     HStack {
-                     
+                        
                         Text("Today")
                             .font(.system(size: 16))
                         
@@ -67,22 +72,23 @@ struct TrainersClassesView: View {
                         Spacer()
                         Text("Wed 13")
                             .font(.system(size: 16))
-                   
+                        
                     }
                     .padding()
-          
+                    
                 }
                 .padding(.horizontal, 20)
                 
-        
+                
                 SessionItemRow()
                     .padding(.horizontal, 10)
-         
                 
                 
-         }
+                
+            }
             
         }
+        .navigationBarBackButtonHidden(true)
         
     }
 }

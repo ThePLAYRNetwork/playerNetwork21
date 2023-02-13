@@ -62,7 +62,7 @@ struct JournalChartView: View {
                 .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .square, dash: [6]))
                 .symbol {
                     Circle()
-                        .fill(Color.ui.attempt_line)
+                        .fill(Color.ui.gray959595)
                         .frame(width: 7)
                 }
                 
@@ -75,14 +75,14 @@ struct JournalChartView: View {
                 .lineStyle(StrokeStyle(lineWidth: 3))
                 .symbol {
                     Circle()
-                        .fill(Color.ui.secondary)
+                        .fill(Color.ui.accent)
                         .frame(width: 7)
                 }
             }
             // maps to data name
             .chartForegroundStyleScale([
-                "Attempts": Color.ui.attempt_line,
-                "Score": Color.ui.secondary
+                "Attempts": Color.ui.gray959595,
+                "Score": Color.ui.accent
             ])
             .chartYAxis {
                 AxisMarks(position: .leading)

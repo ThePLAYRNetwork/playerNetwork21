@@ -23,7 +23,7 @@ struct AlertView: View {
                 .font(.system(size:20, weight: .semibold))
             Text("Your session has been canceled")
                 .font(.caption)
-                .foregroundColor(Color.ui.subheading_text)
+                .foregroundColor(Color.ui.gray959595)
         }
         .frame(width: 284, height: 233)
         

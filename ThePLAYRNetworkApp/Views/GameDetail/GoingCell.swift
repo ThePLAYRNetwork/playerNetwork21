@@ -10,18 +10,28 @@ import SwiftUI
 struct GoingCell: View {
     var body: some View {
         HStack {
-            Circle().fill(Color.ui.placeholders)
+            Circle().fill(Color.ui.grayD9D9D9)
                 .frame(width: 50)
             
             Text("Kevin J. Adams")
             
             Spacer()
             
-            Button("Connected") {
-                
+//            Button("Connected") {
+//
+//            }
+//            .buttonStyle(CustomButton(color: .black , size: .medium))
+
+            
+            
+            Button("Connect") {
+
             }
-            .buttonStyle(CustomButton(color: .black, size: .medium))
+            .buttonStyle(CustomButton(color: .red , size: .medium))
+
         }
+
+        
     }
 }
 

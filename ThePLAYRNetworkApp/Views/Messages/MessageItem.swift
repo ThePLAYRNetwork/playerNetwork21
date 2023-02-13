@@ -19,7 +19,7 @@ struct MessageItem: View {
         VStack {
             HStack(alignment: .top) {
                 Circle()
-                    .fill(Color.ui.light_gray)
+                    .fill(Color.ui.grayD9D9D9)
                     .frame(width: 46, height: 46)
                    .padding(.trailing, 5)
                     .padding(.leading, 15)
@@ -27,7 +27,7 @@ struct MessageItem: View {
                 VStack(alignment: .leading){
                     HStack {
                         Text("Jared Mills")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.ui.blackWhite)
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
                         

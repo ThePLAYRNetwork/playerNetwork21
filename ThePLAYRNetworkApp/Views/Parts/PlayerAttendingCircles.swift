@@ -14,7 +14,7 @@ struct PlayerAttendingCircles: View {
                 if i < 2 {
                     Circle()
                         .frame(width: 40, height: 40)
-                        .foregroundColor(Color.ui.placeholders)
+                        .foregroundColor(Color.ui.grayDADADA)
                         .overlay {
                             Circle().stroke(.white)
                         }
@@ -23,7 +23,7 @@ struct PlayerAttendingCircles: View {
                     HStack(spacing: -5) {
                         Circle()
                             .frame(width: 40, height: 40)
-                            .foregroundColor(Color.ui.placeholders)
+                            .foregroundColor(Color.ui.grayDADADA)
                             .overlay {
                                 Circle().stroke(.white)
                             }
@@ -34,7 +34,7 @@ struct PlayerAttendingCircles: View {
                             .background(
                                 Circle()
                                 .frame(width: 25, height: 25)
-                                .foregroundColor(Color.ui.buttons)
+                                .foregroundColor(Color.ui.blackBlack)
                             )
                             .fixedSize() // add this to show in detail view for some reason?
                     }
@@ -52,7 +52,7 @@ struct PlayerAttendingCirclesSmall: View {
                 if i < 2 {
                     Circle()
                         .frame(width: 33, height: 33)
-                        .foregroundColor(Color.ui.placeholders)
+                        .foregroundColor(Color.ui.grayGray)
                         .overlay {
                             Circle().stroke(.white)
                         }
@@ -61,7 +61,7 @@ struct PlayerAttendingCirclesSmall: View {
                     HStack(spacing: -5) {
                         Circle()
                             .frame(width: 33, height: 33)
-                            .foregroundColor(Color.ui.placeholders)
+                            .foregroundColor(Color.ui.grayGray)
                             .overlay {
                                 Circle().stroke(.white)
                             }
@@ -71,8 +71,8 @@ struct PlayerAttendingCirclesSmall: View {
                             .foregroundColor(.white)
                             .background(
                                 Circle()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.ui.buttons)
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color.ui.blackBlack)
                             )
                             .fixedSize() // add this to show in detail view for some reason?
                     }

@@ -53,7 +53,7 @@ struct TrainerHubView: View {
                 
                 .background {
                     RoundedRectangle(cornerRadius: 17)
-                        .fill(Color.ui.journal_card)
+                        .fill(Color.ui.grayF6F6F6)
                 }
                 .padding()
                 
@@ -119,7 +119,7 @@ struct TrainerHubView: View {
                     
                 }
                 .padding()
-                .foregroundColor(Color("red"))
+                .foregroundColor(Color.ui.accentColor)
                 
                 
                 
@@ -127,7 +127,7 @@ struct TrainerHubView: View {
                 
                 
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(Color.ui.journal_card)
+                    .fill(Color.ui.grayF6F6F6)
                     .frame(maxWidth: .infinity, minHeight: 450)
                     .padding()
                     .overlay(
@@ -251,7 +251,7 @@ struct CustomSegmentedControl: View {
                     .padding(.vertical, 2)
                     .padding(.horizontal, 8)
                     .background(Capsule().fill(isSelected ? Color.black : .clear))
-                    .background(Capsule().fill(isSelected ? Color.ui.journal_picker_bg : .clear))
+                    .background(Capsule().fill(isSelected ? Color.ui.grayDADADA : .clear))
                     .foregroundColor(isSelected ? .white : .red)
                     .onTapGesture {
                         withAnimation(.interactiveSpring(
@@ -263,7 +263,7 @@ struct CustomSegmentedControl: View {
         }
         .background {
             Capsule()
-                .fill(Color.ui.light_gray)
+                .fill(Color.ui.grayD9D9D9)
         }
     }
 }

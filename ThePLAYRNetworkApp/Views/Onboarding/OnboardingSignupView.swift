@@ -25,7 +25,7 @@ struct OnboardingSignupView: View {
                         .font(.system(size: 20, weight: .medium))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, minHeight: 48)
-                        .background(RoundedRectangle(cornerRadius: 34).fill(Color.ui.facebook_bg))
+                        .background(RoundedRectangle(cornerRadius: 34).fill(Color.ui.blue))
                 }
                 .buttonStyle(.plain)
                 
@@ -59,7 +59,7 @@ struct OnboardingSignupView: View {
                 OnboardingDivider()
                 
                 Text("Or".uppercased())
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                     .font(.system(size: 14))
                     .padding(.vertical, 15)
 
@@ -71,7 +71,7 @@ struct OnboardingSignupView: View {
                     .font(.system(size: 20, weight: .medium))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, minHeight: 48)
-                    .background(RoundedRectangle(cornerRadius: 34).fill(Color.ui.interactable)) // background is clickable
+                    .background(RoundedRectangle(cornerRadius: 34).fill(Color.ui.accentColor)) // background is clickable
             }
             .buttonStyle(.plain)
             
@@ -107,7 +107,7 @@ struct OnboardingSignupView: View {
                 
                 Button(action: {}) {
                     Text("Log in here".uppercased())
-                        .foregroundColor(Color.ui.links)
+                        .foregroundColor(Color.ui.blue)
                 }
             }
             .padding(.top, 50)
@@ -128,7 +128,7 @@ struct OnboardingDivider: View {
     
     var body: some View {
         Rectangle()
-            .fill(Color.ui.subheading_text)
+            .fill(Color.ui.gray959595)
             .frame(height: thickness)
             .edgesIgnoringSafeArea(.horizontal)
             .frame(width: 60)

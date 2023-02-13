@@ -12,14 +12,14 @@ struct SuggestedItem: View {
     
             HStack {
                 Circle()
-                    .fill(Color.ui.light_gray)
+                    .fill(Color.ui.grayD9D9D9)
                     .frame(width: 46, height: 46)
 
                     .padding(.trailing, 5)
                 
                 VStack(alignment: .leading){
                         Text("Jared Mills")
-                            .foregroundColor(.black)
+                             .foregroundColor(Color.ui.blackWhite)
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
                         

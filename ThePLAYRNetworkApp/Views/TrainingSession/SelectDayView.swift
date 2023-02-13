@@ -32,7 +32,7 @@ struct SelectDayView: View {
                 
                 Text("Select Days".uppercased())
                     .font(.system(size: 12))
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                     .fontWeight(.bold)
                     .padding(.leading, 24) // line up with calendar
                 
@@ -59,7 +59,7 @@ struct SelectDayView: View {
                 VStack {
                     Text("Weekly".uppercased())
                         .font(.system(size: 12))
-                        .foregroundColor(Color.ui.subheading_text)
+                        .foregroundColor(Color.ui.gray959595)
                         .fontWeight(.bold)
                         .padding(.leading, 24) // line up with calendar
                 }
@@ -96,6 +96,6 @@ extension SelectDayView {
     private var divider: some View {
         Rectangle()
             .frame(height: 4)
-            .foregroundColor(Color.ui.divider_lines)
+            .foregroundColor(Color.ui.grayECECEC)
     }
 }

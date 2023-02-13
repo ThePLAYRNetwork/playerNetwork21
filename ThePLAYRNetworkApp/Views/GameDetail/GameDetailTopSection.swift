@@ -25,7 +25,7 @@ struct GameDetailTopSection: View {
             
             HStack(spacing: 4) {
                 Text("Organized by")
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                 
                 Text("Charles Do")
             }
@@ -40,23 +40,29 @@ struct GameDetailTopSection: View {
                 VStack(alignment: .leading) {
                     PlayerAttendingCirclesSmall()
                 }
-                
-                NavigationLink(destination: GoingView()) {
-                    Text("Show".uppercased())
-                        .font(.system(size: 12))
-                        .foregroundColor(Color("red"))
-                }
+          
+                    NavigationLink(destination: GoingView()) {
+                        Text("Show".uppercased())
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.ui.accentColor)
+                    }
+                    
                 
                 Spacer()
                 
                 Button(action: {}) {
                     Text("Join Game")
+                        .foregroundColor(Color.ui.white)
                         .bold()
                 }
                 .buttonStyle(CustomButton(color: .red, size: .small))
                 
+                
                 Button(action: {}) {
                     Image("share_button")
+                       .resizable()
+                       .frame(width: 33, height: 33)
+                
                 }
             }
             .padding(.top, 8)

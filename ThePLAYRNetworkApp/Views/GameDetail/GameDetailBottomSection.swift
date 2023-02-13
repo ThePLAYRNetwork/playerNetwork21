@@ -46,7 +46,7 @@ struct GameDetailBottomSection: View {
                 .padding(.top, 10)
             
             Text("[9730 Hopkins Dr, La Jolla, CA 92093](https://example.com)")
-                .tint(Color.ui.links)
+                .tint(Color.ui.blue)
         }
         .padding()
     }

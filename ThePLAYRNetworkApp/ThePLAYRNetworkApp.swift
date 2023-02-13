@@ -23,144 +23,158 @@ struct ThePLAYRNetworkApp: App {
             
     var body: some Scene {
         WindowGroup {
+            
             Group {
+              
                 // If user is loggedin, show main app, else show login screen
                 if authViewModel.isLoggedIn {
-                    TabView(selection: $authViewModel.selection) {
-                        NavigationStack(path: $homeViewModel.path) {
-                            HomeView()
-                                .navigationDestination(for: Game.self) { game in
-                                    GameDetailView(game: game)
-                                }
+
+                        TabView(selection: $authViewModel.selection) {
+
+                            NavigationView {
+                                HomeView()
+                                    .onAppear() {
+                                        // Ask user for permission to use location
+                                        homeViewModel.checkIfLocationServicesIsEnabled()
+                                    }
+                            }
+                            .tabItem {
+                                // Label("", systemImage: "house")
+                                Image("home")
+
+                            }
+                            .tag(Tab.home)
+
+
+                            NavigationView{
+                                CalendarView()
+                                    .background(Color.ui.whiteBg)
+                            }
+                            .tabItem {
+                                //Label("Calendar", systemImage: "calendar.badge.clock")
+                                Image("ReCalendar")
+
+
+                            }
+                            .tag(Tab.calendar)
+
+
+
+
+                            NavigationView {
+                                CreateGameView()
+                                    .environmentObject(createViewModel)
+                            }
+                            .padding(.top, 20)
+
+                            .tabItem {
+                                //  Label("Create a Game", systemImage: "plus.circle.fill")
+                                Image("RePlus")
+                            }
+                            .tag(Tab.create)
+                            .onDisappear {
+                                print("Calling onDisappear()")
+                                createViewModel.game = Game() // reset user input
+                            }
+
+
+                            NavigationView {
+                                MessagesView()
+                                    .background(Color.ui.whiteBg)
+                            }
+                            .tabItem {
+                                // Label("Message", systemImage: "message")
+                                Image("ReMsg")
+                            }
+                            .tag(Tab.inbox)
+
+                            NavigationView {
+                                ProfileView()
+                            }
+                            .tabItem {
+                                // Label("Profile", systemImage: "person.crop.circle")
+                                Image("profile")
+                            }
+                            .tag(Tab.profile)
                         }
-                        .tabItem { Label("Home", systemImage: "house") }.tag(Tab.home)
-                        
+ 
+                    } else {
                         NavigationView {
-                            CalendarView()
+                            LoginView()
                         }
-                        .tabItem { Label("Calendar", systemImage: "calendar.badge.clock") }.tag(Tab.calendar)
-                        
-                        
-                        NavigationView {
-                            CreateGameView()
-                                .environmentObject(createViewModel)
-                        }
-                        .tabItem { Label("Create a Game", systemImage: "plus.circle.fill") }.tag(Tab.create)
-                        .onDisappear {
-                            print("Calling onDisappear()")
-                            createViewModel.game = Game() // reset user input
-                        }
-                        
-                        
-                        NavigationView {
-                            MessagesView()
-                        }
-                        .tabItem { Label("Message", systemImage: "message") }.tag(Tab.inbox)
-                        
-                        NavigationView {
-                            ProfileView()
-                        }
-                        .tabItem { Label("Profile", systemImage: "person.crop.circle") }.tag(Tab.profile)
-                    }
-                } else {
-                    NavigationView {
-                        LoginView()
-                    }
+                   
+                    
                 }
             }
             .environmentObject(authViewModel)
             .environmentObject(homeViewModel)
         }
-        
-        
     }
 }
 
-enum Tab {
-    case home
-    case calendar
-    case create
-    case inbox
-    case profile
-}
+
 
 extension Color {
     static let ui = Color.UI()
     
     struct UI {
-        let primary = Color("red")
-        let secondary = Color("secondary")
+        
+        // red(primary)
+        let accentColor = Color("AccentColor") // same like red, elements, interactable, signifies before
         
         // grays
-        let cards = Color("cards")
-        let input_field_bg = Color("input_field_bg")
-        let messages_bg = Color("messages_bg")
-        let suggestions_bg = Color("suggestions_bg")
-        let background_gray = Color("backgroundGray")
-
         
-        let tags = Color("tags")
-        let divider_lines = Color("divider_lines")
-        let time_input = Color("time_input")
-        let star_reviews = Color("star_reviews")
+        let grayF6F6F6 = Color("grayF6F6F6") //card, input field bg, messages bg, suggestions bg
+        let grayECECEC = Color("grayECECEC")
+        let gray959595 = Color("gray959595") //subheading text, search bar
+        let grayDADADA = Color("grayDADADA")
+        let grayC6C6C6 = Color("grayC6C6C6")
+        let grayD9D9D9 = Color("grayD9D9D9")
+        let grayGray = Color("grayGray") //small cirecles "PlayerAttendingCircles"
         
-        let subheading_text = Color("subheading_text")
-        let search_bar = Color("search_bar")
         
-        let selector_bg = Color("selector_bg")
+        // purple(accent)
+        let accent = Color("accent") //same like purple, secondary before
+        let accent_light = Color("accent").opacity(0.6) //same like court_selected
+        let accent_lighter = Color("accent").opacity(0.1) // messages highlight
         
-        let overlay_bg = Color("overlay_bg")
-        
-        // red
-        let signifies = Color("signifies")
-        let interactable = Color("interactable")
-        let elements = Color("elements")
-        
-        // purple
-        let accent = Color("accent")
         
         // black
-        let buttons = Color("buttons")
-        let icons = Color("icons")
+        let black = Color("black") // buttons, icons
+        let black_light = Color("black").opacity(0.25) //opacity 25%, bg overlay on success notifications & trainer images
+        let blackBlack = Color("blackBlack") //small circles
+        let blackWhite = Color("blackWhite") //rating in profile view
+        let blackExtraBlack = Color("blackExtraBlack") //some buttons in goingView
+        
+        
         
         // blue
-        let links = Color("links")
-        let times = Color("times")
+        let blue = Color("blue") //links, times
+        
         
         // orange
-        let calendar_cards = Color("calendar_cards")
+        let orange = Color("orange") //calendar cards
+        let orange_light = Color("orange_light").opacity(0.7) //calendar cards (past)
+        
         
         // green
-        let online_symbol = Color("online_symbol")
-        let calendar_icon = Color("calendar_icon")
-        let chart_up_arrow = Color("chart_up_arrow")
+        let green = Color("green") //online symbol, calendar icon (client), chart up arrow
         
-        // other
         let posted_article_title = Color("posted_article_title")
-        let court_color_red = Color("court_color_red")
+        
+        //court color
+        let court_color_red = Color("court_color_red") //same like heat_red before
         let court_color_green = Color("court_color_green")
         let court_color_yellow = Color("court_color_yellow")
+        
+        
         let scroll_wheel = Color("scroll_wheel")
-        let facebook_bg = Color("facebook_bg")
-        
-        // delete later?
-        let light_gray = Color("light_gray")
-        let lighter_gray = Color("lighter_gray")
-        let button_gray_background = Color("button_gray_background")
-        let placeholders = Color("placeholders")
-        let card_gray = Color("card_gray")
-        
 
-
-        let heat_red = Color("heat_red")
-        let heat_yellow = Color("heat_yellow")
-        let heat_green = Color("heat_green")
-        let green = Color("green")
-        let court_selected = Color("court_selected")
-        let journal_card = Color("journal_card")
-        let attempt_line = Color("attempt_line")
-        let journal_picker_bg = Color("journal_picker_bg")
-        let button_black = Color("button_black")
+        //white
+        let white = Color("white")
+        let whiteBg = Color("white_bg")
+        let whiteWhite = Color("whiteWhite")
+        
 
     }
 }

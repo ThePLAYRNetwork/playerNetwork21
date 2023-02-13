@@ -14,12 +14,14 @@ struct UpcomingGameRow: View {
     var items: [Game]
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 0) {
             Text(categoryName)
                 .font(.system(size: 24))
                 .fontWeight(.semibold)
                 .padding(.leading, 20)
                 .padding(.bottom, 13)
+                .foregroundColor(Color.ui.black)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 15) { // could use reg

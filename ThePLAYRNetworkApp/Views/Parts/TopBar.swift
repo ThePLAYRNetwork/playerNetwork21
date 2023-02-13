@@ -26,7 +26,7 @@ struct TopBar: View {
             }
             .padding([.leading, .trailing])
             .frame(maxWidth: .infinity, maxHeight: geometry.size.height * 0.10) // match (70)
-            .background(.white)
+            .background(Color.ui.whiteBg)
         }
     }
 }

@@ -28,7 +28,7 @@ struct CreatePlayerProfile16: View {
                 )
                 .padding()
                 .frame(height: 50)
-                .background(Color.ui.journal_card)
+                .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
                 .padding(.bottom, 15)
                 
@@ -43,7 +43,7 @@ struct CreatePlayerProfile16: View {
                 )
                 .padding()
                 .frame(height: 50)
-                .background(Color.ui.journal_card)
+                .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
                 .padding(.bottom, 15)
                 
@@ -58,7 +58,7 @@ struct CreatePlayerProfile16: View {
                 )
                 .padding()
                 .frame(height: 50)
-                .background(Color.ui.journal_card)
+                .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
                 
                 
@@ -74,7 +74,7 @@ struct CreatePlayerProfile16: View {
                 Text("Continue")
                     .foregroundColor(.white)
                     .frame(width:226, height: 48)
-                    .background(Color.ui.primary)
+                    .background(Color.ui.accentColor)
                     .cornerRadius(34)
                     .padding(.bottom, 45)
             }
@@ -102,13 +102,13 @@ struct createPlayerHeader: View {
                 .frame(width:83, height: 68)
             Spacer()
             Circle()
-                .foregroundColor(Color.ui.light_gray)
+                .foregroundColor(Color.ui.grayD9D9D9)
                 .frame(width: 36, height: 36)
         }
         .padding(.top, 45)
         .padding(.horizontal)
         .frame(height: 127)
-        .background(Color.ui.button_black)
+        .background(Color.ui.black)
         .clipShape(RoundedShape(corners: [.bottomRight]))
         .clipShape(RoundedShape(corners: [.bottomLeft]))
     }

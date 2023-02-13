@@ -18,7 +18,7 @@ struct ProfileMedia: View {
                 HStack(spacing: 5) {
                     ForEach(1..<5) { _ in
                         Rectangle()
-                            .fill(Color.ui.placeholders)
+                            .fill(Color.ui.grayD9D9D9)
                             .frame(width: 126, height: 126)
                     }
                 }

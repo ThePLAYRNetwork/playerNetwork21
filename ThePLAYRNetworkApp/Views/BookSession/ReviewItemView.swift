@@ -27,7 +27,7 @@ struct ReviewItemView: View {
                     ForEach(0...3, id: \.self) { star in
                         Image(systemName: "star.fill")
                             .frame(width: 11, height: 11)
-                            .foregroundColor(Color("purple"))
+                            .foregroundColor(Color.ui.accent)
                             .padding(.all, 1)
                         
                     }

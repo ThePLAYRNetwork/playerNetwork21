@@ -20,7 +20,7 @@ struct ClientBookedSessionExpanded: View {
                     
                     Text("$50")
                         .font(.system(size: 16))
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                 }
                 VStack(alignment: .leading,spacing: -5){
                     HStack {
@@ -56,7 +56,7 @@ struct ClientBookedSessionExpanded: View {
                             .foregroundColor(.white)
                             .fontWeight(.semibold)
                             .frame(width: 148, height: 33)
-                            .background(Color.ui.primary)
+                            .background(Color.ui.accentColor)
                             .background(in: RoundedRectangle(cornerRadius: 10))
                         
                 }
@@ -67,8 +67,8 @@ struct ClientBookedSessionExpanded: View {
             .padding()
             .background(
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(Color.ui.journal_card)
-                .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)
+                .foregroundColor(Color.ui.grayF6F6F6)
+                .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)
             
         )
         }

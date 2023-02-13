@@ -34,7 +34,7 @@ struct ConversationBottomView: View {
 
             }
             .font(.system(size: 24))
-            .foregroundColor(Color.ui.subheading_text)
+            .foregroundColor(Color.ui.gray959595)
             .padding()
             
             if showFileOptions {

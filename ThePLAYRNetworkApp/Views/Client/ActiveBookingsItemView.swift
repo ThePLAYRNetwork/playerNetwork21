@@ -13,7 +13,7 @@ struct ActiveBookingsItemView: View {
         VStack {
             Circle()
                 .frame(width: 46, height: 46)
-                .foregroundColor(Color.ui.light_gray)
+                .foregroundColor(Color.ui.grayD9D9D9)
             Text(activeBooking)
                 .font(.system(size: 12))
                 

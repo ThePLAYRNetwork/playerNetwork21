@@ -18,7 +18,7 @@ struct SelectDayCard: View {
                 
                 Text("Repeats \(session.repeatOption.rawValue.lowercased())")
                     .font(.system(size: 10))
-                    .foregroundColor(Color.ui.subheading_text)
+                    .foregroundColor(Color.ui.gray959595)
                 
                 Spacer()
                 
@@ -30,7 +30,7 @@ struct SelectDayCard: View {
         .padding(.leading, 16)
         .padding(.trailing, 8)
         .padding(.vertical, 7)
-        .background(RoundedRectangle(cornerRadius: 7).fill(Color.ui.cards))
+        .background(RoundedRectangle(cornerRadius: 7).fill(Color.ui.grayF6F6F6))
     }
 }
 
@@ -93,10 +93,10 @@ struct SessionTagView: View {
     private func item(for text: String) -> some View {
         Text(text)
             .font(.system(size: 12))
-            .foregroundColor(Color.ui.times)
+            .foregroundColor(Color.ui.blue)
             .padding(.horizontal, 5)
             .padding(.vertical, 2)
-            .background(RoundedRectangle(cornerRadius: 5).fill(Color.ui.tags))
+            .background(RoundedRectangle(cornerRadius: 5).fill(Color.ui.grayF6F6F6))
     }
 
     private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {

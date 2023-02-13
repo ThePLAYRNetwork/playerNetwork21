@@ -12,12 +12,15 @@ struct HomeSheetView: View {
     @State private var searchText = ""
     @State var expandList: Bool = true
     @State var yDragTranslation: CGFloat = 0
+   
+    
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 Spacer()
 //                UpcomingGameRow(categoryName: "Nearby Games", items: homeViewModel.upcomingGames)
+
                 UpcomingGameRow(categoryName: "Nearby Games", items: Game.sampleGames)
                 
                 SheetButtonRow()
@@ -40,7 +43,7 @@ struct HomeSheetView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: geometry.size.height) // height of sheet == size of screen
-            .background(Color.white)
+            .background(Color.ui.whiteBg)
             .clipShape(RoundedRectangle(cornerRadius: 30))
             .offset(
                 x: 0,

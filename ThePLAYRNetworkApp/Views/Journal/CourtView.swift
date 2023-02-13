@@ -17,14 +17,14 @@ struct CourtView: View {
         if isHeatMap {
             let percent = Int((Double(journalViewModel.courtData.score[section]) / Double(journalViewModel.courtData.attempts[section])) * 100)
             if percent < 50 {
-                return Color.ui.heat_red
+                return Color.ui.court_color_red
             } else if percent < 75 {
-                return Color.ui.heat_yellow
+                return Color.ui.court_color_yellow
             } else {
-                return Color.ui.heat_green
+                return Color.ui.court_color_green
             }
         } else {
-            return journalViewModel.courtData.selection == section ? Color.ui.court_selected : Color.white
+            return journalViewModel.courtData.selection == section ? Color.ui.accent_light : Color.white
         }
     }
         

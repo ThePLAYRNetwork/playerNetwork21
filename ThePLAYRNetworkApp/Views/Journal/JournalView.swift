@@ -74,7 +74,7 @@ struct JournalView: View {
                 .padding()
                 .background {
                     RoundedRectangle(cornerRadius: 17)
-                        .fill(Color.ui.journal_card)
+                        .fill(Color.ui.grayF6F6F6)
                 }
                 
                 Spacer()
@@ -106,7 +106,7 @@ struct JournalCustomSegmentedControl: View {
                     .font(.system(size: 12, weight: .semibold))
                     .padding(.vertical, 3)
                     .padding(.horizontal, 10)
-                    .background(Capsule().fill(isSelected ? Color.ui.button_black : .clear))
+                    .background(Capsule().fill(isSelected ? Color.ui.black : .clear))
                     .foregroundColor(isSelected ? .white : .red)
                     .onTapGesture {
                         withAnimation(.interactiveSpring(
@@ -117,7 +117,7 @@ struct JournalCustomSegmentedControl: View {
             }
         }
         .background {
-            Capsule().fill(Color.ui.journal_picker_bg)
+            Capsule().fill(Color.ui.grayDADADA)
         }
     }
 }

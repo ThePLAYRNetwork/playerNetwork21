@@ -22,7 +22,7 @@ struct TrainersView: View {
                             
                             Circle()
                                 .frame(width: 33, height: 33)
-                                .foregroundColor(Color("light_gray"))
+                                .foregroundColor(Color.ui.grayD9D9D9)
                                 .overlay {
                                     Circle().stroke(.white)
                                 }
@@ -49,7 +49,7 @@ struct TrainersView: View {
                             .foregroundColor(.white)
                             .fontWeight(.semibold)
                             .frame(width: 131, height: 33)
-                            .background(Color("AccentColor"))
+                            .background(Color.ui.accentColor)
                             .background(in: RoundedRectangle(cornerRadius: 5))
                         
                     }

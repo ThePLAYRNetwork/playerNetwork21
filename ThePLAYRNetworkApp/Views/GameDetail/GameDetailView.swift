@@ -16,32 +16,34 @@ struct GameDetailView: View {
     let game: Game
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                GameDetailBackground()
-                
-                GameDetailTopSection(game: game)
-                    .padding(.top, 14)
-                
-                Divider()
-                    .padding(.top, 14)
-                
-//                GameDetailBottomSection(trackingMode: $trackingMode, region: $region)
-//                    .padding(.top, 4)
-                
-                GameDetailBottomSection()
-                    .padding(.top, 4)
-                
-                Spacer()
+
+      //  NavigationView {
+            ScrollView {
+                VStack(spacing: 0) {
+                    GameDetailBackground()
+                    
+                    GameDetailTopSection(game: game)
+                        .padding(.top, 14)
+                    
+                    Divider()
+                        .padding(.top, 14)
+                    
+                    GameDetailBottomSection(trackingMode: $trackingMode, region: $region, location: location)
+                        .padding(.top, 4)
+                    
+                    Spacer()
+                }
             }
-        }
-        .navigationBarBackButtonHidden(true)
-        .edgesIgnoringSafeArea(.top)
-//        .onAppear {
-//            self.region = MKCoordinateRegion(
-//                center: self.location.coordinate,
-//                span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-//        }
+            .background(Color.ui.whiteBg)
+          //  .navigationBarBackButtonHidden(true)
+            .edgesIgnoringSafeArea(.top)
+            .onAppear {
+                self.region = MKCoordinateRegion(
+                    center: self.location.coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+            }
+   //    }
+
     }
 }
 
@@ -60,11 +62,11 @@ struct GameDetailBackground: View {
             .resizable()
             .opacity(0.65)
             .scaledToFit()
-            .overlay(alignment: .topLeading) {
-                BackButton()
-                    .padding()
-                    .padding(.top, 45)
-            }
+//            .overlay(alignment: .topLeading) {
+//                BackButton()
+//                    .padding()
+//                    .padding(.top, 45)
+//            }
         
     }
 }

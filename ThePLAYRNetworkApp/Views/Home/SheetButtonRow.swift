@@ -14,7 +14,7 @@ struct SheetButtonRow: View {
                 TrainingView()
             } label: {
                 RoundedRectangle(cornerRadius: 4)
-                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay {
                         Image("training_icon")
@@ -26,7 +26,7 @@ struct SheetButtonRow: View {
                 NetworkView()
             } label: {
                RoundedRectangle(cornerRadius: 4)
-                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay {
                         Image("network_icon")
@@ -38,7 +38,7 @@ struct SheetButtonRow: View {
                 DiscoverView()
             } label: {
                 RoundedRectangle(cornerRadius: 4)
-                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay {
                         Image("discover_icon")
@@ -50,7 +50,7 @@ struct SheetButtonRow: View {
                 JournalView()
             } label: {
                 RoundedRectangle(cornerRadius: 4)
-                    .shadow(color: Color.ui.light_gray, radius: 1, x: 0, y: 5)  // drop shadow
+                    .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay {
                         Image("journal_icon")
@@ -58,7 +58,7 @@ struct SheetButtonRow: View {
             }
             .buttonStyle(.plain)
         }
-        .foregroundColor(Color.ui.primary)
+        .foregroundColor(Color.ui.accentColor)
     }
 }
 

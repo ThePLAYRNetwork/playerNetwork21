@@ -17,7 +17,7 @@ struct SelectDayCell: View {
             HStack {
                 Toggle("Indoor", isOn: $isSelected)
                     .labelsHidden()
-                    .tint(Color.ui.secondary)
+                    .tint(Color.ui.accent)
                 
                 Text(session.day.rawValue.capitalized)
                     .font(.system(size: 16))
@@ -29,12 +29,12 @@ struct SelectDayCell: View {
                     isShowingSheet.toggle()
                 }) {
                     Text(session.times.count > 0 ? session.times[0].formattedSessionTime() : "Unavailable")
-                        .foregroundColor(session.times.count > 0 ? Color.ui.times : Color.ui.subheading_text)
+                        .foregroundColor(session.times.count > 0 ? Color.ui.blue: Color.ui.gray959595)
                         .padding(.horizontal, session.times.count > 0 ? 8 : 14)
                         .padding(.vertical, 3)
                         .background {
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.ui.time_input)
+                                .fill(Color.ui.grayECECEC)
                         }
                 }
             }

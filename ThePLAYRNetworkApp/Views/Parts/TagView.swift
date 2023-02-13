@@ -64,7 +64,7 @@ struct TagView: View {
             .padding([.trailing, .leading], 8)
             .background {
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .foregroundColor(Color.ui.lighter_gray)
+                    .foregroundColor(Color.ui.grayECECEC)
             }
     }
 

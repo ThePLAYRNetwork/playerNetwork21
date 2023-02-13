@@ -47,18 +47,18 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Player")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 1 ? Color.ui.primary : Color.ui.subheading_text)
+                                    .foregroundColor(selectedCard == 1 ? Color.ui.accentColor : Color.ui.gray959595)
                                     .padding(.top)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(selectedCard == 1 ? Color.ui.primary : Color.black)
+                                    .stroke(selectedCard == 1 ? Color.ui.accentColor : Color.black)
                             )
                             
                             .overlay(
-                                selectedCard == 1 ? Color.clear : Color.ui.background_gray
+                                selectedCard == 1 ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
@@ -78,17 +78,17 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Coach")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 2 ? Color.ui.primary : Color.ui.subheading_text)
+                                    .foregroundColor(selectedCard == 2 ? Color.ui.accentColor : Color.ui.gray959595)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(selectedCard == 2 ? Color.ui.primary : Color.black)
+                                    .stroke(selectedCard == 2 ? Color.ui.accentColor : Color.black)
                             )
                             
                             .overlay(
-                                selectedCard == 2 ? Color.clear : Color.ui.background_gray
+                                selectedCard == 2 ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
@@ -106,17 +106,17 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Trainer")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 3 ? Color.ui.primary : Color.ui.subheading_text)
+                                    .foregroundColor(selectedCard == 3 ? Color.ui.accentColor : Color.ui.gray959595)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(selectedCard == 3 ? Color.ui.primary : Color.black)
+                                    .stroke(selectedCard == 3 ? Color.ui.accentColor : Color.black)
                             )
                             
                             .overlay(
-                                selectedCard == 3 ? Color.clear : Color.ui.background_gray
+                                selectedCard == 3 ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
@@ -139,7 +139,7 @@ struct CreatePlayerProfile18: View {
                         Text("Continue")
                             .foregroundColor(.white)
                             .frame(width:226, height: 48)
-                            .background(Color.ui.primary)
+                            .background(Color.ui.accentColor)
                             .cornerRadius(34)
                             .padding(.top, 50)
                             .padding(.bottom, 45)

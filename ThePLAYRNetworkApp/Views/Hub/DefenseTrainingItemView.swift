@@ -26,11 +26,11 @@ struct DefenseTrainingItemView: View {
                     
                     Text("10:00am - 11:00am")
                 }
-                .foregroundColor(Color.ui.subheading_text)
+                .foregroundColor(Color.ui.gray959595)
                 
                 HStack {
                     Text("Booked by")
-                        .foregroundColor(Color.ui.subheading_text)
+                        .foregroundColor(Color.ui.gray959595)
                     
                     
                     Text("Alex Allens")
@@ -60,7 +60,7 @@ struct DefenseTrainingItemView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .frame(width: 148, height: 33)
-                        .background(Color("AccentColor"))
+                        .background(Color.ui.accentColor)
                         .background(in: RoundedRectangle(cornerRadius: 10))
                     
                 }

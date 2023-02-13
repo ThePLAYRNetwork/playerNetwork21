@@ -33,7 +33,7 @@ struct JournalChartTabItem: View {
                         .foregroundColor(.white)
                         .padding(.vertical, 2)
                         .padding(.horizontal, 10)
-                        .background(Capsule().fill(Color.ui.primary))
+                        .background(Capsule().fill(Color.ui.accentColor))
                 }
                 .buttonStyle(.plain)
                 .sheet(isPresented: $isShowingSheet,

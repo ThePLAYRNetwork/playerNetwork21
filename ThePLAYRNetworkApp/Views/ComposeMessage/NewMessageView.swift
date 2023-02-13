@@ -21,7 +21,7 @@ struct NewMessageView: View {
                         dismiss()
                     } label: {
                         Text("Cancel")
-                            .foregroundColor(Color.ui.primary)
+                            .foregroundColor(Color.ui.accentColor)
                             .font(.system(size: 14))
                          .padding(.trailing)
                     }
@@ -50,7 +50,7 @@ struct NewMessageView: View {
                     Image(systemName: "plus.circle")
                         .resizable()
                         .frame(width: 19, height: 19)
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                     
                     
                 }

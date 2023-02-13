@@ -334,7 +334,7 @@ struct CreateButton: View {
                             .padding([.horizontal], 15)
                             .background {
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .foregroundColor(Color.ui.primary)
+                                    .foregroundColor(Color.ui.accentColor)
                             }
                     }
             }

@@ -53,7 +53,7 @@ struct TrainingView: View {
                 
                 HStack {
                     RoundedRectangle(cornerRadius: 4)
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {
@@ -74,7 +74,7 @@ struct TrainingView: View {
                     
                     
                     RoundedRectangle(cornerRadius: 4)
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {
@@ -96,7 +96,7 @@ struct TrainingView: View {
                     
                     
                     RoundedRectangle(cornerRadius: 4)
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {
@@ -117,7 +117,7 @@ struct TrainingView: View {
                     
                     
                     RoundedRectangle(cornerRadius: 4)
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
                             VStack {

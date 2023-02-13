@@ -31,7 +31,7 @@ struct ClientDefenceTrainingItem: View {
                     
                     Text("$50")
                         .font(.system(size: 16))
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                 }
                 VStack(alignment: .leading,spacing: -5){
                     HStack {

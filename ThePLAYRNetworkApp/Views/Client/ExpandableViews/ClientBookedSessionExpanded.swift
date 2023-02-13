@@ -20,7 +20,7 @@ struct ClientBookedSessionExpanded: View {
                     
                     Text("$50")
                         .font(.system(size: 16))
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                 }
                 VStack(alignment: .leading,spacing: -5){
                     HStack {
@@ -56,7 +56,7 @@ struct ClientBookedSessionExpanded: View {
                             .foregroundColor(.white)
                             .fontWeight(.semibold)
                             .frame(width: 148, height: 33)
-                            .background(Color.ui.primary)
+                            .background(Color.ui.accentColor)
                             .background(in: RoundedRectangle(cornerRadius: 10))
                         
                 }

@@ -48,10 +48,10 @@ struct CustomButton: ButtonStyle {
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(handleBackgroundColor(configuration: configuration))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(handleStrokeColor(configuration: configuration))
-                    }
+//                    .overlay {
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(handleStrokeColor(configuration: configuration))
+//                    }
             }
             .opacity(configuration.isPressed ? 0.5 : 1)
     }
@@ -70,35 +70,38 @@ struct CustomButton: ButtonStyle {
     func handleForegroundColor() -> Color {
         switch color {
         case .red:
-            return .white
+            return Color.ui.white
         case .white:
             return Color.ui.green
         case .black:
-            return .white
+            return Color.ui.whiteWhite
         }
     }
     
     func handleBackgroundColor(configuration: Configuration) -> Color {
         switch color {
         case .red:
-            return Color.ui.primary
+            return Color.ui.accentColor
         case .white:
             return .white
         case .black:
-            return Color.ui.green
+            return Color.ui.blackExtraBlack
         }
     }
     
-    func handleStrokeColor(configuration: Configuration) -> Color {
-        switch color {
-        case .red:
-            return Color.ui.primary
-        case .white:
-            return Color.ui.green
-        case .black:
-            return Color.ui.green
-        }
-    }
+    
+//    func handleStrokeColor(configuration: Configuration) -> Color {
+//        switch color {
+//        case .red:
+//            return Color.ui.primary
+//        case .white:
+//            return Color.ui.green
+//        case .black:
+//            return Color.ui.green
+//        }
+//    }
+    
+    
 }
 
 

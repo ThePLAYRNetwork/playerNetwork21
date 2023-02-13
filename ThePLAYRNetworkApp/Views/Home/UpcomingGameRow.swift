@@ -13,6 +13,7 @@ struct UpcomingGameRow: View {
     var items: [Game]
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 0) {
             Text(categoryName)
                 .font(.system(size: 24))

@@ -60,7 +60,7 @@ struct DefenseTrainingItemView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .frame(width: 148, height: 33)
-                        .background(Color.ui.primary)
+                        .background(Color.ui.accentColor)
                         .background(in: RoundedRectangle(cornerRadius: 10))
                     
                 }

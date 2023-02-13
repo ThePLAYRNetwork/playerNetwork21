@@ -13,25 +13,28 @@ struct HomeView: View {
     @State var yDragTranslation: CGFloat = 0
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .top) {
-                MapView()
-                    .ignoresSafeArea(edges: Edge.Set.top)
-                HomeSheetView()
-                    .shadow(radius: 1)
-                TopBar()
+ 
+            GeometryReader { geometry in
+                ZStack(alignment: .top) {
+                    MapView()
+                        .ignoresSafeArea(edges: Edge.Set.top)
+                    HomeSheetView()
+                        .shadow(radius: 1)
+                    TopBar()
+                }
             }
-        }
-        .alert(isPresented: $homeViewModel.showingGamePosted) {
-            Alert(
-                title: Text("All right!"),
-                message: Text("Your game has been posted."),
-                dismissButton: Alert.Button.cancel()
-            )
+            .alert(isPresented: $homeViewModel.showingGamePosted) {
+                Alert(
+                    title: Text("All right!"),
+                    message: Text("Your game has been posted."),
+                    dismissButton: Alert.Button.cancel()
+                )
+                
+            }
+            .navigationTitle("")
+            .navigationBarHidden(true)
             
-        }
-        .navigationTitle("")
-        .navigationBarHidden(true)
+    
     }
 }
 

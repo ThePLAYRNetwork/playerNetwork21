@@ -17,11 +17,21 @@ struct GoingCell: View {
             
             Spacer()
             
-            Button("Connected") {
-                
+//            Button("Connected") {
+//
+//            }
+//            .buttonStyle(CustomButton(color: .black , size: .medium))
+
+            
+            
+            Button("Connect") {
+
             }
-            .buttonStyle(CustomButton(color: .black, size: .medium))
+            .buttonStyle(CustomButton(color: .red , size: .medium))
+
         }
+
+        
     }
 }
 

@@ -30,7 +30,7 @@ struct OnboardingView: View {
                         .padding(.horizontal, 46)
                         .background {
                             RoundedRectangle(cornerRadius: 34)
-                                .fill(Color.ui.interactable)
+                                .fill(Color.ui.accentColor)
                         }
                 }
                 .buttonStyle(.plain)
@@ -100,7 +100,7 @@ struct OnboardingView: View {
                         .padding(.horizontal, 46)
                         .background {
                             RoundedRectangle(cornerRadius: 34)
-                                .fill(Color.ui.interactable)
+                                .fill(Color.ui.accentColor)
                         }
                 }
                 .buttonStyle(.plain)

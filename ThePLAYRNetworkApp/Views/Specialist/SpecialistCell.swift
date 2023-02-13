@@ -34,7 +34,7 @@ struct SpecialistCell: View {
             .frame(height: 100)
             .padding()
             .foregroundColor(.white)
-            .background(Color.ui.primary)
+            .background(Color.ui.accentColor)
             
             // white section
             HStack {

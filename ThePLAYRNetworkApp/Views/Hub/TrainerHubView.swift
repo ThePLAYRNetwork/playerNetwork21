@@ -110,7 +110,7 @@ struct TrainerHubView: View {
                     
                 }
                 .padding()
-                .foregroundColor(Color.ui.primary)
+                .foregroundColor(Color.ui.accentColor)
                 
                 
                 

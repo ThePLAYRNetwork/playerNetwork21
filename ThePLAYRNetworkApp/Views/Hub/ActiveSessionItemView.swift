@@ -71,7 +71,7 @@ struct ActiveSessionItemView: View {
                             .foregroundColor(.black)
                         Text("-9%")
                             .font(.system(size: 12))
-                            .foregroundColor(Color.ui.primary)
+                            .foregroundColor(Color.ui.accentColor)
                             .padding(.leading, -5)
                         Image("arrowDown")
                             .resizable()
@@ -90,7 +90,7 @@ struct ActiveSessionItemView: View {
                             .foregroundColor(.black)
                         Text("-3%")
                             .font(.system(size: 12))
-                            .foregroundColor(Color.ui.primary)
+                            .foregroundColor(Color.ui.accentColor)
                             .padding(.leading, -5)
                         Image("arrowDown")
                             .resizable()
@@ -117,7 +117,7 @@ struct ActiveSessionItemView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .frame(width: 60, height: 33)
-                        .background(Color.ui.primary)
+                        .background(Color.ui.accentColor)
                         .background(in: RoundedRectangle(cornerRadius: 10))
                     
                 }
@@ -130,7 +130,7 @@ struct ActiveSessionItemView: View {
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .frame(width: 174, height: 33)
-                        .background(Color.ui.primary)
+                        .background(Color.ui.accentColor)
                         .background(in: RoundedRectangle(cornerRadius: 10))
                     
                 }

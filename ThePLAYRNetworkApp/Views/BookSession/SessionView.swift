@@ -75,7 +75,7 @@ struct BookTrainingButton: View {
                 Text("Book Training")
                     .foregroundColor(.white)
                     .frame(width:143, height:33)
-                    .background(Color.ui.primary)
+                    .background(Color.ui.accentColor)
                     .cornerRadius(5)
             }
             

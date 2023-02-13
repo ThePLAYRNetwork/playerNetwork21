@@ -58,7 +58,7 @@ struct SheetButtonRow: View {
             }
             .buttonStyle(.plain)
         }
-        .foregroundColor(Color.ui.primary)
+        .foregroundColor(Color.ui.accentColor)
     }
 }
 

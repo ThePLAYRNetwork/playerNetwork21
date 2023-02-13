@@ -38,7 +38,7 @@ struct CurrentBookingsView: View {
                         Text(days[day])
                             .foregroundColor(isSelected ? .black : Color.ui.gray959595)
                             .fontWeight(isSelected ? .semibold : .regular)
-                            .underline(isSelected ? true : false, color: Color.ui.primary)
+                            .underline(isSelected ? true : false, color: Color.ui.accentColor)
                           
                             .onTapGesture {
                                 withAnimation(.interactiveSpring(

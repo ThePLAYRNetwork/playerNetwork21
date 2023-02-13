@@ -22,17 +22,8 @@ struct TopSearchBarSection: View {
                 
                     Image("msg")
                         .resizable()
-                        .frame(width: 30, height: 30)
-                    
-                    Circle()
-                        .frame(width: 11, height: 11)
-                        .foregroundColor(.white)
-                        .offset(x: +5, y: -5)
-                      
-                    Circle()
-                        .frame(width: 10, height: 10)
-                        .foregroundColor(.red)
-                        .offset(x: +5, y: -5)
+                        .frame(width: 28.22, height: 25.08)
+
                 }
             }
         }

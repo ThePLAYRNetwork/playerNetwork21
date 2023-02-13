@@ -37,7 +37,7 @@ struct SuccessCancelView: View {
                             Text(days[day])
                                 .foregroundColor(isSelected ? .black : Color.ui.gray959595)
                                 .fontWeight(isSelected ? .semibold : .regular)
-                                .underline(isSelected ? true : false, color: Color.ui.primary)
+                                .underline(isSelected ? true : false, color: Color.ui.accentColor)
                             
                                 .onTapGesture {
                                     withAnimation(.interactiveSpring(
@@ -108,7 +108,7 @@ struct SuccessCancelView: View {
                                     .foregroundColor(.white)
                                     .fontWeight(.semibold)
                                     .frame(width: 131, height: 33)
-                                    .background(Color.ui.primary)
+                                    .background(Color.ui.accentColor)
                                     .background(in: RoundedRectangle(cornerRadius: 5))
                             }
                         }

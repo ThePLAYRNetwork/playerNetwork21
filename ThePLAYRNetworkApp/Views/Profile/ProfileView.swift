@@ -124,7 +124,7 @@ extension ProfileView {
                         .frame(maxWidth: .infinity)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.ui.black)
+                                .fill(Color.ui.blackExtraBlack)
                         }
                 }
                 .buttonStyle(.plain)
@@ -137,7 +137,7 @@ extension ProfileView {
                             .frame(maxWidth: .infinity)
                             .background {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.ui.black)
+                                    .fill(Color.ui.blackExtraBlack)
                             }
                     }
                     .buttonStyle(.plain)
@@ -149,7 +149,7 @@ extension ProfileView {
                             .frame(maxWidth: .infinity)
                             .background {
                                 RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.ui.black)
+                                    .fill(Color.ui.blackExtraBlack)
                             }
                     }
                     .buttonStyle(.plain)

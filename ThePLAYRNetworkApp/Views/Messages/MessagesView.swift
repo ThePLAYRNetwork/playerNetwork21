@@ -12,6 +12,7 @@ struct MessagesView: View {
     @State var showNewMessage = false
     
     var body: some View {
+        ScrollView {
         VStack {
             HStack {
                 
@@ -57,7 +58,7 @@ struct MessagesView: View {
         
         .sheet(isPresented: $showNewMessage) {
             NewMessageView()
-            
+        }
         }
        
     }

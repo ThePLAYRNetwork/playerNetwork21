@@ -35,7 +35,7 @@ struct OnboardingPosition: View {
                         .padding(.horizontal, 80)
                         .background {
                             RoundedRectangle(cornerRadius: 34)
-                                .fill(Color.ui.interactable)
+                                .fill(Color.ui.accentColor)
                         }
                 }
                 .buttonStyle(.plain)
@@ -99,12 +99,12 @@ struct PositionCell: View {
         }
         .buttonStyle(.plain)
         .background {
-            position == selectedPosition ? .clear : Color.ui.overlay_bg
+            position == selectedPosition ? .clear : Color.ui.grayC6C6C6
         }
     }
     
     func selectedPositionColor() -> Color {
-        return position == selectedPosition ? Color.ui.interactable : Color.ui.subheading_text
+        return position == selectedPosition ? Color.ui.accentColor : Color.ui.gray959595
     }
 }
 

@@ -14,13 +14,13 @@ struct PlayerItemView: View {
             HStack(spacing: 0) {
                 ZStack(alignment: .topTrailing){
                     Circle()
-                        .strokeBorder(Color.ui.primary, lineWidth: 2)
+                        .strokeBorder(Color.ui.accentColor, lineWidth: 2)
                         .background(Circle().fill(Color.ui.grayD9D9D9))
                         .frame(width:46, height:46)
                         
                     Circle()
                         .frame(width:12, height:12)
-                        .foregroundColor(Color.ui.primary)
+                        .foregroundColor(Color.ui.accentColor)
                     
                     
                     

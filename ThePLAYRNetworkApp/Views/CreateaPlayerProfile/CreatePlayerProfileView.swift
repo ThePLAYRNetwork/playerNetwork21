@@ -103,7 +103,7 @@ struct CreatePlayerProfileView: View {
                 Text("Continue")
                     .foregroundColor(.white)
                     .frame(width:226, height: 48)
-                    .background(Color.ui.primary)
+                    .background(Color.ui.accentColor)
                     .cornerRadius(34)
                     .padding(.bottom, 45)
             }

@@ -118,6 +118,9 @@
 		CFB3384F28AE8F2B00610F42 /* NearbySessionsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3384E28AE8F2B00610F42 /* NearbySessionsRow.swift */; };
 		CFB3385128AE92B100610F42 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3385028AE92B100610F42 /* TrainingViewModel.swift */; };
 		CFB3385328AE932900610F42 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3385228AE932900610F42 /* Session.swift */; };
+		CFBCE9982987FED50055ED3A /* OnboardingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE9952987FED50055ED3A /* OnboardingPosition.swift */; };
+		CFBCE9992987FED50055ED3A /* OnboardingSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE9962987FED50055ED3A /* OnboardingSignupView.swift */; };
+		CFBCE99A2987FED50055ED3A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE9972987FED50055ED3A /* OnboardingView.swift */; };
 		CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740B29192A72005D8506 /* JournalViewModel.swift */; };
 		CFBE740E29192AA0005D8506 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740D29192AA0005D8506 /* Court.swift */; };
 		CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75E4628F9A453004AB852 /* SessionView.swift */; };
@@ -263,6 +266,9 @@
 		CFB3384E28AE8F2B00610F42 /* NearbySessionsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbySessionsRow.swift; sourceTree = "<group>"; };
 		CFB3385028AE92B100610F42 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
 		CFB3385228AE932900610F42 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CFBCE9952987FED50055ED3A /* OnboardingPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPosition.swift; sourceTree = "<group>"; };
+		CFBCE9962987FED50055ED3A /* OnboardingSignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSignupView.swift; sourceTree = "<group>"; };
+		CFBCE9972987FED50055ED3A /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CFBE740B29192A72005D8506 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		CFBE740D29192AA0005D8506 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		CFC75E4628F9A453004AB852 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
@@ -378,6 +384,7 @@
 				32EA5CB428948AA300A70A7B /* GameDetail */,
 				32EA5CAF289489A100A70A7B /* Login */,
 				32EA5CB0289489BC00A70A7B /* Signup */,
+				CFBCE9942987FED50055ED3A /* Onboarding */,
 				32862F3A2892586300CDFB3B /* Parts */,
 				CFCFF74D28AABE27002F1D30 /* Calendar */,
 				CFB3384B28AE8EF000610F42 /* Training */,
@@ -643,6 +650,16 @@
 			name = Training;
 			sourceTree = "<group>";
 		};
+		CFBCE9942987FED50055ED3A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CFBCE9952987FED50055ED3A /* OnboardingPosition.swift */,
+				CFBCE9962987FED50055ED3A /* OnboardingSignupView.swift */,
+				CFBCE9972987FED50055ED3A /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		CFCBA19E28EE20A400E218CB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,6 +869,7 @@
 				CF6B6791296C539800BEC347 /* ProfileMedia.swift in Sources */,
 				32862F482892597900CDFB3B /* SheetButtonRow.swift in Sources */,
 				CFDE4A7429421EBD008D4398 /* ClientBookedSessionExpanded.swift in Sources */,
+				CFBCE99A2987FED50055ED3A /* OnboardingView.swift in Sources */,
 				32862F37289257C700CDFB3B /* HomeViewModel.swift in Sources */,
 				CF6B6785296C52FA00BEC347 /* CourtTabItem.swift in Sources */,
 				CFDE4A7229420B89008D4398 /* ClientProfileTopView.swift in Sources */,
@@ -938,6 +956,7 @@
 				CFDE4A7629421EE3008D4398 /* ClientSessionHistoryExpanded.swift in Sources */,
 				CFEA82092926934A00B377FD /* AlertView.swift in Sources */,
 				CF6B67AC296C6FB400BEC347 /* EventItem.swift in Sources */,
+				CFBCE9982987FED50055ED3A /* OnboardingPosition.swift in Sources */,
 				CF90D8B428EF1599009BD09D /* CalendarTrainerView.swift in Sources */,
 				CFD3C91628E77E5D004B53E7 /* ConversationBottomView.swift in Sources */,
 				CF2D173A2940B9500068D29D /* ClientProfile.swift in Sources */,
@@ -947,6 +966,7 @@
 				CFD3C91128E77E5D004B53E7 /* FullMessageView.swift in Sources */,
 				321D6B5E28985CD0005EC2EF /* CreateViewModel.swift in Sources */,
 				CFD3C91C28E77F86004B53E7 /* SpecialistSheetView.swift in Sources */,
+				CFBCE9992987FED50055ED3A /* OnboardingSignupView.swift in Sources */,
 				CFA374E129252EA6000EF516 /* SuccessCancelView.swift in Sources */,
 				CF832A272923E846007AF744 /* DefenseTrainingItemView.swift in Sources */,
 				CFF22B8B293660A300F28C62 /* ActiveBookingsRowView.swift in Sources */,

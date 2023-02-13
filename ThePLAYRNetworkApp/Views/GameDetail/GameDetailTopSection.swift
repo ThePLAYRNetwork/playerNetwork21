@@ -40,12 +40,13 @@ struct GameDetailTopSection: View {
                 VStack(alignment: .leading) {
                     PlayerAttendingCirclesSmall()
                 }
-                
-                NavigationLink(destination: GoingView()) {
-                    Text("Show".uppercased())
-                        .font(.system(size: 12))
-                        .foregroundColor(Color.ui.primary)
-                }
+          
+                    NavigationLink(destination: GoingView()) {
+                        Text("Show".uppercased())
+                            .font(.system(size: 12))
+                            .foregroundColor(Color.ui.accentColor)
+                    }
+                    
                 
                 Spacer()
                 

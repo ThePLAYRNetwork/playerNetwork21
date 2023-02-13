@@ -142,7 +142,7 @@ struct ConfirmButtons: View {
                     .padding([.leading, .trailing], 30)
                     .background {
                         RoundedRectangle(cornerRadius: 7, style: .continuous)
-                            .foregroundColor(Color.ui.primary)
+                            .foregroundColor(Color.ui.accentColor)
                     }
                     .onTapGesture {
                         dismiss()

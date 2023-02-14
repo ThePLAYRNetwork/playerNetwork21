@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConversationHeaderView: View {
-    @Environment(\.dismiss) private var dismiss
+ //   @Environment(\.dismiss) private var dismiss
     @Binding var showingOptions: Bool
 
     var body: some View {
@@ -16,11 +16,11 @@ struct ConversationHeaderView: View {
         VStack {
             Spacer()
             HStack(spacing: 0) {
-                Button(action: { dismiss() }) {
-                    Image("back_arrow_black")
-                        .padding(.trailing, 28)
-                }
-                .buttonStyle(.plain)
+//                Button(action: { dismiss() }) {
+//                    Image("back_arrow_black")
+//                        .padding(.trailing, 28)
+//                }
+//                .buttonStyle(.plain)
                             
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {

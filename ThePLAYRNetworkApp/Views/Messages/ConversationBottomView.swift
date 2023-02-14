@@ -42,16 +42,22 @@ struct ConversationBottomView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
                             Image("send_document")
+                                .resizable()
+                                .frame(width: 12, height: 16.8)
                             Text("Send a document")
                         }
                         
                         HStack {
                             Image("send_photo")
-                            Text("Send a photo")
+                                .resizable()
+                                .frame(width: 18, height: 13)
+                            Text("Send a photo or video")
                         }
                         
                         HStack {
                             Image("send_gif")
+                                .resizable()
+                                .frame(width: 18, height: 15)
                             Text("Send a GIF")
                         }
                         

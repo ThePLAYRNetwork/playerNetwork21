@@ -10,8 +10,10 @@ import SwiftUI
 struct MessagesView: View {
     @State var text: String = ""
     @State var showNewMessage = false
+  
     
     var body: some View {
+        
         ScrollView {
         VStack {
             HStack {
@@ -27,11 +29,16 @@ struct MessagesView: View {
                         .foregroundColor(.gray)
                       
                 }
-
-                Image(systemName: "ellipsis.circle")
-                    .resizable()
-                    .frame(width: 35, height: 35)
-                    .foregroundColor(.gray)
+         
+                
+                
+                NavigationLink(destination: ConversationView(), label: {
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.gray)
+                })
+          
                     
                 Button {
                     showNewMessage.toggle()

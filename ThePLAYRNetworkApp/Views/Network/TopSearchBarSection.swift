@@ -12,7 +12,7 @@ struct TopSearchBarSection: View {
 
     var body: some View {
         VStack(alignment: .leading){
-            BackButton()
+           // BackButton()
             
             HStack{
                 SearchBar(text: $viewModel.searchText)

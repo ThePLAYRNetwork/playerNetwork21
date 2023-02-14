@@ -9,15 +9,17 @@ import SwiftUI
 
 struct DiscoverView: View {
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                DiscoverTopSection()
-                EventsRow()
-                
+        NavigationView {
+            ScrollView(.vertical) {
+                VStack {
+                    DiscoverTopSection()
+                    EventsRow()
+                    
+                }
             }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
     }
 }
 

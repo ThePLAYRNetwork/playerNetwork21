@@ -15,7 +15,7 @@ struct DiscoverTopSection: View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 HStack {
-                    BackButton()
+                 //   BackButton()
                     
                     Spacer()
                 }

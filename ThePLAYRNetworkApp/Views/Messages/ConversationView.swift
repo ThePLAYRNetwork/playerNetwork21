@@ -11,18 +11,21 @@ struct ConversationView: View {
     @State private var showingOptions = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            ConversationHeaderView(showingOptions: $showingOptions)
+        NavigationView {
+            VStack(spacing: 0) {
+                ConversationHeaderView(showingOptions: $showingOptions)
+                
+                ConversationColumnView()
+                
+                ConversationBottomView()
+            }
+            .sheet(isPresented: $showingOptions) {
+                ConversationMoreOverlay()
+                    .presentationDetents([.fraction(0.35)])
+            }
+          //  .navigationBarBackButtonHidden(true)
             
-            ConversationColumnView()
-            
-            ConversationBottomView()
         }
-        .sheet(isPresented: $showingOptions) {
-            ConversationMoreOverlay()
-                .presentationDetents([.fraction(0.35)])
-        }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -102,6 +102,9 @@
 		CF6D8F2D28EB4D1E00468888 /* SuggestedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */; };
 		CF737FFC29520B6F00363601 /* PlayerProfileOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF737FFB29520B6F00363601 /* PlayerProfileOptions.swift */; };
 		CF79A49328F49CB900D54677 /* SessionItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79A49228F49CB900D54677 /* SessionItemRow.swift */; };
+		CF8205A4299E92850019AE45 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8205A1299E92850019AE45 /* NoteCell.swift */; };
+		CF8205A5299E92850019AE45 /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8205A2299E92850019AE45 /* NewNoteView.swift */; };
+		CF8205A6299E92850019AE45 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8205A3299E92850019AE45 /* NotesView.swift */; };
 		CF832A252923D9FD007AF744 /* CurrentBookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832A242923D9FD007AF744 /* CurrentBookingsView.swift */; };
 		CF832A272923E846007AF744 /* DefenseTrainingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832A262923E846007AF744 /* DefenseTrainingItemView.swift */; };
 		CF832A292923EF97007AF744 /* DefenseTrainingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF832A282923EF97007AF744 /* DefenseTrainingRowView.swift */; };
@@ -250,6 +253,9 @@
 		CF6D8F2A28EB4D1E00468888 /* SuggestedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestedItem.swift; sourceTree = "<group>"; };
 		CF737FFB29520B6F00363601 /* PlayerProfileOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfileOptions.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		CF79A49228F49CB900D54677 /* SessionItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItemRow.swift; sourceTree = "<group>"; };
+		CF8205A1299E92850019AE45 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		CF8205A2299E92850019AE45 /* NewNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
+		CF8205A3299E92850019AE45 /* NotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		CF832A242923D9FD007AF744 /* CurrentBookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBookingsView.swift; sourceTree = "<group>"; };
 		CF832A262923E846007AF744 /* DefenseTrainingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenseTrainingItemView.swift; sourceTree = "<group>"; };
 		CF832A282923EF97007AF744 /* DefenseTrainingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefenseTrainingRowView.swift; sourceTree = "<group>"; };
@@ -370,6 +376,7 @@
 		32862F2A2892526700CDFB3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF8205A0299E92850019AE45 /* Notes */,
 				CF20ABF22948A1CC00897F60 /* CreateaPlayerProfile */,
 				CF2A7E642935514F00C80985 /* Client */,
 				CFA106FD29117D0500EAA40A /* Hub */,
@@ -622,6 +629,16 @@
 			path = ComposeMessage;
 			sourceTree = "<group>";
 		};
+		CF8205A0299E92850019AE45 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				CF8205A1299E92850019AE45 /* NoteCell.swift */,
+				CF8205A2299E92850019AE45 /* NewNoteView.swift */,
+				CF8205A3299E92850019AE45 /* NotesView.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
 		CFA106FD29117D0500EAA40A /* Hub */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +868,7 @@
 				CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */,
 				32862F442892590D00CDFB3B /* UpcomingGameItem.swift in Sources */,
 				CF6B6770296C527600BEC347 /* SpecialistColumn.swift in Sources */,
+				CF8205A5299E92850019AE45 /* NewNoteView.swift in Sources */,
 				CF5FA7A22912C1F900DEE7DB /* HubChartView.swift in Sources */,
 				CFD3C91528E77E5D004B53E7 /* ConversationColumnView.swift in Sources */,
 				32862F462892592C00CDFB3B /* GameDetailView.swift in Sources */,
@@ -878,6 +896,7 @@
 				CF6B6786296C52FA00BEC347 /* CourtView.swift in Sources */,
 				CF90D8B628EF1E8A009BD09D /* SessionItemTrainers.swift in Sources */,
 				CF79A49328F49CB900D54677 /* SessionItemRow.swift in Sources */,
+				CF8205A4299E92850019AE45 /* NoteCell.swift in Sources */,
 				CFB3385128AE92B100610F42 /* TrainingViewModel.swift in Sources */,
 				CF6B676E296C527300BEC347 /* SpecialistCell.swift in Sources */,
 				CF26300C28EB0C9000CAD20D /* TrainersView.swift in Sources */,
@@ -920,6 +939,7 @@
 				CF6B6773296C529D00BEC347 /* GoingCell.swift in Sources */,
 				CF26301928EB0E4100CAD20D /* EventsItem.swift in Sources */,
 				CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */,
+				CF8205A6299E92850019AE45 /* NotesView.swift in Sources */,
 				CF1A19B728BFE8F200D82DC8 /* SearchViewModel.swift in Sources */,
 				CF26301628EB0E4100CAD20D /* DiscoverView.swift in Sources */,
 				CF6B6788296C52FA00BEC347 /* JournalChartTabItem.swift in Sources */,

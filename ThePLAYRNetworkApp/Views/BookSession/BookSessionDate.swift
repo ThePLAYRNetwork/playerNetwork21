@@ -72,13 +72,13 @@ struct BookSessionDate: View {
                         .padding(.leading, 40)
                     
                     Spacer()
-                    NavigationLink(destination: BookSessionReview(session: Session(sessionTitle: ""))) {
-                        Text("Book Training")
-                            .foregroundColor(.white)
-                            .frame(width:143, height:33)
-                            .background(Color("AccentColor"))
-                            .cornerRadius(5)
-                    }
+//                    NavigationLink(destination: BookSessionReview(session: Session(sessionTitle: ""))) {
+//                        Text("Book Training")
+//                            .foregroundColor(.white)
+//                            .frame(width:143, height:33)
+//                            .background(Color("AccentColor"))
+//                            .cornerRadius(5)
+//                    }
                     
                     
                     RoundedRectangle(cornerRadius: 5)

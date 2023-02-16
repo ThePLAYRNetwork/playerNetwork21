@@ -111,7 +111,7 @@ struct ActiveSessionItemView: View {
                 Spacer()
                 
                 NavigationLink {
-                    EditTrainingView()
+//                    EditTrainingView()
                 } label: {
                     Text("Edit")
                         .font(.system(size: 16))

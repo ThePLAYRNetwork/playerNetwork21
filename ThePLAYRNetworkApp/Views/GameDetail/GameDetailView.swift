@@ -28,7 +28,7 @@ struct GameDetailView: View {
                     Divider()
                         .padding(.top, 14)
                     
-                    GameDetailBottomSection(trackingMode: $trackingMode, region: $region, location: location)
+//                    GameDetailBottomSection(trackingMode: $trackingMode, region: $region, location: location)
                         .padding(.top, 4)
                     
                     Spacer()
@@ -37,11 +37,11 @@ struct GameDetailView: View {
             .background(Color.ui.whiteBg)
           //  .navigationBarBackButtonHidden(true)
             .edgesIgnoringSafeArea(.top)
-            .onAppear {
-                self.region = MKCoordinateRegion(
-                    center: self.location.coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-            }
+//            .onAppear {
+//                self.region = MKCoordinateRegion(
+//                    center: self.location.coordinate,
+//                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+//            }
    //    }
 
     }

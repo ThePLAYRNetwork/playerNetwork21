@@ -8,6 +8,13 @@
 import SwiftUI
 import FirebaseCore
 
+enum Tab {
+  case home
+  case calendar
+  case create
+  case inbox
+  case profile
+}
 
 @main
 struct ThePLAYRNetworkApp: App {

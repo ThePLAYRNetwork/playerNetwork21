@@ -18,7 +18,7 @@ struct NewNoteView: View {
         VStack {
             Text(note.createdAt.formatted(date: .abbreviated, time: .shortened))
                 .font(.system(size: 12))
-                .foregroundColor(Color.ui.subheading_text)
+                .foregroundColor(Color.ui.gray959595)
             
             TextEditor(text: $note.text)
 

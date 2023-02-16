@@ -14,6 +14,7 @@ struct CalendarView: View {
                 
                 
                 CalendarTrainerView(interval: DateInterval(start: .distantPast, end: .distantFuture))
+
                 Divider()
                 ForEach(0..<5) { _ in
                     EventItem()

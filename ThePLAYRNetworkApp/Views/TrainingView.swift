@@ -10,11 +10,23 @@ import SwiftUI
 struct TrainingView: View {
     // @EnvironmentObject var trainingViewModel: TrainingViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
-    
-    
+    @State var searchText: String = ""
     
     var body: some View {
         ScrollView {
+            BackButton()
+                .padding()
+            
+            HStack {
+                SearchBar(text: $searchText)
+                
+                NavigationLink("Trainer Hub") {
+                    TrainerHubView()
+                }
+                .font(.system(size: 14))
+                .buttonStyle(CustomButton(color: .red, size: .small))
+            }
+            .padding(.horizontal)
             
             VStack(alignment: .leading) {
                 //Nearby
@@ -26,7 +38,11 @@ struct TrainingView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(0 ... 2, id: \.self) { item in
-                            NearbySessionsItem()
+                            NavigationLink {
+                                SessionView(session: Session(sessionTitle: ""))
+                            } label: {
+                                NearbySessionsItem()
+                            }
                         }
                     }
                 }
@@ -40,7 +56,11 @@ struct TrainingView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(0 ... 2, id: \.self) { item in
-                            RecommendedItem() 
+                            NavigationLink {
+                                SessionView(session: Session(sessionTitle: ""))
+                            } label: {
+                                RecommendedItem()
+                            }
                         }
                     }
                 }
@@ -52,6 +72,7 @@ struct TrainingView: View {
                 
                 
                 HStack {
+
                     RoundedRectangle(cornerRadius: 4)
                         .foregroundColor(Color.ui.accentColor)
                         .aspectRatio(1.0, contentMode: .fit)
@@ -71,7 +92,30 @@ struct TrainingView: View {
                                 }
                             }
                         )
+
                     
+                    NavigationLink {
+                        SpecialistView()
+                    } label: {
+                        RoundedRectangle(cornerRadius: 4)
+                            .aspectRatio(1.0, contentMode: .fit)
+                            .overlay(
+                                VStack {
+                                    Image("ball")
+                                        .resizable()
+                                        .frame(width: 45, height: 45)
+                                        .padding(.top, 10)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Skills")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 16, weight: .bold))
+                                            .offset(x: -15)
+                                    }
+                                }
+                            )
+                    }
+
                     
                     RoundedRectangle(cornerRadius: 4)
                         .foregroundColor(Color.ui.accentColor)
@@ -148,25 +192,31 @@ struct TrainingView: View {
                 
                 
                 HStack {
-                    RoundedRectangle(cornerRadius: 4)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .overlay(
-                            GeometryReader { geometry in
-                                Image("joseph")
-                                    .resizable()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                                    .opacity(0.6)
-                                
-                                
-                            } .overlay(
-                                Text("Joseph")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .bold))
-                                    .offset(x: -10, y: +30)
+                    NavigationLink {
+                        TrainersView()
+                    } label: {
+                        RoundedRectangle(cornerRadius: 4)
+                            .aspectRatio(1.0, contentMode: .fit)
+                            .overlay(
+                                GeometryReader { geometry in
+                                    Image("joseph")
+                                        .resizable()
+                                        .frame(width: geometry.size.width, height: geometry.size.height)
+                                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                                        .opacity(0.6)
+                                    
+                                    
+                                } .overlay(
+                                    Text("Joseph")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 16, weight: .bold))
+                                        .offset(x: -10, y: +30)
+                                )
                             )
-                        )
-                    
+
+                    }
+                    .buttonStyle(.plain)
+
                     RoundedRectangle(cornerRadius: 4)
                         .aspectRatio(1.0, contentMode: .fit)
                         .overlay(
@@ -227,6 +277,7 @@ struct TrainingView: View {
             .padding(.horizontal)
             
         }
+        .navigationBarBackButtonHidden(true)
         
     }
 }

@@ -9,14 +9,6 @@ import SwiftUI
 import FirebaseCore
 
 
-enum Tab {
-    case home
-    case calendar
-    case create
-    case inbox
-    case profile
-}
-
 @main
 struct ThePLAYRNetworkApp: App {
     @StateObject private var authViewModel = AuthViewModel()
@@ -25,12 +17,10 @@ struct ThePLAYRNetworkApp: App {
     @State var selectedDay: Int = 4
     @State private var selection: Tab = .home
     
-    
     init() {
         FirebaseApp.configure()
     }
-    @State private var text = ""
-    
+            
     var body: some Scene {
         WindowGroup {
             
@@ -116,12 +106,12 @@ struct ThePLAYRNetworkApp: App {
                     
                 }
             }
-            
             .environmentObject(authViewModel)
             .environmentObject(homeViewModel)
         }
     }
 }
+
 
 
 extension Color {
@@ -179,13 +169,12 @@ extension Color {
         
         
         let scroll_wheel = Color("scroll_wheel")
-        
-        
+
         //white
         let white = Color("white")
         let whiteBg = Color("white_bg")
         let whiteWhite = Color("whiteWhite")
         
-        
+
     }
 }

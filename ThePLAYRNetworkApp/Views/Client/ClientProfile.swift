@@ -12,6 +12,9 @@ struct ClientProfile: View {
     var body: some View {
         ScrollView {
             VStack {
+                BackButton()
+                    .padding()
+                
                 ClientProfileTopView()
                 VStack(alignment: .leading) {
                     HStack{
@@ -28,10 +31,8 @@ struct ClientProfile: View {
                         }
                         
                         
-                        
-                        Button {
-                            
-                            
+                        NavigationLink {
+                            ConversationView()
                         } label: {
                             Text("Message")
                                 .font(.system(size: 16))
@@ -49,6 +50,7 @@ struct ClientProfile: View {
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

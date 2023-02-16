@@ -9,9 +9,9 @@ import SwiftUI
 import MapKit
 
 struct GameDetailBottomSection: View {
-    @Binding var trackingMode: MapUserTrackingMode
-    @Binding var region: MKCoordinateRegion
-    let location: Location
+//    @Binding var trackingMode: MapUserTrackingMode
+//    @Binding var region: MKCoordinateRegion
+//    let location: Location
 
     
     var body: some View {
@@ -25,13 +25,19 @@ struct GameDetailBottomSection: View {
                 .font(.footnote)
                 .padding(.top, 10)
             
-            Map(coordinateRegion: $region,
-                showsUserLocation: true,
-                userTrackingMode: $trackingMode,
-                annotationItems: [location]) { location in
-                MapMarker(coordinate: location.coordinate)
-            }
-                .cornerRadius(7)
+//            Map(coordinateRegion: $region,
+//                showsUserLocation: true,
+//                userTrackingMode: $trackingMode,
+//                annotationItems: [location]) { location in
+//                MapMarker(coordinate: location.coordinate)
+//            }
+//                .cornerRadius(7)
+//                .frame(height: 125)
+//                .padding(.top, 20)
+//
+            
+            RoundedRectangle(cornerRadius: 7)
+                .fill(Color.ui.subheading_text)
                 .frame(height: 125)
                 .padding(.top, 20)
             
@@ -48,6 +54,6 @@ struct GameDetailBottomSection: View {
 
 struct GameDetailBottomSection_Previews: PreviewProvider {
     static var previews: some View {
-        GameDetailBottomSection(trackingMode: .constant(.follow), region: .constant(MKCoordinateRegion()), location: Location())
+        GameDetailBottomSection()
     }
 }

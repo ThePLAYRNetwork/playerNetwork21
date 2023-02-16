@@ -15,6 +15,8 @@ struct ClientManagementView: View {
         ScrollView {
             
             VStack(alignment: .leading) {
+                BackButton()
+                
                 Group {
                     Text("Client Management")
                         .font(.system(size: 24,weight: .bold))
@@ -85,6 +87,7 @@ struct ClientManagementView: View {
             
             
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

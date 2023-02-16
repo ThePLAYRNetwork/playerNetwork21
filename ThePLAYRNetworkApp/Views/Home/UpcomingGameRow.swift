@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct UpcomingGameRow: View {
+    @EnvironmentObject var homeViewModel: HomeViewModel
     var categoryName: String
     var items: [Game]
     
@@ -25,15 +26,16 @@ struct UpcomingGameRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 15) { // could use reg
                     ForEach(items, id: \.id) { game in
-                        NavigationLink {
-                            GameDetailView(
-                                game: game,
-                                location: Location(
-                                    name: game.title,
-                                    coordinate: CLLocationCoordinate2D(
-                    latitude: game.latitude, longitude: game.longitude))
-                            )
-                        } label: {
+                        
+                        // Old navigation, inefficient. It creates the game detail view for each item.
+//                        NavigationLink {
+//                            GameDetailView(game: game)
+//                        } label: {
+//                            UpcomingGameItem(game: game)
+//                        }
+                        
+                        // New navigaiton way
+                        NavigationLink(value: game) {
                             UpcomingGameItem(game: game)
                         }
                     }

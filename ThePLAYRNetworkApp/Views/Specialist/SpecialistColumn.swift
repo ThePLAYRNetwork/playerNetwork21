@@ -13,7 +13,13 @@ struct SpecialistColumn: View {
         ScrollView(.vertical) {
             LazyVStack(spacing: 20) {
                 ForEach(data) { specialist in
-                    SpecialistCell(specialist: specialist)
+                    NavigationLink {
+                        SessionView(session: Session(sessionTitle: ""))
+                    } label: {
+                        SpecialistCell(specialist: specialist)
+                    }
+                    .buttonStyle(.plain)
+
                 }
             }
             .padding()

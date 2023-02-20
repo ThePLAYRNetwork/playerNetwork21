@@ -23,8 +23,6 @@ struct CreateSessionView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 20) {
-                BackButton()
-                
                 Text("Create Training")
                     .font(.system(size: 24))
                     .bold()
@@ -162,7 +160,6 @@ struct CreateSessionView: View {
             }
             .padding()
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

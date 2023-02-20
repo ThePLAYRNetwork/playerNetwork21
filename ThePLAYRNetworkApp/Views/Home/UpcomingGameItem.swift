@@ -19,19 +19,19 @@ struct UpcomingGameItem: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(game.startDate)
+                        Text(game.getStartMonthDay())
                             .font(.system(size: 20))
-                            .bold()
+                            .fontWeight(.heavy)
                         
-                        Text("\(game.startTime) - \(game.endTime)")
+                        Text(game.formattedStartEndTime())
                             .fontWeight(.semibold)
                         
                         Spacer()
                         
                         Text(game.title)
-                            .fontWeight(.bold)
-                        
-                        Text(game.location)
+                            .fontWeight(.heavy)
+
+                        Text(game.place)
                             .fontWeight(.semibold)
                     }
                     .font(.system(size: 16))
@@ -56,7 +56,7 @@ struct UpcomingGameItem: View {
                 .frame(width: 295, height: 77)
                 .background {
                     Rectangle()
-                        .foregroundColor(Color.ui.grayF6F6F6)
+                        .foregroundColor(.white)
                 }
             }
         }

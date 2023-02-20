@@ -12,14 +12,13 @@ struct GameDetailTopSection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(game.title)
-                .bold()
-                .font(.system(size: 24))
+                .font(.system(size: 24, weight: .semibold))
             
-            Text("Wed \(game.startDate) at \(game.startTime) - \(game.endTime)")
+            Text(game.formattedDetailsTime())
                 .padding(.top, 2)
                 .font(.system(size: 16, weight: .medium))
             
-            Text(game.location)
+            Text(game.place)
                 .padding(.top, 4)
                 .font(.system(size: 16, weight: .medium))
             
@@ -40,29 +39,24 @@ struct GameDetailTopSection: View {
                 VStack(alignment: .leading) {
                     PlayerAttendingCirclesSmall()
                 }
-          
-                    NavigationLink(destination: GoingView()) {
-                        Text("Show".uppercased())
-                            .font(.system(size: 12))
-                            .foregroundColor(Color.ui.accentColor)
-                    }
-                    
+                
+                NavigationLink(destination: GoingView()) {
+                    Text("Show".uppercased())
+                        .font(.system(size: 12))
+                }
                 
                 Spacer()
                 
                 Button(action: {}) {
                     Text("Join Game")
-                        .foregroundColor(Color.ui.white)
                         .bold()
                 }
                 .buttonStyle(CustomButton(color: .red, size: .small))
                 
-                
                 Button(action: {}) {
                     Image("share_button")
-                       .resizable()
-                       .frame(width: 33, height: 33)
-                
+                        .resizable()
+                        .frame(width: 33, height: 33)
                 }
             }
             .padding(.top, 8)

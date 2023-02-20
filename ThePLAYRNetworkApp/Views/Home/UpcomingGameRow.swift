@@ -27,17 +27,17 @@ struct UpcomingGameRow: View {
                 HStack(alignment: .top, spacing: 15) { // could use reg
                     ForEach(items, id: \.id) { game in
                         
-                        // Old navigation, inefficient. It creates the game detail view for each item.
-//                        NavigationLink {
-//                            GameDetailView(game: game)
-//                        } label: {
-//                            UpcomingGameItem(game: game)
-//                        }
-                        
-                        // New navigaiton way
-                        NavigationLink(value: game) {
+                        // Old navigation
+                        NavigationLink {
+                            GameDetailView(game: game)
+                        } label: {
                             UpcomingGameItem(game: game)
                         }
+                        
+//                        // New navigaiton way
+//                        NavigationLink(value: game) {
+//                            UpcomingGameItem(game: game)
+//                        }
                     }
                 }
                 .padding([.leading, .trailing], 20)

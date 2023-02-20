@@ -14,9 +14,6 @@ struct TrainingView: View {
     
     var body: some View {
         ScrollView {
-            BackButton()
-                .padding()
-            
             HStack {
                 SearchBar(text: $searchText)
                 
@@ -276,9 +273,7 @@ struct TrainingView: View {
             }
             .padding(.horizontal)
             
-        }
-        .navigationBarBackButtonHidden(true)
-        
+        }        
     }
 }
 

@@ -22,9 +22,6 @@ struct NotesView: View {
     
     var body: some View {
         VStack {
-            BackButton()
-                .padding(.bottom)
-            
             HStack {
                 SearchBar(text: $text)
                 
@@ -60,7 +57,6 @@ struct NotesView: View {
             
         }
         .padding()
-        .navigationBarBackButtonHidden(true)
     }
 }
 

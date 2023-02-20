@@ -22,38 +22,7 @@ class CreateViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var mapView = MKMapView()
     private let db = Firestore.firestore()
-    
-    func createGame(game: Game) {
-        guard let userID = Auth.auth().currentUser?.uid else {
-            return
-        }
-        // Create geo hash
-        let location = CLLocationCoordinate2D(latitude: region.center.latitude, longitude: region.center.longitude)
-        let hash = GFUtils.geoHash(forLocation: location) // ex. "7zzzzzz"
-        print("hash: \(hash)")
-        // Update game object
-        var gameToAdd = game
-        gameToAdd.creatorID = userID
-        gameToAdd.playerIDs.append(userID)
-        gameToAdd.latitude = self.region.center.latitude
-        gameToAdd.longitude = self.region.center.longitude
-        gameToAdd.geohash = hash
-        
-        // Add game document to firebase
-        // create doc ref beforehand to store unique id inside game document field
-        let ref = db.collection("games").document()
-        gameToAdd.id = ref.documentID
-        
-        do {
-            try db.collection("games")
-                .document(ref.documentID)
-                .setData(from: gameToAdd)
-            print("Successfully created game")
-        } catch {
-            print(error)
-        }
-    }
-    
+
     func checkIfLocationServicesIsEnabled() {
         // 1. Check if user enabled locations
         if CLLocationManager.locationServicesEnabled() {
@@ -106,4 +75,8 @@ class CreateViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             break
         }
     }
+}
+
+extension CreateViewModel {
+    
 }

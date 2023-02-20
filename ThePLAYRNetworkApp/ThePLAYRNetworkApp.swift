@@ -19,13 +19,16 @@ enum Tab {
 @main
 struct ThePLAYRNetworkApp: App {
     @StateObject private var authViewModel = AuthViewModel()
-    @StateObject private var homeViewModel = HomeViewModel()
+    @StateObject private var homeViewModel: HomeViewModel
     @StateObject private var createViewModel = CreateViewModel()
     @State var selectedDay: Int = 4
     @State private var selection: Tab = .home
     
     init() {
         FirebaseApp.configure()
+        
+        let gameRepository = GameRepository()
+        self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository))
     }
             
     var body: some Scene {

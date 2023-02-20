@@ -9,41 +9,35 @@
 import SwiftUI
 import MapKit
 
-// note: 10 views max per container -> use Group{}
 struct GameDetailView: View {
     @State private var region = MKCoordinateRegion()
     @State var trackingMode = MapUserTrackingMode.follow
     let game: Game
     
     var body: some View {
-
-      //  NavigationView {
-            ScrollView {
-                VStack(spacing: 0) {
-                    GameDetailBackground()
-                    
-                    GameDetailTopSection(game: game)
-                        .padding(.top, 14)
-                    
-                    Divider()
-                        .padding(.top, 14)
-                    
-//                    GameDetailBottomSection(trackingMode: $trackingMode, region: $region, location: location)
-                        .padding(.top, 4)
-                    
-                    Spacer()
-                }
+        ScrollView {
+            VStack(spacing: 0) {
+                GameDetailBackground()
+                
+                GameDetailTopSection(game: game)
+                    .padding(.top, 14)
+                
+                Divider()
+                    .padding(.top, 14)
+                
+                GameDetailBottomSection()
+                    .padding(.top, 4)
+                
+                Spacer()
             }
-            .background(Color.ui.whiteBg)
-          //  .navigationBarBackButtonHidden(true)
-            .edgesIgnoringSafeArea(.top)
-//            .onAppear {
-//                self.region = MKCoordinateRegion(
-//                    center: self.location.coordinate,
-//                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-//            }
-   //    }
-
+        }
+//        .navigationBarBackButtonHidden(true)
+        .edgesIgnoringSafeArea(.top)
+//        .onAppear {
+//            self.region = MKCoordinateRegion(
+//                center: self.location.coordinate,
+//                span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+//        }
     }
 }
 
@@ -62,11 +56,11 @@ struct GameDetailBackground: View {
             .resizable()
             .opacity(0.65)
             .scaledToFit()
-//            .overlay(alignment: .topLeading) {
+            .overlay(alignment: .topLeading) {
 //                BackButton()
 //                    .padding()
 //                    .padding(.top, 45)
-//            }
+            }
         
     }
 }

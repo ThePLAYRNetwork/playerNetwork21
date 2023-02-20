@@ -19,6 +19,8 @@ struct TopBar: View {
                 Spacer()
                 HStack {
                     Image("pin")
+                        .resizable()
+                        .frame(width: 12, height: 16)
                     Text("UC San Diego")
                         .font(.system(size: 12))
                         .fontWeight(.semibold)

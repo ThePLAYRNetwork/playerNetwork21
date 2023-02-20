@@ -24,7 +24,6 @@ struct SpecialistView: View {
             VStack(spacing: 0) {
                 VStack {
                     VStack(alignment: .leading) {
-                        BackButton()
                         
                         Text("Weight Specialists")
                             .font(.system(size: 24, weight: .bold))
@@ -43,7 +42,6 @@ struct SpecialistView: View {
 //                    .border(.red)
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

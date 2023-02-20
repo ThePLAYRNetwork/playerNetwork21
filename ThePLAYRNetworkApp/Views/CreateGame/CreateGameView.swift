@@ -145,7 +145,6 @@ struct CreateGameView: View {
                 .padding()
             }
         }
-        .background(Color.ui.whiteBg)
     }
 }
 
@@ -195,12 +194,6 @@ struct CoverImageRow: View {
     }
 }
 
-enum PlayerLevel: String {
-    case recreation
-    case competitive
-    case elite
-}
-
 // Could use picker instead
 struct PlayerLevelRow: View {
     @Binding var selection: PlayerLevel
@@ -218,6 +211,7 @@ struct PlayerLevelRow: View {
                                 .foregroundColor(selection == .recreation ? Color.white : .gray)
                         }
                         .foregroundColor(selection == .recreation ? Color.ui.accent : Color.ui.grayD9D9D9)
+
                 }
                 .disabled(selection == .recreation)
                 
@@ -258,7 +252,7 @@ struct GameOptions: View {
                 .overlay {
                     HStack {
                         Text("Indoor")
-                            .foregroundColor(Color.ui.black)
+                            .foregroundColor(.black)
                         Spacer()
                         Toggle("Indoor", isOn: $game.isIndoor)
                             .labelsHidden()
@@ -273,9 +267,9 @@ struct GameOptions: View {
                 .overlay {
                     HStack {
                         Text("Spectators Allowed")
-                            .foregroundColor(Color.ui.black)
+                            .foregroundColor(.black)
                         Spacer()
-                        Toggle("Spectators Allowed", isOn: $game.spectatorsAllowed)
+                        Toggle("Spectators Allowed", isOn: $game.isSpectatorAllowed)
                             .labelsHidden()
                             .tint(Color.ui.accent)
 
@@ -288,10 +282,10 @@ struct GameOptions: View {
                 .frame(height: 40)
                 .overlay {
                     HStack {
-                        Text("Private Game")
-                            .foregroundColor(Color.ui.black)
+                        Text("Public Game")
+                            .foregroundColor(.black)
                         Spacer()
-                        Toggle("Private Game", isOn: $game.isPublic)
+                        Toggle("Public Game", isOn: $game.isPrivateGame)
                             .labelsHidden()
                             .tint(Color.ui.accent)
                     }
@@ -305,7 +299,7 @@ struct GameOptions: View {
                     .overlay {
                         HStack {
                             Text("Invite Players")
-                                .foregroundColor(Color.ui.black)
+                                .foregroundColor(.black)
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
@@ -334,17 +328,17 @@ struct CreateButton: View {
                             .padding([.horizontal], 15)
                             .background {
                                 RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .foregroundColor(Color.ui.accentColor)
+                                    .foregroundColor(Color("red"))
                             }
                     }
             }
-            .disabled(validateInput(game: createViewModel.game))
-            .opacity(validateInput(game: createViewModel.game) ? 0.5 : 1.0)
+//            .disabled(validateInput(game: createViewModel.game))
+//            .opacity(validateInput(game: createViewModel.game) ? 0.5 : 1.0)
         }
     }
     
     // Return True if user input is invalid
-    private func validateInput(game: Game) -> Bool {
-        return game.title.isEmpty || game.location.isEmpty || game.startDate.isEmpty || game.startTime.isEmpty || game.endTime.isEmpty || game.capacity.isEmpty || game.description.isEmpty
-    }
+//    private func validateInput(game: Game) -> Bool {
+//        return game.title.isEmpty || game.location.isEmpty || game.startDate.isEmpty || game.startTime.isEmpty || game.endTime.isEmpty || game.capacity.isEmpty || game.description.isEmpty
+//    }
 }

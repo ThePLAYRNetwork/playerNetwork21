@@ -13,7 +13,6 @@ struct GameDetailBottomSection: View {
 //    @Binding var region: MKCoordinateRegion
 //    let location: Location
 
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Game Details").font(.system(size: 20)).bold()

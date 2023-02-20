@@ -11,8 +11,6 @@ struct TrainersView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
-                BackButton()
-                
                 TrainerProfile()
                     .padding(.top)
 
@@ -103,7 +101,6 @@ struct TrainersView: View {
               .padding(.horizontal, 5)
             
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

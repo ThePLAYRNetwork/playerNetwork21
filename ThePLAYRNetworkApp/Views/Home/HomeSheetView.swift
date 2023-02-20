@@ -68,6 +68,6 @@ struct HomeSheetView: View {
 struct HomeSheetView_Previews: PreviewProvider {
     static var previews: some View {
         HomeSheetView()
-            .environmentObject(HomeViewModel())
+            .environmentObject(HomeViewModel(gameRepository: GameRepository()))
     }
 }

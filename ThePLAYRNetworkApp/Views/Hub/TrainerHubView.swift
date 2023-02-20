@@ -13,8 +13,6 @@ struct TrainerHubView: View {
     
     var body: some View {
         ScrollView {
-            BackButton()
-            
             Text("Trainer Hub")
                 .font(.system(size: 24))
                 .fontWeight(.semibold)
@@ -146,7 +144,6 @@ struct TrainerHubView: View {
                     )
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

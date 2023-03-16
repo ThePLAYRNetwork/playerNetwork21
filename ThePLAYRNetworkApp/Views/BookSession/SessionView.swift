@@ -26,7 +26,7 @@ struct SessionView: View {
                 
                 
                 
-                SessionInfo(session: Session(sessionTitle: ""))
+                SessionInfo(session: Session.sampleSessions[0])
                 
                 ScrollView {
                     Text("Description of session from the coach. Could include info like: personal words and advertising of the session, what customers will get out of the session, any equipment they need to bring, cancellation policies, etc.")
@@ -72,7 +72,7 @@ struct BookTrainingButton: View {
                 .padding(.leading, 40)
             
             Spacer()
-            NavigationLink(destination: BookSessionDate(session: Session(sessionTitle: ""))) {
+            NavigationLink(destination: BookSessionDate(session: Session.sampleSessions[0])) {
                 Text("Book Training")
                     .foregroundColor(.white)
                     .frame(width:143, height:33)
@@ -124,7 +124,7 @@ struct SessionInfo: View {
                     .frame(width: 2, height: 2)
                     .foregroundColor(.black)
                 
-                Text("$\(session.sessionPrice)")
+                Text("$\(session.price)")
                     .font(.system(size: 16))
                 
                 

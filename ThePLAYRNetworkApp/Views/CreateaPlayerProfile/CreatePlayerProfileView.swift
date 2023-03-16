@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct CreatePlayerProfileView: View {
-    @State var firstName: String
-    @State var lastName: String
-    @State var email: String
-    
-    
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    @State var user = User()
     
     var body: some View {
         VStack {
@@ -26,7 +23,7 @@ struct CreatePlayerProfileView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top, 60)
-                
+
                 VStack(alignment: .center) {
                     Circle()
                         .foregroundColor(Color.ui.grayD9D9D9)
@@ -53,7 +50,7 @@ struct CreatePlayerProfileView: View {
                         .foregroundColor(.black)
                     
                     TextField(
-                        "John", text: $firstName
+                        "John", text: $user.firstName
                     )
                     .padding()
                     .frame(width:184, height: 50)
@@ -68,7 +65,7 @@ struct CreatePlayerProfileView: View {
                         .foregroundColor(.black)
                     
                     TextField(
-                        "Doe", text: $lastName
+                        "Doe", text: $user.lastName
                     )
                     .padding()
                     .frame(width:184, height: 50)
@@ -87,7 +84,7 @@ struct CreatePlayerProfileView: View {
                     .foregroundColor(.black)
                 
                 TextField(
-                    "example@gmail.com", text: $email
+                    "example@gmail.com", text: $user.email
                 )
                 .padding()
                 .frame(width:378, height: 50)
@@ -99,7 +96,7 @@ struct CreatePlayerProfileView: View {
             
             Spacer()
             
-            NavigationLink(destination: CreatePlayerProfile16(phoneNumber: "", password: "", confirmPassword: "")) {
+            NavigationLink(destination: CreatePlayerProfile16(user: $user)) {
                 Text("Continue")
                     .foregroundColor(.white)
                     .frame(width:226, height: 48)
@@ -111,11 +108,12 @@ struct CreatePlayerProfileView: View {
 
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct CreatePlayerProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatePlayerProfileView(firstName: "", lastName: "", email: "")
+        CreatePlayerProfileView(user: User.sampleUsers[0])
     }
 }

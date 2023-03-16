@@ -6,122 +6,129 @@
 //
 
 import SwiftUI
-import FirebaseCore
+import CloudKit
+//import FirebaseCore
 
 enum Tab {
-  case home
-  case calendar
-  case create
-  case inbox
-  case profile
+    case home
+    case calendar
+    case create
+    case inbox
+    case profile
 }
 
 @main
 struct ThePLAYRNetworkApp: App {
-    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var ckUserViewModel: CloudKitUserViewModel
     @StateObject private var homeViewModel: HomeViewModel
     @StateObject private var createViewModel = CreateViewModel()
-    @State var selectedDay: Int = 4
+    @StateObject private var navigationModel = NavigationModel()
+    
+//    @State var selectedDay: Int = 4
     @State private var selection: Tab = .home
     
     init() {
-        FirebaseApp.configure()
-        
         let gameRepository = GameRepository()
+        let userRepository = UserRepository()
         self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository))
+        self._ckUserViewModel = StateObject(wrappedValue: CloudKitUserViewModel(userRepository: userRepository))
     }
-            
+    
     var body: some Scene {
         WindowGroup {
-            
-            Group {
-              
-                // If user is loggedin, show main app, else show login screen
-                if authViewModel.isLoggedIn {
-
-                        TabView(selection: $authViewModel.selection) {
-
-                            NavigationView {
-                                HomeView()
-                                    .onAppear() {
-                                        // Ask user for permission to use location
-                                        homeViewModel.checkIfLocationServicesIsEnabled()
-                                    }
-                            }
-                            .tabItem {
-                                // Label("", systemImage: "house")
-                                Image("home")
-
-                            }
-                            .tag(Tab.home)
-
-
-                            NavigationView{
-                                CalendarView()
-                                    .background(Color.ui.whiteBg)
-                            }
-                            .tabItem {
-                                //Label("Calendar", systemImage: "calendar.badge.clock")
-                                Image("ReCalendar")
-
-
-                            }
-                            .tag(Tab.calendar)
-
-
-
-
-                            NavigationView {
-                                CreateGameView()
-                                    .environmentObject(createViewModel)
-                            }
-                            .padding(.top, 20)
-
-                            .tabItem {
-                                //  Label("Create a Game", systemImage: "plus.circle.fill")
-                                Image("RePlus")
-                            }
-                            .tag(Tab.create)
-                            .onDisappear {
-                                print("Calling onDisappear()")
-                                createViewModel.game = Game() // reset user input
-                            }
-
-
-                            NavigationView {
-                                MessagesView()
-                                    .background(Color.ui.whiteBg)
-                            }
-                            .tabItem {
-                                // Label("Message", systemImage: "message")
-                                Image("ReMsg")
-                            }
-                            .tag(Tab.inbox)
-
-                            NavigationView {
-                                ProfileView()
-                            }
-                            .tabItem {
-                                // Label("Profile", systemImage: "person.crop.circle")
-                                Image("profile")
-                            }
-                            .tag(Tab.profile)
-                        }
- 
+            NavigationStack(path: $navigationModel.path) {
+                if ckUserViewModel.isSignedInToiCloud {
+                    // User does not have profile, show signup view
+                    if ckUserViewModel.user == nil {
+                        OnboardingView()
                     } else {
-                        NavigationView {
-                            LoginView()
-                        }
-                   
-                    
+                        // User has ThePlayrNetworkAccount profile
+                        ThePlayrNetworkView()
+                    }
+                } else {
+                    Text("Please sign into iCloud Account")
                 }
             }
-            .environmentObject(authViewModel)
+            .environmentObject(navigationModel)
+            .environmentObject(ckUserViewModel)
             .environmentObject(homeViewModel)
+            .environmentObject(createViewModel)
+
+
+            
+            
+//            TabView {
+//                NavigationView {
+//                    HomeView()
+//                        .onAppear() {
+//                            // Ask user for permission to use location
+//                            homeViewModel.checkIfLocationServicesIsEnabled()
+//                        }
+//                }
+//                .tabItem {
+//                    // Label("", systemImage: "house")
+//                    Image("home")
+//
+//                }
+//                .tag(Tab.home)
+//
+//
+//                NavigationView{
+//                    CalendarView()
+//                        .background(Color.ui.whiteBg)
+//                }
+//                .tabItem {
+//                    //Label("Calendar", systemImage: "calendar.badge.clock")
+//                    Image("ReCalendar")
+//
+//
+//                }
+//                .tag(Tab.calendar)
+//
+//
+//
+//
+//                NavigationView {
+//                    CreateGameView()
+//                        .environmentObject(createViewModel)
+//                }
+//                .padding(.top, 20)
+//
+//                .tabItem {
+//                    //  Label("Create a Game", systemImage: "plus.circle.fill")
+//                    Image("RePlus")
+//                }
+//                .tag(Tab.create)
+//                .onDisappear {
+//                    print("Calling onDisappear()")
+//                    createViewModel.game = Game.sampleGames[0] // reset user input
+//                }
+//
+//
+//                NavigationView {
+//                    MessagesView()
+//                        .background(Color.ui.whiteBg)
+//                }
+//                .tabItem {
+//                    // Label("Message", systemImage: "message")
+//                    Image("ReMsg")
+//                }
+//                .tag(Tab.inbox)
+//
+//                NavigationView {
+//                    ProfileView()
+//                }
+//                .tabItem {
+//                    // Label("Profile", systemImage: "person.crop.circle")
+//                    Image("profile")
+//                }
+//                .tag(Tab.profile)
+//            }
+//            .environmentObject(homeViewModel)
         }
+        
     }
 }
-
 
 
 extension Color {
@@ -179,12 +186,12 @@ extension Color {
         
         
         let scroll_wheel = Color("scroll_wheel")
-
+        
         //white
         let white = Color("white")
         let whiteBg = Color("white_bg")
         let whiteWhite = Color("whiteWhite")
         
-
+        
     }
 }

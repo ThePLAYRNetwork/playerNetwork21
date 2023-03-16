@@ -6,22 +6,35 @@
 //
 
 import Foundation
+import CloudKit
 
-struct Post: Codable {
-    var id: String
+struct Post {
+    var recordName: String
     var message: String
-    
-    init(id: String = "", message: String = "") {
-        self.id = id
-        self.message = message
-    }
+    var userID: CKRecord.Reference
+    var createdAt: Date
+    var likes: Int
+    var isLiked: Bool
 }
 
+
+
 extension Post {
-    static let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    struct Comments {
+        var recordName: String
+        var message: String
+        var postID: CKRecord.Reference
+        var userID: CKRecord.Reference
+        var createdAt: Date
+    }
+
+    struct Likes {
+        var recordName: String
+        var postID: CKRecord.Reference
+        var userID: CKRecord.Reference
+    }
     
     static let samplePosts: [Post] = [
-        Post(id: "1", message: text),
-        Post(id: "2", message: text)
+        Post(recordName: "", message: "", userID: CKRecord.Reference(record: CKRecord(recordType: "Dummy"), action: .none), createdAt: Date(), likes: 0, isLiked: true)
     ]
 }

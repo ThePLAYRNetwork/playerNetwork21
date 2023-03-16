@@ -8,42 +8,46 @@
 import SwiftUI
 
 struct PlayerProfileOptions: View {
-
+    
+    @Binding var user: User
+    
     @State var showOptions: Bool = false
     
     var height = ["4’0\"", "4’1\"","4’2\"","4’3\"","4’4\"","4’5\"","4’6\"","4’7\"","4’8\"","4’9\"","4’10\"","4’11\"","5’0\"",
                   "5’1\"","5’2\"","5’3\"","5’4\"","5’5\"","5’6\"","5’7\"","5’8\"","5’9\"","5’10\"","5’11\"","6’0\"",
                   "6’1\"","6’2\"","6’3\"","6’4\"","6’5\"","6’6\"","6’7\"","6’8\"","6’9\"","6’10\"","6’11\"","7’0\"",
                   "7’1\"","7’2\"","7’3\"","7’4\"","7’5\"","7’6\"","7’7\"","7’8\"","7’9\"","7’10\"","7’11\"","8’0\""]
-    @State var selectedHeight = "6’0\""
+//    @State var selectedHeight = "6’0\""
     
 
     var weight = 80...360
-    @State var selectedWeight = 80
+//    @State var selectedWeight = 80
     
     
     
     var age = 8...70
-    @State var selectedAge = 18
+//    @State var selectedAge = 18
     
     
     var highestLevel = ["High School", "College", "Professional"]
-    @State var selectedHighestLevel = "High School"
+//    @State var selectedHighestLevel = "High School"
     
     var skillLevel = ["Recreation", "Competitive", "Elite"]
-    @State var selectedSkill = "Elite"
+//    @State var selectedSkill = "Elite"
 
     
     var school = ["University of California, San Diego"]
-    @State var selectedSchool = "University of California, San Diego"
+//    @State var selectedSchool = "University of California, San Diego"
     
     
     
     
-    init() {
+    init(user: Binding<User>) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 246, green: 246, blue: 246, alpha: 1)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.black) ], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.gray)], for: .normal)
+        
+        self._user = user
     }
     
     
@@ -58,7 +62,7 @@ struct PlayerProfileOptions: View {
                     
           
                     Menu {
-                        Picker(selection: $selectedHeight, label: EmptyView()) {
+                        Picker(selection: $user.height, label: EmptyView()) {
                             ForEach(height, id: \.self) {
                                // Text($0.description + height2.description)
                                 Text($0)
@@ -66,7 +70,7 @@ struct PlayerProfileOptions: View {
                         }
                     } label: {
                         HStack {
-                            Text(selectedHeight.description)
+                            Text(user.height.description)
                             Spacer()
                             
                             Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -98,7 +102,7 @@ struct PlayerProfileOptions: View {
                         .foregroundColor(.black)
                     
                     Menu {
-                    Picker("Select", selection: $selectedWeight) {
+                        Picker("Select", selection: $user.weight) {
                         ForEach(weight, id: \.self) {
                             Text($0.description + " lbs")
                         }
@@ -106,7 +110,7 @@ struct PlayerProfileOptions: View {
                 } label: {
                     HStack {
                         
-                        Text(selectedWeight.description)
+                        Text(user.weight.description)
                         Spacer()
                         
                         Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -137,7 +141,7 @@ struct PlayerProfileOptions: View {
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.black)
                     Menu {
-                    Picker("Select", selection: $selectedAge) {
+                        Picker("Select", selection: $user.age) {
                         ForEach(age, id: \.self) {
                             Text($0.description)
                         }
@@ -145,7 +149,7 @@ struct PlayerProfileOptions: View {
                 } label: {
                     HStack {
                         
-                        Text(selectedAge.description)
+                        Text(user.age.description)
                         Spacer()
                         
                         Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -184,10 +188,9 @@ struct PlayerProfileOptions: View {
                     .foregroundColor(.black)
                     .padding(.bottom, -5)
    
-                Picker("Select", selection: $selectedHighestLevel) {
-                    ForEach(highestLevel, id: \.self) {
-                        
-                        Text($0 + "")
+                Picker("Select", selection: $user.highestLevelPlayed) {
+                    ForEach(User.LevelPlayed.allCases) { level in
+                        Text(level.rawValue)
                     }
                     
                 }
@@ -210,9 +213,9 @@ struct PlayerProfileOptions: View {
                 
                 
                 
-                Picker("Select", selection: $selectedSkill) {
-                    ForEach(skillLevel, id: \.self) {
-                        Text($0)
+                Picker("Select", selection: $user.skillLevel) {
+                    ForEach(User.SkillLevel.allCases, id: \.self) { skill in
+                        Text(skill.rawValue)
                     }
                     .foregroundColor(Color.ui.gray959595)
                     
@@ -232,7 +235,7 @@ struct PlayerProfileOptions: View {
                 
                 
                 Menu {
-                    Picker(selection: $selectedSchool, label: EmptyView()) {
+                    Picker(selection: $user.school, label: EmptyView()) {
                         ForEach(school, id: \.self) {
                             Text($0)
                         }
@@ -240,7 +243,7 @@ struct PlayerProfileOptions: View {
                     }
                 } label: {
                     HStack {
-                        Text(selectedSchool)
+                        Text(user.school)
                         Spacer()
                         
                         Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -271,6 +274,6 @@ struct PlayerProfileOptions: View {
 
 struct PlayerProfileOptions_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerProfileOptions()
+        PlayerProfileOptions(user: .constant(User.sampleUsers[0]))
     }
 }

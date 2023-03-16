@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State var showGetStartedView = true // set to true
+    @State var showGetStartedView = true
     
-    var body: some View {
+    var body: some View {    
         if showGetStartedView {
             VStack {
                 Spacer()
@@ -33,31 +33,31 @@ struct OnboardingView: View {
                                 .fill(Color.ui.accentColor)
                         }
                 }
-                .buttonStyle(.plain)
             }
             .padding()
             
         } else {
             VStack(spacing: 0) {
                 ZStack(alignment: .top) {
+                    Image("logo_large")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 100)
+
+                    
                     HStack {
                         Spacer()
                         
                         NavigationLink {
-                            OnboardingSignupView()
+                            CreatePlayerProfileView()
                         } label: {
                             Text("Skip")
                                 .foregroundColor(.secondary)
                                 .underline()
                                 .padding(.top)
                         }
-
                     }
                     
-                    Image("logo_large")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 100)
                 }
                 
                 TabView {

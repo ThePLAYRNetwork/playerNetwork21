@@ -16,7 +16,7 @@ struct InvitePlayersItem: View {
             Circle()
                 .foregroundColor(Color.ui.grayD9D9D9)
                 .frame(width: 46, height: 46)
-            Text(player.name)
+            Text(player.firstName)
             Spacer()
             Image(systemName: "checkmark")
                 .resizable()

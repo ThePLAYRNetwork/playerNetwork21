@@ -14,7 +14,7 @@ struct SpecialistColumn: View {
             LazyVStack(spacing: 20) {
                 ForEach(data) { specialist in
                     NavigationLink {
-                        SessionView(session: Session(sessionTitle: ""))
+                        SessionView(session: Session.sampleSessions[0])
                     } label: {
                         SpecialistCell(specialist: specialist)
                     }

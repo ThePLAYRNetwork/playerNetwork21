@@ -23,7 +23,7 @@ struct BookSessionDate: View {
                     .opacity(0.6)
               
                 
-                SessionInfo(session: Session(sessionTitle: ""))
+                SessionInfo(session: Session.sampleSessions[0])
                     .padding(.top, -30)
                     .padding(.horizontal)
            

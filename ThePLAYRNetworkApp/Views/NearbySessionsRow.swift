@@ -23,7 +23,7 @@ struct NearbySessionsRow: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(alignment: .top, spacing: 15) { // could use reg
-                    ForEach(items, id: \.id) { game in
+                    ForEach(items, id: \.recordName) { game in
                         NavigationLink {
                             GameDetailView(
                                 game: game

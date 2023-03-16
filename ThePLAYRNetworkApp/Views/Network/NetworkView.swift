@@ -34,7 +34,7 @@ struct NetworkView: View {
                             
                             PlayersYouMayKnowRow()
                             
-                            ForEach($posts, id: \.id) { $post in
+                            ForEach($posts, id: \.recordName) { $post in
                                 PostItem(post: $post)
                                 divider
                             }

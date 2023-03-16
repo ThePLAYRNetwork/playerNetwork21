@@ -11,8 +11,8 @@ import CloudKit
 
 // must be hashable for new navigaiton destination
 // cloudkit support data types: https://developer.apple.com/documentation/cloudkit/ckrecord
-struct Game: Identifiable, Hashable {
-    var id: UUID
+struct Game: Hashable {
+    var recordName: String
     var title: String
     var place: String
     var location: CLLocation
@@ -26,26 +26,29 @@ struct Game: Identifiable, Hashable {
     var isIndoor: Bool
     var isSpectatorAllowed: Bool
     var isPrivateGame: Bool
-    var invitedPlayers: [CKRecord.Reference]
-    
-    // init default values here so that it is not required when creating game object
-    init(id: UUID = UUID(), title: String = "", place: String = "", location: CLLocation = CLLocation(latitude: 0.0, longitude: 0.0), capacity: Int = 0, date: Date = Date(), startTime: Date = Date(), endTime: Date = Date(), details: String = "", playerLevel: PlayerLevel = .recreation, coverImage: CKAsset? = nil, isIndoor: Bool = false, isSpectatorAllowed: Bool = false, isPrivateGame: Bool = false, invitedPlayers: [CKRecord.Reference] = []) {
-        self.id = id
-        self.title = title
-        self.place = place
-        self.location = location
-        self.capacity = capacity
-        self.date = date
-        self.startTime = startTime
-        self.endTime = endTime
-        self.details = details
-        self.playerLevel = playerLevel
-        self.coverImage = coverImage
-        self.isIndoor = isIndoor
-        self.isSpectatorAllowed = isSpectatorAllowed
-        self.isPrivateGame = isPrivateGame
-        self.invitedPlayers = invitedPlayers
+}
+
+extension Game {
+    struct InvitedPlayers {
+        var recordName: String
+        var gameID: CKRecord.Reference
+        var userID: CKRecord.Reference
+        var status: InviteStatus
     }
+
+    enum InviteStatus {
+        case accepted, pending, rejected
+    }
+    
+    enum PlayerLevel: String {
+        case recreation
+        case competitive
+        case elite
+    }
+    
+    static let sampleGames: [Game] = [
+        Game(recordName: "", title: "", place: "", location: CLLocation(latitude: CLLocationDegrees(), longitude: CLLocationDegrees()), capacity: 0, date: Date(), startTime: Date(), endTime: Date(), details: "", playerLevel: .competitive, isIndoor: true, isSpectatorAllowed: true, isPrivateGame: true)
+    ]
 
     func getStartMonthDay() -> String {
         let dateFormatterGet = DateFormatter()
@@ -92,49 +95,11 @@ struct Game: Identifiable, Hashable {
     }
 }
 
-enum PlayerLevel: String {
-    case recreation
-    case competitive
-    case elite
-}
 
-extension Game {
-    static let sampleGames: [Game] = [
-        Game(title: "Pickup Game",
-             place: "RIMAC Courts",
-             location: CLLocation(latitude: 37.319500230495414, longitude: -121.84947636614272),
-             capacity: 10,
-             date: Date(),
-             startTime: Date(),
-             endTime: Date(),
-             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-             playerLevel: .competitive,
-             coverImage: nil,
-             isIndoor: true,
-             isSpectatorAllowed: true,
-             isPrivateGame: true,
-             invitedPlayers: []
-            ),
-        Game(title: "5v5",
-             place: "Marshall Courts",
-             location: CLLocation(latitude: 37.3205940066624, longitude: -121.85562468240302),
-             capacity: 10,
-             date: Date(),
-             startTime: Date(),
-             endTime: Date(),
-             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-             playerLevel: .competitive,
-             coverImage: nil,
-             isIndoor: true,
-             isSpectatorAllowed: true,
-             isPrivateGame: true,
-             invitedPlayers: []
-            )
-    ]
-}
 
 extension CLLocationCoordinate2D: Identifiable {
     public var id: String {
         "\(latitude)-\(longitude)"
     }
 }
+

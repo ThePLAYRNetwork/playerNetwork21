@@ -92,7 +92,7 @@ struct InvitedTagView: View {
 struct InvitedTagView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            InvitedTagView(players: .constant(User.sampleUsers.map{ $0.name }))
+            InvitedTagView(players: .constant(User.sampleUsers.map{ $0.firstName }))
         }
     }
 }

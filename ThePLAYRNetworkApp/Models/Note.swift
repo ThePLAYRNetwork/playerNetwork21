@@ -6,9 +6,17 @@
 //
 
 import Foundation
+import CloudKit
 
-struct Note: Identifiable {
-    let id = UUID()
-    var text: String
-    let createdAt: Date
+struct Note {
+    var recordName: String
+    var userID: CKRecord.Reference
+    var message: String
+    var createdAt: Date
+}
+
+extension Note {
+    static let sampleNotes: [Note] = [
+        Note(recordName: "", userID: CKRecord.Reference(record: CKRecord(recordType: ""), action: .none), message: "", createdAt: Date())
+    ]
 }

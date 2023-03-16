@@ -7,11 +7,11 @@ target 'ThePLAYRNetworkApp' do
 
   # Pods for ThePLAYRNetworkApp
 
-pod “GeoFire/Utils”
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
-pod 'FirebaseFirestore'
-pod 'FirebaseFirestoreSwift'
-pod 'FirebaseDatabase'
-pod 'FirebaseDatabaseSwift'
+#pod “GeoFire/Utils”
+#pod 'Firebase/Core'
+#pod 'Firebase/Auth'
+#pod 'FirebaseFirestore'
+#pod 'FirebaseFirestoreSwift'
+#pod 'FirebaseDatabase'
+#pod 'FirebaseDatabaseSwift'
 end

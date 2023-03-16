@@ -16,7 +16,7 @@ struct PlayersYouMayKnowItem: View {
                 .fill(Color.ui.grayD9D9D9)
                 .frame(width: 72, height: 72)
                 
-            Text(user.name)
+            Text(user.firstName)
                 .font(.system(size: 12))
                 .fontWeight(.semibold)
                 .padding(.top, 6)

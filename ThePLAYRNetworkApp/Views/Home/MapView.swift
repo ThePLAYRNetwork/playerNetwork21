@@ -17,7 +17,7 @@ struct MapView: View {
             userTrackingMode: $homeViewModel.trackingMode,
             annotationItems: homeViewModel.upcomingGames.map { $0.location.coordinate }) { coordinate in
                 MapAnnotation(coordinate: coordinate) {
-                    NavigationLink(destination: GameDetailView(game: Game())) {
+                    NavigationLink(destination: GameDetailView(game: Game.sampleGames[0])) {
                         PinView()
                     }
             }

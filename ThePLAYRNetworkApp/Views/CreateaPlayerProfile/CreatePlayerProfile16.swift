@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct CreatePlayerProfile16: View {
-    @State var phoneNumber: String
-    @State var password: String
-    @State var confirmPassword: String
+    @Binding var user: User
+    @State var password = "" // we don't need password. Remove later?
     
     var body: some View {
         VStack {
@@ -24,7 +23,7 @@ struct CreatePlayerProfile16: View {
                     .foregroundColor(.black)
                 
                 TextField(
-                    "(   )  -", text: $phoneNumber
+                    "(   )  -", text: $user.phoneNumber
                 )
                 .padding()
                 .frame(height: 50)
@@ -54,7 +53,7 @@ struct CreatePlayerProfile16: View {
                     .foregroundColor(.black)
                 
                 TextField(
-                    "", text: $phoneNumber
+                    "", text: $password
                 )
                 .padding()
                 .frame(height: 50)
@@ -70,7 +69,7 @@ struct CreatePlayerProfile16: View {
             Spacer()
             
             
-            NavigationLink(destination: CreatePlayerProfile18() ) {
+            NavigationLink(destination: CreatePlayerProfile18(user: $user) ) {
                 Text("Continue")
                     .foregroundColor(.white)
                     .frame(width:226, height: 48)
@@ -85,7 +84,7 @@ struct CreatePlayerProfile16: View {
 
 struct CreatePlayerProfile16_Previews: PreviewProvider {
     static var previews: some View {
-        CreatePlayerProfile16(phoneNumber: "", password: "", confirmPassword: "")
+        CreatePlayerProfile16(user: .constant(User.sampleUsers[0]))
     }
 }
 

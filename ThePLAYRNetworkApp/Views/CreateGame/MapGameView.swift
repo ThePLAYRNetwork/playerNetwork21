@@ -8,9 +8,9 @@
 import SwiftUI
 import MapKit
 import CoreLocation
-import FirebaseAuth
-import FirebaseFirestore
-import GeoFire
+//import FirebaseAuth
+//import FirebaseFirestore
+//import GeoFire
 
 struct MapGameView: View {
     @EnvironmentObject var viewModel: CreateViewModel

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CreatePlayerProfile18: View {
-    @State var selectedCard: Int = 1
-    
+    @Binding var user: User
     
     var body: some View {
         VStack {
@@ -34,7 +33,7 @@ struct CreatePlayerProfile18: View {
                     HStack {
                         
                         Button {
-                            selectedCard = 1
+                            user.role = .player
                         } label: {
                             
                             VStack {
@@ -47,18 +46,18 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Player")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 1 ? Color.ui.accentColor : Color.ui.gray959595)
+                                    .foregroundColor(user.role == .player ? Color.ui.accentColor : Color.ui.gray959595)
                                     .padding(.top)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(selectedCard == 1 ? Color.ui.accentColor : Color.black)
+                                    .stroke(user.role == .player ? Color.ui.accentColor : Color.black)
                             )
                             
                             .overlay(
-                                selectedCard == 1 ? Color.clear : Color.ui.grayC6C6C6
+                                user.role == .player ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
@@ -67,7 +66,7 @@ struct CreatePlayerProfile18: View {
                         
                         //  Spacer()
                         Button {
-                            selectedCard = 2
+                            user.role = .coach
                         } label: {
                             VStack {
                                 Spacer()
@@ -78,24 +77,24 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Coach")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 2 ? Color.ui.accentColor : Color.ui.gray959595)
+                                    .foregroundColor(user.role == .coach ? Color.ui.accentColor : Color.ui.gray959595)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(selectedCard == 2 ? Color.ui.accentColor : Color.black)
+                                    .stroke(user.role == .coach ? Color.ui.accentColor : Color.black)
                             )
                             
                             .overlay(
-                                selectedCard == 2 ? Color.clear : Color.ui.grayC6C6C6
+                                user.role == .coach ? Color.clear : Color.ui.grayC6C6C6
                                 
                             )
                         }
                         
                         // Spacer()
                         Button {
-                            selectedCard = 3
+                            user.role = .trainer
                         } label: {
                             VStack {
                                 Spacer()
@@ -106,18 +105,17 @@ struct CreatePlayerProfile18: View {
                                 Spacer()
                                 Text("Trainer")
                                     .font(.system(size: 16))
-                                    .foregroundColor(selectedCard == 3 ? Color.ui.accentColor : Color.ui.gray959595)
+                                    .foregroundColor(user.role == .trainer ? Color.ui.accentColor : Color.ui.gray959595)
                                 Spacer()
                             }
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(selectedCard == 3 ? Color.ui.accentColor : Color.black)
+                                    .stroke(user.role == .trainer ? Color.ui.accentColor : Color.black)
                             )
                             
                             .overlay(
-                                selectedCard == 3 ? Color.clear : Color.ui.grayC6C6C6
-                                
+                                user.role == .trainer ? Color.clear : Color.ui.grayC6C6C6
                             )
                         }
                         
@@ -126,16 +124,13 @@ struct CreatePlayerProfile18: View {
                     .padding(.horizontal)
                     .padding(.bottom, 15)
                     
-                    PlayerProfileOptions()
+                    PlayerProfileOptions(user: $user)
                         .padding(.bottom, 50)
                     
                     Spacer()
                     
                     
-                    NavigationLink(destination:
-                                    //change this destination
-                                   CreatePlayerProfile16(phoneNumber: "", password: "", confirmPassword: "")
-                    ) {
+                    NavigationLink(destination: OnboardingPosition(user: $user)) {
                         Text("Continue")
                             .foregroundColor(.white)
                             .frame(width:226, height: 48)
@@ -150,8 +145,8 @@ struct CreatePlayerProfile18: View {
     }
 }
 
-//struct CreatePlayerProfile18_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreatePlayerProfile18()
-//    }
-//}
+struct CreatePlayerProfile18_Previews: PreviewProvider {
+    static var previews: some View {
+        CreatePlayerProfile18(user: .constant(User.sampleUsers[0]))
+    }
+}

@@ -36,7 +36,7 @@ struct TrainingView: View {
                     HStack{
                         ForEach(0 ... 2, id: \.self) { item in
                             NavigationLink {
-                                SessionView(session: Session(sessionTitle: ""))
+                                SessionView(session: Session.sampleSessions[0])
                             } label: {
                                 NearbySessionsItem()
                             }
@@ -54,7 +54,7 @@ struct TrainingView: View {
                     HStack{
                         ForEach(0 ... 2, id: \.self) { item in
                             NavigationLink {
-                                SessionView(session: Session(sessionTitle: ""))
+                                SessionView(session: Session.sampleSessions[0])
                             } label: {
                                 RecommendedItem()
                             }

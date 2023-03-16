@@ -11,9 +11,9 @@ struct NewNoteView: View {
     @Binding var note: Note
     
     var body: some View {
-        let textParts = note.text.split(whereSeparator: \.isNewline)
-        let title = textParts.count >= 1 ? textParts[0] : "No Title"
-        let description = textParts.count >= 2 ? textParts[1...].joined() : "No desc"
+//        let textParts = note.text.split(whereSeparator: \.isNewline)
+//        let title = textParts.count >= 1 ? textParts[0] : "No Title"
+//        let description = textParts.count >= 2 ? textParts[1...].joined() : "No desc"
         
         VStack {
 
@@ -22,7 +22,7 @@ struct NewNoteView: View {
                 .foregroundColor(Color.ui.gray959595)
 
             
-            TextEditor(text: $note.text)
+            TextEditor(text: $note.message)
 
             Spacer()
             
@@ -51,6 +51,6 @@ struct NewNoteView: View {
 
 struct NewNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NewNoteView(note: .constant(sampleNotes[0]))
+        NewNoteView(note: .constant(Note.sampleNotes[0]))
     }
 }

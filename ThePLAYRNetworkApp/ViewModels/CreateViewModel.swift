@@ -7,12 +7,9 @@
 
 import Foundation
 import MapKit
-import FirebaseAuth
-import FirebaseFirestore
-import GeoFire
 
 class CreateViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-    @Published var game = Game()
+    @Published var game = Game.sampleGames[0]
 
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12),
@@ -21,7 +18,7 @@ class CreateViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     var mapView = MKMapView()
-    private let db = Firestore.firestore()
+//    private let db = Firestore.firestore()
 
     func checkIfLocationServicesIsEnabled() {
         // 1. Check if user enabled locations

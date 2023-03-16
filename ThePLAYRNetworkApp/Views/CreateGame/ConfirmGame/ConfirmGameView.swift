@@ -10,9 +10,9 @@ import SwiftUI
 struct ConfirmGameView: View {
     @EnvironmentObject var createGameViewModel: CreateViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @EnvironmentObject var authViewModel: AuthViewModel
+//    @EnvironmentObject var authViewModel: AuthViewModel
     @Binding var game: Game
-    @State var samplePlayers = User.sampleUsers.map { $0.name }
+    @State var samplePlayers = User.sampleUsers.map { $0.firstName }
     
     var body: some View {
         ScrollView {
@@ -50,7 +50,7 @@ struct ConfirmGameView_Previews: PreviewProvider {
             ConfirmGameView(game: .constant(Game.sampleGames[0]))
                 .environmentObject(CreateViewModel())
                 .environmentObject(HomeViewModel(gameRepository: GameRepository()))
-                .environmentObject(AuthViewModel())
+//                .environmentObject(AuthViewModel())
         }
     }
 }
@@ -130,7 +130,7 @@ struct ConfirmButtons: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var createGameViewModel: CreateViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
-    @EnvironmentObject var authViewModel: AuthViewModel
+//    @EnvironmentObject var authViewModel: AuthViewModel
     let game: Game
     
     var body: some View {
@@ -152,7 +152,7 @@ struct ConfirmButtons: View {
                         dismiss()
 //                        createGameViewModel.createGame(game: game)
                         homeViewModel.showingGamePosted = true
-                        authViewModel.selection = Tab.home
+//                        authViewModel.selection = Tab.home
                     }
             }
             .buttonStyle(CustomButton(color: .red, size: .small))

@@ -39,7 +39,7 @@ struct ProfileView: View {
                     .padding(.leading)
                     .padding(.top)
                 
-                ForEach($posts, id: \.id) { $post in
+                ForEach($posts, id: \.recordName) { $post in
                     PostItem(post: $post)
                     divider
                 }

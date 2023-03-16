@@ -8,7 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		320314152894F99A00141300 /* PlayerAttendingCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320314142894F99A00141300 /* PlayerAttendingCircles.swift */; };
+		3218C2DD29A327440010D83B /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DC29A327440010D83B /* GameRepository.swift */; };
+		3218C2DF29A3280D0010D83B /* GameApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DE29A3280D0010D83B /* GameApiService.swift */; };
+		321CB09D29C2BF11004542D5 /* ThePlayrNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */; };
 		321D6B5E28985CD0005EC2EF /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */; };
+		322F330429BF9A1E0073F41D /* CKUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330329BF9A1E0073F41D /* CKUserViewModel.swift */; };
+		322F330629C020430073F41D /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330529C020430073F41D /* NavigationModel.swift */; };
+		322F330829C02CB20073F41D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330729C02CB20073F41D /* UserRepository.swift */; };
+		322F330B29C02D150073F41D /* UserApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330A29C02D150073F41D /* UserApiService.swift */; };
 		323A336928ADD0030075A5A1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A336828ADD0030075A5A1 /* TagView.swift */; };
 		325A9198289AF6DF00AFC18D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9197289AF6DF00AFC18D /* ProfileView.swift */; };
 		326A0DC928CF88F200459BBB /* NetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A0DC828CF88F200459BBB /* NetworkView.swift */; };
@@ -31,6 +38,7 @@
 		32862F482892597900CDFB3B /* SheetButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F472892597900CDFB3B /* SheetButtonRow.swift */; };
 		32D019C628D1825A00E3C601 /* PlayersYouMayKnowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D019C528D1825A00E3C601 /* PlayersYouMayKnowRow.swift */; };
 		32D019C828D1829400E3C601 /* PlayersYouMayKnowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D019C728D1829400E3C601 /* PlayersYouMayKnowItem.swift */; };
+		32E967A729BBB08D00B8676F /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E967A629BBB08D00B8676F /* Journal.swift */; };
 		32EA5CA9289316FD00A70A7B /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA5CA8289316FD00A70A7B /* CreateGameView.swift */; };
 		32EA5CAB2893178700A70A7B /* MapGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA5CAA2893178700A70A7B /* MapGameView.swift */; };
 		32EA5CAD2894851200A70A7B /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA5CAC2894851200A70A7B /* TopBar.swift */; };
@@ -127,7 +135,6 @@
 		CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740B29192A72005D8506 /* JournalViewModel.swift */; };
 		CFBE740E29192AA0005D8506 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740D29192AA0005D8506 /* Court.swift */; };
 		CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75E4628F9A453004AB852 /* SessionView.swift */; };
-		CFCFF75128AACB3C002F1D30 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75028AACB3C002F1D30 /* DateValue.swift */; };
 		CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75228AAD6BA002F1D30 /* Task.swift */; };
 		CFD2F2FB28FDA90400D57A89 /* BookSessionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */; };
 		CFD3C90F28E77E5D004B53E7 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C90628E77E5D004B53E7 /* ConversationView.swift */; };
@@ -158,7 +165,14 @@
 		16063461EC7CCA7C35200FD5 /* Pods_ThePLAYRNetworkApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePLAYRNetworkApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F284A710D8ECF2F6C28ED58 /* Pods-ThePLAYRNetworkApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePLAYRNetworkApp.debug.xcconfig"; path = "Target Support Files/Pods-ThePLAYRNetworkApp/Pods-ThePLAYRNetworkApp.debug.xcconfig"; sourceTree = "<group>"; };
 		320314142894F99A00141300 /* PlayerAttendingCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttendingCircles.swift; sourceTree = "<group>"; };
+		3218C2DC29A327440010D83B /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
+		3218C2DE29A3280D0010D83B /* GameApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameApiService.swift; sourceTree = "<group>"; };
+		321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThePlayrNetworkView.swift; sourceTree = "<group>"; };
 		321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
+		322F330329BF9A1E0073F41D /* CKUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserViewModel.swift; sourceTree = "<group>"; };
+		322F330529C020430073F41D /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
+		322F330729C02CB20073F41D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		322F330A29C02D150073F41D /* UserApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApiService.swift; sourceTree = "<group>"; };
 		323A336828ADD0030075A5A1 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		325A9197289AF6DF00AFC18D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		326A0DC828CF88F200459BBB /* NetworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkView.swift; sourceTree = "<group>"; };
@@ -182,6 +196,7 @@
 		32862F472892597900CDFB3B /* SheetButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonRow.swift; sourceTree = "<group>"; };
 		32D019C528D1825A00E3C601 /* PlayersYouMayKnowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersYouMayKnowRow.swift; sourceTree = "<group>"; };
 		32D019C728D1829400E3C601 /* PlayersYouMayKnowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersYouMayKnowItem.swift; sourceTree = "<group>"; };
+		32E967A629BBB08D00B8676F /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		32EA5CA8289316FD00A70A7B /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		32EA5CAA2893178700A70A7B /* MapGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameView.swift; sourceTree = "<group>"; };
 		32EA5CAC2894851200A70A7B /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
@@ -278,7 +293,6 @@
 		CFBE740B29192A72005D8506 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		CFBE740D29192AA0005D8506 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		CFC75E4628F9A453004AB852 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
-		CFCFF75028AACB3C002F1D30 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		CFCFF75228AAD6BA002F1D30 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSessionDate.swift; sourceTree = "<group>"; };
 		CFD3C90628E77E5D004B53E7 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -318,6 +332,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3218C2DA29A327000010D83B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				32862F2F289252AF00CDFB3B /* AuthViewModel.swift */,
+				321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */,
+				32862F36289257C700CDFB3B /* HomeViewModel.swift */,
+				CFBE740B29192A72005D8506 /* JournalViewModel.swift */,
+				CF6A16DC291ACAA3001D98F5 /* TrainerHubViewModel.swift */,
+				CFB3385028AE92B100610F42 /* TrainingViewModel.swift */,
+				322F330329BF9A1E0073F41D /* CKUserViewModel.swift */,
+				322F330529C020430073F41D /* NavigationModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3218C2DB29A3272B0010D83B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				3218C2DC29A327440010D83B /* GameRepository.swift */,
+				322F330729C02CB20073F41D /* UserRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		325A9196289AF6D200AFC18D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,16 +389,15 @@
 			children = (
 				CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */,
 				32862F0528923EE200CDFB3B /* ThePLAYRNetworkApp.swift */,
-				32862F2F289252AF00CDFB3B /* AuthViewModel.swift */,
-				32862F36289257C700CDFB3B /* HomeViewModel.swift */,
-				321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */,
-				CFB3385028AE92B100610F42 /* TrainingViewModel.swift */,
+				321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */,
+				3218C2DE29A3280D0010D83B /* GameApiService.swift */,
+				322F330A29C02D150073F41D /* UserApiService.swift */,
+				3218C2DB29A3272B0010D83B /* Repositories */,
 				32862F31289252CC00CDFB3B /* Models */,
 				32862F2A2892526700CDFB3B /* Views */,
+				3218C2DA29A327000010D83B /* ViewModels */,
 				CF8996BC28B3DC29004FA414 /* Assets.xcassets */,
 				32862F0B28923EE200CDFB3B /* Preview Content */,
-				CFBE740B29192A72005D8506 /* JournalViewModel.swift */,
-				CF6A16DC291ACAA3001D98F5 /* TrainerHubViewModel.swift */,
 			);
 			path = ThePLAYRNetworkApp;
 			sourceTree = "<group>";
@@ -376,28 +413,28 @@
 		32862F2A2892526700CDFB3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CF8205A0299E92850019AE45 /* Notes */,
-				CF20ABF22948A1CC00897F60 /* CreateaPlayerProfile */,
+				CF1A19B128BFE49B00D82DC8 /* BookSession */,
+				CFCFF74D28AABE27002F1D30 /* Calendar */,
 				CF2A7E642935514F00C80985 /* Client */,
+				CF6D8F2728EB4D1E00468888 /* ComposeMessage */,
+				CF20ABF22948A1CC00897F60 /* CreateaPlayerProfile */,
+				32EA5CB528948B0C00A70A7B /* CreateGame */,
+				CF26300E28EB0E4100CAD20D /* Discover */,
+				32EA5CB428948AA300A70A7B /* GameDetail */,
+				32EA5CAE2894897100A70A7B /* Home */,
 				CFA106FD29117D0500EAA40A /* Hub */,
 				CF6B6779296C52FA00BEC347 /* Journal */,
-				CF6D8F2728EB4D1E00468888 /* ComposeMessage */,
-				CF26300E28EB0E4100CAD20D /* Discover */,
-				CFD3C91828E77F86004B53E7 /* Specialist */,
-				CFD3C90528E77E5D004B53E7 /* Messages */,
-				325A9196289AF6D200AFC18D /* Profile */,
-				32EA5CAE2894897100A70A7B /* Home */,
-				32EA5CB528948B0C00A70A7B /* CreateGame */,
-				32EA5CB428948AA300A70A7B /* GameDetail */,
 				32EA5CAF289489A100A70A7B /* Login */,
-				32EA5CB0289489BC00A70A7B /* Signup */,
+				CFD3C90528E77E5D004B53E7 /* Messages */,
+				CF1A19B828BFE97D00D82DC8 /* Network */,
+				CF8205A0299E92850019AE45 /* Notes */,
 				CFBCE9942987FED50055ED3A /* Onboarding */,
 				32862F3A2892586300CDFB3B /* Parts */,
-				CFCFF74D28AABE27002F1D30 /* Calendar */,
-				CFB3384B28AE8EF000610F42 /* Training */,
-				CF1A19B128BFE49B00D82DC8 /* BookSession */,
-				CF1A19B828BFE97D00D82DC8 /* Network */,
+				325A9196289AF6D200AFC18D /* Profile */,
+				32EA5CB0289489BC00A70A7B /* Signup */,
+				CFD3C91828E77F86004B53E7 /* Specialist */,
 				CF26300A28EB0C5C00CAD20D /* Trainers */,
+				CFB3384B28AE8EF000610F42 /* Training */,
 				CF6B6794296C559A00BEC347 /* TrainingSession */,
 			);
 			path = Views;
@@ -406,17 +443,17 @@
 		32862F31289252CC00CDFB3B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				32862F322892530300CDFB3B /* User.swift */,
-				32862F3F289258B900CDFB3B /* Game.swift */,
-				CFB3385228AE932900610F42 /* Session.swift */,
-				CFCFF75028AACB3C002F1D30 /* DateValue.swift */,
-				CFCFF75228AAD6BA002F1D30 /* Task.swift */,
-				CF6B678A296C531A00BEC347 /* Specialist.swift */,
-				3271214A28CF83790056E304 /* Post.swift */,
-				CF6B678C296C532C00BEC347 /* Note.swift */,
-				CF6B678E296C534D00BEC347 /* TrainingSession.swift */,
-				CF26301D28EB137F00CAD20D /* Message.swift */,
 				CFBE740D29192AA0005D8506 /* Court.swift */,
+				32862F3F289258B900CDFB3B /* Game.swift */,
+				32E967A629BBB08D00B8676F /* Journal.swift */,
+				CF26301D28EB137F00CAD20D /* Message.swift */,
+				CF6B678C296C532C00BEC347 /* Note.swift */,
+				3271214A28CF83790056E304 /* Post.swift */,
+				CFB3385228AE932900610F42 /* Session.swift */,
+				CF6B678A296C531A00BEC347 /* Specialist.swift */,
+				CFCFF75228AAD6BA002F1D30 /* Task.swift */,
+				CF6B678E296C534D00BEC347 /* TrainingSession.swift */,
+				32862F322892530300CDFB3B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -757,15 +794,12 @@
 				32862EFE28923EE200CDFB3B /* Sources */,
 				32862EFF28923EE200CDFB3B /* Frameworks */,
 				32862F0028923EE200CDFB3B /* Resources */,
-				B0B121A97D53A8F3BF99D32F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ThePLAYRNetworkApp;
-			packageProductDependencies = (
-			);
 			productName = ThePLAYRNetworkApp;
 			productReference = 32862F0228923EE200CDFB3B /* ThePLAYRNetworkApp.app */;
 			productType = "com.apple.product-type.application";
@@ -794,8 +828,6 @@
 				Base,
 			);
 			mainGroup = 32862EF928923EE200CDFB3B;
-			packageReferences = (
-			);
 			productRefGroup = 32862F0328923EE200CDFB3B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -841,23 +873,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B0B121A97D53A8F3BF99D32F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ThePLAYRNetworkApp/Pods-ThePLAYRNetworkApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ThePLAYRNetworkApp/Pods-ThePLAYRNetworkApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThePLAYRNetworkApp/Pods-ThePLAYRNetworkApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -882,6 +897,7 @@
 				32D019C828D1829400E3C601 /* PlayersYouMayKnowItem.swift in Sources */,
 				CF6B67A1296C559A00BEC347 /* SelectDayCard.swift in Sources */,
 				CF3A964A2927AF8400940E1F /* ActiveSessionsView.swift in Sources */,
+				322F330629C020430073F41D /* NavigationModel.swift in Sources */,
 				3279EB2928B02E140061C146 /* InvitedTagView.swift in Sources */,
 				CF26301828EB0E4100CAD20D /* DiscoverTopSection.swift in Sources */,
 				CF6B6791296C539800BEC347 /* ProfileMedia.swift in Sources */,
@@ -900,6 +916,7 @@
 				CFB3385128AE92B100610F42 /* TrainingViewModel.swift in Sources */,
 				CF6B676E296C527300BEC347 /* SpecialistCell.swift in Sources */,
 				CF26300C28EB0C9000CAD20D /* TrainersView.swift in Sources */,
+				322F330829C02CB20073F41D /* UserRepository.swift in Sources */,
 				CF6A16DD291ACAA3001D98F5 /* TrainerHubViewModel.swift in Sources */,
 				CF6B676A296C522300BEC347 /* BackButton.swift in Sources */,
 				CF6B676C296C522900BEC347 /* Buttons.swift in Sources */,
@@ -937,6 +954,7 @@
 				CF26301A28EB0E4100CAD20D /* DiscoverFilterRow.swift in Sources */,
 				CFB3384F28AE8F2B00610F42 /* NearbySessionsRow.swift in Sources */,
 				CF6B6773296C529D00BEC347 /* GoingCell.swift in Sources */,
+				321CB09D29C2BF11004542D5 /* ThePlayrNetworkView.swift in Sources */,
 				CF26301928EB0E4100CAD20D /* EventsItem.swift in Sources */,
 				CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */,
 				CF8205A6299E92850019AE45 /* NotesView.swift in Sources */,
@@ -946,6 +964,7 @@
 				CF6B6784296C52FA00BEC347 /* InputDataView.swift in Sources */,
 				CF6D8F2D28EB4D1E00468888 /* SuggestedItem.swift in Sources */,
 				32EA5CAD2894851200A70A7B /* TopBar.swift in Sources */,
+				32E967A729BBB08D00B8676F /* Journal.swift in Sources */,
 				CF11A2CE28B63DB700309E04 /* ReviewItemView.swift in Sources */,
 				CFF22B8D2936660000F28C62 /* PlayerItemView.swift in Sources */,
 				326A0DCB28CF890700459BBB /* PostItem.swift in Sources */,
@@ -964,6 +983,7 @@
 				CFD3C91328E77E5D004B53E7 /* MessagesView.swift in Sources */,
 				CF6B6783296C52FA00BEC347 /* JournalView.swift in Sources */,
 				CFA106FF29117D2900EAA40A /* TrainerHubView.swift in Sources */,
+				3218C2DF29A3280D0010D83B /* GameApiService.swift in Sources */,
 				CF582AE6296C3DC800B06C8D /* InvitePlayersView.swift in Sources */,
 				32862F42289258F100CDFB3B /* UpcomingGameRow.swift in Sources */,
 				CF26301528EB0E4100CAD20D /* EventsRow.swift in Sources */,
@@ -984,7 +1004,9 @@
 				CF90D8B228EF0E45009BD09D /* TrainersClassesView.swift in Sources */,
 				CF6B679D296C559A00BEC347 /* DayOverlay.swift in Sources */,
 				CFD3C91128E77E5D004B53E7 /* FullMessageView.swift in Sources */,
+				3218C2DD29A327440010D83B /* GameRepository.swift in Sources */,
 				321D6B5E28985CD0005EC2EF /* CreateViewModel.swift in Sources */,
+				322F330B29C02D150073F41D /* UserApiService.swift in Sources */,
 				CFD3C91C28E77F86004B53E7 /* SpecialistSheetView.swift in Sources */,
 				CFBCE9992987FED50055ED3A /* OnboardingSignupView.swift in Sources */,
 				CFA374E129252EA6000EF516 /* SuccessCancelView.swift in Sources */,
@@ -997,9 +1019,9 @@
 				CF6B67A4296C559A00BEC347 /* CreateSessionView.swift in Sources */,
 				CF6B679F296C559A00BEC347 /* SelectDayCell.swift in Sources */,
 				CF26301E28EB137F00CAD20D /* Message.swift in Sources */,
-				CFCFF75128AACB3C002F1D30 /* DateValue.swift in Sources */,
 				32862F3C2892586F00CDFB3B /* MapView.swift in Sources */,
 				CF6B6787296C52FA00BEC347 /* InputDataColumn.swift in Sources */,
+				322F330429BF9A1E0073F41D /* CKUserViewModel.swift in Sources */,
 				325A9198289AF6DF00AFC18D /* ProfileView.swift in Sources */,
 				323A336928ADD0030075A5A1 /* TagView.swift in Sources */,
 				CF582AE9296C3DD600B06C8D /* ConfirmGameView.swift in Sources */,
@@ -1062,7 +1084,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1116,7 +1138,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1136,7 +1158,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePLAYRNetworkApp/Preview Content\"";
-				DEVELOPMENT_TEAM = HD55Y7F67X;
+				DEVELOPMENT_TEAM = 5VFLZY6QMJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
@@ -1151,7 +1173,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ThePLAYRNetwork.ThePLAYRNetworkApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ThePlayrNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1169,7 +1191,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThePLAYRNetworkApp/Preview Content\"";
-				DEVELOPMENT_TEAM = HD55Y7F67X;
+				DEVELOPMENT_TEAM = 5VFLZY6QMJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
@@ -1184,7 +1206,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ThePLAYRNetwork.ThePLAYRNetworkApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ThePlayrNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

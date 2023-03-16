@@ -17,7 +17,7 @@ struct CreateGameView: View {
     @State var dateEnd: String = ""
     @State var duration: String = ""
     @State var details: String = ""
-    @State var playerLevel: PlayerLevel = .recreation
+    @State var playerLevel: Game.PlayerLevel = .recreation
     
     var body: some View {
         GeometryReader { geometry in
@@ -196,7 +196,7 @@ struct CoverImageRow: View {
 
 // Could use picker instead
 struct PlayerLevelRow: View {
-    @Binding var selection: PlayerLevel
+    @Binding var selection: Game.PlayerLevel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -207,7 +207,7 @@ struct PlayerLevelRow: View {
                 Button(action: { selection = .recreation }) {
                     RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .overlay {
-                            Text(PlayerLevel.recreation.rawValue.capitalized)
+                            Text(Game.PlayerLevel.recreation.rawValue.capitalized)
                                 .foregroundColor(selection == .recreation ? Color.white : .gray)
                         }
                         .foregroundColor(selection == .recreation ? Color.ui.accent : Color.ui.grayD9D9D9)
@@ -218,7 +218,7 @@ struct PlayerLevelRow: View {
                 Button(action: { selection = .competitive }) {
                     RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .overlay {
-                            Text(PlayerLevel.competitive.rawValue.capitalized)
+                            Text(Game.PlayerLevel.competitive.rawValue.capitalized)
                                 .foregroundColor(selection == .competitive ? Color.white : .gray)
                         }
                         .foregroundColor(selection == .competitive ? Color.ui.accent : Color.ui.grayD9D9D9)
@@ -228,7 +228,7 @@ struct PlayerLevelRow: View {
                 Button(action: { selection = .elite }) {
                     RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .overlay {
-                            Text(PlayerLevel.elite.rawValue.capitalized)
+                            Text(Game.PlayerLevel.elite.rawValue.capitalized)
                                 .foregroundColor(selection == .elite ? Color.white : .gray)
                         }
                         .foregroundColor(selection == .elite ? Color.ui.accent : Color.ui.grayD9D9D9)

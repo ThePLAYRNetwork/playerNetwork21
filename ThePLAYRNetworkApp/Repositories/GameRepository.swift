@@ -8,8 +8,6 @@
 import Foundation
 
 class GameRepository: ObservableObject, GameApiService {
-    @Published var upcomingGames: [Game] = []
-
     func fetchNearByGames() async -> [Game] {
         return []
     }

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-// Color.ui.background_gray
-// RoundedShape not found
 struct OnboardingPosition: View {
-    @State var selectedPosition: Position = .guard
-    @State var currentIndex: Int = 0
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    @EnvironmentObject var navigationModel: NavigationModel
+    @Environment(\.dismiss) var dismiss
+    @Binding var user: User
     
     var body: some View {
         VStack(spacing: 0) {
@@ -20,14 +20,19 @@ struct OnboardingPosition: View {
             Spacer()
             
             VStack(spacing: 0) {
-                PositionRow(selectedPosition: $selectedPosition)
+                PositionRow(selectedPosition: $user.position)
                 
                 PlayerStyleCarousel()
                     .padding(.top, 30)
                 
                 Spacer()
                 
-                Button(action: {}) {
+                // check out bookmark to fix this using new navigaiton
+                Button(action: {
+                    Task {
+                        await ckUserViewModel.createUser(user: user)
+                    }
+                }) {
                     Text("Finish")
                         .font(.system(size: 24, weight: .medium))
                         .foregroundColor(.white)
@@ -39,6 +44,7 @@ struct OnboardingPosition: View {
                         }
                 }
                 .buttonStyle(.plain)
+                .padding(.bottom)
             }
             .padding()
         }
@@ -46,13 +52,8 @@ struct OnboardingPosition: View {
     }
 }
 
-enum Position: String, CaseIterable, Identifiable {
-    case `guard`, wing, forward
-    var id: Self { self }
-}
-
 struct PositionRow: View {
-    @Binding var selectedPosition: Position
+    @Binding var selectedPosition: User.Position
     
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -60,7 +61,7 @@ struct PositionRow: View {
                 .font(.system(size: 12, weight: .medium))
             
             HStack{
-                ForEach(Position.allCases) { position in
+                ForEach(User.Position.allCases) { position in
                     PositionCell(
                         selectedPosition: $selectedPosition,
                         position: position
@@ -74,8 +75,8 @@ struct PositionRow: View {
 }
 
 struct PositionCell: View {
-    @Binding var selectedPosition: Position
-    let position: Position
+    @Binding var selectedPosition: User.Position
+    let position: User.Position
     
     var body: some View {
         Button(action: { selectedPosition = position }) {
@@ -110,12 +111,14 @@ struct PositionCell: View {
 
 struct OnboardingPosition_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingPosition()
+        OnboardingPosition(user: .constant(User()))
     }
 }
 
+// TODO: Maybe store this info as a record
 struct ProPlayer: Identifiable {
     var id: Int
+    var name: String
     var image: Image
 }
 
@@ -125,20 +128,16 @@ class Store: ObservableObject {
     // dummy data
     init() {
         items = []
-        items.append(ProPlayer(id: 0, image: Image("chris")))
-        items.append(ProPlayer(id: 1, image: Image("kyle")))
-        items.append(ProPlayer(id: 2, image: Image("stephen")))
-        items.append(ProPlayer(id: 3, image: Image("stephen")))
-        items.append(ProPlayer(id: 4, image: Image("stephen")))
-        items.append(ProPlayer(id: 5, image: Image("stephen")))
-        
-        
+        items.append(ProPlayer(id: 0, name: "christ_paul", image: Image("chris")))
+        items.append(ProPlayer(id: 1, name: "kyle_lowry", image: Image("kyle")))
+        items.append(ProPlayer(id: 2, name: "stephen_curry", image: Image("stephen")))
+        items.append(ProPlayer(id: 3, name: "stephen_curry", image: Image("stephen")))
+
     }
 }
 
 
 struct PlayerStyleCarousel: View {
-    
     @StateObject var store = Store()
     @State private var snappedItem = 0
     @State private var draggingItem = 0.0
@@ -150,7 +149,9 @@ struct PlayerStyleCarousel: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 10)
             
-            //            Text("Current index: \(snappedItem)")
+//            Text("Current index: \(snappedItem)")
+//            Text("dragging item: \(draggingItem)")
+
             
             ZStack {
                 ForEach(store.items) { item in

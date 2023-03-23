@@ -49,7 +49,9 @@ struct OnboardingView: View {
                         Spacer()
                         
                         NavigationLink {
-                            CreatePlayerProfileView()
+                         //   CreatePlayerProfileView(viewModel: ProfileViewModel())
+                            CreatePlayerProfileView(vm: ProfileViewModel())
+
                         } label: {
                             Text("Skip")
                                 .foregroundColor(.secondary)

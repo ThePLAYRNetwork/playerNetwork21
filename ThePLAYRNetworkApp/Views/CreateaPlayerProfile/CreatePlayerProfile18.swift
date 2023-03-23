@@ -12,7 +12,7 @@ struct CreatePlayerProfile18: View {
     
     var body: some View {
         VStack {
-            createPlayerHeader()
+            CreatePlayerHeader()
                 .ignoresSafeArea()
                 .padding(.bottom, -55)
             
@@ -53,11 +53,11 @@ struct CreatePlayerProfile18: View {
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(user.role == .player ? Color.ui.accentColor : Color.black)
+                                    .stroke(user.role == .player ? Color.ui.accentColor : Color.ui.grayC6C6C6)
                             )
                             
                             .overlay(
-                                user.role == .player ? Color.clear : Color.ui.grayC6C6C6
+                                user.role == .player ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                                 
                             )
                         }
@@ -83,11 +83,11 @@ struct CreatePlayerProfile18: View {
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(user.role == .coach ? Color.ui.accentColor : Color.black)
+                                    .stroke(user.role == .coach ? Color.ui.accentColor : Color.ui.grayC6C6C6)
                             )
                             
                             .overlay(
-                                user.role == .coach ? Color.clear : Color.ui.grayC6C6C6
+                                user.role == .coach ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                                 
                             )
                         }
@@ -111,11 +111,11 @@ struct CreatePlayerProfile18: View {
                             .frame(width: 122, height: 157)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(user.role == .trainer ? Color.ui.accentColor : Color.black)
+                                    .stroke(user.role == .trainer ? Color.ui.accentColor : Color.ui.grayC6C6C6)
                             )
                             
                             .overlay(
-                                user.role == .trainer ? Color.clear : Color.ui.grayC6C6C6
+                                user.role == .trainer ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                             )
                         }
                         

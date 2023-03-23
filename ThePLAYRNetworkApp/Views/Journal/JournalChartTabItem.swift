@@ -46,35 +46,35 @@ struct JournalChartTabItem: View {
             
             JournalChartView(journalViewModel: journalViewModel) // could use environment
 
-            HStack {
-                Menu {
-                    Picker(selection: $journalViewModel.selectedCourtSection) {
-                        ForEach(CourtSection.allCases) { value in
-                            Text(value.rawValue) // use associated string
-                                .tag(value)
-                                .font(.largeTitle)
-                        }
-                    } label: {}
-                } label: {
-                    HStack {
-                        Text(journalViewModel.selectedCourtSection.rawValue)
-                            .font(.system(size: 14, weight: .semibold))
-
-                        Image(systemName: "chevron.down")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 8, height: 4)
-                    }
-                    .foregroundColor(.white)
-                    .padding(.vertical, 3)
-                    .padding(.horizontal, 8)
-                    .background(Capsule().fill(Color.ui.black))
-                }
-
-                Spacer()
-                
-            }
-            .padding(.bottom, 8)
+//            HStack {
+//                Menu {
+//                    Picker(selection: $journalViewModel.selectedCourtSection) {
+//                        ForEach(CourtSection.allCases) { value in
+//                            Text(value.rawValue) // use associated string
+//                                .tag(value)
+//                                .font(.largeTitle)
+//                        }
+//                    } label: {}
+//                } label: {
+//                    HStack {
+//                        Text(journalViewModel.selectedCourtSection.rawValue)
+//                            .font(.system(size: 14, weight: .semibold))
+//
+//                        Image(systemName: "chevron.down")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 8, height: 4)
+//                    }
+//                    .foregroundColor(.white)
+//                    .padding(.vertical, 3)
+//                    .padding(.horizontal, 8)
+//                    .background(Capsule().fill(Color.ui.black))
+//                }
+//
+//                Spacer()
+//                
+//            }
+//            .padding(.bottom, 8)
             
             JournalCustomSegmentedControl(
                 selectedIndex: $journalViewModel.selectedDateType,

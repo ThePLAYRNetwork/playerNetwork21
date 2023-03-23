@@ -11,6 +11,7 @@ import CloudKit
 
 struct User: Identifiable {
     var id: String // record name
+    var profileImage: CKAsset?
     var userID: CKRecord.Reference
     var firstName: String
     var lastName: String
@@ -30,9 +31,12 @@ struct User: Identifiable {
         CKRecord.ID(recordName: id)
     }
     
+    
+    
     init(firstName: String = "", lastName: String = "", email: String = "", phoneNumber: String = "", role: Role = .player, height: String = "", weight: String = "", age: Int = 0, highestLevelPlayed: LevelPlayed = .college, skillLevel: SkillLevel = .competitive, school: String = "", position: Position = .guard, playerStyle: PlayerStyle = PlayerStyle()) {
         self.id = UUID().uuidString
         self.userID = CKRecord.Reference(record: CKRecord(recordType: "User"), action: .none)
+      //  self.profileImage = CKAsset(fileURL: URL(string: "")!)
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -51,6 +55,10 @@ struct User: Identifiable {
     init(record: CKRecord) throws {
         guard let userID = record[.userID] as? CKRecord.Reference else {
             throw RecordError.missingKey(.userID)
+        }
+        
+        if let profileImage = record[.profileImage] as? CKAsset {
+            self.profileImage = profileImage
         }
         
         guard let firstName = record[.firstName] as? String else {
@@ -111,6 +119,8 @@ struct User: Identifiable {
         
         self.id = record.recordID.recordName
         self.userID = userID
+        self.profileImage = CKAsset(fileURL: URL(string: "")!)
+      //  self.profileImage = profileImage
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -131,6 +141,7 @@ struct User: Identifiable {
         let userID = try await CKContainer.default().userRecordID()
         let record = CKRecord(recordType: "User", recordID: self.recordID)
         record[.userID] = CKRecord.Reference(recordID: userID, action: .none) // reference to user's original record
+        record[.profileImage] = CKAsset(fileURL: URL(string: "")!)
         record[.firstName] = self.firstName
         record[.lastName] = self.lastName
         record[.email] = self.email
@@ -168,7 +179,7 @@ extension User {
     }
     
     enum RecordKey: String {
-        case userID, firstName, lastName, email, phoneNumber, role, height, weight, age, highestLevelPlayed, skillLevel, school, position, playerStyle
+        case userID, profileImage, firstName, lastName, email, phoneNumber, role, height, weight, age, highestLevelPlayed, skillLevel, school, position, playerStyle
     }
     
     enum Role: String, CaseIterable, Identifiable {

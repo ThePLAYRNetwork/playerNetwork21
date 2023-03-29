@@ -10,7 +10,6 @@ import _PhotosUI_SwiftUI
 
 struct CreatePlayerProfileView: View {
     @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
-    @ObservedObject var vm: ProfileViewModel
     
     
     @State var user = User()
@@ -30,7 +29,9 @@ struct CreatePlayerProfileView: View {
                 .padding(.top, 60)
                 
                 
-                ProfileImage(vm: ProfileViewModel(), user: $user)
+                Circle()
+                    .frame(width: 120, height: 120)
+                    .foregroundColor(Color.ui.grayD9D9D9)
                 
                 
             }

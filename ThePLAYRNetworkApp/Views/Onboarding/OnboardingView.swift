@@ -49,8 +49,7 @@ struct OnboardingView: View {
                         Spacer()
                         
                         NavigationLink {
-                         //   CreatePlayerProfileView(viewModel: ProfileViewModel())
-                            CreatePlayerProfileView(vm: ProfileViewModel())
+                    CreatePlayerProfileView()
 
                         } label: {
                             Text("Skip")

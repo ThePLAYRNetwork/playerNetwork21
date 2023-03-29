@@ -33,7 +33,7 @@ struct User: Identifiable {
     
     
     
-    init(firstName: String = "", lastName: String = "", email: String = "", phoneNumber: String = "", role: Role = .player, height: String = "", weight: String = "", age: Int = 0, highestLevelPlayed: LevelPlayed = .college, skillLevel: SkillLevel = .competitive, school: String = "", position: Position = .guard, playerStyle: PlayerStyle = PlayerStyle()) {
+    init(firstName: String = "", lastName: String = "", email: String = "", phoneNumber: String = "", role: Role = .player, height: String = "6’0\"", weight: String = "140..150", age: Int = 20, highestLevelPlayed: LevelPlayed = .college, skillLevel: SkillLevel = .competitive, school: String = "", position: Position = .guard, playerStyle: PlayerStyle = PlayerStyle()) {
         self.id = UUID().uuidString
         self.userID = CKRecord.Reference(record: CKRecord(recordType: "User"), action: .none)
       //  self.profileImage = CKAsset(fileURL: URL(string: "")!)
@@ -205,7 +205,7 @@ extension User {
 
 extension User {
     static let sampleUsers: [User] = [
-        User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "250", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playerStyle: PlayerStyle())
+        User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "140..150", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playerStyle: PlayerStyle())
     ]
 }
 

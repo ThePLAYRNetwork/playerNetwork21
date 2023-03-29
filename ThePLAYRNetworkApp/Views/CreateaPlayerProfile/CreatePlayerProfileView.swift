@@ -22,6 +22,7 @@ struct CreatePlayerProfileView: View {
                     Image("onboardingLogo")
                         .resizable()
                         .frame(width: 83, height: 68)
+                        .padding(.top, 20)
                     
                     Spacer()
                 }
@@ -34,8 +35,6 @@ struct CreatePlayerProfileView: View {
                 
             }
             .padding(.bottom)
-            
-            
             .frame(height: 281)
             .background(Color.ui.black)
             .clipShape(RoundedShape(corners: [.bottomRight]))
@@ -74,7 +73,8 @@ struct CreatePlayerProfileView: View {
                 }
                 
             }
-            .padding()
+            .padding(.top,20)
+            .padding(.bottom, 20)
             
             
             
@@ -91,9 +91,11 @@ struct CreatePlayerProfileView: View {
                 .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
                 
-                
-                
-                
+            }
+            .padding(.bottom, 20)
+            
+            
+            VStack(alignment: .leading){
                 Text("PHONE NUMBER")
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(.black)
@@ -102,13 +104,13 @@ struct CreatePlayerProfileView: View {
                     "(   )  -", text: $user.phoneNumber
                 )
                 .padding()
-                .frame(height: 50)
+                .frame(width:378, height: 50)
                 .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
-                .padding(.bottom, 15)
+              //  .padding(.bottom, 15)
                 
             }
-            .padding(.horizontal)
+            .padding(.bottom, 20)
             
             Spacer()
             

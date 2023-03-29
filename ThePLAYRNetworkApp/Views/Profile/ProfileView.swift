@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @State var posts = Post.samplePosts
-
+    
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 0) {
@@ -52,11 +53,11 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView()
+//    }
+//}
 
 extension ProfileView {
     struct TopSection: View {

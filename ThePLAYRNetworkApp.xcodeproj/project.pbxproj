@@ -51,7 +51,6 @@
 		CF1A19B528BFE66700D82DC8 /* TopSearchBarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A19B428BFE66700D82DC8 /* TopSearchBarSection.swift */; };
 		CF1A19B728BFE8F200D82DC8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A19B628BFE8F200D82DC8 /* SearchViewModel.swift */; };
 		CF20ABF42948A20500897F60 /* CreatePlayerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20ABF32948A20500897F60 /* CreatePlayerProfileView.swift */; };
-		CF20ABF62948B39B00897F60 /* CreatePlayerProfile16.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20ABF52948B39B00897F60 /* CreatePlayerProfile16.swift */; };
 		CF20ABF82948BC1300897F60 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF20ABF72948BC1300897F60 /* RoundedShape.swift */; };
 		CF26300C28EB0C9000CAD20D /* TrainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26300B28EB0C9000CAD20D /* TrainersView.swift */; };
 		CF26301528EB0E4100CAD20D /* EventsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26300F28EB0E4100CAD20D /* EventsRow.swift */; };
@@ -135,6 +134,7 @@
 		CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740B29192A72005D8506 /* JournalViewModel.swift */; };
 		CFBE740E29192AA0005D8506 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740D29192AA0005D8506 /* Court.swift */; };
 		CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75E4628F9A453004AB852 /* SessionView.swift */; };
+		CFCA03F829CA128600523C55 /* CreatePlayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA03F729CA128600523C55 /* CreatePlayerHeader.swift */; };
 		CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75228AAD6BA002F1D30 /* Task.swift */; };
 		CFD2F2FB28FDA90400D57A89 /* BookSessionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */; };
 		CFD3C90F28E77E5D004B53E7 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C90628E77E5D004B53E7 /* ConversationView.swift */; };
@@ -209,7 +209,6 @@
 		CF1A19B428BFE66700D82DC8 /* TopSearchBarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSearchBarSection.swift; sourceTree = "<group>"; };
 		CF1A19B628BFE8F200D82DC8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CF20ABF32948A20500897F60 /* CreatePlayerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerProfileView.swift; sourceTree = "<group>"; };
-		CF20ABF52948B39B00897F60 /* CreatePlayerProfile16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerProfile16.swift; sourceTree = "<group>"; };
 		CF20ABF72948BC1300897F60 /* RoundedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		CF26300B28EB0C9000CAD20D /* TrainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersView.swift; sourceTree = "<group>"; };
 		CF26300F28EB0E4100CAD20D /* EventsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsRow.swift; sourceTree = "<group>"; };
@@ -293,6 +292,7 @@
 		CFBE740B29192A72005D8506 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		CFBE740D29192AA0005D8506 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		CFC75E4628F9A453004AB852 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		CFCA03F729CA128600523C55 /* CreatePlayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerHeader.swift; sourceTree = "<group>"; };
 		CFCFF75228AAD6BA002F1D30 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSessionDate.swift; sourceTree = "<group>"; };
 		CFD3C90628E77E5D004B53E7 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -387,6 +387,7 @@
 		32862F0428923EE200CDFB3B /* ThePLAYRNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				CFB099A129C4CEE0005A8737 /* New Group */,
 				CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */,
 				32862F0528923EE200CDFB3B /* ThePLAYRNetworkApp.swift */,
 				321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */,
@@ -561,10 +562,10 @@
 			isa = PBXGroup;
 			children = (
 				CF20ABF32948A20500897F60 /* CreatePlayerProfileView.swift */,
-				CF20ABF52948B39B00897F60 /* CreatePlayerProfile16.swift */,
 				CFE2B77029490CC000ACF890 /* CreatePlayerProfile18.swift */,
 				CF737FFB29520B6F00363601 /* PlayerProfileOptions.swift */,
 				CF20ABF72948BC1300897F60 /* RoundedShape.swift */,
+				CFCA03F729CA128600523C55 /* CreatePlayerHeader.swift */,
 			);
 			path = CreateaPlayerProfile;
 			sourceTree = "<group>";
@@ -691,6 +692,13 @@
 				CF3A964B2927AFBB00940E1F /* ActiveSessionItemView.swift */,
 			);
 			path = Hub;
+			sourceTree = "<group>";
+		};
+		CFB099A129C4CEE0005A8737 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		CFB3384B28AE8EF000610F42 /* Training */ = {
@@ -922,8 +930,8 @@
 				CF6B676C296C522900BEC347 /* Buttons.swift in Sources */,
 				CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */,
 				CFB3384D28AE8F0C00610F42 /* NearbySessionsItem.swift in Sources */,
-				CF20ABF62948B39B00897F60 /* CreatePlayerProfile16.swift in Sources */,
 				CFD3C91228E77E5D004B53E7 /* ConversationMoreOverlay.swift in Sources */,
+				CFCA03F829CA128600523C55 /* CreatePlayerHeader.swift in Sources */,
 				32EA5CAB2893178700A70A7B /* MapGameView.swift in Sources */,
 				32862F2C2892527900CDFB3B /* LoginView.swift in Sources */,
 				CF20ABF42948A20500897F60 /* CreatePlayerProfileView.swift in Sources */,
@@ -1161,7 +1169,9 @@
 				DEVELOPMENT_TEAM = 5VFLZY6QMJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera $(Camera_App) camera use";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to use your photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1194,7 +1204,9 @@
 				DEVELOPMENT_TEAM = 5VFLZY6QMJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera $(Camera_App) camera use";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to use your photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

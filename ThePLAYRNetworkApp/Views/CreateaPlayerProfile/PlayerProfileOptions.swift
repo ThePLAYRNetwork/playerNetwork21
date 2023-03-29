@@ -17,31 +17,29 @@ struct PlayerProfileOptions: View {
                   "5’1\"","5’2\"","5’3\"","5’4\"","5’5\"","5’6\"","5’7\"","5’8\"","5’9\"","5’10\"","5’11\"","6’0\"",
                   "6’1\"","6’2\"","6’3\"","6’4\"","6’5\"","6’6\"","6’7\"","6’8\"","6’9\"","6’10\"","6’11\"","7’0\"",
                   "7’1\"","7’2\"","7’3\"","7’4\"","7’5\"","7’6\"","7’7\"","7’8\"","7’9\"","7’10\"","7’11\"","8’0\""]
-//    @State var selectedHeight = "6’0\""
-    
-
-    var weight = 80...360
-//    @State var selectedWeight = 80
+    //    @State var selectedHeight = "6’0\""
     
     
+    //var weight = 80...280
+    
+    var weight = ["80..90", "90..100", "100..110", "110..120", "120..130","130..140","140..150","150..160","160..170","170..180","180..190","190..200","200..210","210..220","220..230","230..240","240..250","250..260","260..270","270..280"]
+    //    @State var selectedWeight = 80
     
     var age = 8...70
-//    @State var selectedAge = 18
+    //    @State var selectedAge = 18
     
     
     var highestLevel = ["High School", "College", "Professional"]
-//    @State var selectedHighestLevel = "High School"
+    //    @State var selectedHighestLevel = "High School"
     
     var skillLevel = ["Recreation", "Competitive", "Elite"]
-//    @State var selectedSkill = "Elite"
-
+    //    @State var selectedSkill = "Elite"
+    
     
     var school = ["University of California, San Diego"]
-//    @State var selectedSchool = "University of California, San Diego"
+    //    @State var selectedSchool = "University of California, San Diego"
     
-    
-    
-    
+
     init(user: Binding<User>) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 246, green: 246, blue: 246, alpha: 1)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.black) ], for: .selected)
@@ -60,17 +58,82 @@ struct PlayerProfileOptions: View {
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.black)
                     
-          
+                    
                     Menu {
-                        Picker(selection: $user.height, label: EmptyView()) {
+                      //  Picker(selection: $user.height, label: EmptyView()) {
+                            Picker("zddgvfd", selection: $user.height) {
                             ForEach(height, id: \.self) {
-                               // Text($0.description + height2.description)
-                                Text($0)
+                                // Text($0.description + height2.description)
+                                 Text($0)
+                            }
+                        }
+                            
+                    } label: {
+                        HStack {
+                            Text(user.height.description)
+                            Spacer()
+                            Image(systemName: showOptions ? "chevron.up" : "chevron.down")
+                                .frame(width: 12, height: 6)
+                        }
+                        .padding()
+                        .tint(Color.ui.gray959595)
+                        .frame(width: 122, height: 50)
+                        .background(Color.ui.grayF6F6F6)
+                        .cornerRadius(10)
+                    }
+                    .onTapGesture {
+                        withAnimation{
+                            showOptions.toggle()
+                        }
+                    }
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("WEIGHT")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.black)
+                    
+                    Menu {
+                        Picker("Select", selection: $user.weight) {
+                            ForEach(weight, id: \.self) {
+                                Text($0.description + " lbs")
                             }
                         }
                     } label: {
                         HStack {
-                            Text(user.height.description)
+                            Text(user.weight.description)
+                            Spacer()
+                            
+                            Image(systemName: showOptions ? "chevron.up" : "chevron.down")
+                                .frame(width: 12, height: 6)
+                        }
+                        .padding()
+                        .tint(Color.ui.gray959595)
+                        .frame(width: 122, height: 50)
+                        .background(Color.ui.grayF6F6F6)
+                        .cornerRadius(10)
+                    }
+                    .onTapGesture {
+                        withAnimation{
+                            showOptions.toggle()
+                        }
+                    }
+                }
+                
+                
+                VStack(alignment: .leading) {
+                    Text("AGE")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.black)
+                    Menu {
+                        Picker("Select", selection: $user.age) {
+                            ForEach(age, id: \.self) {
+                                Text($0.description)
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text(user.age.description)
                             Spacer()
                             
                             Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -85,96 +148,16 @@ struct PlayerProfileOptions: View {
                     }
                     .onTapGesture {
                         withAnimation{
-                            
                             showOptions.toggle()
                         }
                     }
-                }
-                
-                
-                
-                
-                
-                
-                VStack(alignment: .leading) {
-                    Text("WEIGHT")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(.black)
-                    
-                    Menu {
-                        Picker("Select", selection: $user.weight) {
-                        ForEach(weight, id: \.self) {
-                            Text($0.description + " lbs")
-                        }
-                    }
-                } label: {
-                    HStack {
-                        
-                        Text(user.weight.description)
-                        Spacer()
-                        
-                        Image(systemName: showOptions ? "chevron.up" : "chevron.down")
-                            .frame(width: 12, height: 6)
-                        //  .offset(y: -4)
-                    }
-                    
-                    .padding()
-                    .tint(Color.ui.gray959595)
-                    .frame(width: 122, height: 50)
-                    .background(Color.ui.grayF6F6F6)
-                    .cornerRadius(10)
-                }
-                .onTapGesture {
-                    withAnimation{
-                        
-                        showOptions.toggle()
-                    }
-                }
-                    
-                    
-                    
-                }
-                
-                
-                VStack(alignment: .leading) {
-                    Text("AGE")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(.black)
-                    Menu {
-                        Picker("Select", selection: $user.age) {
-                        ForEach(age, id: \.self) {
-                            Text($0.description)
-                        }
-                    }
-                } label: {
-                    HStack {
-                        
-                        Text(user.age.description)
-                        Spacer()
-                        
-                        Image(systemName: showOptions ? "chevron.up" : "chevron.down")
-                            .frame(width: 12, height: 6)
-                    }
-                    
-                    .padding()
-                    .tint(Color.ui.gray959595)
-                    .frame(width: 122, height: 50)
-                    .background(Color.ui.grayF6F6F6)
-                    .cornerRadius(10)
-                }
-                .onTapGesture {
-                    withAnimation{
-                        
-                        showOptions.toggle()
-                    }
-                }
                     
                     
                     
                 }
                 
             }
-            .padding(.bottom)
+            .padding([.bottom, .horizontal])
             
             
             
@@ -187,7 +170,7 @@ struct PlayerProfileOptions: View {
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(.black)
                     .padding(.bottom, -5)
-   
+                
                 Picker("Select", selection: $user.highestLevelPlayed) {
                     ForEach(User.LevelPlayed.allCases) { level in
                         Text(level.rawValue)
@@ -239,18 +222,14 @@ struct PlayerProfileOptions: View {
                         ForEach(school, id: \.self) {
                             Text($0)
                         }
-                        
                     }
                 } label: {
                     HStack {
                         Text(user.school)
                         Spacer()
-                        
                         Image(systemName: showOptions ? "chevron.up" : "chevron.down")
                             .frame(width: 12, height: 6)
-
                     }
-                    
                     .padding()
                     .tint(Color.ui.gray959595)
                     .frame(width: 380, height: 50)
@@ -263,7 +242,7 @@ struct PlayerProfileOptions: View {
                         showOptions.toggle()
                     }
                 }
-
+                
                 
             }
             

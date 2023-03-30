@@ -49,4 +49,19 @@ class UserRepository: UserApiService {
             return .failure(error)
         }
     }
+    
+    func getPlayerStyles() async -> Result<[PlayerStyle], Error> {
+        do {
+            let predicate = NSPredicate(value: true) // get all (which is really just max of 100)
+            let query = CKQuery(recordType: "PlayerStyle", predicate: predicate)
+            let (results, _) = try await database.records(matching: query)
+            let records: [CKRecord] = try results.map { try $0.1.get() }
+            let playerStyles: [PlayerStyle] = try records.map { try PlayerStyle(record: $0) }
+            print("Succesfully fetched player styles CloudKit")
+            return .success(playerStyles)
+        } catch {
+            print("Failed to get player styles from CloudKit")
+            return .failure(error)
+        }
+    }
 }

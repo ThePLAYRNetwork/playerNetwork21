@@ -25,18 +25,19 @@ struct User: Identifiable {
     var skillLevel: SkillLevel
     var school: String
     var position: Position
-    var playerStyle: PlayerStyle
+    var playsLike: String
     
     var recordID: CKRecord.ID {
         CKRecord.ID(recordName: id)
     }
     
+    var name: String {
+        "\(firstName) \(lastName)"
+    }
     
-    
-    init(firstName: String = "", lastName: String = "", email: String = "", phoneNumber: String = "", role: Role = .player, height: String = "6’0\"", weight: String = "140..150", age: Int = 20, highestLevelPlayed: LevelPlayed = .college, skillLevel: SkillLevel = .competitive, school: String = "", position: Position = .guard, playerStyle: PlayerStyle = PlayerStyle()) {
+    init(firstName: String = "", lastName: String = "", email: String = "", phoneNumber: String = "", role: Role = .player, height: String = "6’0\"", weight: String = "140..150", age: Int = 20, highestLevelPlayed: LevelPlayed = .college, skillLevel: SkillLevel = .competitive, school: String = "", position: Position = .guard, playsLike: String = "") {
         self.id = UUID().uuidString
         self.userID = CKRecord.Reference(record: CKRecord(recordType: "User"), action: .none)
-      //  self.profileImage = CKAsset(fileURL: URL(string: "")!)
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -49,7 +50,7 @@ struct User: Identifiable {
         self.skillLevel = skillLevel
         self.school = school
         self.position = position
-        self.playerStyle = playerStyle
+        self.playsLike = playsLike
     }
     
     init(record: CKRecord) throws {
@@ -117,10 +118,16 @@ struct User: Identifiable {
             throw RecordError.missingKey(.position)
         }
         
+        guard let playsLike = record[.playsLike] as? String else {
+            throw RecordError.missingKey(.playsLike)
+        }
+        
+        if let profileImage = record[.profileImage] as? CKAsset {
+            self.profileImage = profileImage
+        }
+        
         self.id = record.recordID.recordName
         self.userID = userID
-        self.profileImage = CKAsset(fileURL: URL(string: "")!)
-      //  self.profileImage = profileImage
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -133,7 +140,7 @@ struct User: Identifiable {
         self.skillLevel = skillLevel
         self.school = school
         self.position = position
-        self.playerStyle = PlayerStyle(playerStyle: "")
+        self.playsLike = playsLike
     }
     
     // Convert User object to Record
@@ -141,7 +148,6 @@ struct User: Identifiable {
         let userID = try await CKContainer.default().userRecordID()
         let record = CKRecord(recordType: "User", recordID: self.recordID)
         record[.userID] = CKRecord.Reference(recordID: userID, action: .none) // reference to user's original record
-        record[.profileImage] = CKAsset(fileURL: URL(string: "")!)
         record[.firstName] = self.firstName
         record[.lastName] = self.lastName
         record[.email] = self.email
@@ -154,22 +160,17 @@ struct User: Identifiable {
         record[.skillLevel] = self.skillLevel.rawValue
         record[.school] = self.school
         record[.position] = self.position.rawValue
-        record[.playerStyle] = self.playerStyle
+        record[.playsLike] = self.playsLike
+        
+        if let profileImageURL = self.profileImage?.fileURL {
+            record[.profileImage] = CKAsset(fileURL: profileImageURL)
+        }
+        
         return record
     }
 }
 
 extension User {
-    struct PlayerStyle {
-//        var playerStyleImg: CKAsset
-        var playerStyle: String
-        
-        init(playerStyle: String = "") {
-//            self.playerStyleImg = playerStyleImg
-            self.playerStyle = playerStyle
-        }
-    }
-    
     struct RecordError: LocalizedError {
         var localizedDescription: String
         
@@ -179,7 +180,7 @@ extension User {
     }
     
     enum RecordKey: String {
-        case userID, profileImage, firstName, lastName, email, phoneNumber, role, height, weight, age, highestLevelPlayed, skillLevel, school, position, playerStyle
+        case userID, profileImage, firstName, lastName, email, phoneNumber, role, height, weight, age, highestLevelPlayed, skillLevel, school, position, playsLike
     }
     
     enum Role: String, CaseIterable, Identifiable {
@@ -205,7 +206,7 @@ extension User {
 
 extension User {
     static let sampleUsers: [User] = [
-        User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "140..150", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playerStyle: PlayerStyle())
+        User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "140..150", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playsLike: "Kobe Bryant")
     ]
 }
 

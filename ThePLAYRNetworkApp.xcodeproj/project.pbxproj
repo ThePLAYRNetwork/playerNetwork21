@@ -36,6 +36,9 @@
 		32862F442892590D00CDFB3B /* UpcomingGameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F432892590D00CDFB3B /* UpcomingGameItem.swift */; };
 		32862F462892592C00CDFB3B /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F452892592C00CDFB3B /* GameDetailView.swift */; };
 		32862F482892597900CDFB3B /* SheetButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F472892597900CDFB3B /* SheetButtonRow.swift */; };
+		32AF1B9729D537B500E7A502 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF1B9629D537B500E7A502 /* GetStartedView.swift */; };
+		32AF1B9929D5383F00E7A502 /* PlayerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF1B9829D5383F00E7A502 /* PlayerStyle.swift */; };
+		32AF1B9B29D53B3400E7A502 /* PlayerCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF1B9A29D53B3400E7A502 /* PlayerCarousel.swift */; };
 		32D019C628D1825A00E3C601 /* PlayersYouMayKnowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D019C528D1825A00E3C601 /* PlayersYouMayKnowRow.swift */; };
 		32D019C828D1829400E3C601 /* PlayersYouMayKnowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D019C728D1829400E3C601 /* PlayersYouMayKnowItem.swift */; };
 		32E967A729BBB08D00B8676F /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E967A629BBB08D00B8676F /* Journal.swift */; };
@@ -194,6 +197,9 @@
 		32862F432892590D00CDFB3B /* UpcomingGameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingGameItem.swift; sourceTree = "<group>"; };
 		32862F452892592C00CDFB3B /* GameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
 		32862F472892597900CDFB3B /* SheetButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetButtonRow.swift; sourceTree = "<group>"; };
+		32AF1B9629D537B500E7A502 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
+		32AF1B9829D5383F00E7A502 /* PlayerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStyle.swift; sourceTree = "<group>"; };
+		32AF1B9A29D53B3400E7A502 /* PlayerCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCarousel.swift; sourceTree = "<group>"; };
 		32D019C528D1825A00E3C601 /* PlayersYouMayKnowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersYouMayKnowRow.swift; sourceTree = "<group>"; };
 		32D019C728D1829400E3C601 /* PlayersYouMayKnowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersYouMayKnowItem.swift; sourceTree = "<group>"; };
 		32E967A629BBB08D00B8676F /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
@@ -387,7 +393,6 @@
 		32862F0428923EE200CDFB3B /* ThePLAYRNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
-				CFB099A129C4CEE0005A8737 /* New Group */,
 				CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */,
 				32862F0528923EE200CDFB3B /* ThePLAYRNetworkApp.swift */,
 				321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */,
@@ -455,6 +460,7 @@
 				CFCFF75228AAD6BA002F1D30 /* Task.swift */,
 				CF6B678E296C534D00BEC347 /* TrainingSession.swift */,
 				32862F322892530300CDFB3B /* User.swift */,
+				32AF1B9829D5383F00E7A502 /* PlayerStyle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -694,13 +700,6 @@
 			path = Hub;
 			sourceTree = "<group>";
 		};
-		CFB099A129C4CEE0005A8737 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		CFB3384B28AE8EF000610F42 /* Training */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,6 +717,8 @@
 				CFBCE9952987FED50055ED3A /* OnboardingPosition.swift */,
 				CFBCE9962987FED50055ED3A /* OnboardingSignupView.swift */,
 				CFBCE9972987FED50055ED3A /* OnboardingView.swift */,
+				32AF1B9629D537B500E7A502 /* GetStartedView.swift */,
+				32AF1B9A29D53B3400E7A502 /* PlayerCarousel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -920,6 +921,7 @@
 				CF6B6786296C52FA00BEC347 /* CourtView.swift in Sources */,
 				CF90D8B628EF1E8A009BD09D /* SessionItemTrainers.swift in Sources */,
 				CF79A49328F49CB900D54677 /* SessionItemRow.swift in Sources */,
+				32AF1B9929D5383F00E7A502 /* PlayerStyle.swift in Sources */,
 				CF8205A4299E92850019AE45 /* NoteCell.swift in Sources */,
 				CFB3385128AE92B100610F42 /* TrainingViewModel.swift in Sources */,
 				CF6B676E296C527300BEC347 /* SpecialistCell.swift in Sources */,
@@ -927,9 +929,11 @@
 				322F330829C02CB20073F41D /* UserRepository.swift in Sources */,
 				CF6A16DD291ACAA3001D98F5 /* TrainerHubViewModel.swift in Sources */,
 				CF6B676A296C522300BEC347 /* BackButton.swift in Sources */,
+				32AF1B9B29D53B3400E7A502 /* PlayerCarousel.swift in Sources */,
 				CF6B676C296C522900BEC347 /* Buttons.swift in Sources */,
 				CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */,
 				CFB3384D28AE8F0C00610F42 /* NearbySessionsItem.swift in Sources */,
+				32AF1B9729D537B500E7A502 /* GetStartedView.swift in Sources */,
 				CFD3C91228E77E5D004B53E7 /* ConversationMoreOverlay.swift in Sources */,
 				CFCA03F829CA128600523C55 /* CreatePlayerHeader.swift in Sources */,
 				32EA5CAB2893178700A70A7B /* MapGameView.swift in Sources */,

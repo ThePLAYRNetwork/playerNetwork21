@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PlayerProfileOptions: View {
-    
-    @Binding var user: User
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+
+//    @Binding var user: User
     
     @State var showOptions: Bool = false
     
@@ -40,12 +41,10 @@ struct PlayerProfileOptions: View {
     //    @State var selectedSchool = "University of California, San Diego"
     
 
-    init(user: Binding<User>) {
+    init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 246, green: 246, blue: 246, alpha: 1)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.black) ], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.gray)], for: .normal)
-        
-        self._user = user
     }
     
     
@@ -61,7 +60,7 @@ struct PlayerProfileOptions: View {
                     
                     Menu {
                       //  Picker(selection: $user.height, label: EmptyView()) {
-                            Picker("zddgvfd", selection: $user.height) {
+                        Picker("zddgvfd", selection: $ckUserViewModel.user.height) {
                             ForEach(height, id: \.self) {
                                 // Text($0.description + height2.description)
                                  Text($0)
@@ -70,7 +69,7 @@ struct PlayerProfileOptions: View {
                             
                     } label: {
                         HStack {
-                            Text(user.height.description)
+                            Text(ckUserViewModel.user.height.description)
                             Spacer()
                             Image(systemName: showOptions ? "chevron.up" : "chevron.down")
                                 .frame(width: 12, height: 6)
@@ -94,14 +93,14 @@ struct PlayerProfileOptions: View {
                         .foregroundColor(.black)
                     
                     Menu {
-                        Picker("Select", selection: $user.weight) {
+                        Picker("Select", selection: $ckUserViewModel.user.weight) {
                             ForEach(weight, id: \.self) {
                                 Text($0.description + " lbs")
                             }
                         }
                     } label: {
                         HStack {
-                            Text(user.weight.description)
+                            Text(ckUserViewModel.user.weight.description)
                             Spacer()
                             
                             Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -126,14 +125,14 @@ struct PlayerProfileOptions: View {
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(.black)
                     Menu {
-                        Picker("Select", selection: $user.age) {
+                        Picker("Select", selection: $ckUserViewModel.user.age) {
                             ForEach(age, id: \.self) {
                                 Text($0.description)
                             }
                         }
                     } label: {
                         HStack {
-                            Text(user.age.description)
+                            Text(ckUserViewModel.user.age.description)
                             Spacer()
                             
                             Image(systemName: showOptions ? "chevron.up" : "chevron.down")
@@ -171,7 +170,7 @@ struct PlayerProfileOptions: View {
                     .foregroundColor(.black)
                     .padding(.bottom, -5)
                 
-                Picker("Select", selection: $user.highestLevelPlayed) {
+                Picker("Select", selection: $ckUserViewModel.user.highestLevelPlayed) {
                     ForEach(User.LevelPlayed.allCases) { level in
                         Text(level.rawValue)
                     }
@@ -196,7 +195,7 @@ struct PlayerProfileOptions: View {
                 
                 
                 
-                Picker("Select", selection: $user.skillLevel) {
+                Picker("Select", selection: $ckUserViewModel.user.skillLevel) {
                     ForEach(User.SkillLevel.allCases, id: \.self) { skill in
                         Text(skill.rawValue)
                     }
@@ -218,14 +217,14 @@ struct PlayerProfileOptions: View {
                 
                 
                 Menu {
-                    Picker(selection: $user.school, label: EmptyView()) {
+                    Picker(selection: $ckUserViewModel.user.school, label: EmptyView()) {
                         ForEach(school, id: \.self) {
                             Text($0)
                         }
                     }
                 } label: {
                     HStack {
-                        Text(user.school)
+                        Text(ckUserViewModel.user.school)
                         Spacer()
                         Image(systemName: showOptions ? "chevron.up" : "chevron.down")
                             .frame(width: 12, height: 6)
@@ -253,6 +252,6 @@ struct PlayerProfileOptions: View {
 
 struct PlayerProfileOptions_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerProfileOptions(user: .constant(User.sampleUsers[0]))
+        PlayerProfileOptions()
     }
 }

@@ -9,39 +9,47 @@ import SwiftUI
 import _PhotosUI_SwiftUI
 
 struct CreatePlayerProfileView: View {
+    @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
-    
-    
-    @State var user = User()
+    //    @State var user = User()
     
     var body: some View {
         VStack {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Image("onboardingLogo")
                         .resizable()
                         .frame(width: 83, height: 68)
-                        .padding(.top, 20)
+                        .padding(.top, 30)
                     
                     Spacer()
                 }
                 .padding(.horizontal)
                 .padding(.top, 60)
                 
-                
-                Circle()
-                    .frame(width: 120, height: 120)
-                    .foregroundColor(Color.ui.grayD9D9D9)
-                
-                
+                VStack(alignment: .center) {
+                    CircularProfileImage()
+                        .overlay(alignment: .bottomTrailing) {
+                            PhotosPicker(selection: $ckUserViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
+                                Image(systemName: "pencil.circle.fill")
+                                    .symbolRenderingMode(.multicolor)
+                                    .font(.system(size: 30))
+                                    .foregroundColor(.accentColor)
+                            }
+                            .buttonStyle(.borderless)
+                        }
+                    
+                    Text("Choose a Profile Photo")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color.ui.grayD9D9D9)
+                        .padding(.bottom)
+                }
             }
             .padding(.bottom)
-            .frame(height: 281)
+            .frame(height: 300)
             .background(Color.ui.black)
             .clipShape(RoundedShape(corners: [.bottomRight]))
             .clipShape(RoundedShape(corners: [.bottomLeft]))
-            
-            
             
             HStack{
                 VStack(alignment: .leading){
@@ -50,7 +58,7 @@ struct CreatePlayerProfileView: View {
                         .foregroundColor(.black)
                     
                     TextField(
-                        "John", text: $user.firstName
+                        "John", text: $ckUserViewModel.user.firstName
                     )
                     .padding()
                     .frame(width:184, height: 50)
@@ -65,7 +73,7 @@ struct CreatePlayerProfileView: View {
                         .foregroundColor(.black)
                     
                     TextField(
-                        "Doe", text: $user.lastName
+                        "Doe", text: $ckUserViewModel.user.lastName
                     )
                     .padding()
                     .frame(width:184, height: 50)
@@ -74,10 +82,7 @@ struct CreatePlayerProfileView: View {
                 }
                 
             }
-            .padding(.top,20)
-            .padding(.bottom, 20)
-            
-            
+            .padding(.vertical, 20)
             
             VStack(alignment: .leading){
                 Text("EMAIL")
@@ -85,7 +90,7 @@ struct CreatePlayerProfileView: View {
                     .foregroundColor(.black)
                 
                 TextField(
-                    "example@gmail.com", text: $user.email
+                    "example@gmail.com", text: $ckUserViewModel.user.email
                 )
                 .padding()
                 .frame(width:378, height: 50)
@@ -102,20 +107,20 @@ struct CreatePlayerProfileView: View {
                     .foregroundColor(.black)
                 
                 TextField(
-                    "(   )  -", text: $user.phoneNumber
+                    "(   )  -", text: $ckUserViewModel.user.phoneNumber
                 )
                 .padding()
                 .frame(width:378, height: 50)
                 .background(Color.ui.grayF6F6F6)
                 .cornerRadius(10)
-              //  .padding(.bottom, 15)
-                
             }
             .padding(.bottom, 20)
             
             Spacer()
             
-            NavigationLink(destination: CreatePlayerProfile18(user: $user)) {
+            Button {
+                navigationModel.path.append(OnboardingDestination.role)
+            } label: {
                 Text("Continue")
                     .foregroundColor(.white)
                     .frame(width:226, height: 48)
@@ -123,9 +128,55 @@ struct CreatePlayerProfileView: View {
                     .cornerRadius(34)
                     .padding(.bottom, 45)
             }
+            .disabled(isDisabled())
+            .opacity(isDisabled() ? 0.5 : 1.0)
         }
         .ignoresSafeArea()
-       }
+        .task {
+            await ckUserViewModel.getPlayerStyles()
+        }
+    }
+    
+    private func isDisabled() -> Bool {
+        return ckUserViewModel.user.firstName.isEmpty || ckUserViewModel.user.lastName.isEmpty || ckUserViewModel.user.email.isEmpty
+    }
+}
+
+struct CircularProfileImage: View {
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    
+    var body: some View {
+        ProfileImage()
+            .frame(width: 120, height: 120)
+            .clipShape(Circle())
+            .background {
+                Circle().fill(Color.ui.grayD9D9D9)
+            }
+    }
+}
+
+struct ProfileImage: View {
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    
+    var body: some View {
+        switch ckUserViewModel.imageState {
+        case .success(let data):
+            if let image = UIImage(data: data) {
+                Image(uiImage: image)
+                    .resizable().scaledToFill()
+            }
+        case .loading:
+            ProgressView()
+        case .empty:
+            Image(systemName: "person.fill")
+                .font(.system(size: 50))
+                .foregroundColor(.white)
+        case .failure:
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.system(size: 50))
+                .foregroundColor(.white)
+        }
+    }
 }
 
 //struct CreatePlayerProfileView_Previews: PreviewProvider {

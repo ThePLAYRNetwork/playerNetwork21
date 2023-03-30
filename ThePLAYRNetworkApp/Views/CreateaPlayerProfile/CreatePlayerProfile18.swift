@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CreatePlayerProfile18: View {
-    @Binding var user: User
+    @EnvironmentObject var navigationModel: NavigationModel
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+//    @Binding var user: User
     
     var body: some View {
         VStack {
@@ -26,7 +28,7 @@ struct CreatePlayerProfile18: View {
                         HStack {
                             
                             Button {
-                                user.role = .player
+                                ckUserViewModel.user.role = .player
                             } label: {
                                 
                                 VStack {
@@ -39,23 +41,23 @@ struct CreatePlayerProfile18: View {
                                     Spacer()
                                     Text("Player")
                                         .font(.system(size: 16))
-                                        .foregroundColor(user.role == .player ? Color.ui.accentColor : Color.ui.gray959595)
+                                        .foregroundColor(ckUserViewModel.user.role == .player ? Color.ui.accentColor : Color.ui.gray959595)
                                         .padding(.top)
                                     Spacer()
                                 }
                                 .frame(width: 122, height: 157)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 5)
-                                        .stroke(user.role == .player ? Color.ui.accentColor : Color.ui.grayC6C6C6)
+                                        .stroke(ckUserViewModel.user.role == .player ? Color.ui.accentColor : Color.ui.grayC6C6C6)
                                 )
                                 
                                 .overlay(
-                                    user.role == .player ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
+                                    ckUserViewModel.user.role == .player ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                                 )
                             }
 
                             Button {
-                                user.role = .coach
+                                ckUserViewModel.user.role = .coach
                             } label: {
                                 VStack {
                                     Spacer()
@@ -66,23 +68,23 @@ struct CreatePlayerProfile18: View {
                                     Spacer()
                                     Text("Coach")
                                         .font(.system(size: 16))
-                                        .foregroundColor(user.role == .coach ? Color.ui.accentColor : Color.ui.gray959595)
+                                        .foregroundColor(ckUserViewModel.user.role == .coach ? Color.ui.accentColor : Color.ui.gray959595)
                                     Spacer()
                                 }
                                 .frame(width: 122, height: 157)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 5)
-                                        .stroke(user.role == .coach ? Color.ui.accentColor : Color.ui.grayC6C6C6)
+                                        .stroke(ckUserViewModel.user.role == .coach ? Color.ui.accentColor : Color.ui.grayC6C6C6)
                                 )
                                 
                                 .overlay(
-                                    user.role == .coach ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
+                                    ckUserViewModel.user.role == .coach ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                                     
                                 )
                             }
 
                             Button {
-                                user.role = .trainer
+                                ckUserViewModel.user.role = .trainer
                             } label: {
                                 VStack {
                                     Spacer()
@@ -93,17 +95,17 @@ struct CreatePlayerProfile18: View {
                                     Spacer()
                                     Text("Trainer")
                                         .font(.system(size: 16))
-                                        .foregroundColor(user.role == .trainer ? Color.ui.accentColor : Color.ui.gray959595)
+                                        .foregroundColor(ckUserViewModel.user.role == .trainer ? Color.ui.accentColor : Color.ui.gray959595)
                                     Spacer()
                                 }
                                 .frame(width: 122, height: 157)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 5)
-                                        .stroke(user.role == .trainer ? Color.ui.accentColor : Color.ui.grayC6C6C6)
+                                        .stroke(ckUserViewModel.user.role == .trainer ? Color.ui.accentColor : Color.ui.grayC6C6C6)
                                 )
                                 
                                 .overlay(
-                                    user.role == .trainer ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
+                                    ckUserViewModel.user.role == .trainer ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                                 )
                             }
                             
@@ -112,7 +114,7 @@ struct CreatePlayerProfile18: View {
                         .padding(.horizontal)
                         .padding(.bottom, 15)
                         
-                        PlayerProfileOptions(user: $user)
+                        PlayerProfileOptions()
                             .padding(.bottom, 50)
                         
                         Spacer()
@@ -120,7 +122,9 @@ struct CreatePlayerProfile18: View {
                     }
             
                     
-                    NavigationLink(destination: OnboardingPosition(user: $user)) {
+                    Button {
+                        navigationModel.path.append(OnboardingDestination.position)
+                    } label: {
                         Text("Continue")
                             .foregroundColor(.white)
                             .frame(width:226, height: 48)
@@ -128,15 +132,20 @@ struct CreatePlayerProfile18: View {
                             .cornerRadius(34)
                             .padding(.bottom, 45)
                     }
+                    .disabled(isDisabled())
+                    .opacity(isDisabled() ? 0.5 : 1.0)
                 }
-               
             }
         }
+    }
+    
+    private func isDisabled() -> Bool {
+        return ckUserViewModel.user.height.isEmpty || ckUserViewModel.user.age == 0 || ckUserViewModel.user.school.isEmpty
     }
 }
 
 struct CreatePlayerProfile18_Previews: PreviewProvider {
     static var previews: some View {
-        CreatePlayerProfile18(user: .constant(User.sampleUsers[0]))
+        CreatePlayerProfile18()
     }
 }

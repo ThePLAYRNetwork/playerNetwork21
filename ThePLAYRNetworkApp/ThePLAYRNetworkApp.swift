@@ -23,110 +23,56 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var homeViewModel: HomeViewModel
     @StateObject private var createViewModel = CreateViewModel()
     @StateObject private var navigationModel = NavigationModel()
-    
-//    @State var selectedDay: Int = 4
-    @State private var selection: Tab = .home
-    
+
     init() {
         let gameRepository = GameRepository()
         let userRepository = UserRepository()
+        let navigationModel = NavigationModel()
         self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository))
-        self._ckUserViewModel = StateObject(wrappedValue: CloudKitUserViewModel(userRepository: userRepository))
+        self._ckUserViewModel = StateObject(wrappedValue: CloudKitUserViewModel(userRepository: userRepository, navigationModel: navigationModel))
+        self._navigationModel = StateObject(wrappedValue: navigationModel)
+        
+        // carousel dot color
+        UIPageControl.appearance().currentPageIndicatorTintColor = .black
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.ui.grayECECEC)
     }
     
+    // Mirnas
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationModel.path) {
-                if ckUserViewModel.isSignedInToiCloud {
-                    // User does not have profile, show signup view
-                    if ckUserViewModel.user == nil {
-                        OnboardingView()
+                VStack {
+                    if ckUserViewModel.isSignedInToiCloud {
+                        if ckUserViewModel.hasProfile {
+                            ThePlayrNetworkView()
+                        } else {
+                            GetStartedView()
+                        }
                     } else {
-                        // User has ThePlayrNetworkAccount profile
-                        ThePlayrNetworkView()
+                        Text("Please sign into iCloud Account")
                     }
-                } else {
-                    Text("Please sign into iCloud Account")
+                }
+                .navigationDestination(for: OnboardingDestination.self) { destination in
+                    switch destination {
+                    case .onboarding:
+                        OnboardingView()
+                    case .profile:
+                        CreatePlayerProfileView()
+                    case .role:
+                        CreatePlayerProfile18()
+                    case .position:
+                        OnboardingPosition()
+                    }
+                }
+                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
+                    ThePlayrNetworkView()
                 }
             }
             .environmentObject(navigationModel)
             .environmentObject(ckUserViewModel)
             .environmentObject(homeViewModel)
             .environmentObject(createViewModel)
-
-
-            
-            
-//            TabView {
-//                NavigationView {
-//                    HomeView()
-//                        .onAppear() {
-//                            // Ask user for permission to use location
-//                            homeViewModel.checkIfLocationServicesIsEnabled()
-//                        }
-//                }
-//                .tabItem {
-//                    // Label("", systemImage: "house")
-//                    Image("home")
-//
-//                }
-//                .tag(Tab.home)
-//
-//
-//                NavigationView{
-//                    CalendarView()
-//                        .background(Color.ui.whiteBg)
-//                }
-//                .tabItem {
-//                    //Label("Calendar", systemImage: "calendar.badge.clock")
-//                    Image("ReCalendar")
-//
-//
-//                }
-//                .tag(Tab.calendar)
-//
-//
-//
-//
-//                NavigationView {
-//                    CreateGameView()
-//                        .environmentObject(createViewModel)
-//                }
-//                .padding(.top, 20)
-//
-//                .tabItem {
-//                    //  Label("Create a Game", systemImage: "plus.circle.fill")
-//                    Image("RePlus")
-//                }
-//                .tag(Tab.create)
-//                .onDisappear {
-//                    print("Calling onDisappear()")
-//                    createViewModel.game = Game.sampleGames[0] // reset user input
-//                }
-//
-//
-//                NavigationView {
-//                    MessagesView()
-//                        .background(Color.ui.whiteBg)
-//                }
-//                .tabItem {
-//                    // Label("Message", systemImage: "message")
-//                    Image("ReMsg")
-//                }
-//                .tag(Tab.inbox)
-//
-//                NavigationView {
-//                    ProfileView()
-//                }
-//                .tabItem {
-//                    // Label("Profile", systemImage: "person.crop.circle")
-//                    Image("profile")
-//                }
-//                .tag(Tab.profile)
-//            }
-//            .environmentObject(homeViewModel)
         }
-        
     }
 }
 

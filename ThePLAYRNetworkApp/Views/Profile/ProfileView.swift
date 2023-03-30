@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
     @State var posts = Post.samplePosts
-    
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -53,73 +53,115 @@ struct ProfileView: View {
     }
 }
 
-//struct ProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileView()
-//    }
-//}
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView()
+            .environmentObject(CloudKitUserViewModel(userRepository: UserRepository(), navigationModel: NavigationModel()))
+    }
+}
 
-extension ProfileView {
-    struct TopSection: View {
-        var body: some View {
-            HStack(spacing: 20) {
-                Circle()
-                    .fill(Color.ui.grayD9D9D9)
-                    .frame(width: 115)
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Your Name")
-                        .bold()
-                        .font(.system(size: 24))
-                    
-                    Text("**Highest Level:** College")
-                        .padding(.top, 4)
-                    
-                    Text("**Plays Like:** Lebron James")
-                        .padding(.top, 7)
+
+struct TopSection: View {
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+
+    var body: some View {
+        HStack(spacing: 20) {
+            AsyncImage(url: ckUserViewModel.user.profileImage?.fileURL) { phase in
+                if let image = phase.image {
+                    // Success
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } else if phase.error != nil {
+                    // Error
+                    Image(systemName: "person.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.white)
+                } else {
+                    // Loading
+                    ProgressView()
                 }
+            }
+            .frame(width: 115, height: 115)
+            .clipShape(Circle())
+//            .overlay {
+//                Circle().stroke(Color.ui.grayD9D9D9, lineWidth: 2)
+//            }
+            .background {
+                Circle().fill(Color.ui.grayD9D9D9)
+            }
+
+            
+            
+            
+            VStack(alignment: .leading, spacing: 0) {
+                Text(ckUserViewModel.user.name)
+                    .bold()
+                    .font(.system(size: 24))
                 
-                Spacer()
+                Text("**Highest Level:** \(ckUserViewModel.user.highestLevelPlayed.rawValue.capitalized)")
+                    .padding(.top, 4)
+                
+                Text("**Plays Like:** \(ckUserViewModel.user.playsLike)")
+                    .padding(.top, 7)
+            }
+            
+            Spacer()
+        }
+    }
+}
+
+struct PlayerStats: View {
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+
+    var body: some View {
+        HStack {
+            VStack {
+                Text(ckUserViewModel.user.height)
+                    .bold()
+                Text("Height")
+                    .font(.system(size: 12))
+            }
+            
+            Spacer()
+            
+            VStack {
+                Text(ckUserViewModel.user.weight)
+                    .bold()
+                Text("Weight")
+                    .font(.system(size: 12))
+            }
+            
+            Spacer()
+            
+            VStack {
+                Text("Forward")
+                    .bold()
+                Text(ckUserViewModel.user.position.rawValue.capitalized)
+                    .font(.system(size: 12))
             }
         }
     }
-    
-    struct PlayerStats: View {
-        var body: some View {
-            HStack {
-                VStack {
-                    Text("6'2\"")
-                        .bold()
-                    Text("Height")
-                        .font(.system(size: 12))
-                }
-                
-                Spacer()
-                
-                VStack {
-                    Text("180 lbs")
-                        .bold()
-                    Text("Weight")
-                        .font(.system(size: 12))
-                }
-                
-                Spacer()
-                
-                VStack {
-                    Text("Forward")
-                        .bold()
-                    Text("Position")
-                        .font(.system(size: 12))
-                }
+}
+
+struct ProfileButtons: View {
+    var body: some View {
+        VStack(spacing: 6) {
+            Button(action: {}) {
+                Text("Edit Profile")
+                    .foregroundColor(.white)
+                    .padding(.vertical, 7)
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.ui.blackExtraBlack)
+                    }
             }
-        }
-    }
-    
-    struct ProfileButtons: View {
-        var body: some View {
-            VStack(spacing: 6) {
+            .buttonStyle(.plain)
+            
+            HStack(spacing: 7) {
                 Button(action: {}) {
-                    Text("Edit Profile")
+                    Text("Connections")
                         .foregroundColor(.white)
                         .padding(.vertical, 7)
                         .frame(maxWidth: .infinity)
@@ -130,32 +172,19 @@ extension ProfileView {
                 }
                 .buttonStyle(.plain)
                 
-                HStack(spacing: 7) {
-                    Button(action: {}) {
-                        Text("Connections")
-                            .foregroundColor(.white)
-                            .padding(.vertical, 7)
-                            .frame(maxWidth: .infinity)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.ui.blackExtraBlack)
-                            }
-                    }
-                    .buttonStyle(.plain)
-                    
-                    Button(action: {}) {
-                        Text("Store")
-                            .foregroundColor(.white)
-                            .padding(.vertical, 7)
-                            .frame(maxWidth: .infinity)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.ui.blackExtraBlack)
-                            }
-                    }
-                    .buttonStyle(.plain)
+                Button(action: {}) {
+                    Text("Store")
+                        .foregroundColor(.white)
+                        .padding(.vertical, 7)
+                        .frame(maxWidth: .infinity)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.ui.blackExtraBlack)
+                        }
                 }
+                .buttonStyle(.plain)
             }
         }
     }
 }
+

@@ -51,6 +51,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(Tab.profile)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

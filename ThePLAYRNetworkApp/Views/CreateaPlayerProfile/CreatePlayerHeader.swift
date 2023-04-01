@@ -18,7 +18,9 @@ struct CreatePlayerHeader: View {
                 .frame(width:83, height: 68)
                 .padding(.top, 45)
             Spacer()
+            
             CircularProfileImageSmall()
+                .padding(.top, 45)
         }
         .padding(.top, 45)
         .padding(.horizontal)
@@ -43,10 +45,10 @@ struct CircularProfileImageSmall: View {
 }
 
 struct ProfileImageSmall: View {
-    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     
     var body: some View {
-        switch ckUserViewModel.imageState {
+        switch onboardingViewModel.imageState {
         case .success(let data):
             if let image = UIImage(data: data) {
                 Image(uiImage: image)

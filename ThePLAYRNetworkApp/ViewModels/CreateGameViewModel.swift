@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class CreateViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+class CreateGameViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var game = Game.sampleGames[0]
 
     @Published var region = MKCoordinateRegion(
@@ -72,8 +72,4 @@ class CreateViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             break
         }
     }
-}
-
-extension CreateViewModel {
-    
 }

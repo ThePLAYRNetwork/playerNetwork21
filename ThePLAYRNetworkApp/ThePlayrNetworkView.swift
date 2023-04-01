@@ -59,6 +59,6 @@ struct ThePlayrNetworkView_Previews: PreviewProvider {
     static var previews: some View {
         ThePlayrNetworkView()
             .environmentObject(HomeViewModel(gameRepository: GameRepository()))
-            .environmentObject(CreateViewModel())
+            .environmentObject(CreateGameViewModel())
     }
 }

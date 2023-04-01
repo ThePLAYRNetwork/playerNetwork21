@@ -13,7 +13,7 @@ import CoreLocation
 //import GeoFire
 
 struct MapGameView: View {
-    @EnvironmentObject var viewModel: CreateViewModel
+    @EnvironmentObject var viewModel: CreateGameViewModel
     
     var body: some View {
         VStack {
@@ -34,12 +34,12 @@ struct MapGameView: View {
 struct MapGameView_Previews: PreviewProvider {
     static var previews: some View {
         MapGameView()
-            .environmentObject(CreateViewModel())
+            .environmentObject(CreateGameViewModel())
     }
 }
 
 struct CreateGameMapView: UIViewRepresentable {
-    @EnvironmentObject var viewModel: CreateViewModel
+    @EnvironmentObject var viewModel: CreateGameViewModel
     
     func makeUIView(context: Context) -> MKMapView {
         self.viewModel.mapView.delegate = context.coordinator
@@ -56,12 +56,12 @@ struct CreateGameMapView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, MKMapViewDelegate, UIGestureRecognizerDelegate {
-        private var viewModel: CreateViewModel
+        private var viewModel: CreateGameViewModel
         var parent: CreateGameMapView
         
         var gRecognizer = UITapGestureRecognizer() // can use regular tap
         
-        init(_ parent: CreateGameMapView, _ viewModel: CreateViewModel) {
+        init(_ parent: CreateGameMapView, _ viewModel: CreateGameViewModel) {
             self.parent = parent
             self.viewModel = viewModel
             super.init()

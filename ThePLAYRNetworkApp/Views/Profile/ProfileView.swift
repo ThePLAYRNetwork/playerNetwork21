@@ -79,14 +79,11 @@ struct TopSection: View {
                         .foregroundColor(.white)
                 } else {
                     // Loading
-                    ProgressView()
+//                    ProgressView()
                 }
             }
             .frame(width: 115, height: 115)
             .clipShape(Circle())
-//            .overlay {
-//                Circle().stroke(Color.ui.grayD9D9D9, lineWidth: 2)
-//            }
             .background {
                 Circle().fill(Color.ui.grayD9D9D9)
             }

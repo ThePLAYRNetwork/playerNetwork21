@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConfirmGameView: View {
-    @EnvironmentObject var createGameViewModel: CreateViewModel
+    @EnvironmentObject var createGameViewModel: CreateGameViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
 //    @EnvironmentObject var authViewModel: AuthViewModel
     @Binding var game: Game
@@ -48,7 +48,7 @@ struct ConfirmGameView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ConfirmGameView(game: .constant(Game.sampleGames[0]))
-                .environmentObject(CreateViewModel())
+                .environmentObject(CreateGameViewModel())
                 .environmentObject(HomeViewModel(gameRepository: GameRepository()))
 //                .environmentObject(AuthViewModel())
         }
@@ -128,7 +128,7 @@ struct ConfirmInvitedPlayers: View {
 
 struct ConfirmButtons: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var createGameViewModel: CreateViewModel
+    @EnvironmentObject var createGameViewModel: CreateGameViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
 //    @EnvironmentObject var authViewModel: AuthViewModel
     let game: Game

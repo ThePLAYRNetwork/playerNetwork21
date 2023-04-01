@@ -8,19 +8,28 @@
 import Foundation
 import CloudKit
 
+
+protocol UserApiService {
+    func createUser(user: User) async -> Result<User, Error>
+    
+    func getUser() async -> Result<User, Error>
+    
+    func getPlayerStyles() async -> Result<[PlayerStyle], Error>
+}
+
 class UserRepository: UserApiService {
     
     private lazy var container: CKContainer = CKContainer.default()
     private lazy var database: CKDatabase = container.publicCloudDatabase
 
-    func createUser(user: User) async -> Result<Void, Error> {
+    func createUser(user: User) async -> Result<User, Error> {
         do {
             let record = try await user.createUserRecord()
             let userRecord = try await database.save(record)
             print("User saved successfully:\n\(userRecord)")
-            return .success(())
+            return .success(user)
         } catch {
-            print("Failed to save user: \(error)")
+            print("Failed to create user: \(error)")
             return .failure(error)
         }
     }
@@ -38,14 +47,14 @@ class UserRepository: UserApiService {
             if let result = results.first {
                 let record = try result.1.get()
                 let user = try User(record: record)
-                print("Succesfully fetched user from CloudKit")
+                print("Succesfully fetched user")
                 return .success(user)
             } else {
-                print("Failed to get user from CloudKit. User has not created account yet.")
+                print("User not found, user has not set up profile.")
                 return .failure(CloudKitError.userRecordNotFound)
             }
         } catch {
-            print("Failed to get user from cloudkit")
+            print("Failed to get user from cloudkit: \(error)")
             return .failure(error)
         }
     }
@@ -57,10 +66,10 @@ class UserRepository: UserApiService {
             let (results, _) = try await database.records(matching: query)
             let records: [CKRecord] = try results.map { try $0.1.get() }
             let playerStyles: [PlayerStyle] = try records.map { try PlayerStyle(record: $0) }
-            print("Succesfully fetched player styles CloudKit")
+            print("Succesfully fetched player styles")
             return .success(playerStyles)
         } catch {
-            print("Failed to get player styles from CloudKit")
+            print("Failed to get player styles: \(error)")
             return .failure(error)
         }
     }

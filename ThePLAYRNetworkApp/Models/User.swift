@@ -189,7 +189,9 @@ extension User {
     }
     
     enum LevelPlayed: String, CaseIterable, Identifiable {
-        case high_school, college, professional
+        case high_school = "High School"
+        case college
+        case professional
         var id: Self { self }
     }
     

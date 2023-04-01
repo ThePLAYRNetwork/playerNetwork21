@@ -10,8 +10,8 @@ import SwiftUI
 struct CreatePlayerProfile18: View {
     @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
-//    @Binding var user: User
-    
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
+
     var body: some View {
         VStack {
             CreatePlayerHeader()
@@ -28,7 +28,7 @@ struct CreatePlayerProfile18: View {
                         HStack {
                             
                             Button {
-                                ckUserViewModel.user.role = .player
+                                onboardingViewModel.newUser.role = .player
                             } label: {
                                 
                                 VStack {
@@ -57,7 +57,7 @@ struct CreatePlayerProfile18: View {
                             }
 
                             Button {
-                                ckUserViewModel.user.role = .coach
+                                onboardingViewModel.newUser.role = .coach
                             } label: {
                                 VStack {
                                     Spacer()
@@ -84,7 +84,7 @@ struct CreatePlayerProfile18: View {
                             }
 
                             Button {
-                                ckUserViewModel.user.role = .trainer
+                                onboardingViewModel.newUser.role = .trainer
                             } label: {
                                 VStack {
                                     Spacer()
@@ -114,7 +114,7 @@ struct CreatePlayerProfile18: View {
                         .padding(.horizontal)
                         .padding(.bottom, 15)
                         
-                        PlayerProfileOptions()
+                        PlayerProfileOptions(colleges: onboardingViewModel.colleges)
                             .padding(.bottom, 50)
                         
                         Spacer()
@@ -137,15 +137,24 @@ struct CreatePlayerProfile18: View {
                 }
             }
         }
+        .onAppear {
+            Task {
+                await onboardingViewModel.fetchCollegeData()
+            }
+        }
     }
     
     private func isDisabled() -> Bool {
-        return ckUserViewModel.user.height.isEmpty || ckUserViewModel.user.age == 0 || ckUserViewModel.user.school.isEmpty
+        return onboardingViewModel.newUser.height.isEmpty || onboardingViewModel.newUser.age == 0 || onboardingViewModel.newUser.school.isEmpty
     }
 }
 
 struct CreatePlayerProfile18_Previews: PreviewProvider {
     static var previews: some View {
         CreatePlayerProfile18()
+            .environmentObject(NavigationModel())
+            .environmentObject(CloudKitUserViewModel(userRepository: UserRepository(), navigationModel: NavigationModel()))
+            .environmentObject(OnboardingViewModel(ckUserViewModel: CloudKitUserViewModel(userRepository: UserRepository(), navigationModel: NavigationModel()), userRepository: UserRepository(), navigationModel: NavigationModel()))
     }
 }
+

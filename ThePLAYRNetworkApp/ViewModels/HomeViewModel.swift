@@ -10,6 +10,7 @@ import MapKit
 import SwiftUI
 
 // note: cant chain .whereField to get surrounding coordinates
+@MainActor
 class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var gameRepository: GameRepository
     @Published var upcomingGames: [Game] = Game.sampleGames

@@ -11,12 +11,13 @@
 		3218C2DD29A327440010D83B /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DC29A327440010D83B /* GameRepository.swift */; };
 		3218C2DF29A3280D0010D83B /* GameApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DE29A3280D0010D83B /* GameApiService.swift */; };
 		321CB09D29C2BF11004542D5 /* ThePlayrNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */; };
-		321D6B5E28985CD0005EC2EF /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */; };
+		321D6B5E28985CD0005EC2EF /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */; };
 		322F330429BF9A1E0073F41D /* CKUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330329BF9A1E0073F41D /* CKUserViewModel.swift */; };
 		322F330629C020430073F41D /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330529C020430073F41D /* NavigationModel.swift */; };
 		322F330829C02CB20073F41D /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330729C02CB20073F41D /* UserRepository.swift */; };
-		322F330B29C02D150073F41D /* UserApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330A29C02D150073F41D /* UserApiService.swift */; };
 		323A336928ADD0030075A5A1 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A336828ADD0030075A5A1 /* TagView.swift */; };
+		323A6D7D29D7D65E008723CD /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A6D7C29D7D65E008723CD /* OnboardingViewModel.swift */; };
+		32495B0729D614A4006DA685 /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32495B0629D614A4006DA685 /* College.swift */; };
 		325A9198289AF6DF00AFC18D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9197289AF6DF00AFC18D /* ProfileView.swift */; };
 		326A0DC928CF88F200459BBB /* NetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A0DC828CF88F200459BBB /* NetworkView.swift */; };
 		326A0DCB28CF890700459BBB /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A0DCA28CF890700459BBB /* PostItem.swift */; };
@@ -26,7 +27,6 @@
 		32862F0D28923EE200CDFB3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32862F0C28923EE200CDFB3B /* Preview Assets.xcassets */; };
 		32862F2C2892527900CDFB3B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F2B2892527900CDFB3B /* LoginView.swift */; };
 		32862F2E2892529A00CDFB3B /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F2D2892529A00CDFB3B /* SignupView.swift */; };
-		32862F30289252AF00CDFB3B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F2F289252AF00CDFB3B /* AuthViewModel.swift */; };
 		32862F332892530300CDFB3B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F322892530300CDFB3B /* User.swift */; };
 		32862F352892577B00CDFB3B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F342892577B00CDFB3B /* HomeView.swift */; };
 		32862F37289257C700CDFB3B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32862F36289257C700CDFB3B /* HomeViewModel.swift */; };
@@ -171,12 +171,14 @@
 		3218C2DC29A327440010D83B /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		3218C2DE29A3280D0010D83B /* GameApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameApiService.swift; sourceTree = "<group>"; };
 		321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThePlayrNetworkView.swift; sourceTree = "<group>"; };
-		321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
+		321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
 		322F330329BF9A1E0073F41D /* CKUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserViewModel.swift; sourceTree = "<group>"; };
 		322F330529C020430073F41D /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		322F330729C02CB20073F41D /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		322F330A29C02D150073F41D /* UserApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApiService.swift; sourceTree = "<group>"; };
 		323A336828ADD0030075A5A1 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		323A6D7C29D7D65E008723CD /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		32495B0629D614A4006DA685 /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
+		32495B0A29D61A45006DA685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		325A9197289AF6DF00AFC18D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		326A0DC828CF88F200459BBB /* NetworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkView.swift; sourceTree = "<group>"; };
 		326A0DCA28CF890700459BBB /* PostItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
@@ -187,7 +189,6 @@
 		32862F0C28923EE200CDFB3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		32862F2B2892527900CDFB3B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		32862F2D2892529A00CDFB3B /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
-		32862F2F289252AF00CDFB3B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		32862F322892530300CDFB3B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		32862F342892577B00CDFB3B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		32862F36289257C700CDFB3B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -341,14 +342,14 @@
 		3218C2DA29A327000010D83B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				32862F2F289252AF00CDFB3B /* AuthViewModel.swift */,
-				321D6B5D28985CD0005EC2EF /* CreateViewModel.swift */,
+				322F330329BF9A1E0073F41D /* CKUserViewModel.swift */,
+				321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */,
 				32862F36289257C700CDFB3B /* HomeViewModel.swift */,
 				CFBE740B29192A72005D8506 /* JournalViewModel.swift */,
+				322F330529C020430073F41D /* NavigationModel.swift */,
+				323A6D7C29D7D65E008723CD /* OnboardingViewModel.swift */,
 				CF6A16DC291ACAA3001D98F5 /* TrainerHubViewModel.swift */,
 				CFB3385028AE92B100610F42 /* TrainingViewModel.swift */,
-				322F330329BF9A1E0073F41D /* CKUserViewModel.swift */,
-				322F330529C020430073F41D /* NavigationModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -393,11 +394,11 @@
 		32862F0428923EE200CDFB3B /* ThePLAYRNetworkApp */ = {
 			isa = PBXGroup;
 			children = (
+				32495B0A29D61A45006DA685 /* Info.plist */,
 				CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */,
 				32862F0528923EE200CDFB3B /* ThePLAYRNetworkApp.swift */,
 				321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */,
 				3218C2DE29A3280D0010D83B /* GameApiService.swift */,
-				322F330A29C02D150073F41D /* UserApiService.swift */,
 				3218C2DB29A3272B0010D83B /* Repositories */,
 				32862F31289252CC00CDFB3B /* Models */,
 				32862F2A2892526700CDFB3B /* Views */,
@@ -461,6 +462,7 @@
 				CF6B678E296C534D00BEC347 /* TrainingSession.swift */,
 				32862F322892530300CDFB3B /* User.swift */,
 				32AF1B9829D5383F00E7A502 /* PlayerStyle.swift */,
+				32495B0629D614A4006DA685 /* College.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -809,6 +811,8 @@
 			dependencies = (
 			);
 			name = ThePLAYRNetworkApp;
+			packageProductDependencies = (
+			);
 			productName = ThePLAYRNetworkApp;
 			productReference = 32862F0228923EE200CDFB3B /* ThePLAYRNetworkApp.app */;
 			productType = "com.apple.product-type.application";
@@ -837,6 +841,10 @@
 				Base,
 			);
 			mainGroup = 32862EF928923EE200CDFB3B;
+			packageReferences = (
+				32495B0029D5F6F0006DA685 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+				32495B0329D5FC67006DA685 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
+			);
 			productRefGroup = 32862F0328923EE200CDFB3B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -892,6 +900,7 @@
 				CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */,
 				32862F442892590D00CDFB3B /* UpcomingGameItem.swift in Sources */,
 				CF6B6770296C527600BEC347 /* SpecialistColumn.swift in Sources */,
+				32495B0729D614A4006DA685 /* College.swift in Sources */,
 				CF8205A5299E92850019AE45 /* NewNoteView.swift in Sources */,
 				CF5FA7A22912C1F900DEE7DB /* HubChartView.swift in Sources */,
 				CFD3C91528E77E5D004B53E7 /* ConversationColumnView.swift in Sources */,
@@ -900,13 +909,13 @@
 				CF2A7E662935516B00C80985 /* ClientManagementView.swift in Sources */,
 				CF6B6793296C539C00BEC347 /* PlayerAttributes.swift in Sources */,
 				CF20ABF82948BC1300897F60 /* RoundedShape.swift in Sources */,
-				32862F30289252AF00CDFB3B /* AuthViewModel.swift in Sources */,
 				32862F2E2892529A00CDFB3B /* SignupView.swift in Sources */,
 				3271214B28CF83790056E304 /* Post.swift in Sources */,
 				32D019C828D1829400E3C601 /* PlayersYouMayKnowItem.swift in Sources */,
 				CF6B67A1296C559A00BEC347 /* SelectDayCard.swift in Sources */,
 				CF3A964A2927AF8400940E1F /* ActiveSessionsView.swift in Sources */,
 				322F330629C020430073F41D /* NavigationModel.swift in Sources */,
+				323A6D7D29D7D65E008723CD /* OnboardingViewModel.swift in Sources */,
 				3279EB2928B02E140061C146 /* InvitedTagView.swift in Sources */,
 				CF26301828EB0E4100CAD20D /* DiscoverTopSection.swift in Sources */,
 				CF6B6791296C539800BEC347 /* ProfileMedia.swift in Sources */,
@@ -1017,8 +1026,7 @@
 				CF6B679D296C559A00BEC347 /* DayOverlay.swift in Sources */,
 				CFD3C91128E77E5D004B53E7 /* FullMessageView.swift in Sources */,
 				3218C2DD29A327440010D83B /* GameRepository.swift in Sources */,
-				321D6B5E28985CD0005EC2EF /* CreateViewModel.swift in Sources */,
-				322F330B29C02D150073F41D /* UserApiService.swift in Sources */,
+				321D6B5E28985CD0005EC2EF /* CreateGameViewModel.swift in Sources */,
 				CFD3C91C28E77F86004B53E7 /* SpecialistSheetView.swift in Sources */,
 				CFBCE9992987FED50055ED3A /* OnboardingSignupView.swift in Sources */,
 				CFA374E129252EA6000EF516 /* SuccessCancelView.swift in Sources */,
@@ -1173,7 +1181,8 @@
 				DEVELOPMENT_TEAM = 5VFLZY6QMJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera $(Camera_App) camera use";
+				INFOPLIST_FILE = ThePLAYRNetworkApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera  camera use";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to use your photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1208,7 +1217,8 @@
 				DEVELOPMENT_TEAM = 5VFLZY6QMJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera $(Camera_App) camera use";
+				INFOPLIST_FILE = ThePLAYRNetworkApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera  camera use";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to use your photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1252,6 +1262,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32495B0029D5F6F0006DA685 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+		32495B0329D5FC67006DA685 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 32862EFA28923EE200CDFB3B /* Project object */;
 }

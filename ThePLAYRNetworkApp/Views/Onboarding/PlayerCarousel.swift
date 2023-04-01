@@ -9,10 +9,10 @@ import SwiftUI
 import CloudKit
 
 struct PlayerCarousel: View {
-    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     
     var items: [AnyView] {
-        return ckUserViewModel.playerStyles.map { AnyView(PlayerCard(url: $0.playerImage.fileURL)) }
+        return onboardingViewModel.playerStyles.map { AnyView(PlayerCard(url: $0.playerImage.fileURL)) }
     }
     
     var body: some View {
@@ -23,7 +23,7 @@ struct PlayerCarousel: View {
                 .padding(.top, 20)
                 .padding(.horizontal)
             
-            TeasingTabView(selectedTab: $ckUserViewModel.selectedPlayer, spacing: 15) {
+            TeasingTabView(selectedTab: $onboardingViewModel.selectedPlayer, spacing: 15) {
                 items
             }
         }

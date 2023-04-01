@@ -21,35 +21,33 @@ enum Tab {
 struct ThePLAYRNetworkApp: App {
     @StateObject private var ckUserViewModel: CloudKitUserViewModel
     @StateObject private var homeViewModel: HomeViewModel
-    @StateObject private var createViewModel = CreateViewModel()
+    @StateObject private var createViewModel = CreateGameViewModel()
     @StateObject private var navigationModel = NavigationModel()
+    @StateObject private var onboardingViewModel: OnboardingViewModel
 
     init() {
         let gameRepository = GameRepository()
         let userRepository = UserRepository()
         let navigationModel = NavigationModel()
+        let ckUserViewModel = CloudKitUserViewModel(userRepository: userRepository, navigationModel: navigationModel)
         self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository))
-        self._ckUserViewModel = StateObject(wrappedValue: CloudKitUserViewModel(userRepository: userRepository, navigationModel: navigationModel))
+        self._ckUserViewModel = StateObject(wrappedValue: ckUserViewModel)
         self._navigationModel = StateObject(wrappedValue: navigationModel)
+        self._onboardingViewModel = StateObject(wrappedValue: OnboardingViewModel(ckUserViewModel: ckUserViewModel, userRepository: userRepository, navigationModel: navigationModel))
         
         // carousel dot color
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.ui.grayECECEC)
     }
     
-    // Mirnas
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationModel.path) {
                 VStack {
-                    if ckUserViewModel.isSignedInToiCloud {
-                        if ckUserViewModel.hasProfile {
-                            ThePlayrNetworkView()
-                        } else {
-                            GetStartedView()
-                        }
+                    if ckUserViewModel.showOnboarding {
+                        GetStartedView()
                     } else {
-                        Text("Please sign into iCloud Account")
+                        ThePlayrNetworkView()
                     }
                 }
                 .navigationDestination(for: OnboardingDestination.self) { destination in
@@ -67,11 +65,19 @@ struct ThePLAYRNetworkApp: App {
                 .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
                     ThePlayrNetworkView()
                 }
+                .alert(isPresented : $ckUserViewModel.showiCloudAlert) {
+                    Alert(
+                        title: Text("iCloud Account not found"),
+                        message: Text("Please log into a valid iCloud to use our application")
+                    )
+                }
             }
+            // Don't put all viewmodels on top heiracrchy
             .environmentObject(navigationModel)
             .environmentObject(ckUserViewModel)
             .environmentObject(homeViewModel)
             .environmentObject(createViewModel)
+            .environmentObject(onboardingViewModel)
         }
     }
 }

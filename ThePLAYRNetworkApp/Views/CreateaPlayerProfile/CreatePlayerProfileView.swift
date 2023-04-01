@@ -10,8 +10,11 @@ import _PhotosUI_SwiftUI
 
 struct CreatePlayerProfileView: View {
     @EnvironmentObject var navigationModel: NavigationModel
-    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
-    //    @State var user = User()
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
+    
+    // https://developer.apple.com/documentation/swiftui/view/focused(_:)
+    @FocusState private var emailFieldIsFocused: Bool
+    @State private var invalidEmail = false
     
     var body: some View {
         VStack {
@@ -30,7 +33,7 @@ struct CreatePlayerProfileView: View {
                 VStack(alignment: .center) {
                     CircularProfileImage()
                         .overlay(alignment: .bottomTrailing) {
-                            PhotosPicker(selection: $ckUserViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
+                            PhotosPicker(selection: $onboardingViewModel.imageSelection, matching: .images, photoLibrary: .shared()) {
                                 Image(systemName: "pencil.circle.fill")
                                     .symbolRenderingMode(.multicolor)
                                     .font(.system(size: 30))
@@ -58,8 +61,9 @@ struct CreatePlayerProfileView: View {
                         .foregroundColor(.black)
                     
                     TextField(
-                        "John", text: $ckUserViewModel.user.firstName
+                        "John", text: $onboardingViewModel.newUser.firstName
                     )
+                    .autocorrectionDisabled(true)
                     .padding()
                     .frame(width:184, height: 50)
                     .background(Color.ui.grayF6F6F6)
@@ -73,8 +77,9 @@ struct CreatePlayerProfileView: View {
                         .foregroundColor(.black)
                     
                     TextField(
-                        "Doe", text: $ckUserViewModel.user.lastName
+                        "Doe", text: $onboardingViewModel.newUser.lastName
                     )
+                    .autocorrectionDisabled(true)
                     .padding()
                     .frame(width:184, height: 50)
                     .background(Color.ui.grayF6F6F6)
@@ -85,13 +90,25 @@ struct CreatePlayerProfileView: View {
             .padding(.vertical, 20)
             
             VStack(alignment: .leading){
-                Text("EMAIL")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.black)
+                HStack {
+                    Text("EMAIL")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.black)
+                    
+                    if invalidEmail {
+                        Text("Please enter a valid email address.")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(.red)
+                    }
+                }
                 
                 TextField(
-                    "example@gmail.com", text: $ckUserViewModel.user.email
+                    "example@gmail.com", text: $onboardingViewModel.newUser.email
                 )
+                .keyboardType(.emailAddress)
+                .autocorrectionDisabled(true)
+                .focused($emailFieldIsFocused)
+                .textInputAutocapitalization(.never)
                 .padding()
                 .frame(width:378, height: 50)
                 .background(Color.ui.grayF6F6F6)
@@ -107,7 +124,7 @@ struct CreatePlayerProfileView: View {
                     .foregroundColor(.black)
                 
                 TextField(
-                    "(   )  -", text: $ckUserViewModel.user.phoneNumber
+                    "(   )  -", text: $onboardingViewModel.newUser.phoneNumber
                 )
                 .padding()
                 .frame(width:378, height: 50)
@@ -119,7 +136,13 @@ struct CreatePlayerProfileView: View {
             Spacer()
             
             Button {
-                navigationModel.path.append(OnboardingDestination.role)
+                if isValidEmail(onboardingViewModel.newUser.email) {
+                    invalidEmail = false
+                    navigationModel.path.append(OnboardingDestination.role)
+                } else  {
+                    invalidEmail = true
+                    emailFieldIsFocused = true
+                }
             } label: {
                 Text("Continue")
                     .foregroundColor(.white)
@@ -133,18 +156,23 @@ struct CreatePlayerProfileView: View {
         }
         .ignoresSafeArea()
         .task {
-            await ckUserViewModel.getPlayerStyles()
+            await onboardingViewModel.getPlayerStyles()
         }
     }
     
     private func isDisabled() -> Bool {
-        return ckUserViewModel.user.firstName.isEmpty || ckUserViewModel.user.lastName.isEmpty || ckUserViewModel.user.email.isEmpty
+        return onboardingViewModel.newUser.firstName.isEmpty || onboardingViewModel.newUser.lastName.isEmpty || onboardingViewModel.newUser.email.isEmpty || onboardingViewModel.newUser.phoneNumber.isEmpty
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }
 
-struct CircularProfileImage: View {
-    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
-    
+struct CircularProfileImage: View {    
     var body: some View {
         ProfileImage()
             .frame(width: 120, height: 120)
@@ -156,10 +184,10 @@ struct CircularProfileImage: View {
 }
 
 struct ProfileImage: View {
-    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     
     var body: some View {
-        switch ckUserViewModel.imageState {
+        switch onboardingViewModel.imageState {
         case .success(let data):
             if let image = UIImage(data: data) {
                 Image(uiImage: image)
@@ -179,13 +207,10 @@ struct ProfileImage: View {
     }
 }
 
-//struct CreatePlayerProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreatePlayerProfileView(user: User.sampleUsers[0])
-//    }
-//}
-
-
-
-
-
+struct CreatePlayerProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        CreatePlayerProfileView()
+            .environmentObject(NavigationModel())
+            .environmentObject(OnboardingViewModel(ckUserViewModel: CloudKitUserViewModel(userRepository: UserRepository(), navigationModel: NavigationModel()), userRepository: UserRepository(), navigationModel: NavigationModel()))
+    }
+}

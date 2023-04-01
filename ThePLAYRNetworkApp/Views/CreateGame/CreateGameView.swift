@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct CreateGameView: View {
-    @EnvironmentObject var createViewModel : CreateViewModel
+    @EnvironmentObject var createViewModel : CreateGameViewModel
     @State var gameName: String = ""
     @State var location: String = ""
     @State var price: String = ""
@@ -152,7 +152,7 @@ struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             CreateGameView()
-                .environmentObject(CreateViewModel())
+                .environmentObject(CreateGameViewModel())
         }
         .previewInterfaceOrientation(.portrait)
     }
@@ -314,7 +314,7 @@ struct GameOptions: View {
 }
 
 struct CreateButton: View {
-    @EnvironmentObject var createViewModel: CreateViewModel
+    @EnvironmentObject var createViewModel: CreateGameViewModel
     
     var body: some View {
         HStack {

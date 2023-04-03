@@ -21,7 +21,7 @@ enum Tab {
 struct ThePLAYRNetworkApp: App {
     @StateObject private var ckUserViewModel: CloudKitUserViewModel
     @StateObject private var homeViewModel: HomeViewModel
-    @StateObject private var createViewModel = CreateGameViewModel()
+    @StateObject private var createViewModel: CreateGameViewModel
     @StateObject private var navigationModel = NavigationModel()
     @StateObject private var onboardingViewModel: OnboardingViewModel
 
@@ -34,6 +34,7 @@ struct ThePLAYRNetworkApp: App {
         self._ckUserViewModel = StateObject(wrappedValue: ckUserViewModel)
         self._navigationModel = StateObject(wrappedValue: navigationModel)
         self._onboardingViewModel = StateObject(wrappedValue: OnboardingViewModel(ckUserViewModel: ckUserViewModel, userRepository: userRepository, navigationModel: navigationModel))
+        self._createViewModel = StateObject(wrappedValue: CreateGameViewModel(gameRepository: gameRepository, navigationModel: navigationModel))
         
         // carousel dot color
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
@@ -65,10 +66,16 @@ struct ThePLAYRNetworkApp: App {
                 .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
                     ThePlayrNetworkView()
                 }
-                .alert(isPresented : $ckUserViewModel.showiCloudAlert) {
+                .alert(isPresented : $navigationModel.showiCloudErrorAlert) {
                     Alert(
                         title: Text("iCloud Account not found"),
                         message: Text("Please log into a valid iCloud to use our application")
+                    )
+                }
+                .alert(isPresented : $navigationModel.showGameCreatedSuccessAlert) {
+                    Alert(
+                        title: Text("Alright!"),
+                        message: Text("Your game has been posted.")
                     )
                 }
             }

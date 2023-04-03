@@ -14,7 +14,10 @@ struct CreatePlayerProfileView: View {
     
     // https://developer.apple.com/documentation/swiftui/view/focused(_:)
     @FocusState private var emailFieldIsFocused: Bool
+    @FocusState private var phoneFieldIsFocused: Bool
     @State private var invalidEmail = false
+    @State private var invalidPhone = false
+
     
     var body: some View {
         VStack {
@@ -119,13 +122,22 @@ struct CreatePlayerProfileView: View {
             
             
             VStack(alignment: .leading){
-                Text("PHONE NUMBER")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.black)
+                HStack {
+                    Text("PHONE NUMBER")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.black)
+                    
+                    if invalidPhone {
+                        Text("Please enter 10 digit phone number.")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(.red)
+                    }
+                }
                 
                 TextField(
                     "(   )  -", text: $onboardingViewModel.newUser.phoneNumber
                 )
+                .focused($phoneFieldIsFocused)
                 .padding()
                 .frame(width:378, height: 50)
                 .background(Color.ui.grayF6F6F6)
@@ -136,12 +148,24 @@ struct CreatePlayerProfileView: View {
             Spacer()
             
             Button {
-                if isValidEmail(onboardingViewModel.newUser.email) {
-                    invalidEmail = false
+                invalidEmail = false
+                invalidPhone = false
+                
+                // Valid email
+                if isValidEmail(onboardingViewModel.newUser.email) && isNumeric && hasTenDigits {
                     navigationModel.path.append(OnboardingDestination.role)
-                } else  {
+                    return
+                }
+                
+                // Check for invalid inputs
+                if !isValidEmail(onboardingViewModel.newUser.email) {
                     invalidEmail = true
                     emailFieldIsFocused = true
+                }
+                
+                if !isNumeric || !hasTenDigits {
+                    invalidPhone = true
+                    phoneFieldIsFocused = true
                 }
             } label: {
                 Text("Continue")
@@ -159,6 +183,15 @@ struct CreatePlayerProfileView: View {
             await onboardingViewModel.getPlayerStyles()
         }
     }
+    
+    var isNumeric: Bool {
+        return onboardingViewModel.newUser.phoneNumber.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
+    var hasTenDigits: Bool {
+        return onboardingViewModel.newUser.phoneNumber.count == 10
+    }
+    
     
     private func isDisabled() -> Bool {
         return onboardingViewModel.newUser.firstName.isEmpty || onboardingViewModel.newUser.lastName.isEmpty || onboardingViewModel.newUser.email.isEmpty || onboardingViewModel.newUser.phoneNumber.isEmpty

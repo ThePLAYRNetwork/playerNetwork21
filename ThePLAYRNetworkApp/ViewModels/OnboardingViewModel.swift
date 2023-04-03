@@ -62,7 +62,7 @@ class OnboardingViewModel: ObservableObject {
             self.navigationModel.path.removeLast(navigationModel.path.count)
             self.navigationModel.path.append(ThePlayrNetworkDestination.home)
         case .failure(_):
-            self.ckUserViewModel.showiCloudAlert = true
+            self.navigationModel.showiCloudErrorAlert = true
         }
     }
     

@@ -211,10 +211,3 @@ extension User {
         User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "140..150", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playsLike: "Kobe Bryant")
     ]
 }
-
-extension CKRecord {
-    subscript(key: User.RecordKey) -> Any? {
-        get { return self[key.rawValue] }
-        set { self[key.rawValue] = newValue as? CKRecordValue}
-    }
-}

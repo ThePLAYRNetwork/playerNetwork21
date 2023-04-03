@@ -43,8 +43,6 @@ extension HomeViewModel {
             // 2. Check if our app has permission to use user's location
             locationManager = CLLocationManager() // calls locationManagerDidChangeAuthorization()
             locationManager?.delegate = self
-            locationManager?.activityType = CLActivityType.fitness
-            
         } else {
             print("Show an alert letting them know this is off and go turn it on")
         }

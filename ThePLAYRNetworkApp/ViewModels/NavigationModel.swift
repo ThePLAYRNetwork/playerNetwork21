@@ -10,7 +10,12 @@ import SwiftUI
 
 class NavigationModel: ObservableObject {
     @Published var path = NavigationPath() // stack of views
+    @Published var tabSelection: ThePlayrNetworkDestination = .home
+    @Published var showiCloudErrorAlert = false
+    @Published var showGameCreatedSuccessAlert = false
 }
+
+// MARK: Destinations
 
 enum OnboardingDestination: Hashable {
     case onboarding
@@ -25,4 +30,8 @@ enum ThePlayrNetworkDestination: Hashable {
     case create
     case inbox
     case profile
+}
+
+enum GameDestination: Hashable {
+    case confirmGame
 }

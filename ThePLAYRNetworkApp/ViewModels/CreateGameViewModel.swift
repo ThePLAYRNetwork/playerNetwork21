@@ -8,18 +8,50 @@
 import Foundation
 import MapKit
 
+@MainActor
 class CreateGameViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-    @Published var game = Game.sampleGames[0]
+    @Published var newGame = Game()
 
     @Published var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
     
+    private let gameRepository: GameRepository
+    private let navigationModel: NavigationModel
     var locationManager: CLLocationManager?
     var mapView = MKMapView()
-//    private let db = Firestore.firestore()
+    
+    init(gameRepository: GameRepository, navigationModel: NavigationModel) {
+        self.gameRepository = gameRepository
+        self.navigationModel = navigationModel
 
+    }
+    
+    func createGame() async {
+        let result = await gameRepository.createGame(game: newGame)
+        switch result {
+        case .success(let game):
+            // Game created successfully
+            self.navigationModel.path.removeLast()       // remove confirmation screen
+            self.navigationModel.tabSelection = .home    // show home screen
+            self.navigationModel.showGameCreatedSuccessAlert = true
+            self.newGame = Game() // clear inputs
+            return
+        case .failure(_):
+            // Failed to create game
+            self.navigationModel.showiCloudErrorAlert = true
+            return
+        }
+    }
+    
+    
+}
+
+extension CreateGameViewModel {
+    
+    // MARK - Map stuff
+    
     func checkIfLocationServicesIsEnabled() {
         // 1. Check if user enabled locations
         if CLLocationManager.locationServicesEnabled() {

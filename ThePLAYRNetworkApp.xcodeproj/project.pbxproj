@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		320314152894F99A00141300 /* PlayerAttendingCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320314142894F99A00141300 /* PlayerAttendingCircles.swift */; };
 		3218C2DD29A327440010D83B /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DC29A327440010D83B /* GameRepository.swift */; };
-		3218C2DF29A3280D0010D83B /* GameApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DE29A3280D0010D83B /* GameApiService.swift */; };
 		321CB09D29C2BF11004542D5 /* ThePlayrNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */; };
 		321D6B5E28985CD0005EC2EF /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */; };
 		322F330429BF9A1E0073F41D /* CKUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322F330329BF9A1E0073F41D /* CKUserViewModel.swift */; };
@@ -169,7 +168,6 @@
 		2F284A710D8ECF2F6C28ED58 /* Pods-ThePLAYRNetworkApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePLAYRNetworkApp.debug.xcconfig"; path = "Target Support Files/Pods-ThePLAYRNetworkApp/Pods-ThePLAYRNetworkApp.debug.xcconfig"; sourceTree = "<group>"; };
 		320314142894F99A00141300 /* PlayerAttendingCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttendingCircles.swift; sourceTree = "<group>"; };
 		3218C2DC29A327440010D83B /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
-		3218C2DE29A3280D0010D83B /* GameApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameApiService.swift; sourceTree = "<group>"; };
 		321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThePlayrNetworkView.swift; sourceTree = "<group>"; };
 		321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
 		322F330329BF9A1E0073F41D /* CKUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserViewModel.swift; sourceTree = "<group>"; };
@@ -398,7 +396,6 @@
 				CF0EA138297EE6B100E22FC8 /* ThePLAYRNetworkApp.entitlements */,
 				32862F0528923EE200CDFB3B /* ThePLAYRNetworkApp.swift */,
 				321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */,
-				3218C2DE29A3280D0010D83B /* GameApiService.swift */,
 				3218C2DB29A3272B0010D83B /* Repositories */,
 				32862F31289252CC00CDFB3B /* Models */,
 				32862F2A2892526700CDFB3B /* Views */,
@@ -1004,7 +1001,6 @@
 				CFD3C91328E77E5D004B53E7 /* MessagesView.swift in Sources */,
 				CF6B6783296C52FA00BEC347 /* JournalView.swift in Sources */,
 				CFA106FF29117D2900EAA40A /* TrainerHubView.swift in Sources */,
-				3218C2DF29A3280D0010D83B /* GameApiService.swift in Sources */,
 				CF582AE6296C3DC800B06C8D /* InvitePlayersView.swift in Sources */,
 				32862F42289258F100CDFB3B /* UpcomingGameRow.swift in Sources */,
 				CF26301528EB0E4100CAD20D /* EventsRow.swift in Sources */,

@@ -8,9 +8,7 @@
 import SwiftUI
 import MapKit
 import CoreLocation
-//import FirebaseAuth
-//import FirebaseFirestore
-//import GeoFire
+
 
 struct MapGameView: View {
     @EnvironmentObject var viewModel: CreateGameViewModel
@@ -22,7 +20,6 @@ struct MapGameView: View {
                 .cornerRadius(7)
             // for coordinate testing
 //            Text("\(viewModel.region.center.latitude), \(viewModel.region.center.longitude)")
-//            Text("\(GFUtils.geoHash(forLocation: CLLocationCoordinate2D(latitude: viewModel.region.center.latitude, longitude: viewModel.region.center.longitude)))")
         }
         .onAppear {
             viewModel.checkIfLocationServicesIsEnabled()
@@ -34,7 +31,7 @@ struct MapGameView: View {
 struct MapGameView_Previews: PreviewProvider {
     static var previews: some View {
         MapGameView()
-            .environmentObject(CreateGameViewModel())
+            .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
     }
 }
 
@@ -79,15 +76,17 @@ struct CreateGameMapView: UIViewRepresentable {
             let location = gRecognizer.location(in: self.parent.viewModel.mapView)
             // position on the map, CLLocationCoordinate2D
             let coordinate = self.parent.viewModel.mapView.convert(location, toCoordinateFrom: self.parent.viewModel.mapView)
-
+            
             // 3. Set new annotations
             let marker = MKPointAnnotation()
             marker.title = "Create game here?"
             marker.coordinate = coordinate
             self.parent.viewModel.mapView.addAnnotation(marker)
+            self.parent.viewModel.newGame.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
             self.parent.viewModel.region = MKCoordinateRegion(
                 center: coordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            )
         }
     }
 }

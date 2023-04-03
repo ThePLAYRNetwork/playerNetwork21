@@ -13,7 +13,6 @@ import PhotosUI
 @MainActor
 class CloudKitUserViewModel: ObservableObject {
     @Published var isSignedInToiCloud: Bool = false
-    @Published var showiCloudAlert = false
     @Published var user: User = User()
     @Published var showOnboarding = false
     
@@ -54,13 +53,13 @@ class CloudKitUserViewModel: ObservableObject {
                 print("iCloud is available")
             } else {
                 isSignedInToiCloud = false
-                showiCloudAlert = true
+                self.navigationModel.showiCloudErrorAlert = true
                 print("iCloud is unavailable")
             }
         } catch {
             print("Error fetching iCloud status: \(error)")
             isSignedInToiCloud = false
-            showiCloudAlert = true
+            self.navigationModel.showiCloudErrorAlert = true
         }
     }
 

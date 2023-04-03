@@ -8,16 +8,12 @@
 import SwiftUI
 import MapKit
 
+// Note:
+// - date center start, end right align, capacity 0 - 30
+// - get address and get coordinates. still let user adjust pin
 struct CreateGameView: View {
+    @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var createViewModel : CreateGameViewModel
-    @State var gameName: String = ""
-    @State var location: String = ""
-    @State var price: String = ""
-    @State var dateStart: String = ""
-    @State var dateEnd: String = ""
-    @State var duration: String = ""
-    @State var details: String = ""
-    @State var playerLevel: Game.PlayerLevel = .recreation
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,119 +24,117 @@ struct CreateGameView: View {
                         .bold()
                         .padding(.top)
                     
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Game Name".uppercased())
-                            .font(.system(size: 12))
-                        
-                        TextField(
-                            "Training",
-                            text: $gameName
-                        )
-                        .modifier(CreateLabel())
-                    }
+                    GameTextField(
+                        text: $createViewModel.newGame.title,
+                        title: "Game Name",
+                        placeholder: "Friendly Pick Up"
+                    )
                     
                     HStack {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text("Location".uppercased())
-                                .font(.system(size: 12))
-                            
-                            HStack {
-                                Image("location")
-                                TextField(
-                                    "Ex. Courts",
-                                    text: $location
-                                )
-                            }
-                            .modifier(CreateLabel())
-                        }
+                        GameTextField(
+                            text: $createViewModel.newGame.place,
+                            title: "Location",
+                            placeholder: "Ex. Courts",
+                            image: Image("location")
+                        )
                         .frame(width: geometry.size.width * 0.60)
                         
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text("Game Capacity".uppercased())
-                                .font(.system(size: 12))
-                            
-                            HStack {
-                                Image("location")
-                                TextField(
-                                    "$0.00",
-                                    text: $price
-                                )
-                            }
-                            .modifier(CreateLabel())
-                        }
+                        GameCapacityMenu(
+                            capacity: $createViewModel.newGame.capacity,
+                            title: "Game Capacity",
+                            placeholder: 0
+                        )
                     }
+                    
+//                    HStack {
+//                        GameTextField(
+//                            text: $createViewModel.newGame.title,
+//                            title: "Date",
+//                            placeholder: "MM/DD/YY",
+//                            image: Image("calendar")
+//                        )
+//                        .frame(width: geometry.size.width * 0.35)
+//
+//                        GameTextField(
+//                            text: $createViewModel.newGame.title,
+//                            title: "Start",
+//                            placeholder: "00:00",
+//                            image: Image("duration")
+//                        )
+//
+//                        GameTextField(
+//                            text: $createViewModel.newGame.title,
+//                            title: "End",
+//                            placeholder: "00:00",
+//                            image: Image("duration")
+//                        )
+//                    }
                     
                     HStack {
                         VStack(alignment: .leading, spacing: 3) {
                             Text("Date".uppercased())
-                                .font(.system(size: 12))
+                                .font(.system(size: 12, weight: .medium))
                             
-                            HStack {
-                                Image("calendar")
-                                TextField(
-                                    "MM/DD/YY",
-                                    text: $dateStart
-                                )
-                            }
-                            .modifier(CreateLabel())
+                            DatePicker(
+                                "",
+                                selection: $createViewModel.newGame.date,
+                                displayedComponents: .date
+                            )
+                            .labelsHidden()
                         }
-                        .frame(width: geometry.size.width * 0.33)
+                        
+//                        Spacer()
                         
                         VStack(alignment: .leading, spacing: 3) {
                             Text("Start".uppercased())
-                                .font(.system(size: 12))
+                                .font(.system(size: 12, weight: .medium))
                             
-                            HStack {
-                                Image("calendar")
-                                TextField(
-                                    "MM/DD/YY",
-                                    text: $dateEnd
-                                )
-                            }
-                            .modifier(CreateLabel())
+                            DatePicker(
+                                "",
+                                selection: $createViewModel.newGame.startTime,
+                                displayedComponents: .hourAndMinute
+                            )
+                            .labelsHidden()
                         }
+                        
+                        Spacer()
                         
                         VStack(alignment: .leading, spacing: 3) {
                             Text("End".uppercased())
-                                .font(.system(size: 12))
-
-                            HStack {
-                                Image("duration")
-                                TextField(
-                                    "00.00",
-                                    text: $duration
-                                )
-                            }
-                            .modifier(CreateLabel())
+                                .font(.system(size: 12, weight: .medium))
+                            
+                            DatePicker(
+                                "",
+                                selection: $createViewModel.newGame.endTime,
+                                displayedComponents: .hourAndMinute
+                            )
+                            .labelsHidden()
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Details".uppercased())
-                            .font(.system(size: 12))
 
-                        TextField(
-                            "List any details important to this session.",
-                            text: $details,
-                            axis: .vertical
-                        )
-                        .modifier(CreateLabel())
-                    }
+                    GameTextField(
+                        text: $createViewModel.newGame.details,
+                        title: "Details",
+                        placeholder: "List any details important to this game."
+                    )
                     
-                    PlayerLevelRow(selection: $playerLevel)
+                    PlayerLevelRow(selection: $createViewModel.newGame.playerLevel)
                     
                     CoverImageRow()
                     
-                    GameOptions(game: $createViewModel.game)
+                    GameOptions(game: $createViewModel.newGame)
                     
-                    NavigationLink {
-                        ConfirmGameView(game: $createViewModel.game)
+                    Button {
+                        navigationModel.path.append(GameDestination.confirmGame)
                     } label: {
-                        Text("Create")
+                        Text("Continue")
                     }
+//                    .disabled(isDisabled())
+//                    .opacity(isDisabled() ? 0.5 : 1.0)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     .buttonStyle(CustomButton(color: .red, size: .small))
                     .frame(maxWidth: .infinity, alignment: .trailing)
-                    
                 }
                 .padding()
             }
@@ -152,7 +146,7 @@ struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             CreateGameView()
-                .environmentObject(CreateGameViewModel())
+                .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
         }
         .previewInterfaceOrientation(.portrait)
     }
@@ -210,7 +204,7 @@ struct PlayerLevelRow: View {
                             Text(Game.PlayerLevel.recreation.rawValue.capitalized)
                                 .foregroundColor(selection == .recreation ? Color.white : .gray)
                         }
-                        .foregroundColor(selection == .recreation ? Color.ui.accent : Color.ui.grayD9D9D9)
+                        .foregroundColor(selection == .recreation ? Color.ui.accent : Color.ui.grayF6F6F6)
 
                 }
                 .disabled(selection == .recreation)
@@ -221,7 +215,7 @@ struct PlayerLevelRow: View {
                             Text(Game.PlayerLevel.competitive.rawValue.capitalized)
                                 .foregroundColor(selection == .competitive ? Color.white : .gray)
                         }
-                        .foregroundColor(selection == .competitive ? Color.ui.accent : Color.ui.grayD9D9D9)
+                        .foregroundColor(selection == .competitive ? Color.ui.accent : Color.ui.grayF6F6F6)
                 }
                 .disabled(selection == .competitive)
 
@@ -231,7 +225,7 @@ struct PlayerLevelRow: View {
                             Text(Game.PlayerLevel.elite.rawValue.capitalized)
                                 .foregroundColor(selection == .elite ? Color.white : .gray)
                         }
-                        .foregroundColor(selection == .elite ? Color.ui.accent : Color.ui.grayD9D9D9)
+                        .foregroundColor(selection == .elite ? Color.ui.accent : Color.ui.grayF6F6F6)
                 }
                 .disabled(selection == .elite)
             }
@@ -313,32 +307,86 @@ struct GameOptions: View {
     }
 }
 
-struct CreateButton: View {
-    @EnvironmentObject var createViewModel: CreateGameViewModel
+struct GameTextField: View {
+    @Binding var text: String
+    let title: String
+    let placeholder: String
+    var image: Image?
+    
     
     var body: some View {
-        HStack {
-            Spacer()
-            Button(action: {}) {
-                NavigationLink(destination: ConfirmGameView(game: $createViewModel.game)
-                    .environmentObject(createViewModel)) {
-                        Text("Create")
-                            .foregroundColor(.white)
-                            .padding([.vertical], 7)
-                            .padding([.horizontal], 15)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .foregroundColor(Color("red"))
-                            }
-                    }
+        VStack(alignment: .leading, spacing: 3) {
+            Text(title.uppercased())
+                .font(.system(size: 12, weight: .medium))
+            
+            HStack {
+                image
+                
+                TextField(
+                    placeholder,
+                    text: $text
+                )
             }
-//            .disabled(validateInput(game: createViewModel.game))
-//            .opacity(validateInput(game: createViewModel.game) ? 0.5 : 1.0)
+            .modifier(CreateLabel())
         }
     }
-    
-    // Return True if user input is invalid
-//    private func validateInput(game: Game) -> Bool {
-//        return game.title.isEmpty || game.location.isEmpty || game.startDate.isEmpty || game.startTime.isEmpty || game.endTime.isEmpty || game.capacity.isEmpty || game.description.isEmpty
+}
+
+//struct CreateButton: View {
+//    @EnvironmentObject var createViewModel: CreateGameViewModel
+//    
+//    var body: some View {
+//        HStack {
+//            Spacer()
+//            Button(action: {}) {
+//                NavigationLink(destination: ConfirmGameView(game: $createViewModel.newGame)
+//                    .environmentObject(createViewModel)) {
+//                        Text("Create")
+//                            .foregroundColor(.white)
+//                            .padding([.vertical], 7)
+//                            .padding([.horizontal], 15)
+//                            .background {
+//                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+//                                    .foregroundColor(Color("red"))
+//                            }
+//                    }
+//            }
+////            .disabled(validateInput(game: createViewModel.game))
+////            .opacity(validateInput(game: createViewModel.game) ? 0.5 : 1.0)
+//        }
 //    }
+//}
+
+struct GameCapacityMenu: View {
+    @Binding var capacity: Int
+    let title: String
+    let placeholder: Int
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(title.uppercased())
+                .font(.system(size: 12, weight: .medium))
+            
+            Menu {
+                //  Picker(selection: $user.height, label: EmptyView()) {
+                Picker("Game Capacity", selection: $capacity) {
+                    ForEach(0..<11) {
+                        Text("\($0)")
+                    }
+                }
+                
+            } label: {
+                HStack {
+                    Text("\(capacity)")
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.down")
+                        .frame(width: 12, height: 6)
+                }
+                .modifier(CreateLabel())
+
+            }
+        }
+    }
 }

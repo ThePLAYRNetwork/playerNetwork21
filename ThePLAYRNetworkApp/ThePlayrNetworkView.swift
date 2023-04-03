@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ThePlayrNetworkView: View {
+    @EnvironmentObject var navigationModel: NavigationModel
+
     var body: some View {
-        TabView {
+        TabView(selection: $navigationModel.tabSelection) {
             NavigationView {
                 HomeView()
             }
             .tabItem {
                 Image("home")
             }
+            .tag(ThePlayrNetworkDestination.home)
             
             NavigationView{
                 CalendarView()
@@ -24,15 +27,22 @@ struct ThePlayrNetworkView: View {
             .tabItem {
                 Image("ReCalendar")
             }
-            .tag(Tab.calendar)
-            NavigationView {
+            .tag(ThePlayrNetworkDestination.calendar)
+            
+            NavigationStack(path: $navigationModel.path) {
                 CreateGameView()
+                    .navigationDestination(for: GameDestination.self) { destination in
+                        switch destination {
+                        case .confirmGame:
+                            ConfirmGameView()
+                        }
+                    }
             }
             .padding(.top, 20)
             .tabItem {
                 Image("RePlus")
             }
-            .tag(Tab.create)
+            .tag(ThePlayrNetworkDestination.create)
 
             NavigationView {
                 MessagesView()
@@ -41,15 +51,15 @@ struct ThePlayrNetworkView: View {
             .tabItem {
                 Image("ReMsg")
             }
-            .tag(Tab.inbox)
-            
+            .tag(ThePlayrNetworkDestination.inbox)
+
             NavigationView {
                 ProfileView()
             }
             .tabItem {
                 Image("profile")
             }
-            .tag(Tab.profile)
+            .tag(ThePlayrNetworkDestination.profile)
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -59,6 +69,6 @@ struct ThePlayrNetworkView_Previews: PreviewProvider {
     static var previews: some View {
         ThePlayrNetworkView()
             .environmentObject(HomeViewModel(gameRepository: GameRepository()))
-            .environmentObject(CreateGameViewModel())
+            .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
     }
 }

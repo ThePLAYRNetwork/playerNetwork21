@@ -36,7 +36,7 @@ struct GameDetailBottomSection: View {
 //
             
             RoundedRectangle(cornerRadius: 7)
-//                .fill(Color.ui.subheading_text)
+                .fill(Color.ui.grayF6F6F6)
                 .frame(height: 125)
                 .padding(.top, 20)
             

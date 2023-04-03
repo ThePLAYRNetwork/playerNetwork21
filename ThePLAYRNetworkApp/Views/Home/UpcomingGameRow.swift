@@ -25,7 +25,7 @@ struct UpcomingGameRow: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 15) { // could use reg
-                    ForEach(items, id: \.recordName) { game in
+                    ForEach(items, id: \.id) { game in
                         
                         // Old navigation
                         NavigationLink {

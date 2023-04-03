@@ -10,9 +10,8 @@ import CoreLocation
 import CloudKit
 
 // must be hashable for new navigaiton destination
-// cloudkit support data types: https://developer.apple.com/documentation/cloudkit/ckrecord
-struct Game: Hashable {
-    var recordName: String
+struct Game: Hashable, Identifiable { // remove hashable?
+    var id: String
     var title: String
     var place: String
     var location: CLLocation
@@ -26,7 +25,52 @@ struct Game: Hashable {
     var isIndoor: Bool
     var isSpectatorAllowed: Bool
     var isPrivateGame: Bool
+    
+    var recordID: CKRecord.ID {
+        CKRecord.ID(recordName: id)
+    }
+    
+    init(title: String = "", place: String = "", location: CLLocation = CLLocation(), capacity: Int = 0, date: Date = Date(), startTime: Date = Date(), endTime: Date = Date(), details: String = "", playerLevel: PlayerLevel = .recreation, coverImage: CKAsset? = nil, isIndoor: Bool = false, isSpectatorAllowed: Bool = false, isPrivateGame: Bool = false) {
+        self.id = UUID().uuidString
+        self.title = title
+        self.place = place
+        self.location = location
+        self.capacity = capacity
+        self.date = date
+        self.startTime = startTime
+        self.endTime = endTime
+        self.details = details
+        self.playerLevel = playerLevel
+        self.coverImage = coverImage
+        self.isIndoor = isIndoor
+        self.isSpectatorAllowed = isSpectatorAllowed
+        self.isPrivateGame = isPrivateGame
+    }
+    
+//    init(record: CKRecord) throws {
+//
+//    }
+
+    func createGameRecord() async throws -> CKRecord {
+        let record = CKRecord(recordType: "Game", recordID: self.recordID)
+        record[.title] = self.title
+        record[.place] = self.place
+        record[.location] = self.location
+        record[.capacity] = self.capacity
+        record[.date] = self.date
+        record[.startTime] = self.startTime
+        record[.endTime] = self.endTime
+        record[.details] = self.details
+        record[.playerLevel] = self.playerLevel.rawValue
+//        record[.coverImage] = ...
+        record[.isIndoor] = self.isIndoor
+        record[.isSpectatorAllowed] = self.isSpectatorAllowed
+        record[.isPrivateGame] = self.isPrivateGame
+        
+        return record
+    }
 }
+
 
 extension Game {
     struct InvitedPlayers {
@@ -46,10 +90,25 @@ extension Game {
         case elite
     }
     
+    struct RecordError: LocalizedError {
+        var localizedDescription: String
+        
+        static func missingKey(_ key: RecordKey) -> RecordError {
+            RecordError(localizedDescription: "Missing required key \(key.rawValue)")
+        }
+    }
+    
+    enum RecordKey: String {
+        case title, place, location, capacity, date, startTime, endTime, details, playerLevel, coverImage, isIndoor, isSpectatorAllowed, isPrivateGame
+    }
+    
     static let sampleGames: [Game] = [
-        Game(recordName: "", title: "", place: "", location: CLLocation(latitude: CLLocationDegrees(), longitude: CLLocationDegrees()), capacity: 0, date: Date(), startTime: Date(), endTime: Date(), details: "", playerLevel: .competitive, isIndoor: true, isSpectatorAllowed: true, isPrivateGame: true)
+        Game(title: "Tournament Round 3", place: "RIMAC Arena", location: CLLocation(), capacity: 10, date: Date(), startTime: Date(), endTime: Date(), details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", playerLevel: .competitive, coverImage: nil, isIndoor: true, isSpectatorAllowed: true, isPrivateGame: true)
     ]
-
+    
+    
+    // MARK - Helpers
+    
     func getStartMonthDay() -> String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss Z"    // startTime.description = "2023-01-29 23:16:38 +0000"

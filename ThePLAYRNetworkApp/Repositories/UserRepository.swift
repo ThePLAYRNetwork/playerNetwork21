@@ -74,3 +74,10 @@ class UserRepository: UserApiService {
         }
     }
 }
+
+extension CKRecord {
+    subscript(key: User.RecordKey) -> Any? {
+        get { return self[key.rawValue] }
+        set { self[key.rawValue] = newValue as? CKRecordValue}
+    }
+}

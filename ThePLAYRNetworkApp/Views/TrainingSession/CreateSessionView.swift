@@ -154,7 +154,9 @@ struct CreateSessionView: View {
                 
                 Spacer()
                 
-                Button("Create", action: {})
+                Button("Create", action: {
+                    Session
+                })
                     .buttonStyle(CustomButton(color: .red, size: .small))
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }

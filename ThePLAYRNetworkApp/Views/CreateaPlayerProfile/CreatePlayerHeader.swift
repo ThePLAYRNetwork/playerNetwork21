@@ -19,6 +19,7 @@ struct CreatePlayerHeader: View {
                 .padding(.top, 45)
             Spacer()
             CircularProfileImageSmall()
+                .padding(.top, 45)
         }
         .padding(.top, 45)
         .padding(.horizontal)

@@ -36,6 +36,7 @@ struct User: Identifiable {
     }
     
     init(firstName: String = "", lastName: String = "", email: String = "", phoneNumber: String = "", role: Role = .player, height: String = "6’0\"", weight: String = "140..150", age: Int = 20, highestLevelPlayed: LevelPlayed = .college, skillLevel: SkillLevel = .competitive, school: String = "", position: Position = .guard, playsLike: String = "") {
+        
         self.id = UUID().uuidString
         self.userID = CKRecord.Reference(record: CKRecord(recordType: "User"), action: .none)
         self.firstName = firstName
@@ -147,6 +148,7 @@ struct User: Identifiable {
     func createUserRecord() async throws -> CKRecord {
         let userID = try await CKContainer.default().userRecordID()
         let record = CKRecord(recordType: "User", recordID: self.recordID)
+        
         record[.userID] = CKRecord.Reference(recordID: userID, action: .none) // reference to user's original record
         record[.firstName] = self.firstName
         record[.lastName] = self.lastName

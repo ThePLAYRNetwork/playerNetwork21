@@ -10,7 +10,8 @@ import SwiftUI
 struct TrainerHubView: View {
     
     @StateObject var trainerHubVc = TrainerHubViewModel()
-    
+    @ObservedObject var coverImageViewModel =  CoverImageViewModel()
+
     var body: some View {
         ScrollView {
             Text("Trainer Hub")
@@ -62,7 +63,7 @@ struct TrainerHubView: View {
                         .aspectRatio(1.0, contentMode: .fit)
                         .frame(width: 89, height: 89)
                         .overlay(
-                            NavigationLink(destination: CreateSessionView()) {
+                            NavigationLink(destination: CreateSessionView(coverImageViewModel: CoverImageViewModel())) {
                                 Image("cross.square")
                                     .resizable()
                                     .frame(width: 46.94, height: 47.18)

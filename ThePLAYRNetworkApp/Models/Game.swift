@@ -53,19 +53,19 @@ struct Game: Hashable, Identifiable { // remove hashable?
 
     func createGameRecord() async throws -> CKRecord {
         let record = CKRecord(recordType: "Game", recordID: self.recordID)
-        record[.title] = self.title
-        record[.place] = self.place
-        record[.location] = self.location
-        record[.capacity] = self.capacity
-        record[.date] = self.date
-        record[.startTime] = self.startTime
-        record[.endTime] = self.endTime
-        record[.details] = self.details
-        record[.playerLevel] = self.playerLevel.rawValue
-//        record[.coverImage] = ...
-        record[.isIndoor] = self.isIndoor
-        record[.isSpectatorAllowed] = self.isSpectatorAllowed
-        record[.isPrivateGame] = self.isPrivateGame
+        record[Game.RecordKey.title] = self.title
+        record[Game.RecordKey.place] = self.place
+        record[Game.RecordKey.location] = self.location
+        record[Game.RecordKey.capacity] = self.capacity
+        record[Game.RecordKey.date] = self.date
+        record[Game.RecordKey.startTime] = self.startTime
+        record[Game.RecordKey.endTime] = self.endTime
+        record[Game.RecordKey.details] = self.details
+        record[Game.RecordKey.playerLevel] = self.playerLevel.rawValue
+//        record[Game.RecordKey.coverImage] = ...
+        record[Game.RecordKey.isIndoor] = self.isIndoor
+        record[Game.RecordKey.isSpectatorAllowed] = self.isSpectatorAllowed
+        record[Game.RecordKey.isPrivateGame] = self.isPrivateGame
         
         return record
     }

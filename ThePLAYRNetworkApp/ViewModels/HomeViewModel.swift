@@ -13,6 +13,7 @@ import SwiftUI
 @MainActor
 class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var gameRepository: GameRepository
+    @Published var sessionRepository: SessionRepository
     @Published var upcomingGames: [Game] = Game.sampleGames
 
     @Published var region = MKCoordinateRegion(
@@ -26,8 +27,9 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var trackingMode = MapUserTrackingMode.follow
 
     
-    init(gameRepository: GameRepository) {
+    init(gameRepository: GameRepository, sessionRepository: SessionRepository) {
         self.gameRepository = gameRepository
+        self.sessionRepository = sessionRepository
     }
     
     func fetchNearByGames() async -> [Game] {

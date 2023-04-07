@@ -12,6 +12,7 @@ struct CreatePlayerProfile18: View {
     @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel
 
+
     var body: some View {
         VStack {
             CreatePlayerHeader()
@@ -28,7 +29,10 @@ struct CreatePlayerProfile18: View {
                         HStack {
                             
                             Button {
-                                onboardingViewModel.newUser.role = .player
+                        //       onboardingViewModel.newUser.role = .player
+
+                                ckUserViewModel.user.role = .player
+
                             } label: {
                                 
                                 VStack {
@@ -57,7 +61,9 @@ struct CreatePlayerProfile18: View {
                             }
 
                             Button {
-                                onboardingViewModel.newUser.role = .coach
+                            //  onboardingViewModel.newUser.role = .coach
+                                
+                                ckUserViewModel.user.role = .coach
                             } label: {
                                 VStack {
                                     Spacer()
@@ -84,7 +90,9 @@ struct CreatePlayerProfile18: View {
                             }
 
                             Button {
-                                onboardingViewModel.newUser.role = .trainer
+                         //   onboardingViewModel.newUser.role = .trainer
+                                
+                                ckUserViewModel.user.role = .trainer
                             } label: {
                                 VStack {
                                     Spacer()
@@ -110,6 +118,36 @@ struct CreatePlayerProfile18: View {
                             }
                             
                         }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         
                         .padding(.horizontal)
                         .padding(.bottom, 15)

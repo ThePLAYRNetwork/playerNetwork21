@@ -46,7 +46,7 @@ struct HomeView_Previews: PreviewProvider {
         NavigationView {
             HomeView()
             //                .environmentObject(AuthViewModel())
-                .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+                .environmentObject(HomeViewModel(gameRepository: GameRepository(), sessionRepository: SessionRepository()))
         }
     }
 }

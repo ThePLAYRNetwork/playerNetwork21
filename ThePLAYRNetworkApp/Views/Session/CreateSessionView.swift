@@ -138,6 +138,7 @@ struct CreateSessionView: View {
                     VStack(alignment: .leading, spacing: 3) {
                         CoverImage()
                         
+                        
                         Text("Session Availability".uppercased())
                             .font(.system(size: 12))
                         
@@ -163,8 +164,9 @@ struct CreateSessionView: View {
                     
                     Spacer()
                     
-                    
-                    ConfirmSessionButtons(session: sessionViewModel.newSession)
+                  
+                        ConfirmSessionButtons(session: sessionViewModel.newSession)
+                
                     
                 }
                 .padding()

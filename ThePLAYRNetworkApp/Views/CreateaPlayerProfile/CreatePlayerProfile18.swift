@@ -11,28 +11,28 @@ struct CreatePlayerProfile18: View {
     @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel
-
-
+    
+    
     var body: some View {
         VStack {
             CreatePlayerHeader()
                 .ignoresSafeArea()
                 .padding(.bottom, -75)
-        
+            
             ScrollView {
                 VStack {
                     VStack(alignment: .leading) {
                         Text("SELECT YOUR ROLE")
                             .font(.system(size: 12, weight: .semibold))
                             .padding(.horizontal)
-
+                        
                         HStack {
                             
                             Button {
-                        //       onboardingViewModel.newUser.role = .player
-
+                                //       onboardingViewModel.newUser.role = .player
+                                
                                 ckUserViewModel.user.role = .player
-
+                                
                             } label: {
                                 
                                 VStack {
@@ -59,9 +59,9 @@ struct CreatePlayerProfile18: View {
                                     ckUserViewModel.user.role == .player ? Color.clear : Color.ui.grayC6C6C6.opacity(0.4)
                                 )
                             }
-
+                            
                             Button {
-                            //  onboardingViewModel.newUser.role = .coach
+                                //  onboardingViewModel.newUser.role = .coach
                                 
                                 ckUserViewModel.user.role = .coach
                             } label: {
@@ -88,9 +88,9 @@ struct CreatePlayerProfile18: View {
                                     
                                 )
                             }
-
+                            
                             Button {
-                         //   onboardingViewModel.newUser.role = .trainer
+                                //   onboardingViewModel.newUser.role = .trainer
                                 
                                 ckUserViewModel.user.role = .trainer
                             } label: {
@@ -98,15 +98,15 @@ struct CreatePlayerProfile18: View {
                                     Spacer()
                                     Image("trainer")
                                         .resizable()
-                                        .frame(width: 85, height: 96)
-                                    
+                                      //  .frame(width: 85, height: 96)
+                                        .frame(height: 96)
                                     Spacer()
                                     Text("Trainer")
                                         .font(.system(size: 16))
                                         .foregroundColor(ckUserViewModel.user.role == .trainer ? Color.ui.accentColor : Color.ui.gray959595)
                                     Spacer()
                                 }
-                                .frame(width: 122, height: 157)
+                              .frame(width: 122, height: 157)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(ckUserViewModel.user.role == .trainer ? Color.ui.accentColor : Color.ui.grayC6C6C6)
@@ -118,37 +118,6 @@ struct CreatePlayerProfile18: View {
                             }
                             
                         }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         .padding(.horizontal)
                         .padding(.bottom, 15)
                         
@@ -158,7 +127,7 @@ struct CreatePlayerProfile18: View {
                         Spacer()
                         
                     }
-            
+                    
                     
                     Button {
                         navigationModel.path.append(OnboardingDestination.position)

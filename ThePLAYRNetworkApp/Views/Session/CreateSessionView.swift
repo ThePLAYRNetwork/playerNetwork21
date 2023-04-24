@@ -48,12 +48,12 @@ struct CreateSessionView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 3) {
                             HStack {
-                                GameTextField(
-                                    text: $sessionViewModel.newSession.location,
-                                    title: "Location",
-                                    placeholder: "Ex. Courts",
-                                    image: Image("location")
-                                )
+//                                GameTextField(
+//                                    text: $sessionViewModel.newSession.location,
+//                                    title: "Location",
+//                                    placeholder: "Ex. Courts",
+//                                    image: Image("location")
+//                                )
                                 
                             }
                             .frame(width: geometry.size.width * 0.60)

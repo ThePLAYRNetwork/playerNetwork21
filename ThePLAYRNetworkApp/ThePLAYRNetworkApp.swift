@@ -7,7 +7,7 @@
 
 import SwiftUI
 import CloudKit
-import Firebase
+//import Firebase
 
 enum Tab {
     case home
@@ -38,7 +38,7 @@ struct ThePLAYRNetworkApp: App {
         let userRepository = UserRepository()
         let navigationModel = NavigationModel()
         let ckUserViewModel = CloudKitUserViewModel(userRepository: userRepository, navigationModel: navigationModel)
-        self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository, sessionRepository: sessionRepository))
+        self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository))
         self._ckUserViewModel = StateObject(wrappedValue: ckUserViewModel)
         self._navigationModel = StateObject(wrappedValue: navigationModel)
         self._onboardingViewModel = StateObject(wrappedValue: OnboardingViewModel(ckUserViewModel: ckUserViewModel, userRepository: userRepository, navigationModel: navigationModel))
@@ -114,7 +114,7 @@ struct ThePLAYRNetworkApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         return true
     }
 }

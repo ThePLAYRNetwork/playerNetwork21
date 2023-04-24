@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		320314152894F99A00141300 /* PlayerAttendingCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320314142894F99A00141300 /* PlayerAttendingCircles.swift */; };
+		3216592C29F6E5BB0087AA42 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216592A29F6E5BB0087AA42 /* CalendarViewModel.swift */; };
+		3216592D29F6E5BB0087AA42 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216592B29F6E5BB0087AA42 /* LocationManager.swift */; };
+		3216593129F6E6210087AA42 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216592E29F6E6210087AA42 /* LocationSearchService.swift */; };
+		3216593229F6E6210087AA42 /* LocationSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216592F29F6E6210087AA42 /* LocationSearchBar.swift */; };
+		3216593329F6E6210087AA42 /* SearchBarAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216593029F6E6210087AA42 /* SearchBarAddress.swift */; };
+		3216593529F6E80C0087AA42 /* SearchableDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216593429F6E80C0087AA42 /* SearchableDropDownMenu.swift */; };
 		3218C2DD29A327440010D83B /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3218C2DC29A327440010D83B /* GameRepository.swift */; };
 		321CB09D29C2BF11004542D5 /* ThePlayrNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */; };
 		321D6B5E28985CD0005EC2EF /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */; };
@@ -173,6 +179,12 @@
 		16063461EC7CCA7C35200FD5 /* Pods_ThePLAYRNetworkApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThePLAYRNetworkApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F284A710D8ECF2F6C28ED58 /* Pods-ThePLAYRNetworkApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThePLAYRNetworkApp.debug.xcconfig"; path = "Target Support Files/Pods-ThePLAYRNetworkApp/Pods-ThePLAYRNetworkApp.debug.xcconfig"; sourceTree = "<group>"; };
 		320314142894F99A00141300 /* PlayerAttendingCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAttendingCircles.swift; sourceTree = "<group>"; };
+		3216592A29F6E5BB0087AA42 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		3216592B29F6E5BB0087AA42 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3216592E29F6E6210087AA42 /* LocationSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
+		3216592F29F6E6210087AA42 /* LocationSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchBar.swift; sourceTree = "<group>"; };
+		3216593029F6E6210087AA42 /* SearchBarAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarAddress.swift; sourceTree = "<group>"; };
+		3216593429F6E80C0087AA42 /* SearchableDropDownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchableDropDownMenu.swift; sourceTree = "<group>"; };
 		3218C2DC29A327440010D83B /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		321CB09C29C2BF11004542D5 /* ThePlayrNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThePlayrNetworkView.swift; sourceTree = "<group>"; };
 		321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
@@ -352,6 +364,8 @@
 		3218C2DA29A327000010D83B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3216592A29F6E5BB0087AA42 /* CalendarViewModel.swift */,
+				3216592B29F6E5BB0087AA42 /* LocationManager.swift */,
 				322F330329BF9A1E0073F41D /* CKUserViewModel.swift */,
 				321D6B5D28985CD0005EC2EF /* CreateGameViewModel.swift */,
 				32862F36289257C700CDFB3B /* HomeViewModel.swift */,
@@ -537,6 +551,9 @@
 		32EA5CB528948B0C00A70A7B /* CreateGame */ = {
 			isa = PBXGroup;
 			children = (
+				3216592F29F6E6210087AA42 /* LocationSearchBar.swift */,
+				3216592E29F6E6210087AA42 /* LocationSearchService.swift */,
+				3216593029F6E6210087AA42 /* SearchBarAddress.swift */,
 				32EA5CA8289316FD00A70A7B /* CreateGameView.swift */,
 				32EA5CAA2893178700A70A7B /* MapGameView.swift */,
 				CF582AE2296C3DC800B06C8D /* InvitePlayer */,
@@ -582,6 +599,7 @@
 		CF20ABF22948A1CC00897F60 /* CreateaPlayerProfile */ = {
 			isa = PBXGroup;
 			children = (
+				3216593429F6E80C0087AA42 /* SearchableDropDownMenu.swift */,
 				CF20ABF32948A20500897F60 /* CreatePlayerProfileView.swift */,
 				CFE2B77029490CC000ACF890 /* CreatePlayerProfile18.swift */,
 				CF737FFB29520B6F00363601 /* PlayerProfileOptions.swift */,
@@ -922,6 +940,7 @@
 			files = (
 				CFBE740C29192A72005D8506 /* JournalViewModel.swift in Sources */,
 				32862F442892590D00CDFB3B /* UpcomingGameItem.swift in Sources */,
+				3216592C29F6E5BB0087AA42 /* CalendarViewModel.swift in Sources */,
 				CF6B6770296C527600BEC347 /* SpecialistColumn.swift in Sources */,
 				32495B0729D614A4006DA685 /* College.swift in Sources */,
 				CF8205A5299E92850019AE45 /* NewNoteView.swift in Sources */,
@@ -934,6 +953,7 @@
 				CF20ABF82948BC1300897F60 /* RoundedShape.swift in Sources */,
 				32862F2E2892529A00CDFB3B /* SignupView.swift in Sources */,
 				3271214B28CF83790056E304 /* Post.swift in Sources */,
+				3216593129F6E6210087AA42 /* LocationSearchService.swift in Sources */,
 				32D019C828D1829400E3C601 /* PlayersYouMayKnowItem.swift in Sources */,
 				CF6B67A1296C559A00BEC347 /* SelectDayCard.swift in Sources */,
 				CF3A964A2927AF8400940E1F /* ActiveSessionsView.swift in Sources */,
@@ -946,6 +966,7 @@
 				CFDE4A7429421EBD008D4398 /* ClientBookedSessionExpanded.swift in Sources */,
 				CFBCE99A2987FED50055ED3A /* OnboardingView.swift in Sources */,
 				32862F37289257C700CDFB3B /* HomeViewModel.swift in Sources */,
+				3216593329F6E6210087AA42 /* SearchBarAddress.swift in Sources */,
 				CF6B6785296C52FA00BEC347 /* CourtTabItem.swift in Sources */,
 				CFDE4A7229420B89008D4398 /* ClientProfileTopView.swift in Sources */,
 				CFB3384A28AE85E400610F42 /* TrainingView.swift in Sources */,
@@ -960,6 +981,7 @@
 				CF26300C28EB0C9000CAD20D /* TrainersView.swift in Sources */,
 				322F330829C02CB20073F41D /* UserRepository.swift in Sources */,
 				CF6A16DD291ACAA3001D98F5 /* TrainerHubViewModel.swift in Sources */,
+				3216593529F6E80C0087AA42 /* SearchableDropDownMenu.swift in Sources */,
 				CF6B676A296C522300BEC347 /* BackButton.swift in Sources */,
 				32AF1B9B29D53B3400E7A502 /* PlayerCarousel.swift in Sources */,
 				CF6B676C296C522900BEC347 /* Buttons.swift in Sources */,
@@ -1003,6 +1025,7 @@
 				CF26301928EB0E4100CAD20D /* EventsItem.swift in Sources */,
 				CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */,
 				CF8205A6299E92850019AE45 /* NotesView.swift in Sources */,
+				3216592D29F6E5BB0087AA42 /* LocationManager.swift in Sources */,
 				CF1A19B728BFE8F200D82DC8 /* SearchViewModel.swift in Sources */,
 				CF26301628EB0E4100CAD20D /* DiscoverView.swift in Sources */,
 				CF6B6788296C52FA00BEC347 /* JournalChartTabItem.swift in Sources */,
@@ -1067,6 +1090,7 @@
 				CF6B67A4296C559A00BEC347 /* CreateSessionView.swift in Sources */,
 				CF6B679F296C559A00BEC347 /* SelectDayCell.swift in Sources */,
 				CF26301E28EB137F00CAD20D /* Message.swift in Sources */,
+				3216593229F6E6210087AA42 /* LocationSearchBar.swift in Sources */,
 				32862F3C2892586F00CDFB3B /* MapView.swift in Sources */,
 				CF6B6787296C52FA00BEC347 /* InputDataColumn.swift in Sources */,
 				322F330429BF9A1E0073F41D /* CKUserViewModel.swift in Sources */,

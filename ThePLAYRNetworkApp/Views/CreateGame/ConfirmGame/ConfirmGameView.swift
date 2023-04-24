@@ -54,7 +54,7 @@ struct ConfirmGameView_Previews: PreviewProvider {
         NavigationView {
             ConfirmGameView()
                 .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
-                .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+                .environmentObject(HomeViewModel(gameRepository: GameRepository(), sessionRepository: SessionRepository()))
         }
     }
 }

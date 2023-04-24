@@ -25,23 +25,26 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var ckUserViewModel: CloudKitUserViewModel
     @StateObject private var homeViewModel: HomeViewModel
     @StateObject private var createViewModel: CreateGameViewModel
+    @StateObject private var sessionViewModel: SessionViewModel
     @StateObject private var navigationModel = NavigationModel()
     @StateObject private var onboardingViewModel: OnboardingViewModel
     @StateObject private var locationManager = LocationManager.shared
-    
     @StateObject private var calendarViewModel: CalendarViewModel
-    
+    @StateObject private var coverImageViewModel = CoverImageViewModel()
+
     init() {
         let gameRepository = GameRepository()
+        let sessionRepository = SessionRepository()
         let userRepository = UserRepository()
         let navigationModel = NavigationModel()
         let ckUserViewModel = CloudKitUserViewModel(userRepository: userRepository, navigationModel: navigationModel)
-        self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository))
+        self._homeViewModel = StateObject(wrappedValue: HomeViewModel(gameRepository: gameRepository, sessionRepository: sessionRepository))
         self._ckUserViewModel = StateObject(wrappedValue: ckUserViewModel)
         self._navigationModel = StateObject(wrappedValue: navigationModel)
         self._onboardingViewModel = StateObject(wrappedValue: OnboardingViewModel(ckUserViewModel: ckUserViewModel, userRepository: userRepository, navigationModel: navigationModel))
         self._createViewModel = StateObject(wrappedValue: CreateGameViewModel(gameRepository: gameRepository, navigationModel: navigationModel))
         self._calendarViewModel = StateObject(wrappedValue: CalendarViewModel(gameRepository: gameRepository))
+        self._sessionViewModel = StateObject(wrappedValue: SessionViewModel(sessionRepository: sessionRepository, navigationModel: navigationModel))
         
         // carousel dot color
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
@@ -99,9 +102,11 @@ struct ThePLAYRNetworkApp: App {
             .environmentObject(ckUserViewModel)
             .environmentObject(homeViewModel)
             .environmentObject(createViewModel)
+            .environmentObject(sessionViewModel)
             .environmentObject(onboardingViewModel)
             .environmentObject(locationManager)
             .environmentObject(calendarViewModel)
+            .environmentObject(coverImageViewModel)
         }
     }
 }

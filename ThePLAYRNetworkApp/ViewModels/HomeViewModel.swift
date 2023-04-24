@@ -15,7 +15,6 @@ import Combine
 class HomeViewModel: ObservableObject {
     @Published var nearbyGames: [Game] = []
     @Published var showingGamePosted = false
-
     @Published var gameRepository: GameRepository
     
     // Location

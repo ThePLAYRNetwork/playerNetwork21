@@ -162,41 +162,7 @@ struct CreateGameView_Previews: PreviewProvider {
     }
 }
 
-struct CoverImageRow: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 3) {
-            Text("Cover Image".uppercased())
-                .font(.system(size: 12))
 
-            HStack {
-                RoundedRectangle(cornerRadius: 4)
-                    .aspectRatio(1.0, contentMode: .fit) // to keep square shape
-                    .overlay {
-                        Image("photos")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 34, height: 34)
-                            .foregroundColor(.gray)
-                    }
-                RoundedRectangle(cornerRadius: 4)
-                    .aspectRatio(1.0, contentMode: .fit)
-                    .overlay {
-                        Image(systemName: "camera.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 34, height: 34)
-                            .foregroundColor(.gray)
-                    }
-                RoundedRectangle(cornerRadius: 4)
-                    .aspectRatio(1.0, contentMode: .fit)
-                RoundedRectangle(cornerRadius: 4)
-                    .aspectRatio(1.0, contentMode: .fit)
-                
-            }
-            .foregroundColor(Color.ui.grayECECEC)
-        }
-    }
-}
 
 // Could use picker instead
 struct PlayerLevelRow: View {

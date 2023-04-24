@@ -38,7 +38,8 @@ struct ThePLAYRNetworkApp: App {
         self._navigationModel = StateObject(wrappedValue: navigationModel)
         self._onboardingViewModel = StateObject(wrappedValue: OnboardingViewModel(ckUserViewModel: ckUserViewModel, userRepository: userRepository, navigationModel: navigationModel))
         self._createViewModel = StateObject(wrappedValue: CreateGameViewModel(gameRepository: gameRepository, navigationModel: navigationModel))
-        self._sessionViewModel = StateObject(wrappedValue: SessionViewModel(sessionRepository: sessionRepository, navigationModel: navigationModel))
+        self._sessionViewModel = StateObject(wrappedValue: SessionViewModel(sessionRepository: sessionRepository, navigationModel: navigationModel)
+        )
         
         // carousel dot color
         UIPageControl.appearance().currentPageIndicatorTintColor = .black

@@ -26,9 +26,9 @@ class SessionViewModel: NSObject,ObservableObject {
         let result = await sessionRepository.createSession(session: newSession)
         switch result {
         case .success(let session):
-            self.navigationModel.path.removeLast()
+           self.navigationModel.path.removeLast()
             self.navigationModel.tabSelection = .home    // show home screen
-            self.navigationModel.showGameCreatedSuccessAlert = true
+            self.navigationModel.showSessionCreateSuccessAlert = true
             
             
           print("Created sessions successfully")

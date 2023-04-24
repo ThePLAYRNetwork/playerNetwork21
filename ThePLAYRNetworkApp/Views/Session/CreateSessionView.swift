@@ -14,7 +14,7 @@ import SwiftUI
 struct CreateSessionView: View {
     @EnvironmentObject var sessionViewModel: SessionViewModel
     @StateObject var coverImageViewModel = CoverImageViewModel()
-
+    
     
     
     
@@ -30,7 +30,7 @@ struct CreateSessionView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Create Session")
+                    Text("Create Training Session")
                         .font(.system(size: 24))
                         .bold()
                     
@@ -47,26 +47,23 @@ struct CreateSessionView: View {
                     
                     HStack {
                         VStack(alignment: .leading, spacing: 3) {
-                            Text("Location".uppercased())
-                                .font(.system(size: 12))
-                            
                             HStack {
-                                Image("location")
-                                TextField(
-                                    "Ex. Courts",
-                                    text: $location
+                                GameTextField(
+                                    text: $sessionViewModel.newSession.location,
+                                    title: "Location",
+                                    placeholder: "Ex. Courts",
+                                    image: Image("location")
                                 )
+                                
                             }
-                            .modifier(CreateLabel())
+                            .frame(width: geometry.size.width * 0.60)
                         }
-                        .frame(width: geometry.size.width * 0.60)
-                        
                         VStack(alignment: .leading, spacing: 3) {
                             Text("Price".uppercased())
                                 .font(.system(size: 12))
                             
                             HStack {
-                                Image("location")
+                                
                                 TextField(
                                     "$0.00",
                                     text: $price
@@ -138,7 +135,8 @@ struct CreateSessionView: View {
                     VStack(alignment: .leading, spacing: 3) {
                         CoverImage()
                         
-                        
+                            .padding(.vertical)
+                    
                         Text("Session Availability".uppercased())
                             .font(.system(size: 12))
                         
@@ -163,23 +161,40 @@ struct CreateSessionView: View {
                     }
                     
                     Spacer()
-                    
-                  
-                        ConfirmSessionButtons(session: sessionViewModel.newSession)
                 
-                    
                 }
-                .padding()
+ 
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: ConfirmSessionView()) {
+                        Text("Create")
+                    }
+                    .buttonStyle(CustomButton(color: .red, size: .small))
+                    .disabled(isDisabled())
+                    .opacity(isDisabled() ? 0.5 : 1.0)
+                }
             }
+            .padding()
         }
     }
     
+    
+    
+    private func isDisabled() -> Bool {
+        return sessionName.isEmpty ||
+      //  location.isEmpty ||
+        price.isEmpty ||
+        dateStart.isEmpty ||
+        dateEnd.isEmpty ||
+        details.isEmpty
+        
+    }
 }
 
 //struct CreateSessionView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CreateSessionView()
-//        
+//
 //    }
 //}
 
@@ -202,11 +217,14 @@ struct CreateLabel: ViewModifier {
 
 
 struct ConfirmSessionButtons: View {
-
+    
     @EnvironmentObject var sessionViewModel: SessionViewModel
     @EnvironmentObject var homeViewModel: HomeViewModel
     @EnvironmentObject var navigationModel: NavigationModel
-
+    
+    @State var buttonTitle: String
+    
+    
     let session: Session
     
     var body: some View {
@@ -218,9 +236,14 @@ struct ConfirmSessionButtons: View {
                     await sessionViewModel.createSession()
                 }
             } label: {
-                Text("Create")
+                Text(buttonTitle)
             }
             .buttonStyle(CustomButton(color: .red, size: .small))
         }
     }
 }
+
+
+
+
+

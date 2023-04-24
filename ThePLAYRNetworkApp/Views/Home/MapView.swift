@@ -33,7 +33,7 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
-            .environmentObject(HomeViewModel(gameRepository: GameRepository(), sessionRepository: SessionRepository()))
+            .environmentObject(HomeViewModel(gameRepository: GameRepository()))
     }
 }
 

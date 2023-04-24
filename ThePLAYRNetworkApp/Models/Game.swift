@@ -50,61 +50,61 @@ struct Game: Hashable, Identifiable { // remove hashable?
     }
     
     init(record: CKRecord) throws {
-        guard let title = record[.title] as? String else {
+        guard let title = record[Game.RecordKey.title] as? String else {
             throw RecordError.missingKey(.title)
         }
         
-        guard let place = record[.place] as? String else {
+        guard let place = record[Game.RecordKey.place] as? String else {
             throw RecordError.missingKey(.place)
         }
         
-        guard let address = record[.address] as? String else {
+        guard let address = record[Game.RecordKey.address] as? String else {
             throw RecordError.missingKey(.address)
         }
         
-        guard let location = record[.location] as? CLLocation else {
+        guard let location = record[Game.RecordKey.location] as? CLLocation else {
             throw RecordError.missingKey(.location)
         }
         
-        guard let capacity = record[.capacity] as? Int else {
+        guard let capacity = record[Game.RecordKey.capacity] as? Int else {
             throw RecordError.missingKey(.capacity)
         }
         
-        guard let date = record[.date] as? Date else {
+        guard let date = record[Game.RecordKey.date] as? Date else {
             throw RecordError.missingKey(.date)
         }
         
-        guard let startTime = record[.startTime] as? Date else {
+        guard let startTime = record[Game.RecordKey.startTime] as? Date else {
             throw RecordError.missingKey(.startTime)
         }
         
-        guard let endTime = record[.endTime] as? Date else {
+        guard let endTime = record[Game.RecordKey.endTime] as? Date else {
             throw RecordError.missingKey(.endTime)
         }
         
-        guard let details = record[.details] as? String else {
+        guard let details = record[Game.RecordKey.details] as? String else {
             throw RecordError.missingKey(.details)
         }
         
-        guard let playerLevelString = record[.playerLevel] as? String,
+        guard let playerLevelString = record[Game.RecordKey.playerLevel] as? String,
               let playerLevel = PlayerLevel(rawValue: playerLevelString)
         else {
             throw RecordError.missingKey(.playerLevel)
         }
         
-        if let coverImage = record[.coverImage] as? CKAsset {
+        if let coverImage = record[Game.RecordKey.coverImage] as? CKAsset {
             self.coverImage = coverImage
         }
         
-        guard let isIndoor = record[.isIndoor] as? Bool else {
+        guard let isIndoor = record[Game.RecordKey.isIndoor] as? Bool else {
             throw RecordError.missingKey(.isIndoor)
         }
         
-        guard let isSpectatorAllowed = record[.isSpectatorAllowed] as? Bool else {
+        guard let isSpectatorAllowed = record[Game.RecordKey.isSpectatorAllowed] as? Bool else {
             throw RecordError.missingKey(.isSpectatorAllowed)
         }
         
-        guard let isPrivateGame = record[.isPrivateGame] as? Bool else {
+        guard let isPrivateGame = record[Game.RecordKey.isPrivateGame] as? Bool else {
             throw RecordError.missingKey(.isPrivateGame)
         }
         

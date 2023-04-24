@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @EnvironmentObject var locationManager: LocationManager
     @State var expandList: Bool = true
     @State var yDragTranslation: CGFloat = 0
     
@@ -35,7 +36,17 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .onAppear() {
             // Ask user for permission to use location
-            homeViewModel.checkIfLocationServicesIsEnabled()
+            locationManager.requestLocation()
+        }
+        // userLocation is initallly null, changes when user accepts permission or moves
+        .onChange(of: locationManager.userLocation) { userLocation in
+            // User location exist (e.g. user accepts permission to user location)
+            if let userLocation = userLocation {
+                // Fetch data
+                Task {
+                    await homeViewModel.fetchNearByGames(location: userLocation)
+                }
+            }
         }
         
     }
@@ -45,8 +56,8 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HomeView()
-            //                .environmentObject(AuthViewModel())
                 .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+                .environmentObject(LocationManager())
         }
     }
 }

@@ -49,11 +49,14 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func createUser() async {
+        // Save user's playing style
         newUser.playsLike = getPlayerCard()
+        // Save user's pfp image
         if let url = saveImage() {
             newUser.profileImage = CKAsset(fileURL: url)
         }
         
+        // Create user record for CloudKit
         let result = await userRepository.createUser(user: newUser)
         switch result {
         case .success(let user):

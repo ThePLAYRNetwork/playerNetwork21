@@ -14,7 +14,7 @@ import PhotosUI
 class CloudKitUserViewModel: ObservableObject {
     @Published var isSignedInToiCloud: Bool = false
     @Published var user: User = User()
-    @Published var showOnboarding = false
+    @Published var showOnboarding = true
     
     private let userRepository: UserRepository
     private let navigationModel: NavigationModel
@@ -49,6 +49,7 @@ class CloudKitUserViewModel: ObservableObject {
         do {
             let status = try await container.accountStatus()
             if status == .available {
+                // Note: User is considerd to be logged into iCloud even if they need to enter their passwords but they cannot perform cloudkit oeprations.
                 isSignedInToiCloud = true
                 print("iCloud is available")
             } else {

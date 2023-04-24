@@ -117,6 +117,8 @@ struct CreatePlayerProfile18: View {
                         PlayerProfileOptions(colleges: onboardingViewModel.colleges)
                             .padding(.bottom, 50)
                         
+                        
+                        
                         Spacer()
                         
                     }

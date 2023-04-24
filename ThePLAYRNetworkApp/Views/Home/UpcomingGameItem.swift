@@ -23,7 +23,7 @@ struct UpcomingGameItem: View {
                             .font(.system(size: 20))
                             .fontWeight(.heavy)
                         
-                        Text(game.formattedStartEndTime())
+                        Text(game.getStartEndTime())
                             .fontWeight(.semibold)
                         
                         Spacer()

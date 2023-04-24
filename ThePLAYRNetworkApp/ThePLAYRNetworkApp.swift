@@ -7,7 +7,7 @@
 
 import SwiftUI
 import CloudKit
-//import FirebaseCore
+import Firebase
 
 enum Tab {
     case home
@@ -17,14 +17,20 @@ enum Tab {
     case profile
 }
 
+// TODO: Schedule, refresh button on home page
 @main
 struct ThePLAYRNetworkApp: App {
+    
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     @StateObject private var ckUserViewModel: CloudKitUserViewModel
     @StateObject private var homeViewModel: HomeViewModel
     @StateObject private var createViewModel: CreateGameViewModel
     @StateObject private var navigationModel = NavigationModel()
     @StateObject private var onboardingViewModel: OnboardingViewModel
-
+    @StateObject private var locationManager = LocationManager.shared
+    
+    @StateObject private var calendarViewModel: CalendarViewModel
+    
     init() {
         let gameRepository = GameRepository()
         let userRepository = UserRepository()
@@ -35,6 +41,7 @@ struct ThePLAYRNetworkApp: App {
         self._navigationModel = StateObject(wrappedValue: navigationModel)
         self._onboardingViewModel = StateObject(wrappedValue: OnboardingViewModel(ckUserViewModel: ckUserViewModel, userRepository: userRepository, navigationModel: navigationModel))
         self._createViewModel = StateObject(wrappedValue: CreateGameViewModel(gameRepository: gameRepository, navigationModel: navigationModel))
+        self._calendarViewModel = StateObject(wrappedValue: CalendarViewModel(gameRepository: gameRepository))
         
         // carousel dot color
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
@@ -44,7 +51,8 @@ struct ThePLAYRNetworkApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $navigationModel.path) {
-                VStack {
+                Group { // use for conditional
+                    // Use full modal
                     if ckUserViewModel.showOnboarding {
                         GetStartedView()
                     } else {
@@ -66,18 +74,25 @@ struct ThePLAYRNetworkApp: App {
                 .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
                     ThePlayrNetworkView()
                 }
+                .navigationDestination(for: GameDestination.self) { destination in
+                    switch destination {
+                    case .confirmGame:
+                        ConfirmGameView()
+                    }
+                }
+                // note: can only use 1 alert, use enums and switch to show different alert
                 .alert(isPresented : $navigationModel.showiCloudErrorAlert) {
                     Alert(
-                        title: Text("iCloud Account not found"),
-                        message: Text("Please log into a valid iCloud to use our application")
+                        title: Text("Sign in to iCloud"),
+                        message: Text("To use all features of our app, you must be logged into iCloud. Please log in to iCloud in your device settings to continue using our app.")
                     )
                 }
-                .alert(isPresented : $navigationModel.showGameCreatedSuccessAlert) {
-                    Alert(
-                        title: Text("Alright!"),
-                        message: Text("Your game has been posted.")
-                    )
-                }
+//                .alert(isPresented : $navigationModel.showGameCreatedSuccessAlert) {
+//                    Alert(
+//                        title: Text("Alright!"),
+//                        message: Text("Your game has been posted.")
+//                    )
+//                }
             }
             // Don't put all viewmodels on top heiracrchy
             .environmentObject(navigationModel)
@@ -85,11 +100,19 @@ struct ThePLAYRNetworkApp: App {
             .environmentObject(homeViewModel)
             .environmentObject(createViewModel)
             .environmentObject(onboardingViewModel)
+            .environmentObject(locationManager)
+            .environmentObject(calendarViewModel)
         }
     }
 }
 
-
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+}
 extension Color {
     static let ui = Color.UI()
     

@@ -11,13 +11,14 @@ import CloudKit
 protocol GameApiService {
     func createGame(game: Game) async -> Result<Game, Error>
     
-    func fetchNearByGames() async -> [Game]
+//    func fetchNearByGames() async -> [Game]
     
     func joinGame() async
 }
 
 
 class GameRepository: ObservableObject, GameApiService {
+    @Published var games: [Game] = [] 
     
     private lazy var container: CKContainer = CKContainer.default()
     private lazy var database: CKDatabase = container.publicCloudDatabase
@@ -34,8 +35,26 @@ class GameRepository: ObservableObject, GameApiService {
         }
     }
     
-    func fetchNearByGames() async -> [Game] {
-        return []
+    func fetchNearByGames(location: CLLocation) async -> Result<[Game], Error> {
+        let radius = 10000 // meters
+        let predicate = NSPredicate(format: "distanceToLocation:fromLocation:(location, %@) < %f", location, radius)
+        let query = CKQuery(recordType: "Game", predicate: predicate)
+        
+        do {
+            var (gameResults, _) = try await database.records(matching: query, resultsLimit: 10)
+            
+            let games: [Game] = gameResults
+                .compactMap { _, result in
+                    guard let record = try? result.get() else { return nil }
+                    return try? Game(record: record)
+                }
+            print("Sucessfully got nearby games")
+            return .success(games)
+            
+        } catch {
+            print("Failed to get nearby games: \(error)")
+            return .failure(error)
+        }
     }
     
     

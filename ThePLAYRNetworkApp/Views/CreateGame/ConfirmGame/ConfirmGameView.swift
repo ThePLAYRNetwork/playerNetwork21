@@ -48,25 +48,12 @@ struct ConfirmGameView_Previews: PreviewProvider {
         NavigationView {
             ConfirmGameView()
                 .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
-                .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+                .environmentObject(HomeViewModel(gameRepository: GameRepository(), sessionRepository: SessionRepository()))
         }
     }
 }
 
-struct CoverImage: View {
-    var body: some View {
-        AsyncImage(url: URL(string: "https//example.com/icon.png"))  { phase in
-            if let image = phase.image {
-                image
-            } else {
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .foregroundColor(Color.ui.grayF6F6F6)
-            }
-        }
-        .frame(height: 212)
-        .padding(.bottom, 20)
-    }
-}
+
 
 struct ConfirmTitleSection: View {
     let game: Game

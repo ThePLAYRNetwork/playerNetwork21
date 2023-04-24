@@ -8,141 +8,158 @@
 import SwiftUI
 
 struct TrainerHubView: View {
-    
+    @EnvironmentObject var homeViewModel: HomeViewModel
     @StateObject var trainerHubVc = TrainerHubViewModel()
-    
+    @ObservedObject var coverImageViewModel =  CoverImageViewModel()
+
     var body: some View {
-        ScrollView {
-            Text("Trainer Hub")
-                .font(.system(size: 24))
-                .fontWeight(.semibold)
-                .padding(.top, 5)
-                .padding(.bottom, -5)
-            
-            VStack(alignment: .leading) {
-                NavigationLink(destination: ActiveSessionsView()) {
-                    
-                    AtAGlanceView()
-                    
-                }
-                
-                ZStack {
-                    VStack {
-                        HubChartView()
-                            .frame(height: 275)
-                        
-                            .overlay(
-                                Image("lchart")
-                                    .resizable()
-                                    .frame(width: 300,height: 150)
-                                    .padding(.bottom, -50)
-                                    .padding(.leading, 20)
-                            )
-                            .padding()
-                        CustomSegmentedControl(
-                            selectedIndex: $trainerHubVc.selectedDateType,
-                            options: ["W", "M", "Y"],
-                            spacing: 30.0
-                        )
-                        .padding()
-                    }
-                    
-                }
-                
-                .background {
-                    RoundedRectangle(cornerRadius: 17)
-                        .fill(Color.ui.grayF6F6F6)
-                }
-                .padding()
+        GeometryReader { geometry in
+            ZStack(alignment: .top) {
                 
                 
                 
-                HStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .frame(width: 89, height: 89)
-                        .overlay(
-                            NavigationLink(destination: CreateSessionView()) {
-                                Image("cross.square")
-                                    .resizable()
-                                    .frame(width: 46.94, height: 47.18)
-                                    .padding(.top, 10)
-                            }
-                        )
+                ScrollView {
+                    Text("Trainer Hub")
+                        .font(.system(size: 24))
+                        .fontWeight(.semibold)
+                        .padding(.top, 5)
+                        .padding(.bottom, -5)
                     
-                    
-                    RoundedRectangle(cornerRadius: 10)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .frame(width: 89, height: 89)
-                        .overlay(
+                    VStack(alignment: .leading) {
+                        NavigationLink(destination: ActiveSessionsView()) {
                             
-                            NavigationLink(destination: ActiveSessionsView()) {
-                                Image("chart")
-                                    .resizable()
-                                    .frame(width: 46.94, height: 47.18)
-                                    .padding(.top, 10)
-                            }
-                            
-                        )
-                    
-                    
-                    
-                    
-                    
-                    RoundedRectangle(cornerRadius: 10)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .frame(width: 89, height: 89)
-                        .overlay(
-                            NavigationLink(destination: ClientManagementView()) {
-                                Image("personSearch")
-                                    .resizable()
-                                    .frame(width: 46.94, height: 47.18)
-                                    .padding(.top, 10)
-                            }
-                        )
-                    
-                    
-                    RoundedRectangle(cornerRadius: 10)
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .frame(width: 89, height: 89)
-                        .overlay(
-                            NavigationLink(destination: NotesView()) {
-                                Image("book")
-                                    .resizable()
-                                    .frame(width: 46.94, height: 47.18)
-                                    .padding(.top, 10)
-                            }
-                            
-                        )
-                    
-                }
-                .padding()
-                .foregroundColor(Color.ui.accentColor)
-                
-                
-                
-                //  VStack {
-                
-                
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .fill(Color.ui.grayF6F6F6)
-                    .frame(maxWidth: .infinity, minHeight: 450)
-                    .padding()
-                    .overlay(
-                        VStack(alignment: .leading) {
-                            Text("Current Bookings")
-                                .font(.system(size: 20, weight: .semibold))
-                                .padding(.leading, 23)
-                                .foregroundColor(.black)
-                            
-                            CalendarTrainerView(interval: DateInterval(start: .distantPast, end: .distantFuture))
-                                .padding()
-                                .frame(height: 370)
+                            AtAGlanceView()
                             
                         }
-                            .frame(height: 350)
-                    )
+                        
+                        ZStack {
+                            VStack {
+                                HubChartView()
+                                    .frame(height: 275)
+                                
+                                    .overlay(
+                                        Image("lchart")
+                                            .resizable()
+                                            .frame(width: 300,height: 150)
+                                            .padding(.bottom, -50)
+                                            .padding(.leading, 20)
+                                    )
+                                    .padding()
+                                CustomSegmentedControl(
+                                    selectedIndex: $trainerHubVc.selectedDateType,
+                                    options: ["W", "M", "Y"],
+                                    spacing: 30.0
+                                )
+                                .padding()
+                            }
+                            
+                        }
+                        
+                        .background {
+                            RoundedRectangle(cornerRadius: 17)
+                                .fill(Color.ui.grayF6F6F6)
+                        }
+                        .padding()
+                        
+                        
+                        
+                        HStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .frame(width: 89, height: 89)
+                                .overlay(
+                                    NavigationLink(destination: CreateSessionView(coverImageViewModel: CoverImageViewModel())) {
+                                        Image("cross.square")
+                                            .resizable()
+                                            .frame(width: 46.94, height: 47.18)
+                                            .padding(.top, 10)
+                                    }
+                                )
+                            
+                            
+                            RoundedRectangle(cornerRadius: 10)
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .frame(width: 89, height: 89)
+                                .overlay(
+                                    
+                                    NavigationLink(destination: ActiveSessionsView()) {
+                                        Image("chart")
+                                            .resizable()
+                                            .frame(width: 46.94, height: 47.18)
+                                            .padding(.top, 10)
+                                    }
+                                    
+                                )
+                            
+                            
+                            
+                            
+                            
+                            RoundedRectangle(cornerRadius: 10)
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .frame(width: 89, height: 89)
+                                .overlay(
+                                    NavigationLink(destination: ClientManagementView()) {
+                                        Image("personSearch")
+                                            .resizable()
+                                            .frame(width: 46.94, height: 47.18)
+                                            .padding(.top, 10)
+                                    }
+                                )
+                            
+                            
+                            RoundedRectangle(cornerRadius: 10)
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .frame(width: 89, height: 89)
+                                .overlay(
+                                    NavigationLink(destination: NotesView()) {
+                                        Image("book")
+                                            .resizable()
+                                            .frame(width: 46.94, height: 47.18)
+                                            .padding(.top, 10)
+                                    }
+                                    
+                                )
+                            
+                        }
+                        .padding()
+                        .foregroundColor(Color.ui.accentColor)
+                        
+                        
+                        
+                        //  VStack {
+                        
+                        
+                        RoundedRectangle(cornerRadius: 15, style: .continuous)
+                            .fill(Color.ui.grayF6F6F6)
+                            .frame(maxWidth: .infinity, minHeight: 450)
+                            .padding()
+                            .overlay(
+                                VStack(alignment: .leading) {
+                                    Text("Current Bookings")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .padding(.leading, 23)
+                                        .foregroundColor(.black)
+                                    
+                                    CalendarTrainerView(interval: DateInterval(start: .distantPast, end: .distantFuture))
+                                        .padding()
+                                        .frame(height: 370)
+                                    
+                                }
+                                    .frame(height: 350)
+                            )
+                    }
+                }
+                
             }
+        }
+        .alert(isPresented: $homeViewModel.showingGamePosted) {
+            Alert(
+                title: Text("All right!"),
+                message: Text("Your game has been posted."),
+                dismissButton: Alert.Button.cancel()
+            )
+            
         }
     }
 }

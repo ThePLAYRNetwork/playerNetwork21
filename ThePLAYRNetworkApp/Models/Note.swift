@@ -10,13 +10,12 @@ import CloudKit
 
 struct Note {
     var recordName: String
-    var userID: CKRecord.Reference
     var message: String
     var createdAt: Date
 }
 
 extension Note {
     static let sampleNotes: [Note] = [
-        Note(recordName: "", userID: CKRecord.Reference(record: CKRecord(recordType: ""), action: .none), message: "", createdAt: Date())
+        Note(recordName: "", message: "", createdAt: Date())
     ]
 }

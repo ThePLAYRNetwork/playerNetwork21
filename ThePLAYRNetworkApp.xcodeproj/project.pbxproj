@@ -69,6 +69,7 @@
 		CF2D173E2940D2F60068D29D /* ExpandableClientProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D173D2940D2F60068D29D /* ExpandableClientProfile.swift */; };
 		CF3A964A2927AF8400940E1F /* ActiveSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A96492927AF8400940E1F /* ActiveSessionsView.swift */; };
 		CF3A964C2927AFBB00940E1F /* ActiveSessionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A964B2927AFBB00940E1F /* ActiveSessionItemView.swift */; };
+		CF53659729E5C4A100645C91 /* ConfirmSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53659629E5C4A100645C91 /* ConfirmSessionView.swift */; };
 		CF582AE5296C3DC800B06C8D /* InvitePlayersItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF582AE3296C3DC800B06C8D /* InvitePlayersItem.swift */; };
 		CF582AE6296C3DC800B06C8D /* InvitePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF582AE4296C3DC800B06C8D /* InvitePlayersView.swift */; };
 		CF582AE9296C3DD600B06C8D /* ConfirmGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF582AE8296C3DD600B06C8D /* ConfirmGameView.swift */; };
@@ -122,9 +123,14 @@
 		CF90D8B228EF0E45009BD09D /* TrainersClassesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90D8B128EF0E45009BD09D /* TrainersClassesView.swift */; };
 		CF90D8B428EF1599009BD09D /* CalendarTrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90D8B328EF1599009BD09D /* CalendarTrainerView.swift */; };
 		CF90D8B628EF1E8A009BD09D /* SessionItemTrainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF90D8B528EF1E8A009BD09D /* SessionItemTrainers.swift */; };
+		CF9C9A5429DB3CED001321AA /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9A5329DB3CED001321AA /* SessionRepository.swift */; };
+		CF9C9A5629DB4276001321AA /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9A5529DB4276001321AA /* SessionViewModel.swift */; };
 		CFA106FF29117D2900EAA40A /* TrainerHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA106FE29117D2900EAA40A /* TrainerHubView.swift */; };
 		CFA374DF292503F3000EF516 /* CancelTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA374DE292503F3000EF516 /* CancelTraining.swift */; };
 		CFA374E129252EA6000EF516 /* SuccessCancelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA374E029252EA6000EF516 /* SuccessCancelView.swift */; };
+		CFAA356E29DDDA83001A7B2D /* CoverImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA356D29DDDA83001A7B2D /* CoverImageRow.swift */; };
+		CFB0D4C929DCA03800D23D81 /* CoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0D4C829DCA03800D23D81 /* CoverImage.swift */; };
+		CFB0D4CB29DCA30300D23D81 /* CoverImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB0D4CA29DCA30300D23D81 /* CoverImageViewModel.swift */; };
 		CFB3384A28AE85E400610F42 /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3384928AE85E400610F42 /* TrainingView.swift */; };
 		CFB3384D28AE8F0C00610F42 /* NearbySessionsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3384C28AE8F0C00610F42 /* NearbySessionsItem.swift */; };
 		CFB3384F28AE8F2B00610F42 /* NearbySessionsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB3384E28AE8F2B00610F42 /* NearbySessionsRow.swift */; };
@@ -230,6 +236,7 @@
 		CF2D173D2940D2F60068D29D /* ExpandableClientProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableClientProfile.swift; sourceTree = "<group>"; };
 		CF3A96492927AF8400940E1F /* ActiveSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionsView.swift; sourceTree = "<group>"; };
 		CF3A964B2927AFBB00940E1F /* ActiveSessionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionItemView.swift; sourceTree = "<group>"; };
+		CF53659629E5C4A100645C91 /* ConfirmSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSessionView.swift; sourceTree = "<group>"; };
 		CF582AE3296C3DC800B06C8D /* InvitePlayersItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitePlayersItem.swift; sourceTree = "<group>"; };
 		CF582AE4296C3DC800B06C8D /* InvitePlayersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitePlayersView.swift; sourceTree = "<group>"; };
 		CF582AE8296C3DD600B06C8D /* ConfirmGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmGameView.swift; sourceTree = "<group>"; };
@@ -283,9 +290,14 @@
 		CF90D8B128EF0E45009BD09D /* TrainersClassesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainersClassesView.swift; sourceTree = "<group>"; };
 		CF90D8B328EF1599009BD09D /* CalendarTrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTrainerView.swift; sourceTree = "<group>"; };
 		CF90D8B528EF1E8A009BD09D /* SessionItemTrainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionItemTrainers.swift; sourceTree = "<group>"; };
+		CF9C9A5329DB3CED001321AA /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
+		CF9C9A5529DB4276001321AA /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
 		CFA106FE29117D2900EAA40A /* TrainerHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerHubView.swift; sourceTree = "<group>"; };
 		CFA374DE292503F3000EF516 /* CancelTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTraining.swift; sourceTree = "<group>"; };
 		CFA374E029252EA6000EF516 /* SuccessCancelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessCancelView.swift; sourceTree = "<group>"; };
+		CFAA356D29DDDA83001A7B2D /* CoverImageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageRow.swift; sourceTree = "<group>"; };
+		CFB0D4C829DCA03800D23D81 /* CoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImage.swift; sourceTree = "<group>"; };
+		CFB0D4CA29DCA30300D23D81 /* CoverImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageViewModel.swift; sourceTree = "<group>"; };
 		CFB3384928AE85E400610F42 /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		CFB3384C28AE8F0C00610F42 /* NearbySessionsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbySessionsItem.swift; sourceTree = "<group>"; };
 		CFB3384E28AE8F2B00610F42 /* NearbySessionsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbySessionsRow.swift; sourceTree = "<group>"; };
@@ -348,6 +360,8 @@
 				323A6D7C29D7D65E008723CD /* OnboardingViewModel.swift */,
 				CF6A16DC291ACAA3001D98F5 /* TrainerHubViewModel.swift */,
 				CFB3385028AE92B100610F42 /* TrainingViewModel.swift */,
+				CF9C9A5529DB4276001321AA /* SessionViewModel.swift */,
+				CFB0D4CA29DCA30300D23D81 /* CoverImageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -356,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				3218C2DC29A327440010D83B /* GameRepository.swift */,
+				CF9C9A5329DB3CED001321AA /* SessionRepository.swift */,
 				322F330729C02CB20073F41D /* UserRepository.swift */,
 			);
 			path = Repositories;
@@ -417,6 +432,7 @@
 		32862F2A2892526700CDFB3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CFB0D4C729DC9BF400D23D81 /* Session */,
 				CF1A19B128BFE49B00D82DC8 /* BookSession */,
 				CFCFF74D28AABE27002F1D30 /* Calendar */,
 				CF2A7E642935514F00C80985 /* Client */,
@@ -656,7 +672,6 @@
 				CF6B6799296C559A00BEC347 /* SelectDayCard.swift */,
 				CF6B679A296C559A00BEC347 /* DayCell.swift */,
 				CF6B679B296C559A00BEC347 /* RepeatCell.swift */,
-				CF6B679C296C559A00BEC347 /* CreateSessionView.swift */,
 			);
 			name = TrainingSession;
 			path = ThePLAYRNetworkApp/Views/TrainingSession;
@@ -697,6 +712,17 @@
 				CF3A964B2927AFBB00940E1F /* ActiveSessionItemView.swift */,
 			);
 			path = Hub;
+			sourceTree = "<group>";
+		};
+		CFB0D4C729DC9BF400D23D81 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B679C296C559A00BEC347 /* CreateSessionView.swift */,
+				CFB0D4C829DCA03800D23D81 /* CoverImage.swift */,
+				CFAA356D29DDDA83001A7B2D /* CoverImageRow.swift */,
+				CF53659629E5C4A100645C91 /* ConfirmSessionView.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 		CFB3384B28AE8EF000610F42 /* Training */ = {
@@ -938,6 +964,7 @@
 				32AF1B9B29D53B3400E7A502 /* PlayerCarousel.swift in Sources */,
 				CF6B676C296C522900BEC347 /* Buttons.swift in Sources */,
 				CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */,
+				CFB0D4CB29DCA30300D23D81 /* CoverImageViewModel.swift in Sources */,
 				CFB3384D28AE8F0C00610F42 /* NearbySessionsItem.swift in Sources */,
 				32AF1B9729D537B500E7A502 /* GetStartedView.swift in Sources */,
 				CFD3C91228E77E5D004B53E7 /* ConversationMoreOverlay.swift in Sources */,
@@ -998,8 +1025,10 @@
 				CF67125128EC57B3002426AB /* HighlightedClasses.swift in Sources */,
 				CF26301728EB0E4100CAD20D /* DiscoverFilterItem.swift in Sources */,
 				326A0DC928CF88F200459BBB /* NetworkView.swift in Sources */,
+				CFB0D4C929DCA03800D23D81 /* CoverImage.swift in Sources */,
 				CFD3C91328E77E5D004B53E7 /* MessagesView.swift in Sources */,
 				CF6B6783296C52FA00BEC347 /* JournalView.swift in Sources */,
+				CFAA356E29DDDA83001A7B2D /* CoverImageRow.swift in Sources */,
 				CFA106FF29117D2900EAA40A /* TrainerHubView.swift in Sources */,
 				CF582AE6296C3DC800B06C8D /* InvitePlayersView.swift in Sources */,
 				32862F42289258F100CDFB3B /* UpcomingGameRow.swift in Sources */,
@@ -1011,17 +1040,20 @@
 				CF6B678B296C531A00BEC347 /* Specialist.swift in Sources */,
 				CF6B6789296C52FA00BEC347 /* InputDataCell.swift in Sources */,
 				CFDE4A7629421EE3008D4398 /* ClientSessionHistoryExpanded.swift in Sources */,
+				CF53659729E5C4A100645C91 /* ConfirmSessionView.swift in Sources */,
 				CFEA82092926934A00B377FD /* AlertView.swift in Sources */,
 				CF6B67AC296C6FB400BEC347 /* EventItem.swift in Sources */,
 				CFBCE9982987FED50055ED3A /* OnboardingPosition.swift in Sources */,
 				CF90D8B428EF1599009BD09D /* CalendarTrainerView.swift in Sources */,
 				CFD3C91628E77E5D004B53E7 /* ConversationBottomView.swift in Sources */,
+				CF9C9A5429DB3CED001321AA /* SessionRepository.swift in Sources */,
 				CF2D173A2940B9500068D29D /* ClientProfile.swift in Sources */,
 				CFEE7A382937828D00A52B50 /* PlayerRowView.swift in Sources */,
 				CF90D8B228EF0E45009BD09D /* TrainersClassesView.swift in Sources */,
 				CF6B679D296C559A00BEC347 /* DayOverlay.swift in Sources */,
 				CFD3C91128E77E5D004B53E7 /* FullMessageView.swift in Sources */,
 				3218C2DD29A327440010D83B /* GameRepository.swift in Sources */,
+				CF9C9A5629DB4276001321AA /* SessionViewModel.swift in Sources */,
 				321D6B5E28985CD0005EC2EF /* CreateGameViewModel.swift in Sources */,
 				CFD3C91C28E77F86004B53E7 /* SpecialistSheetView.swift in Sources */,
 				CFBCE9992987FED50055ED3A /* OnboardingSignupView.swift in Sources */,

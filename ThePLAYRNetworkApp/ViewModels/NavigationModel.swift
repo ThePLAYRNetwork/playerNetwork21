@@ -13,6 +13,7 @@ class NavigationModel: ObservableObject {
     @Published var tabSelection: ThePlayrNetworkDestination = .home
     @Published var showiCloudErrorAlert = false
     @Published var showGameCreatedSuccessAlert = false
+    @Published var showSessionCreateSuccessAlert = false
 }
 
 // MARK: Destinations
@@ -33,5 +34,12 @@ enum ThePlayrNetworkDestination: Hashable {
 }
 
 enum GameDestination: Hashable {
-    case confirmGame
+    case confirmGame  
+}
+
+
+
+enum SessionDestination: Hashable {
+   case confirmSession
+  
 }

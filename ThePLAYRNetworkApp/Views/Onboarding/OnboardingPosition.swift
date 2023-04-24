@@ -99,7 +99,7 @@ struct PositionCell: View {
         }
         .buttonStyle(.plain)
         .background {
-            position == selectedPosition ? .clear : Color.ui.grayC6C6C6
+            position == selectedPosition ? .clear : Color.ui.grayC6C6C6.opacity(0.4)
         }
     }
     

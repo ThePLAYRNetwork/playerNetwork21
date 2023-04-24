@@ -60,8 +60,8 @@ struct MessagesView: View {
             
         }
         
-        .navigationBarTitle("")
-        .navigationBarHidden(false)
+//        .navigationBarTitle("")
+//        .navigationBarHidden(false)
         
         .sheet(isPresented: $showNewMessage) {
             NewMessageView()

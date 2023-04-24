@@ -21,13 +21,16 @@ struct ConfirmGameView: View {
                     .padding(.bottom, 20)
                 
                 CoverImage()
-                
+                    .padding(.bottom, 20)
+
                 ConfirmTitleSection(game: createGameViewModel.newGame)
+                    .padding(.bottom, 20)
 
                 ConfirmGameDetails(game: createGameViewModel.newGame)
-                
+                    .padding(.bottom, 20)
+                    
                 ConfirmInvitedPlayers(samplePlayers: $samplePlayers)
-                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                 
                 MapGameView()
                     .frame(height: 400)
@@ -38,6 +41,9 @@ struct ConfirmGameView: View {
             }
             .font(.system(size: 16))
             .padding()
+            .onAppear {
+                print(createGameViewModel.newGame)
+            }
         }
     }
     
@@ -53,7 +59,19 @@ struct ConfirmGameView_Previews: PreviewProvider {
     }
 }
 
-
+struct CoverImage: View {
+    var body: some View {
+        AsyncImage(url: URL(string: "https//example.com/icon.png"))  { phase in
+            if let image = phase.image {
+                image
+            } else {
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .foregroundColor(Color.ui.grayF6F6F6)
+            }
+        }
+        .frame(height: 212)
+    }
+}
 
 struct ConfirmTitleSection: View {
     let game: Game
@@ -63,18 +81,19 @@ struct ConfirmTitleSection: View {
     }
     
     var body: some View {
-        Text(game.title)
-            .font(.system(size: 24))
-            .bold()
-            .padding(.bottom, 5)
-    
-        Text(date)
-            .padding(.bottom, 4)
-            .font(.system(size: 16, weight: .medium))
-        
-        Text(game.place)
-            .font(.system(size: 16, weight: .medium))
-            .padding(.bottom, 20)
+        VStack(alignment: .leading, spacing: 0) {
+            Text(game.title)
+                .font(.system(size: 24))
+                .bold()
+                .padding(.bottom, 5)
+            
+            Text(date)
+                .padding(.bottom, 4)
+                .font(.system(size: 16, weight: .medium))
+            
+            Text("\(game.place) \(game.address ?? "")")
+                .font(.system(size: 16, weight: .medium))
+        }
     }
 }
 
@@ -86,13 +105,13 @@ struct ConfirmGameDetails: View {
             Text("Game Details")
                 .font(.system(size: 20))
                 .bold()
+                .padding(.bottom, 5)
             
             Text(game.details)
-                .padding(.top, 5)
+                .padding(.bottom, 10)
             
             TagView(tags: game.getTagList())
                 .font(.footnote)
-                .padding(.top, 10)
         }
     }
 }
@@ -109,6 +128,7 @@ struct ConfirmInvitedPlayers: View {
                 .padding(.bottom, 7)
             
             InvitedTagView(players: $samplePlayers)
+                .padding(.bottom, 8)
             
             HStack(spacing: 4) {
                 Text("10")
@@ -116,7 +136,6 @@ struct ConfirmInvitedPlayers: View {
                     .foregroundColor(.gray)
             }
             .font(.system(size: 12))
-            .padding(.top, 8)
         }
     }
 }

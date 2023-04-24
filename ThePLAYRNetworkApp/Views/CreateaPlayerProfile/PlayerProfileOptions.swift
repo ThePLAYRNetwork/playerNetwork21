@@ -209,51 +209,16 @@ struct PlayerProfileOptions: View {
                 
             }
             
-            
-            VStack(alignment: .leading) {
-                Text("SCHOOL")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.black)
-                
-                
-                
-                Menu {
-                    Picker(selection: $onboardingViewModel.newUser.school, label: EmptyView()) {
-                        ForEach(colleges, id: \.name) { college in
-                            Text(college.name)
-                        }
-                    }
-                } label: {
-                    HStack {
-                        Text(onboardingViewModel.newUser.school)
-                        Spacer()
-                        Image(systemName: showOptions ? "chevron.up" : "chevron.down")
-                            .frame(width: 12, height: 6)
-                    }
-                    .padding()
-                    .tint(Color.ui.gray959595)
-                    .frame(width: 380, height: 50)
-                    .background(Color.ui.grayF6F6F6)
-                    .cornerRadius(10)
-                }
-                .onTapGesture {
-                    withAnimation{
-                        
-                        showOptions.toggle()
-                    }
-                }
-                
-                
-            }
-            
+            SearchableDropDownMenu(items: colleges)
             
         }
+        .padding()
     }
 }
 
-//struct PlayerProfileOptions_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PlayerProfileOptions(colleges: [])
-//            .environmentObject(CloudKitUserViewModel(userRepository: UserRepository(), navigationModel: NavigationModel()))
-//    }
-//}
+struct PlayerProfileOptions_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerProfileOptions(colleges: College.sampleColleges)
+            .environmentObject(OnboardingViewModel(ckUserViewModel: CloudKitUserViewModel(userRepository: UserRepository(), navigationModel: NavigationModel()), userRepository: UserRepository(), navigationModel: NavigationModel()))
+    }
+}

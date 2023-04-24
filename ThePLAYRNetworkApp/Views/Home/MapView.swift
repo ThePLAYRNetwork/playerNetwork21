@@ -10,18 +10,22 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject private var homeViewModel: HomeViewModel
+    @EnvironmentObject var locationManager: LocationManager
     
     var body: some View {
-        Map(coordinateRegion: $homeViewModel.region,
+        Map(coordinateRegion: $locationManager.region,
             showsUserLocation: true,
             userTrackingMode: $homeViewModel.trackingMode,
-            annotationItems: homeViewModel.upcomingGames.map { $0.location.coordinate }) { coordinate in
+            annotationItems: homeViewModel.nearbyGames.map { $0.location.coordinate }) { coordinate in
                 MapAnnotation(coordinate: coordinate) {
                     NavigationLink(destination: GameDetailView(game: Game.sampleGames[0])) {
                         PinView()
                     }
             }
         }
+            .onAppear {
+//                locationManager.setRegionToUserPosition()
+            }
 //            .animation(.easeIn)
     }
 }

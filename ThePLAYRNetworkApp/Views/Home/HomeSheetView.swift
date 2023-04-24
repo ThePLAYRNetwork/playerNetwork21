@@ -19,9 +19,7 @@ struct HomeSheetView: View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 Spacer()
-//                UpcomingGameRow(categoryName: "Nearby Games", items: homeViewModel.upcomingGames)
-
-                UpcomingGameRow(categoryName: "Nearby Games", items: Game.sampleGames)
+                UpcomingGameRow(categoryName: "Nearby Games", items: homeViewModel.nearbyGames)
                 
                 SheetButtonRow()
                     .padding()

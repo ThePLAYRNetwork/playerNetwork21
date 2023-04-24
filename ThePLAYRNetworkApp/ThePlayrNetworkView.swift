@@ -5,6 +5,7 @@
 //  Created by Timmy Nguyen on 3/15/23.
 //
 
+// Bug: navigating to messages adds extra padding to top of all screens
 import SwiftUI
 
 struct ThePlayrNetworkView: View {
@@ -12,7 +13,7 @@ struct ThePlayrNetworkView: View {
 
     var body: some View {
         TabView(selection: $navigationModel.tabSelection) {
-            NavigationView {
+            NavigationStack(path: $navigationModel.path) {
                 HomeView()
             }
             .tabItem {
@@ -20,7 +21,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.home)
             
-            NavigationView{
+            NavigationStack(path: $navigationModel.path) {
                 CalendarView()
                     .background(Color.ui.whiteBg)
             }
@@ -31,12 +32,6 @@ struct ThePlayrNetworkView: View {
             
             NavigationStack(path: $navigationModel.path) {
                 CreateGameView()
-                    .navigationDestination(for: GameDestination.self) { destination in
-                        switch destination {
-                        case .confirmGame:
-                            ConfirmGameView()
-                        }
-                    }
             }
             .padding(.top, 20)
             .tabItem {
@@ -44,7 +39,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.create)
 
-            NavigationView {
+            NavigationStack(path: $navigationModel.path) {
                 MessagesView()
                     .background(Color.ui.whiteBg)
             }
@@ -53,7 +48,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.inbox)
 
-            NavigationView {
+            NavigationStack(path: $navigationModel.path) {
                 ProfileView()
             }
             .tabItem {
@@ -68,6 +63,7 @@ struct ThePlayrNetworkView: View {
 struct ThePlayrNetworkView_Previews: PreviewProvider {
     static var previews: some View {
         ThePlayrNetworkView()
+            .environmentObject(NavigationModel())
             .environmentObject(HomeViewModel(gameRepository: GameRepository(), sessionRepository: SessionRepository()))
             .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
             .environmentObject(SessionViewModel(sessionRepository: SessionRepository(), navigationModel: NavigationModel()))

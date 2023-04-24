@@ -8,15 +8,35 @@
 import SwiftUI
 
 struct EventItem: View {
+    let game: Game
+    
+    var day: Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: game.date)
+        return components.day ?? 0
+    }
+    
+    var dayOfWeekShorten: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE"
+        let dayOfWeek = formatter.string(from: game.date)
+        return dayOfWeek
+    }
+    
+    
     var body: some View {
-        HStack{
+        HStack(alignment: .top, spacing: 20) {
             
-            VStack(spacing:5){
-                Text("20")
-                    .fontWeight(.bold)
-                Text("WED")
-                    .font(.caption)
-            }
+//            VStack {
+//                Text(game.getStartDay())
+//                    .font(.system(size: 28))
+//                    .fontWeight(.semibold)
+//                
+//                Text(game.dayOfWeek().uppercased())
+//                    .font(.system(size: 12))
+//                    .fontWeight(.medium)
+//                
+//            }
             
             VStack {
                 ZStack(alignment: .leading) {
@@ -26,18 +46,23 @@ struct EventItem: View {
                         .cornerRadius(10)
                     
                     VStack(alignment: .leading) {
-                        Text("5:30 pm - 8:00 pm")
-                            .font(.caption)
-                        Text("Open Gym")
-                            .font(.body)
-                        Text("Main Gym")
-                            .font(.caption2)
+                        Text(game.getStartEndTime())
+                            .font(.system(size: 12))
+                        
+                        Text(game.title)
+                            .fontWeight(.semibold)
+                        
+                        Text(game.place)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
                     }
+                    .foregroundColor(.white)
                     .padding()
                     
                 }
                 
             }
+
         }
 
     }
@@ -45,6 +70,6 @@ struct EventItem: View {
 
 struct EventItem_Previews: PreviewProvider {
     static var previews: some View {
-        EventItem()
+        EventItem(game: Game.sampleGames[0])
     }
 }

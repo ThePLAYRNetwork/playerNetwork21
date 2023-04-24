@@ -14,6 +14,7 @@ struct Game: Hashable, Identifiable { // remove hashable?
     var id: String
     var title: String
     var place: String
+    var address: String
     var location: CLLocation
     var capacity: Int
     var date: Date
@@ -30,10 +31,11 @@ struct Game: Hashable, Identifiable { // remove hashable?
         CKRecord.ID(recordName: id)
     }
     
-    init(title: String = "", place: String = "", location: CLLocation = CLLocation(), capacity: Int = 0, date: Date = Date(), startTime: Date = Date(), endTime: Date = Date(), details: String = "", playerLevel: PlayerLevel = .recreation, coverImage: CKAsset? = nil, isIndoor: Bool = false, isSpectatorAllowed: Bool = false, isPrivateGame: Bool = false) {
+    init(title: String = "", place: String = "", address: String = "", location: CLLocation = CLLocation(), capacity: Int = 0, date: Date = Date(), startTime: Date = Date().nearestHour(), endTime: Date = Date().nearestHour(), details: String = "", playerLevel: PlayerLevel = .recreation, coverImage: CKAsset? = nil, isIndoor: Bool = false, isSpectatorAllowed: Bool = false, isPrivateGame: Bool = false) {
         self.id = UUID().uuidString
         self.title = title
         self.place = place
+        self.address = address
         self.location = location
         self.capacity = capacity
         self.date = date
@@ -47,9 +49,80 @@ struct Game: Hashable, Identifiable { // remove hashable?
         self.isPrivateGame = isPrivateGame
     }
     
-//    init(record: CKRecord) throws {
-//
-//    }
+    init(record: CKRecord) throws {
+        guard let title = record[.title] as? String else {
+            throw RecordError.missingKey(.title)
+        }
+        
+        guard let place = record[.place] as? String else {
+            throw RecordError.missingKey(.place)
+        }
+        
+        guard let address = record[.address] as? String else {
+            throw RecordError.missingKey(.address)
+        }
+        
+        guard let location = record[.location] as? CLLocation else {
+            throw RecordError.missingKey(.location)
+        }
+        
+        guard let capacity = record[.capacity] as? Int else {
+            throw RecordError.missingKey(.capacity)
+        }
+        
+        guard let date = record[.date] as? Date else {
+            throw RecordError.missingKey(.date)
+        }
+        
+        guard let startTime = record[.startTime] as? Date else {
+            throw RecordError.missingKey(.startTime)
+        }
+        
+        guard let endTime = record[.endTime] as? Date else {
+            throw RecordError.missingKey(.endTime)
+        }
+        
+        guard let details = record[.details] as? String else {
+            throw RecordError.missingKey(.details)
+        }
+        
+        guard let playerLevelString = record[.playerLevel] as? String,
+              let playerLevel = PlayerLevel(rawValue: playerLevelString)
+        else {
+            throw RecordError.missingKey(.playerLevel)
+        }
+        
+        if let coverImage = record[.coverImage] as? CKAsset {
+            self.coverImage = coverImage
+        }
+        
+        guard let isIndoor = record[.isIndoor] as? Bool else {
+            throw RecordError.missingKey(.isIndoor)
+        }
+        
+        guard let isSpectatorAllowed = record[.isSpectatorAllowed] as? Bool else {
+            throw RecordError.missingKey(.isSpectatorAllowed)
+        }
+        
+        guard let isPrivateGame = record[.isPrivateGame] as? Bool else {
+            throw RecordError.missingKey(.isPrivateGame)
+        }
+        
+        self.id = record.recordID.recordName
+        self.title = title
+        self.place = place
+        self.address = address
+        self.location = location
+        self.capacity = capacity
+        self.date = date
+        self.startTime = startTime
+        self.endTime = endTime
+        self.details = details
+        self.playerLevel = playerLevel
+        self.isIndoor = isIndoor
+        self.isSpectatorAllowed = isSpectatorAllowed
+        self.isPrivateGame = isPrivateGame
+    }
 
     func createGameRecord() async throws -> CKRecord {
         let record = CKRecord(recordType: "Game", recordID: self.recordID)
@@ -65,8 +138,7 @@ struct Game: Hashable, Identifiable { // remove hashable?
 //        record[Game.RecordKey.coverImage] = ...
         record[Game.RecordKey.isIndoor] = self.isIndoor
         record[Game.RecordKey.isSpectatorAllowed] = self.isSpectatorAllowed
-        record[Game.RecordKey.isPrivateGame] = self.isPrivateGame
-        
+        record[Game.RecordKey.isPrivateGame] = self.isPrivateGame        
         return record
     }
 }
@@ -99,15 +171,83 @@ extension Game {
     }
     
     enum RecordKey: String {
-        case title, place, location, capacity, date, startTime, endTime, details, playerLevel, coverImage, isIndoor, isSpectatorAllowed, isPrivateGame
+        case title, place, address, location, capacity, date, startTime, endTime, details, playerLevel, coverImage, isIndoor, isSpectatorAllowed, isPrivateGame
     }
     
     static let sampleGames: [Game] = [
-        Game(title: "Tournament Round 3", place: "RIMAC Arena", location: CLLocation(), capacity: 10, date: Date(), startTime: Date(), endTime: Date(), details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", playerLevel: .competitive, coverImage: nil, isIndoor: true, isSpectatorAllowed: true, isPrivateGame: true)
+        Game(title: "Pickup Game",
+             place: "Muir Courts",
+             address: "9730 Hopkins Dr, La Jolla, CA 92093",
+             location: CLLocation(latitude: 32.88507, longitude: -117.24046),
+             capacity: 10,
+             date: Date().addingTimeInterval(-86400),
+             startTime: Date(),
+             endTime: Date(),
+             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+             playerLevel: .competitive,
+             coverImage: nil,
+             isIndoor: true,
+             isSpectatorAllowed: true,
+             isPrivateGame: true),
+        Game(title: "Open Gym",
+             place: "RIMAC Arena",
+             address: "9730 Hopkins Dr, La Jolla, CA 92093",
+             location: CLLocation(latitude: 32.88507, longitude: -117.24046),
+             capacity: 10,
+             date: Date().addingTimeInterval(86400 * 2),
+             startTime: Date(),
+             endTime: Date(),
+             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+             playerLevel: .competitive,
+             coverImage: nil,
+             isIndoor: true,
+             isSpectatorAllowed: true,
+             isPrivateGame: true),
+        Game(title: "Tournament Round 1",
+             place: "RIMAC Arena",
+             address: "9730 Hopkins Dr, La Jolla, CA 92093",
+             location: CLLocation(latitude: 32.88507, longitude: -117.24046),
+             capacity: 10,
+             date: Date().addingTimeInterval(86400 * 5),
+             startTime: Date().addingTimeInterval(-3600),
+             endTime: Date(),
+             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+             playerLevel: .competitive,
+             coverImage: nil,
+             isIndoor: true,
+             isSpectatorAllowed: true,
+             isPrivateGame: true),
+        Game(title: "Tournament Round 2",
+             place: "RIMAC Arena",
+             address: "9730 Hopkins Dr, La Jolla, CA 92093",
+             location: CLLocation(latitude: 32.88507, longitude: -117.24046),
+             capacity: 10,
+             date: Date().addingTimeInterval(86400 * 5),
+             startTime: Date(),
+             endTime: Date(),
+             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+             playerLevel: .competitive,
+             coverImage: nil,
+             isIndoor: true,
+             isSpectatorAllowed: true,
+             isPrivateGame: true)
     ]
     
     
     // MARK - Helpers
+    
+    func getStartDay() -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: date)
+        return components.day?.description ?? "N/A"
+    }
+    
+    func dayOfWeek() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE" // Wed
+        let dayOfWeek = formatter.string(from: date)
+        return dayOfWeek
+    }
     
     func getStartMonthDay() -> String {
         let dateFormatterGet = DateFormatter()
@@ -124,7 +264,7 @@ extension Game {
         return "No Date"
     }
     
-    func formattedStartEndTime() -> String {
+    func getStartEndTime() -> String {
         return "\(startTime.formatted(date: .omitted, time: .shortened)) - \(endTime.formatted(date: .omitted, time: .shortened))"
     }
     
@@ -136,7 +276,7 @@ extension Game {
         dateFormatterPrint.dateFormat = "E MMM dd"  // Wed Jan 29
         
         if let date = dateFormatterGet.date(from: startTime.description) {
-            return "\(dateFormatterPrint.string(from: date)) at \(formattedStartEndTime())"
+            return "\(dateFormatterPrint.string(from: date)) at \(getStartEndTime())"
         }
         
         return "No Date"
@@ -162,3 +302,11 @@ extension CLLocationCoordinate2D: Identifiable {
     }
 }
 
+extension Date {
+    func nearestHour() -> Date {
+        var components = NSCalendar.current.dateComponents([.minute], from: self)
+        let minute = components.minute ?? 0
+        components.minute = minute >= 30 ? 60 - minute : -minute
+        return Calendar.current.date(byAdding: components, to: self) ?? Date()
+    }
+}

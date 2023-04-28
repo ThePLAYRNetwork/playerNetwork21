@@ -149,6 +149,7 @@
 		CFBE740E29192AA0005D8506 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBE740D29192AA0005D8506 /* Court.swift */; };
 		CFC75E4728F9A453004AB852 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC75E4628F9A453004AB852 /* SessionView.swift */; };
 		CFCA03F829CA128600523C55 /* CreatePlayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA03F729CA128600523C55 /* CreatePlayerHeader.swift */; };
+		CFCE899529F97A7A00B9B26F /* SessionLocationSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE899429F97A7A00B9B26F /* SessionLocationSearchBar.swift */; };
 		CFCFF75328AAD6BA002F1D30 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCFF75228AAD6BA002F1D30 /* Task.swift */; };
 		CFD2F2FB28FDA90400D57A89 /* BookSessionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */; };
 		CFD3C90F28E77E5D004B53E7 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD3C90628E77E5D004B53E7 /* ConversationView.swift */; };
@@ -168,6 +169,7 @@
 		CFDE4A7829421EF7008D4398 /* ClientNotesExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE4A7729421EF7008D4398 /* ClientNotesExpanded.swift */; };
 		CFDE4A7A29422271008D4398 /* SessionHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE4A7929422271008D4398 /* SessionHistoryItem.swift */; };
 		CFE2B77129490CC000ACF890 /* CreatePlayerProfile18.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE2B77029490CC000ACF890 /* CreatePlayerProfile18.swift */; };
+		CFEA5E2C29FAABD80064D86F /* MapSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA5E2B29FAABD80064D86F /* MapSessionView.swift */; };
 		CFEA82092926934A00B377FD /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA82082926934A00B377FD /* AlertView.swift */; };
 		CFEE7A382937828D00A52B50 /* PlayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEE7A372937828D00A52B50 /* PlayerRowView.swift */; };
 		CFF22B8929365FA600F28C62 /* ActiveBookingsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF22B8829365FA600F28C62 /* ActiveBookingsItemView.swift */; };
@@ -322,6 +324,7 @@
 		CFBE740D29192AA0005D8506 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		CFC75E4628F9A453004AB852 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		CFCA03F729CA128600523C55 /* CreatePlayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerHeader.swift; sourceTree = "<group>"; };
+		CFCE899429F97A7A00B9B26F /* SessionLocationSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLocationSearchBar.swift; sourceTree = "<group>"; };
 		CFCFF75228AAD6BA002F1D30 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CFD2F2FA28FDA90400D57A89 /* BookSessionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSessionDate.swift; sourceTree = "<group>"; };
 		CFD3C90628E77E5D004B53E7 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -341,6 +344,7 @@
 		CFDE4A7729421EF7008D4398 /* ClientNotesExpanded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientNotesExpanded.swift; sourceTree = "<group>"; };
 		CFDE4A7929422271008D4398 /* SessionHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryItem.swift; sourceTree = "<group>"; };
 		CFE2B77029490CC000ACF890 /* CreatePlayerProfile18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerProfile18.swift; sourceTree = "<group>"; };
+		CFEA5E2B29FAABD80064D86F /* MapSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSessionView.swift; sourceTree = "<group>"; };
 		CFEA82082926934A00B377FD /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		CFEE7A372937828D00A52B50 /* PlayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRowView.swift; sourceTree = "<group>"; };
 		CFF22B8829365FA600F28C62 /* ActiveBookingsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveBookingsItemView.swift; sourceTree = "<group>"; };
@@ -739,6 +743,8 @@
 				CFB0D4C829DCA03800D23D81 /* CoverImage.swift */,
 				CFAA356D29DDDA83001A7B2D /* CoverImageRow.swift */,
 				CF53659629E5C4A100645C91 /* ConfirmSessionView.swift */,
+				CFCE899429F97A7A00B9B26F /* SessionLocationSearchBar.swift */,
+				CFEA5E2B29FAABD80064D86F /* MapSessionView.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1018,6 +1024,7 @@
 				CF11A2D028B64E1500309E04 /* ReviewsView.swift in Sources */,
 				CFD3C91728E77E5D004B53E7 /* ConversationHeaderView.swift in Sources */,
 				CFA374DF292503F3000EF516 /* CancelTraining.swift in Sources */,
+				CFEA5E2C29FAABD80064D86F /* MapSessionView.swift in Sources */,
 				CF26301A28EB0E4100CAD20D /* DiscoverFilterRow.swift in Sources */,
 				CFB3384F28AE8F2B00610F42 /* NearbySessionsRow.swift in Sources */,
 				CF6B6773296C529D00BEC347 /* GoingCell.swift in Sources */,
@@ -1095,6 +1102,7 @@
 				CF6B6787296C52FA00BEC347 /* InputDataColumn.swift in Sources */,
 				322F330429BF9A1E0073F41D /* CKUserViewModel.swift in Sources */,
 				325A9198289AF6DF00AFC18D /* ProfileView.swift in Sources */,
+				CFCE899529F97A7A00B9B26F /* SessionLocationSearchBar.swift in Sources */,
 				323A336928ADD0030075A5A1 /* TagView.swift in Sources */,
 				CF582AE9296C3DD600B06C8D /* ConfirmGameView.swift in Sources */,
 				CF832A292923EF97007AF744 /* DefenseTrainingRowView.swift in Sources */,
@@ -1237,7 +1245,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera  camera use";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to use your photo";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1273,7 +1280,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to use your camera  camera use";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to use your photo";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -13,11 +13,14 @@ struct LocationSearchBar: View {
     enum Field: Hashable {
         case title, location, details
     }
+
     
     @EnvironmentObject var createViewModel : CreateGameViewModel
     @State var isShowingResults = false
     @FocusState var focusedField: CreateGameView.Field?
     var field: CreateGameView.Field
+
+    
     @Binding var isInvalid: Bool
     
     var body: some View {

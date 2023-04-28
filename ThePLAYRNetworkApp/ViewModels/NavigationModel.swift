@@ -34,12 +34,14 @@ enum ThePlayrNetworkDestination: Hashable {
 }
 
 enum GameDestination: Hashable {
-    case confirmGame  
+    case confirmGame
+   
 }
 
+//enum SessionDestination: Hashable {
+//    case confirmSession
+//}
+//
 
 
-enum SessionDestination: Hashable {
-   case confirmSession
-  
-}
+

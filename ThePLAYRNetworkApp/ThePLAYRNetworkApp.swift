@@ -32,6 +32,8 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var calendarViewModel: CalendarViewModel
     @StateObject private var coverImageViewModel = CoverImageViewModel()
     
+    @StateObject private var journalViewModel = JournalViewModel()
+    
     init() {
         let gameRepository = GameRepository()
         let sessionRepository = SessionRepository()
@@ -119,6 +121,7 @@ struct ThePLAYRNetworkApp: App {
             .environmentObject(locationManager)
             .environmentObject(calendarViewModel)
             .environmentObject(coverImageViewModel)
+            .environmentObject(journalViewModel)
         }
     }
 }

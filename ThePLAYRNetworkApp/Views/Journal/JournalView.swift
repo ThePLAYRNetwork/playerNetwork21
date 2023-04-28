@@ -9,11 +9,13 @@ import SwiftUI
 
 struct JournalView: View {
     // state object owns it, observed object just watches the state object?
-    @StateObject var journalViewModel = JournalViewModel()
+    @EnvironmentObject var journalViewModel: JournalViewModel
     
     var body: some View {
         NavigationView {
             ScrollView {
+                Text("\(journalViewModel.selectedCourtSection.rawValue)")
+
                 VStack(spacing: 0) {
                     // BackButton()
                     
@@ -22,9 +24,9 @@ struct JournalView: View {
                         .padding(.bottom, 9)
                     
                     TabView {
-                        CourtTabItem(journalViewModel: journalViewModel, isHeatMap: false)
-                        CourtTabItem(journalViewModel: journalViewModel, isHeatMap: true)
-                        JournalChartTabItem(journalViewModel: journalViewModel)
+                        CourtTabItem(isHeatMap: false)
+                        CourtTabItem(isHeatMap: true)
+                        JournalChartTabItem()
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never)) // .always
                     //                .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -86,7 +88,10 @@ struct JournalView: View {
                 }
                 .padding()
             }
-           // .navigationBarBackButtonHidden(true)
+            .onChange(of: journalViewModel.selectedDate) { newValue in
+                // Fetch journal entry for the new date
+                print("User changed date \(newValue)")
+            }
         }
     }
 }
@@ -94,6 +99,7 @@ struct JournalView: View {
 struct JournalView_Previews: PreviewProvider {
     static var previews: some View {
         JournalView()
+            .environmentObject(JournalViewModel())
     }
 }
 

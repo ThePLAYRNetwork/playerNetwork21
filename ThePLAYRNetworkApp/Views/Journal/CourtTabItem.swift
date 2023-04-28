@@ -9,14 +9,17 @@ import SwiftUI
 
 struct CourtTabItem: View {
     // JournalView owns journalViewModel
-    @ObservedObject var journalViewModel: JournalViewModel
+    @EnvironmentObject var journalViewModel: JournalViewModel
     @State private var isShowingSheet = false
     let isHeatMap: Bool
     
     var body: some View {
         VStack(spacing: 12) {
             HStack {
-                DatePicker("Show shooting metric for date..", selection: $journalViewModel.date, displayedComponents: [.date])
+                DatePicker("Show shooting metric for date..",
+                           selection: $journalViewModel.selectedDate,
+                           displayedComponents: [.date]
+                )
                     .datePickerStyle(.compact)
                     .fixedSize()
                     .labelsHidden()
@@ -36,13 +39,13 @@ struct CourtTabItem: View {
                 .buttonStyle(.plain)
                 .sheet(isPresented: $isShowingSheet,
                        onDismiss: didDismiss) {
-                    InputDataView(journalViewModel: journalViewModel)
+                    InputDataView()
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
                 }
             }
 
-            CourtView(journalViewModel: journalViewModel, isHeatMap: isHeatMap)
+            CourtView(isHeatMap: isHeatMap)
 
             HStack {
                 Text("Ratio")
@@ -100,6 +103,7 @@ struct CourtTabItem: View {
 
 struct CourtTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        CourtTabItem(journalViewModel: JournalViewModel(), isHeatMap: false)
+        CourtTabItem(isHeatMap: false)
+            .environmentObject(JournalViewModel())
     }
 }

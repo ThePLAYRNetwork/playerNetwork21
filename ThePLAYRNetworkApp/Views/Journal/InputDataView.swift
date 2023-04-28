@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct InputDataView: View {
-    @ObservedObject var journalViewModel: JournalViewModel
-
+    @EnvironmentObject var journalViewModel: JournalViewModel
+    @State var newJournal =  Journal(userID: CKRecord.Reference(record: CKRecord(recordType: "Journal"), action: .none), date: Date())
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -24,25 +26,33 @@ struct InputDataView: View {
                     
                     Spacer()
                     
-                    Button("Save", action: {})
-
+                    Button("Save", action: {
+                        print("Saving new journal entry into cloudkit")
+                        journalViewModel.currentJournal = newJournal
+                    })
                 }
                 .padding(.bottom, 20)
                 
-                InputDataColumn()
+                InputDataColumn(newJournal: $newJournal)
                 
                 Spacer()
                 
             }
-            .padding()
+            .padding(.top, 25)
+            .padding(19)
             .frame(maxWidth: .infinity)
-        .background(Color.ui.black)
+            .background(Color.ui.black)
+            .onAppear {
+                // Fetch journal for current date if it exists
+                newJournal = journalViewModel.currentJournal
+            }
         }
     }
 }
 
 struct InputDataView_Previews: PreviewProvider {
     static var previews: some View {
-        InputDataView(journalViewModel: JournalViewModel())
+        InputDataView()
+            .environmentObject(JournalViewModel())
     }
 }

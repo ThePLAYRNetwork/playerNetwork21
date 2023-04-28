@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct InputDataCell: View {
-    @State var section: String
-    @State var score: String
-    @State var attempts: String
-    
+    var section: CourtSection
+    @Binding var score: Int
+    @Binding var attempt: Int
     var geometry: GeometryProxy
     
     var body: some View {
         HStack(spacing: 0) {
-            Text(section)
-                .frame(width: geometry.size.width * 0.5, alignment: .leading)
+            Text(section.rawValue)
+                .frame(width: geometry.size.width * 0.50, alignment: .leading)
             
-            TextField(
-                "\(score)",
-                text: $score
-            )
-            .multilineTextAlignment(.center)
-            .frame(width: geometry.size.width * 0.25)
+            Spacer()
+            
+            TextField("\(score)", value: $score, formatter: NumberFormatter())
+                .multilineTextAlignment(.center)
+                .frame(width: geometry.size.width * 0.15)
 
-            TextField(
-                "\(attempts)",
-                text: $attempts
-            )
-            .multilineTextAlignment(.center)
-            .frame(width: geometry.size.width * 0.25)
+            Spacer()
+            
+            TextField("\(attempt)", value: $attempt, formatter: NumberFormatter())
+                .multilineTextAlignment(.center)
+                .frame(width: geometry.size.width * 0.25)
         }
         .padding([.vertical], 10)
-        .padding(.leading)
         .fontWeight(.medium)
         .foregroundColor(.white)
+//        .background {
+//            RoundedRectangle(cornerRadius: 7)
+//                .fill(.gray)
+//        }
         .background(Color.ui.black)
         .frame(height: 40)
     }
@@ -45,8 +45,8 @@ struct InputDataCell: View {
 struct InputDataCell_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geometry in
-            InputDataCell(section: "Right Corner", score: "5", attempts: "7", geometry: geometry)
-                .border(.orange)
+            InputDataCell(section: .rightCorner, score: .constant(5), attempt: .constant(7), geometry: geometry)
+//                .border(.orange)
         }
     }
 }

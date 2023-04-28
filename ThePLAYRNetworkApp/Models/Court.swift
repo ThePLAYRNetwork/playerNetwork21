@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 struct Court {
     static var nSections = 14   // belongs to Court type, not any specific instance
     

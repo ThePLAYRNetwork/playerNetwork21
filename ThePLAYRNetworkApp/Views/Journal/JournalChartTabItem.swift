@@ -12,13 +12,17 @@ func didDismiss() {
 }
 
 struct JournalChartTabItem: View {
-    @ObservedObject var journalViewModel: JournalViewModel
+    @EnvironmentObject var journalViewModel: JournalViewModel
     @State private var isShowingSheet = false
 
     var body: some View {
         VStack(spacing: 12) {
             HStack {
-                DatePicker("Show shooting metric for date..", selection: $journalViewModel.date, displayedComponents: [.date])
+                DatePicker(
+                    "Show shooting metric for date..",
+                    selection: $journalViewModel.currentJournal.date,
+                    displayedComponents: [.date]
+                )
                     .datePickerStyle(.compact)
                     .fixedSize()
                     .labelsHidden()
@@ -38,7 +42,7 @@ struct JournalChartTabItem: View {
                 .buttonStyle(.plain)
                 .sheet(isPresented: $isShowingSheet,
                        onDismiss: didDismiss) {
-                    InputDataView(journalViewModel: journalViewModel)
+                    InputDataView()
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
                 }
@@ -88,12 +92,14 @@ struct JournalChartTabItem: View {
             RoundedRectangle(cornerRadius: 17)
                 .fill(Color.ui.grayF6F6F6)
         }
+        
     }
 }
 
 struct JournalChartTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        JournalChartTabItem(journalViewModel: JournalViewModel())
+        JournalChartTabItem()
+            .environmentObject(JournalViewModel())
     }
 }
 

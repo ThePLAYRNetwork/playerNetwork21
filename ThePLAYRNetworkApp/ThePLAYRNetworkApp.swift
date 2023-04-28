@@ -31,6 +31,8 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var locationManager = LocationManager.shared
     @StateObject private var calendarViewModel: CalendarViewModel
     @StateObject private var coverImageViewModel = CoverImageViewModel()
+    
+    @StateObject private var journalViewModel = JournalViewModel()
 
     init() {
         let gameRepository = GameRepository()
@@ -107,6 +109,7 @@ struct ThePLAYRNetworkApp: App {
             .environmentObject(locationManager)
             .environmentObject(calendarViewModel)
             .environmentObject(coverImageViewModel)
+            .environmentObject(journalViewModel)
         }
     }
 }

@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct CourtView: View {
-    @ObservedObject var journalViewModel: JournalViewModel
+    @EnvironmentObject var journalViewModel: JournalViewModel
     let topRectangleHeight = 100.0
     let skinnerRectWidth = 50.0 // adjust this, everything is setup to match
     let isHeatMap: Bool
     
-    func handleSectionColor(section: Int) -> Color {
-        if isHeatMap {
-            let percent = Int((Double(journalViewModel.courtData.score[section]) / Double(journalViewModel.courtData.attempts[section])) * 100)
-            if percent < 50 {
-                return Color.ui.court_color_red
-            } else if percent < 75 {
-                return Color.ui.court_color_yellow
-            } else {
-                return Color.ui.court_color_green
-            }
-        } else {
-            return journalViewModel.courtData.selection == section ? Color.ui.accent_light : Color.white
-        }
+    func handleSectionColor(section: CourtSection) -> Color {
+//        return Color.white
+//        if isHeatMap {
+//            let percent = Int((Double(journalViewModel.currentJournal.scores[section]) / Double(journalViewModel.currentJournal.attempts[section])) * 100)
+//            if percent < 50 {
+//                return Color.ui.court_color_red
+//            } else if percent < 75 {
+//                return Color.ui.court_color_yellow
+//            } else {
+//                return Color.ui.court_color_green
+//            }
+//        } else {
+            return journalViewModel.selectedCourtSection == section ? Color.ui.accent_light : Color.white
+//        }
     }
         
     var body: some View {
@@ -35,36 +36,31 @@ struct CourtView: View {
                 HStack(alignment: .top, spacing: 0) {
                     Rectangle()
                         .stroke(Color.black, lineWidth: 1)
-                        .background(Rectangle().foregroundColor(handleSectionColor(section: 9)))
+                        .background(Rectangle().foregroundColor(handleSectionColor(section: .leftWing)))
                         .onTapGesture {
-                            // TODO: Maybe add slight animation delay instead of instant
-                            //                            withAnimation(.interactiveSpring(
-                            //                                response: 0.1, dampingFraction: 1.5, blendDuration: 0.5)) {
-                            //                                    courtData.selection = 9
-                            //                            }
-                            journalViewModel.courtData.selection = 9
+                            journalViewModel.selectedCourtSection = .leftWing
                         }
                         .overlay(alignment: .bottom) {
                             ShotsMadeView(
                                 selectedDisplay: $journalViewModel.selectedDisplay,
-                                score: journalViewModel.courtData.score[9],
-                                attempt: journalViewModel.courtData.attempts[9]
+                                score: journalViewModel.currentJournal.leftWingScore,
+                                attempt: journalViewModel.currentJournal.leftWingAttempt
                             )
                             .padding(.bottom)
                         }
                     
                     Rectangle()
                         .stroke(Color.black, lineWidth: 1)
-                        .background(Rectangle().foregroundColor(handleSectionColor(section: 10)))
+                        .background(Rectangle().foregroundColor(handleSectionColor(section: .leftShot)))
                         .frame(width: skinnerRectWidth)
                         .onTapGesture {
-                            journalViewModel.courtData.selection = 10
+                            journalViewModel.selectedCourtSection = .leftShot
                         }
                         .overlay(alignment: .bottom) {
                             ShotsMadeView(
                                 selectedDisplay: $journalViewModel.selectedDisplay,
-                                score: journalViewModel.courtData.score[10],
-                                attempt: journalViewModel.courtData.attempts[10]
+                                score: journalViewModel.currentJournal.leftShotScore,
+                                attempt: journalViewModel.currentJournal.leftShotAttempt
                             )
                             .padding(.bottom)
                         }
@@ -72,15 +68,15 @@ struct CourtView: View {
                 
                     Rectangle()
                         .stroke(Color.black, lineWidth: 1)
-                        .background(Rectangle().foregroundColor(handleSectionColor(section: 11)))
+                        .background(Rectangle().foregroundColor(handleSectionColor(section: .topOfTheKey)))
                         .onTapGesture {
-                            journalViewModel.courtData.selection = 11
+                            journalViewModel.selectedCourtSection = .topOfTheKey
                         }
                         .overlay(alignment: .bottom) {
                             ShotsMadeView(
                                 selectedDisplay: $journalViewModel.selectedDisplay,
-                                score: journalViewModel.courtData.score[11],
-                                attempt: journalViewModel.courtData.attempts[11]
+                                score: journalViewModel.currentJournal.topOfTheKeyScore,
+                                attempt: journalViewModel.currentJournal.topOfTheKeyAttempt
                             )
                             .padding(.bottom)
                         }
@@ -88,16 +84,16 @@ struct CourtView: View {
                     
                     Rectangle()
                         .stroke(Color.black, lineWidth: 1)
-                        .background(Rectangle().foregroundColor(handleSectionColor(section: 12)))
+                        .background(Rectangle().foregroundColor(handleSectionColor(section: .rightShot)))
                         .frame(width: skinnerRectWidth)
                         .onTapGesture {
-                            journalViewModel.courtData.selection = 12
+                            journalViewModel.selectedCourtSection = .rightShot
                         }
                         .overlay(alignment: .bottom) {
                             ShotsMadeView(
                                 selectedDisplay: $journalViewModel.selectedDisplay,
-                                score: journalViewModel.courtData.score[12],
-                                attempt: journalViewModel.courtData.attempts[12]
+                                score: journalViewModel.currentJournal.rightShotScore,
+                                attempt: journalViewModel.currentJournal.rightShotAttempt
                             )
                             .padding(.bottom)
                         }
@@ -105,15 +101,15 @@ struct CourtView: View {
                     
                     Rectangle()
                         .stroke(Color.black, lineWidth: 1)
-                        .background(Rectangle().foregroundColor(handleSectionColor(section: 13)))
+                        .background(Rectangle().foregroundColor(handleSectionColor(section: .rightWing)))
                         .onTapGesture {
-                            journalViewModel.courtData.selection = 13
+                            journalViewModel.selectedCourtSection = .rightWing
                         }
                         .overlay(alignment: .bottom) {
                             ShotsMadeView(
                                 selectedDisplay: $journalViewModel.selectedDisplay,
-                                score: journalViewModel.courtData.score[13],
-                                attempt: journalViewModel.courtData.attempts[13]
+                                score: journalViewModel.currentJournal.rightWingScore,
+                                attempt: journalViewModel.currentJournal.rightWingAttempt
                             )
                             .padding(.bottom)
                         }
@@ -126,16 +122,16 @@ struct CourtView: View {
                     HStack(alignment: .top, spacing: 0) {
                         Rectangle()
                             .stroke(Color.black, lineWidth: 1)
-                            .background(Rectangle().foregroundColor(handleSectionColor(section: 0)))
+                            .background(Rectangle().foregroundColor(handleSectionColor(section: .leftCorner)))
                             .frame(width: skinnerRectWidth)
                             .onTapGesture {
-                                journalViewModel.courtData.selection = 0
+                                journalViewModel.selectedCourtSection = .leftCorner
                             }
                             .overlay(alignment: .bottom) {
                                 ShotsMadeView(
                                     selectedDisplay: $journalViewModel.selectedDisplay,
-                                    score: journalViewModel.courtData.score[0],
-                                    attempt: journalViewModel.courtData.attempts[0]
+                                    score: journalViewModel.currentJournal.leftCornerScore,
+                                    attempt: journalViewModel.currentJournal.leftCornerAttempt
                                 )
                                 .padding(.bottom)
                             }
@@ -143,15 +139,15 @@ struct CourtView: View {
                         
                         Rectangle()
                             .stroke(Color.black, lineWidth: 1)
-                            .background(Rectangle().foregroundColor(handleSectionColor(section: 1)))
+                            .background(Rectangle().foregroundColor(handleSectionColor(section: .leftShortCorner)))
                             .onTapGesture {
-                                journalViewModel.courtData.selection = 1
+                                journalViewModel.selectedCourtSection = .leftShortCorner
                             }
                             .overlay(alignment: .bottom) {
                                 ShotsMadeView(
                                     selectedDisplay: $journalViewModel.selectedDisplay,
-                                    score: journalViewModel.courtData.score[1],
-                                    attempt: journalViewModel.courtData.attempts[1]
+                                    score: journalViewModel.currentJournal.leftShortCornerScore,
+                                    attempt: journalViewModel.currentJournal.leftShortCornerAttempt
                                 )
                                 .padding(.bottom)
                             }
@@ -159,15 +155,15 @@ struct CourtView: View {
                         
                         Rectangle()
                             .stroke(Color.black, lineWidth: 1)
-                            .background(Rectangle().foregroundColor(handleSectionColor(section: 2)))
+                            .background(Rectangle().foregroundColor(handleSectionColor(section: .paint)))
                             .onTapGesture {
-                                journalViewModel.courtData.selection = 2
+                                journalViewModel.selectedCourtSection = .paint
                             }
                             .overlay(alignment: .bottom) {
                                 ShotsMadeView(
                                     selectedDisplay: $journalViewModel.selectedDisplay,
-                                    score: journalViewModel.courtData.score[2],
-                                    attempt: journalViewModel.courtData.attempts[2]
+                                    score: journalViewModel.currentJournal.paintScore,
+                                    attempt: journalViewModel.currentJournal.paintAttempt
                                 )
                                 .padding(.bottom)
                             }
@@ -175,15 +171,15 @@ struct CourtView: View {
                         
                         Rectangle()
                             .stroke(Color.black, lineWidth: 1)
-                            .background(Rectangle().foregroundColor(handleSectionColor(section: 3)))
+                            .background(Rectangle().foregroundColor(handleSectionColor(section: .rightShortCorner)))
                             .onTapGesture {
-                                journalViewModel.courtData.selection = 3
+                                journalViewModel.selectedCourtSection = .rightShortCorner
                             }
                             .overlay(alignment: .bottom) {
                                 ShotsMadeView(
                                     selectedDisplay: $journalViewModel.selectedDisplay,
-                                    score: journalViewModel.courtData.score[3],
-                                    attempt: journalViewModel.courtData.attempts[3]
+                                    score: journalViewModel.currentJournal.rightShortCornerScore,
+                                    attempt: journalViewModel.currentJournal.rightShortCornerAttempt
                                 )
                                 .padding(.bottom)
                             }
@@ -191,16 +187,16 @@ struct CourtView: View {
                         
                         Rectangle()
                             .stroke(Color.black, lineWidth: 1)
-                            .background(Rectangle().foregroundColor(handleSectionColor(section: 4)))
+                            .background(Rectangle().foregroundColor(handleSectionColor(section: .rightCorner)))
                             .frame(width: skinnerRectWidth)
                             .onTapGesture {
-                                journalViewModel.courtData.selection = 4
+                                journalViewModel.selectedCourtSection = .rightCorner
                             }
                             .overlay(alignment: .bottom) {
                                 ShotsMadeView(
                                     selectedDisplay: $journalViewModel.selectedDisplay,
-                                    score: journalViewModel.courtData.score[4],
-                                    attempt: journalViewModel.courtData.attempts[4]
+                                    score: journalViewModel.currentJournal.rightCornerScore,
+                                    attempt: journalViewModel.currentJournal.rightCornerAttempt
                                 )
                                 .padding(.bottom)
                             }
@@ -214,48 +210,48 @@ struct CourtView: View {
                         HStack(alignment: .top, spacing: 0) {
                             LeftCurvedCircle()
                                 .stroke(Color.black, lineWidth: 1)
-                                .background(LeftCurvedCircle().foregroundColor(handleSectionColor(section: 6)))
+                                .background(LeftCurvedCircle().foregroundColor(handleSectionColor(section: .leftMidRange)))
                                 .frame(width: (geometry.size.width - (skinnerRectWidth * 2)) / 3, height: 110)
                                 .onTapGesture {
-                                    journalViewModel.courtData.selection = 6
+                                    journalViewModel.selectedCourtSection = .leftMidRange
                                 }
                                 .overlay(alignment: .center) {
                                     ShotsMadeView(
                                         selectedDisplay: $journalViewModel.selectedDisplay,
-                                        score: journalViewModel.courtData.score[6],
-                                        attempt: journalViewModel.courtData.attempts[6]
+                                        score: journalViewModel.currentJournal.leftMidRangeScore,
+                                        attempt: journalViewModel.currentJournal.leftMidRangeAttempt
                                     )
                                 }
                             
                             
                             Rectangle()
                                 .stroke(Color.black, lineWidth: 1)
-                                .background(Rectangle().foregroundColor(handleSectionColor(section: 7)))
+                                .background(Rectangle().foregroundColor(handleSectionColor(section: .freeThrow)))
                                 .frame(width: (geometry.size.width - (skinnerRectWidth * 2)) / 3, height: 110)
                                 .onTapGesture {
-                                    journalViewModel.courtData.selection = 7
+                                    journalViewModel.selectedCourtSection = .freeThrow
                                 }
                                 .overlay(alignment: .bottom) {
                                     ShotsMadeView(
                                         selectedDisplay: $journalViewModel.selectedDisplay,
-                                        score: journalViewModel.courtData.score[7],
-                                        attempt: journalViewModel.courtData.attempts[7]
+                                        score: journalViewModel.currentJournal.freeThrowScore,
+                                        attempt: journalViewModel.currentJournal.freeThrowAttempt
                                     )
                                     .padding(.bottom, 6)
                                 }
                             
                             RightCurvedCircle()
                                 .stroke(Color.black, lineWidth: 1)
-                                .background(RightCurvedCircle().foregroundColor(handleSectionColor(section: 8)))
+                                .background(RightCurvedCircle().foregroundColor(handleSectionColor(section: .rightMidRange)))
                                 .frame(width: (geometry.size.width - (skinnerRectWidth * 2)) / 3, height: 110)
                                 .onTapGesture {
-                                    journalViewModel.courtData.selection = 8
+                                    journalViewModel.selectedCourtSection = .rightMidRange
                                 }
                                 .overlay(alignment: .center) {
                                     ShotsMadeView(
                                         selectedDisplay: $journalViewModel.selectedDisplay,
-                                        score: journalViewModel.courtData.score[8],
-                                        attempt: journalViewModel.courtData.attempts[8]
+                                        score: journalViewModel.currentJournal.rightMidRangeScore,
+                                        attempt: journalViewModel.currentJournal.rightMidRangeAttempt
                                     )
                                 }
                             
@@ -264,16 +260,16 @@ struct CourtView: View {
                         // MIDDLE
                         CurvedSidedRectangle()
                             .stroke(Color.black, lineWidth: 1)
-                            .background(CurvedSidedRectangle().foregroundColor(handleSectionColor(section: 5))) // hitbox!
+                            .background(CurvedSidedRectangle().foregroundColor(handleSectionColor(section: .middleMidRange))) // hitbox!
                             .frame(width: (geometry.size.width - (skinnerRectWidth * 2)) / 3, height: 40)
                             .onTapGesture {
-                                journalViewModel.courtData.selection = 5
+                                journalViewModel.selectedCourtSection = .middleMidRange
                             }
                             .overlay(alignment: .bottom) {
                                 ShotsMadeView(
                                     selectedDisplay: $journalViewModel.selectedDisplay,
-                                    score: journalViewModel.courtData.score[5],
-                                    attempt: journalViewModel.courtData.attempts[5]
+                                    score: journalViewModel.currentJournal.middleMidRangeScore,
+                                    attempt: journalViewModel.currentJournal.middleMidRangeAttempt
                                 )
                             }
                         
@@ -293,7 +289,8 @@ struct CourtView: View {
 
 struct CourtView_Previews: PreviewProvider {
     static var previews: some View {
-        CourtView(journalViewModel: JournalViewModel(), isHeatMap: false)
+        CourtView(isHeatMap: false)
+            .environmentObject(JournalViewModel())
 //            .frame(width: 350, height: 300)
         
         CurvedSidedRectangle()

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SelectDayView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var date = Date()
+   // @State private var date = Date()
+    @State var dateStart = Date()
     @State var trainingSessionCollection: TrainingSessionCollection = TrainingSessionCollection.sampleSession
     
     var body: some View {
@@ -38,7 +39,8 @@ struct SelectDayView: View {
                 
                 DatePicker(
                     "Start Date",
-                    selection: $date,
+                    selection: $dateStart,
+                    //selection: $date,
                     displayedComponents: [.date]
                 )
                 .datePickerStyle(.graphical)

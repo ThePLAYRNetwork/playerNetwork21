@@ -122,28 +122,30 @@ struct CreateGameView: View {
                     
                     GameOptions(game: $createGameViewModel.newGame)
                     
+                    
                     Button {
-                        invalidTitle = createGameViewModel.newGame.title.isEmpty
-                        invalidLocation = createGameViewModel.locationSearchService.selectedCompletion == nil
-                        
-                        // Check for invalid inputs
-                        if invalidTitle {
-                            focusedField = .gameName
-                        }
-                        else if invalidLocation {
-                            focusedField = .location
-                        } else {
-                            // Valid Input
-                            Task {
-                                await createGameViewModel.convertAddressToCoordinates()
-                                navigationModel.path.append(GameDestination.confirmGame)
-                            }
-                        }
-                    } label: {
-                        Text("Continue")
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .buttonStyle(CustomButton(color: .red, size: .small))
+                                            invalidTitle = createGameViewModel.newGame.title.isEmpty
+                                            invalidLocation = createGameViewModel.locationSearchService.selectedCompletion == nil
+                                            
+                                            // Check for invalid inputs
+                                            if invalidTitle {
+                                                focusedField = .gameName
+                                            }
+                                            else if invalidLocation {
+                                                focusedField = .location
+                                            } else {
+                                                // Valid Input
+                                                Task {
+                                                    await createGameViewModel.convertAddressToCoordinates()
+                                                    navigationModel.path.append(GameDestination.confirmGame)
+                                                }
+                                            }
+                                        } label: {
+                                            Text("Continue")
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                        .buttonStyle(CustomButton(color: .red, size: .small))
+
                 
                 }
                 .padding()

@@ -10,14 +10,23 @@ import SwiftUI
 struct ConfirmSessionView: View {
     @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var sessionViewModel: SessionViewModel
+    @StateObject private var sessionRepo = SessionRepository()
     
+    
+    
+   // @State var dateStart: Date
+    @State var price: String = ""
+    
+    @State var trainingSessionCollection: TrainingSessionCollection = TrainingSessionCollection.sampleSession
     
     @State var details: String = ""
+    
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 
-                Group {
+                //Group {
                     Text("Confirm Training Session")
                         .font(.system(size: 24))
                         .bold()
@@ -27,47 +36,49 @@ struct ConfirmSessionView: View {
                     
                     VStack(alignment: .leading,spacing: -5) {
                         
-                    Text("Defense Training")
-                        .font(.system(size: 24))
-                        .bold()
-                 
-                    
-                    HStack {
-                        Text("August 1- 31, 2022")
-                            .font(.system(size: 16))
-                        Text(".")
-                            .font(.title)
+                        Text(sessionViewModel.newSession.title)
+                            .font(.system(size: 24))
                             .bold()
-                            .offset(y: -7)
                         
-                        Text("1 hr")
+                        
+                        HStack {
+                          
+                            //                        Text($sessionViewModel.newSession.startDate.formatted(date: .long, time: .omitted))
+                            
+                            //       Text("\(dateStart.formatted(date: .long, time: .omitted))")
+                            //                        Text("Audust1, 2023")
+                            //                            .font(.system(size: 16))
+                            Text(".")
+                                .font(.title)
+                                .bold()
+                                .offset(y: -7)
+                            
+                            Text("1 hr")
+                                .font(.system(size: 16))
+                            
+                            Text(".")
+                                .font(.title)
+                                .bold()
+                                .offset(y: -7)
+                            Text("$" + sessionViewModel.newSession.price)
+                        }
+                        .foregroundColor(.black)
+                        
+                     //   Text("Gym Name, San Diego")
+                        Text("\(sessionViewModel.newSession.place) \(sessionViewModel.newSession.address ?? "")")
                             .font(.system(size: 16))
-                        
-                        Text(".")
-                            .font(.title)
-                            .bold()
-                            .offset(y: -7)
-                        
-                        Text("$50")
-                            .font(.system(size: 16))
-                        
+                            .padding(.bottom)
                     }
-                    .foregroundColor(.black)
                     
-                    Text("Gym Name, San Diego")
-                            .font(.system(size: 16))
-                        .padding(.bottom)
-              }
-
                     
                     VStack(alignment: .leading,spacing: 2) {
                         
-                        Text("Training Details")
+                        Text("Training Session Details")
                             .bold()
                             .font(.system(size: 20))
                         TextField(
                             "List any details important to this session.",
-                            text: $details,
+                            text: $sessionViewModel.newSession.details,
                             axis: .vertical
                         )
                         .modifier(CreateLabel())
@@ -77,19 +88,30 @@ struct ConfirmSessionView: View {
                     
                     VStack(alignment: .leading,spacing: 4) {
                         
-                    Text("Session Availability")
-                        .font(.system(size: 20))
-                        .bold()
-                    //    .padding(.top)
-                    //    .padding(.bottom)
-                    
-               
+                        Text("Session Availability")
+                            .font(.system(size: 20))
+                            .bold()
+                        //    .padding(.top)
+                        //    .padding(.bottom)
+                        
+                        
                         
                         RoundedRectangle(cornerRadius: 8)
                             .frame(height: 40)
                             .overlay {
                                 VStack(alignment: .leading) {
                                     HStack {
+                                        //                                        ForEach(trainingSessionCollection.data) { session in
+                                        //                                            // show only active sessions
+                                        //                                            if session.times.count > 0 {
+                                        //                                                SelectDayCard(session: session)
+                                        //                                                    .padding(.horizontal)
+                                        //                                                    .padding(.bottom, 5)
+                                        //                                            }
+                                        //                                        }
+                                        //                                        .padding(.bottom, 15)
+                                        
+                                        
                                         Text("Tuesday")
                                             .foregroundColor(.black)
                                             .font(.system(size:14))
@@ -146,33 +168,41 @@ struct ConfirmSessionView: View {
                                 
                             }
                             .foregroundColor(Color.ui.grayF6F6F6)
-                    }
+                 //   }
                     .padding(.bottom)
                 }
-
+                
+                MapSessionView()
+                    .frame(height: 167)
+                    .padding(.bottom, 20)
+            }
+            .onAppear {
+                Task {
+                    try await sessionRepo.getSession()
+                }
                 
             }
             
             
-            NavigationStack(path: $navigationModel.path) {
-                CreateSessionView()
-                    .navigationDestination(for: SessionDestination.self) { destination in
-                        switch destination {
-                        case .confirmSession:
-                            ConfirmSessionView()
-                        }
-                    }
-            }
+//            NavigationStack(path: $navigationModel.path) {
+//                CreateSessionView()
+//                    .navigationDestination(for: SessionDestination.self) { destination in
+//                        switch destination {
+//                        case .confirmSession:
+//                            ConfirmSessionView()
+//                        }
+//                    }
+//            }
             
             
             
             
             ConfirmSessionButtons(buttonTitle: "Confirm", session: sessionViewModel.newSession)
-                
-  //                            .disabled(isDisabled())
-  //                            .opacity(isDisabled() ? 0.5 : 1.0)
-  //
-    //                  }
+            
+            //                            .disabled(isDisabled())
+            //                            .opacity(isDisabled() ? 0.5 : 1.0)
+            //
+            //                  }
             
         }
         .padding()
@@ -180,8 +210,8 @@ struct ConfirmSessionView: View {
     }
 }
 
-struct ConfirmSessionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmSessionView()
-    }
-}
+//struct ConfirmSessionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConfirmSessionView()
+//    }
+//}

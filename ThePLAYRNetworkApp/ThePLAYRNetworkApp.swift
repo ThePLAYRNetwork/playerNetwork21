@@ -33,7 +33,7 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var coverImageViewModel = CoverImageViewModel()
     
     @StateObject private var journalViewModel = JournalViewModel()
-
+    
     init() {
         let gameRepository = GameRepository()
         let sessionRepository = SessionRepository()
@@ -64,27 +64,39 @@ struct ThePLAYRNetworkApp: App {
                         ThePlayrNetworkView()
                     }
                 }
+             
+                
                 .navigationDestination(for: OnboardingDestination.self) { destination in
-                    switch destination {
-                    case .onboarding:
-                        OnboardingView()
-                    case .profile:
-                        CreatePlayerProfileView()
-                    case .role:
-                        CreatePlayerProfile18()
-                    case .position:
-                        OnboardingPosition()
-                    }
-                }
-                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
-                    ThePlayrNetworkView()
-                }
-                .navigationDestination(for: GameDestination.self) { destination in
-                    switch destination {
-                    case .confirmGame:
-                        ConfirmGameView()
-                    }
-                }
+                                    switch destination {
+                                    case .onboarding:
+                                        OnboardingView()
+                                    case .profile:
+                                        CreatePlayerProfileView()
+                                    case .role:
+                                        CreatePlayerProfile18()
+                                    case .position:
+                                        OnboardingPosition()
+                                    }
+                                }
+                                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
+                                    ThePlayrNetworkView()
+                                }
+                                .navigationDestination(for: GameDestination.self) { destination in
+                                    switch destination {
+                                    case .confirmGame:
+                                        ConfirmGameView()
+                                    }
+                                }
+         
+                
+//                .navigationDestination(for: SessionDestination.self) { destination in
+//                    switch destination {
+//
+//                    case .confirmSession:
+//                    ConfirmSessionView()
+//                    }
+//                }
+                
                 // note: can only use 1 alert, use enums and switch to show different alert
                 .alert(isPresented : $navigationModel.showiCloudErrorAlert) {
                     Alert(
@@ -92,12 +104,12 @@ struct ThePLAYRNetworkApp: App {
                         message: Text("To use all features of our app, you must be logged into iCloud. Please log in to iCloud in your device settings to continue using our app.")
                     )
                 }
-//                .alert(isPresented : $navigationModel.showGameCreatedSuccessAlert) {
-//                    Alert(
-//                        title: Text("Alright!"),
-//                        message: Text("Your game has been posted.")
-//                    )
-//                }
+                //                .alert(isPresented : $navigationModel.showGameCreatedSuccessAlert) {
+                //                    Alert(
+                //                        title: Text("Alright!"),
+                //                        message: Text("Your game has been posted.")
+                //                    )
+                //                }
             }
             // Don't put all viewmodels on top heiracrchy
             .environmentObject(navigationModel)
@@ -117,7 +129,7 @@ struct ThePLAYRNetworkApp: App {
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        FirebaseApp.configure()
+        //        FirebaseApp.configure()
         return true
     }
 }

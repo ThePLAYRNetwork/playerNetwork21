@@ -38,10 +38,10 @@ enum GameDestination: Hashable {
    
 }
 
-//enum SessionDestination: Hashable {
-//    case confirmSession
-//}
-//
+enum SessionDestination: Hashable {
+    case confirmSession
+}
+
 
 
 

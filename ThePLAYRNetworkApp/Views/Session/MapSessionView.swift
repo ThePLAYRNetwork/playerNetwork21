@@ -58,11 +58,11 @@ struct MapSessionView: View {
                     self.sessionViewModel.mapView.removeAnnotations(annotations)
                     
                     if sessionViewModel.newSession.location != CLLocation() {
-                        print("Showing game location")
+                        print("Showing session location")
                         
                         // 2. Set marker to address coordinates
                         let marker = MKPointAnnotation()
-                        marker.title = "Create game here?"
+                        marker.title = "Create session here?"
                         marker.coordinate = sessionViewModel.newSession.location.coordinate
                         self.sessionViewModel.mapView.addAnnotation(marker)
                         
@@ -77,7 +77,7 @@ struct MapSessionView: View {
                         //            self.createViewModel.newGame.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
                         // 2. Set marker to address coordinates
                         let marker = MKPointAnnotation()
-                        marker.title = "Create game here?"
+                        marker.title = "Create session here?"
                         marker.coordinate = coordinate
                         self.sessionViewModel.mapView.addAnnotation(marker)
                         
@@ -137,7 +137,7 @@ struct MapSessionView: View {
                         
                         // 3. Set new annotations
                         let marker = MKPointAnnotation()
-                        marker.title = "Create game here?"
+                        marker.title = "Create session here?"
                         marker.coordinate = coordinate
                         self.parent.sessionViewModel.mapView.addAnnotation(marker)
                         self.parent.sessionViewModel.newSession.location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)

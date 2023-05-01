@@ -89,13 +89,13 @@ struct ThePLAYRNetworkApp: App {
                                 }
          
                 
-//                .navigationDestination(for: SessionDestination.self) { destination in
-//                    switch destination {
-//
-//                    case .confirmSession:
-//                    ConfirmSessionView()
-//                    }
-//                }
+                .navigationDestination(for: SessionDestination.self) { destination in
+                    switch destination {
+
+                    case .confirmSession:
+                    ConfirmSessionView()
+                    }
+                }
                 
                 // note: can only use 1 alert, use enums and switch to show different alert
                 .alert(isPresented : $navigationModel.showiCloudErrorAlert) {

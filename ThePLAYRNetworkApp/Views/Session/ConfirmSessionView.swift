@@ -31,7 +31,7 @@ struct ConfirmSessionView: View {
                         .font(.system(size: 24))
                         .bold()
                     
-                    CoverImage()
+                    SessionCoverImage()
                         .padding(.vertical, 3)
                     
                     VStack(alignment: .leading,spacing: -5) {
@@ -65,7 +65,7 @@ struct ConfirmSessionView: View {
                         .foregroundColor(.black)
                         
                      //   Text("Gym Name, San Diego")
-                        Text("\(sessionViewModel.newSession.place) \(sessionViewModel.newSession.address ?? "")")
+                        Text("\(sessionViewModel.newSession.place) \(sessionViewModel.newSession.address )")
                             .font(.system(size: 16))
                             .padding(.bottom)
                     }

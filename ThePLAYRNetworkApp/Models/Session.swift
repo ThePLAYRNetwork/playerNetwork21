@@ -15,8 +15,8 @@ struct Session: Hashable, Identifiable {
     var address: String
     var location: CLLocation
     var price: String
-    var startDate: Date
-    var endDate: Date
+    var startDate: Date //date the session available, that what the user pick from the calendar
+   var endDate: Date
     var duration: String
     var details: String
     var coverImage: CKAsset?

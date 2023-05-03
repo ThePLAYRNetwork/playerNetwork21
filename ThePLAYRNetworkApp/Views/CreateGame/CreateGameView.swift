@@ -118,7 +118,9 @@ struct CreateGameView: View {
                     
                     PlayerLevelRow(selection: $createGameViewModel.newGame.playerLevel)
                     
-                    CoverImageRow()
+                    GameCoverImageRow()
+                    GameCoverImage()
+                    
                     
                     GameOptions(game: $createGameViewModel.newGame)
                     

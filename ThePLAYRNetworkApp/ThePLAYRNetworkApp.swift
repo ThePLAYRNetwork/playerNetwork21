@@ -30,7 +30,8 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var onboardingViewModel: OnboardingViewModel
     @StateObject private var locationManager = LocationManager.shared
     @StateObject private var calendarViewModel: CalendarViewModel
-    @StateObject private var coverImageViewModel = CoverImageViewModel()
+    @StateObject private var sessionCoverImageViewModel = SessionCoverImageViewModel()
+    @StateObject private var gameCoverImageViewModel = GameCoverImageViewModel()
     
     @StateObject private var journalViewModel = JournalViewModel()
     
@@ -64,38 +65,38 @@ struct ThePLAYRNetworkApp: App {
                         ThePlayrNetworkView()
                     }
                 }
-             
+                
                 
                 .navigationDestination(for: OnboardingDestination.self) { destination in
-                                    switch destination {
-                                    case .onboarding:
-                                        OnboardingView()
-                                    case .profile:
-                                        CreatePlayerProfileView()
-                                    case .role:
-                                        CreatePlayerProfile18()
-                                    case .position:
-                                        OnboardingPosition()
-                                    }
-                                }
-                                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
-                                    ThePlayrNetworkView()
-                                }
-                                .navigationDestination(for: GameDestination.self) { destination in
-                                    switch destination {
-                                    case .confirmGame:
-                                        ConfirmGameView()
-                                    }
-                                }
-         
-                
-//                .navigationDestination(for: SessionDestination.self) { destination in
+                    switch destination {
+                    case .onboarding:
+                        OnboardingView()
+                    case .profile:
+                        CreatePlayerProfileView()
+                    case .role:
+                        CreatePlayerProfile18()
+                    case .position:
+                        OnboardingPosition()
+                    }
+                }
+                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
+                    ThePlayrNetworkView()
+                }
+//                .navigationDestination(for: GameDestination.self) { destination in
 //                    switch destination {
-//
-//                    case .confirmSession:
-//                    ConfirmSessionView()
+//                    case .confirmGame:
+//                        ConfirmGameView()
 //                    }
 //                }
+//                
+                
+                .navigationDestination(for: SessionDestination.self) { destination in
+                    switch destination {
+                        
+                    case .confirmSession:
+                        ConfirmSessionView()
+                    }
+                }
                 
                 // note: can only use 1 alert, use enums and switch to show different alert
                 .alert(isPresented : $navigationModel.showiCloudErrorAlert) {
@@ -120,7 +121,8 @@ struct ThePLAYRNetworkApp: App {
             .environmentObject(onboardingViewModel)
             .environmentObject(locationManager)
             .environmentObject(calendarViewModel)
-            .environmentObject(coverImageViewModel)
+            .environmentObject(sessionCoverImageViewModel)
+            .environmentObject(gameCoverImageViewModel)
             .environmentObject(journalViewModel)
         }
     }

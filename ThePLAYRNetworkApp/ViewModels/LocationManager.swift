@@ -21,6 +21,7 @@ class LocationManager: NSObject, ObservableObject {
         locationManager.delegate = self // automatically calls functions when specific events occur
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        locationManager.distanceFilter = 5280 // 1 mile
     }
     
     // Show location permission alert to user

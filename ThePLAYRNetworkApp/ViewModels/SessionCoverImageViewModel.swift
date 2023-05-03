@@ -11,7 +11,7 @@ import SwiftUI
 
 
 
-class CoverImageViewModel: ObservableObject {
+class SessionCoverImageViewModel: ObservableObject {
     
     @Published var image: UIImage?
     @Published var showPicker = false

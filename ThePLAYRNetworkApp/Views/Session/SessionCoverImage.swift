@@ -1,5 +1,5 @@
 //
-//  CoverImage.swift
+//  SessionCoverImage.swift
 //  ThePLAYRNetworkApp
 //
 //  Created by Mirna Helmy on 4/4/23.
@@ -8,8 +8,8 @@
 import SwiftUI
 
 
-struct CoverImage: View {
-    @EnvironmentObject var coverImageViewModel: CoverImageViewModel
+struct SessionCoverImage: View {
+    @EnvironmentObject var coverImageViewModel: SessionCoverImageViewModel
     
     var body: some View {
 
@@ -30,3 +30,4 @@ struct CoverImage: View {
 }
 
 
+ 

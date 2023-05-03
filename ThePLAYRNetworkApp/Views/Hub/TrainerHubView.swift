@@ -10,7 +10,9 @@ import SwiftUI
 struct TrainerHubView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @StateObject var trainerHubVc = TrainerHubViewModel()
-    @ObservedObject var coverImageViewModel =  CoverImageViewModel()
+    @ObservedObject var coverImageViewModel =  SessionCoverImageViewModel()
+//    @ObservedObject var gameCoverImageViewModel = GameCoverImageViewModel()
+
 
     var body: some View {
         GeometryReader { geometry in
@@ -68,7 +70,7 @@ struct TrainerHubView: View {
                                 .aspectRatio(1.0, contentMode: .fit)
                                 .frame(width: 89, height: 89)
                                 .overlay(
-                                    NavigationLink(destination: CreateSessionView(coverImageViewModel: CoverImageViewModel())) {
+                                    NavigationLink(destination: CreateSessionView(coverImageViewModel: SessionCoverImageViewModel())) {
                                         Image("cross.square")
                                             .resizable()
                                             .frame(width: 46.94, height: 47.18)

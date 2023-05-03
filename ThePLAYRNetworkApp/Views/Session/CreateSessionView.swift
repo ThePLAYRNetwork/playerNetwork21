@@ -22,16 +22,12 @@ struct CreateSessionView: View {
     
     @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var sessionViewModel: SessionViewModel
-    @StateObject var coverImageViewModel = CoverImageViewModel()
+    @StateObject var coverImageViewModel = SessionCoverImageViewModel()
     
     @FocusState private var sessionFocusedField: SessionField?
     @State var invalidTitle = false
     @State var invalidLocation = false
-    
-    
-    //   @State var duration: String = ""
-    
-    
+
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
@@ -107,52 +103,7 @@ struct CreateSessionView: View {
                             }
                         }
                     }
-                    
-                    //                    HStack {
-                    //                        VStack(alignment: .leading, spacing: 3) {
-                    //                            Text("Date Start".uppercased())
-                    //                                .font(.system(size: 12))
-                    //
-                    //                            HStack {
-                    //                                Image("calendar")
-                    //                                TextField(
-                    //                                    "MM/DD/YY",
-                    //                                    text: $dateStart
-                    //                                )
-                    //                            }
-                    //                            .modifier(CreateLabel())
-                    //                        }
-                    //                        .frame(width: geometry.size.width * 0.33)
-                    //
-                    //                        VStack(alignment: .leading, spacing: 3) {
-                    //                            Text("Date End".uppercased())
-                    //                                .font(.system(size: 12))
-                    //
-                    //                            HStack {
-                    //                                Image("calendar")
-                    //                                TextField(
-                    //                                    "MM/DD/YY",
-                    //                                    text: $dateEnd
-                    //                                )
-                    //                            }
-                    //                            .modifier(CreateLabel())
-                    //                        }
-                    //
-                    //                        VStack(alignment: .leading, spacing: 3) {
-                    //                            Text("Duration".uppercased())
-                    //                                .font(.system(size: 12))
-                    //
-                    //                            HStack {
-                    //                                Image("duration")
-                    //                                TextField(
-                    //                                    "00.00",
-                    //                                    text: $duration
-                    //                                )
-                    //                            }
-                    //                            .modifier(CreateLabel())
-                    //                        }
-                    //                    }
-                    
+
                     VStack(alignment: .leading, spacing: 3) {
                         Text("Details".uppercased())
                             .font(.system(size: 12))
@@ -165,70 +116,68 @@ struct CreateSessionView: View {
                         .modifier(CreateLabel())
                     }
                     
-                    CoverImageRow()
-                    CoverImage()
+                    SessionCoverImageRow()
+                    SessionCoverImage()
                     
                     HStack {
                         Spacer()
                         
-                                                Button {
-                                                    invalidTitle = sessionViewModel.newSession.title.isEmpty
-                                                    invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
-                        
-                                                    // Check for invalid inputs
-                                                    if invalidTitle {
-                                                        sessionFocusedField = .sessionName
-                                                    }
-                                                    else if invalidLocation {
-                                                        sessionFocusedField = .location
-                                                    } else {
-                                                        // Valid Input
-                                                        Task {
-                                                         await
-                                                            sessionViewModel.convertAddressToCoordinates()
-                                                            navigationModel.path.append(SessionDestination.confirmSession)
-                                                        }
-                                                   }
-                                                } label: {
-                                                    Text("Create")
-                                                }
-                                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                                .buttonStyle(CustomButton(color: .red, size: .small))
-                        
-                        
-
+                        Button {
+                            invalidTitle = sessionViewModel.newSession.title.isEmpty
+                            invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
+                            
+                            // Check for invalid inputs
+                            if invalidTitle {
+                                sessionFocusedField = .sessionName
+                            }
+                            else if invalidLocation {
+                                sessionFocusedField = .location
+                            } else {
+                                // Valid Input
+                                Task {
+                                    await
+                                    sessionViewModel.convertAddressToCoordinates()
+                                    navigationModel.path.append(SessionDestination.confirmSession)
+                                }
+                            }
+                        } label: {
+                            Text("Create")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .buttonStyle(CustomButton(color: .red, size: .small))
                         
                         
-//                        NavigationLink(destination: ConfirmSessionView()) {
-//
-//                            Button {
-//                                invalidTitle = sessionViewModel.newSession.title.isEmpty
-//                                invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
-//
-//                                // Check for invalid inputs
-//                                if invalidTitle {
-//                                    print("1")
-//                                    sessionFocusedField = .sessionName
-//                                }
-//                                else if invalidLocation {
-//                                    print("2")
-//                                    sessionFocusedField = .location
-//                                } else {
-//                                    // Valid Input
-//                                    print("3")
-//                                    Task {
-//
-//                                        await sessionViewModel.convertAddressToCoordinates()
-//                                    }
-//                                }
-//
-//                            } label: {
-//                                Text("Create")
-//                            }
-//                        }
-//                        .buttonStyle(CustomButton(color: .red, size: .small))
-//                        .disabled(isDisabled())
-//                        .opacity(isDisabled() ? 0.5 : 1.0)
+                        
+                        //                        NavigationLink(destination: ConfirmSessionView()) {
+                        //
+                        //                            Button {
+                        //                                invalidTitle = sessionViewModel.newSession.title.isEmpty
+                        //                                invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
+                        //
+                        //                                // Check for invalid inputs
+                        //                                if invalidTitle {
+                        //                                    print("1")
+                        //                                    sessionFocusedField = .sessionName
+                        //                                }
+                        //                                else if invalidLocation {
+                        //                                    print("2")
+                        //                                    sessionFocusedField = .location
+                        //                                } else {
+                        //                                    // Valid Input
+                        //                                    print("3")
+                        //                                    Task {
+                        //
+                        //                                        await sessionViewModel.convertAddressToCoordinates()
+                        //                                    }
+                        //                                }
+                        //
+                        //                            } label: {
+                        //                                Text("Create")
+                        //                            }
+                        //                        }
+                        //                        .buttonStyle(CustomButton(color: .red, size: .small))
+                        //                        .disabled(isDisabled())
+                        //                        .opacity(isDisabled() ? 0.5 : 1.0)
                     }
                 }
             }
@@ -246,6 +195,9 @@ struct CreateSessionView: View {
         sessionViewModel.newSession.details.isEmpty
         
     }
+    
+    
+    
 }
 //struct CreateSessionView_Previews: PreviewProvider {
 //    static var previews: some View {

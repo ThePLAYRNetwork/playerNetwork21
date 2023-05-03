@@ -20,7 +20,7 @@ struct ConfirmGameView: View {
                     .font(.system(size: 24, weight: .bold))
                     .padding(.bottom, 20)
                 
-                CoverImage()
+                GameCoverImage()
                     .padding(.bottom, 20)
 
                 ConfirmTitleSection(game: createGameViewModel.newGame)

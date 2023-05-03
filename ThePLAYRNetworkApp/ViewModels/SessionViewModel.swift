@@ -61,7 +61,7 @@ class SessionViewModel: NSObject,ObservableObject, CLLocationManagerDelegate {
                 print("Successfully got coordinates")
                 newSession.location = location
                 newSession.place = completion.title
-               // newSession.address = completion.subtitle
+                newSession.address = completion.subtitle
             } else if let userLocation = LocationManager.shared.userLocation {
                 print("Failed to convert address to coordintes")
                 newSession.location = userLocation

@@ -11,7 +11,7 @@ import CloudKit
 protocol GameApiService {
     func createGame(game: Game) async -> Result<Game, Error>
     
-//    func fetchNearByGames() async -> [Game]
+   // func fetchNearByGames() async -> [Game]
     
     func joinGame() async
 }

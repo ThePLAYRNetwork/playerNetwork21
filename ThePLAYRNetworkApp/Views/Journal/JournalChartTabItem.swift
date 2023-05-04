@@ -80,12 +80,12 @@ struct JournalChartTabItem: View {
 //            }
 //            .padding(.bottom, 8)
             
-            JournalCustomSegmentedControl(
-                selectedIndex: $journalViewModel.selectedDateType,
-                options: ["W", "M", "Y"],
-                spacing: 16.0
-            )
-            .font(.system(size: 12))
+//            JournalCustomSegmentedControl(
+//                selectedIndex: $journalViewModel.selectedDateType,
+//                options: ["W", "M", "Y"],
+//                spacing: 16.0
+//            )
+//            .font(.system(size: 12))
         }
         .padding()
         .background {
@@ -99,7 +99,7 @@ struct JournalChartTabItem: View {
 struct JournalChartTabItem_Previews: PreviewProvider {
     static var previews: some View {
         JournalChartTabItem()
-            .environmentObject(JournalViewModel())
+            .environmentObject(JournalViewModel(journalRepository: JournalRepository()))
     }
 }
 

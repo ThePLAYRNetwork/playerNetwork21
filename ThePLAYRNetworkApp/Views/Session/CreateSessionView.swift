@@ -227,7 +227,7 @@ struct CreateSessionView: View {
                         //                                                .opacity(isDisabled() ? 0.5 : 1.0)
                         
                         
-                        NavigationLink(destination: ConfirmSessionView()) {
+//                        NavigationLink(destination: ConfirmSessionView()) {
                             
                             Button {
                                 invalidTitle = sessionViewModel.newSession.title.isEmpty
@@ -246,13 +246,14 @@ struct CreateSessionView: View {
                                     print("3")
                                     Task {
                                         await sessionViewModel.convertAddressToCoordinates()
+                                        navigationModel.path.append(SessionDestination.confirmSession)
                                     }
                                 }
                                 
                             } label: {
                                 Text("Create")
                             }
-                        }
+//                        }
                         .buttonStyle(CustomButton(color: .red, size: .small))
                         .disabled(isDisabled())
                         .opacity(isDisabled() ? 0.5 : 1.0)

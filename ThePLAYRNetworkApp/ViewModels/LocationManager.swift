@@ -21,6 +21,7 @@ class LocationManager: NSObject, ObservableObject {
         locationManager.delegate = self // automatically calls functions when specific events occur
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        locationManager.distanceFilter = 5280 // 1 mile
     }
     
     // Show location permission alert to user
@@ -61,6 +62,8 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         self.userLocation = location
+        print("User location changes")
+
     }
 
 }

@@ -32,7 +32,7 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var calendarViewModel: CalendarViewModel
     @StateObject private var coverImageViewModel = CoverImageViewModel()
     
-    @StateObject private var journalViewModel = JournalViewModel()
+    @StateObject private var journalViewModel = JournalViewModel(journalRepository: JournalRepository())
     
     init() {
         let gameRepository = GameRepository()
@@ -67,35 +67,35 @@ struct ThePLAYRNetworkApp: App {
              
                 
                 .navigationDestination(for: OnboardingDestination.self) { destination in
-                                    switch destination {
-                                    case .onboarding:
-                                        OnboardingView()
-                                    case .profile:
-                                        CreatePlayerProfileView()
-                                    case .role:
-                                        CreatePlayerProfile18()
-                                    case .position:
-                                        OnboardingPosition()
-                                    }
-                                }
-                                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
-                                    ThePlayrNetworkView()
-                                }
-                                .navigationDestination(for: GameDestination.self) { destination in
-                                    switch destination {
-                                    case .confirmGame:
-                                        ConfirmGameView()
-                                    }
-                                }
-         
+                    switch destination {
+                    case .onboarding:
+                        OnboardingView()
+                    case .profile:
+                        CreatePlayerProfileView()
+                    case .role:
+                        CreatePlayerProfile18()
+                    case .position:
+                        OnboardingPosition()
+                    }
+                }
+                .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
+                    ThePlayrNetworkView()
+                }
+                .navigationDestination(for: GameDestination.self) { destination in
+                    switch destination {
+                    case .confirmGame:
+                        ConfirmGameView()
+                    }
+                }
                 
-//                .navigationDestination(for: SessionDestination.self) { destination in
-//                    switch destination {
-//
-//                    case .confirmSession:
-//                    ConfirmSessionView()
-//                    }
-//                }
+                
+                .navigationDestination(for: SessionDestination.self) { destination in
+                    switch destination {
+                        
+                    case .confirmSession:
+                        ConfirmSessionView()
+                    }
+                }
                 
                 // note: can only use 1 alert, use enums and switch to show different alert
                 .alert(isPresented : $navigationModel.showiCloudErrorAlert) {
@@ -156,6 +156,7 @@ extension Color {
         let accent = Color("accent") //same like purple, secondary before
         let accent_light = Color("accent").opacity(0.6) //same like court_selected
         let accent_lighter = Color("accent").opacity(0.1) // messages highlight
+        let court_selected = Color("court_selected")
         
         
         // black
@@ -164,7 +165,7 @@ extension Color {
         let blackBlack = Color("blackBlack") //small circles
         let blackWhite = Color("blackWhite") //rating in profile view
         let blackExtraBlack = Color("blackExtraBlack") //some buttons in goingView
-        
+        let court_input_data = Color("court_input_data")
         
         
         // blue

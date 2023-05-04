@@ -20,9 +20,9 @@ struct CourtTabItem: View {
                            selection: $journalViewModel.selectedDate,
                            displayedComponents: [.date]
                 )
-                    .datePickerStyle(.compact)
-                    .fixedSize()
-                    .labelsHidden()
+                .datePickerStyle(.compact)
+                .fixedSize()
+                .labelsHidden()
                 
                 Spacer()
                 
@@ -43,10 +43,11 @@ struct CourtTabItem: View {
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
                 }
+//                       .disabled(journalViewModel.selectedDateRange != .day)
             }
-
+            
             CourtView(isHeatMap: isHeatMap)
-
+            
             HStack {
                 Text("Ratio")
                     .font(.system(size: 12, weight: .semibold))
@@ -64,7 +65,7 @@ struct CourtTabItem: View {
                     .background {
                         Capsule().fill(Color.ui.grayDADADA)
                     }
-
+                
                 Spacer()
                 
                 Text("Percent")
@@ -85,13 +86,18 @@ struct CourtTabItem: View {
             }
             .padding(.bottom, 8)
             
-            CustomSegmentedControl(
-                selectedIndex: $journalViewModel.selectedDateType,
-                options: ["D", "W", "M", "Y"],
+            JournalCustomSegmentedControl(
+                selectedDateRange: $journalViewModel.selectedDateRange,
                 spacing: 15.0
             )
-            .font(.system(size: 12))
-
+            
+            //            CustomSegmentedControl(
+            //                selectedIndex: $journalViewModel.selectedDateType,
+            //                options: ["D", "W", "M", "Y"],
+            //                spacing: 15.0
+            //            )
+            //            .font(.system(size: 12))
+            
         }
         .padding()
         .background {
@@ -104,6 +110,6 @@ struct CourtTabItem: View {
 struct CourtTabItem_Previews: PreviewProvider {
     static var previews: some View {
         CourtTabItem(isHeatMap: false)
-            .environmentObject(JournalViewModel())
+            .environmentObject(JournalViewModel(journalRepository: JournalRepository()))
     }
 }

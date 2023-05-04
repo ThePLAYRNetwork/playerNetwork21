@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// 0-40 red, 40-70,  70-100
+// Journal (2 dates, start and end date)
 struct CourtView: View {
     @EnvironmentObject var journalViewModel: JournalViewModel
     let topRectangleHeight = 100.0
@@ -25,7 +27,7 @@ struct CourtView: View {
 //                return Color.ui.court_color_green
 //            }
 //        } else {
-            return journalViewModel.selectedCourtSection == section ? Color.ui.accent_light : Color.white
+            return journalViewModel.selectedCourtSection == section ? Color.ui.court_selected : Color.white
 //        }
     }
         
@@ -290,7 +292,7 @@ struct CourtView: View {
 struct CourtView_Previews: PreviewProvider {
     static var previews: some View {
         CourtView(isHeatMap: false)
-            .environmentObject(JournalViewModel())
+            .environmentObject(JournalViewModel(journalRepository: JournalRepository()))
 //            .frame(width: 350, height: 300)
         
         CurvedSidedRectangle()

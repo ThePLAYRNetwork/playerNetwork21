@@ -72,7 +72,6 @@ struct InputDataColumn: View {
                 }
 
             }
-            .background(Color.ui.black)
         }
     }
 }
@@ -80,6 +79,6 @@ struct InputDataColumn: View {
 struct InputDataColumn_Previews: PreviewProvider {
     static var previews: some View {
         InputDataColumn(newJournal: .constant(Journal.sampleJournal))
-            .environmentObject(JournalViewModel())
+            .environmentObject(JournalViewModel(journalRepository: JournalRepository()))
     }
 }

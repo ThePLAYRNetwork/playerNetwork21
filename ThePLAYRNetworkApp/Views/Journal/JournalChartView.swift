@@ -99,7 +99,7 @@ struct JournalChartView: View {
 
 struct JournalChartView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalChartView(journalViewModel: JournalViewModel())
+        JournalChartView(journalViewModel: JournalViewModel(journalRepository: JournalRepository()))
             .frame(width: 335, height: 264)
     }
 }

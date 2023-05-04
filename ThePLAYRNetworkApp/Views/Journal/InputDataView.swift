@@ -10,7 +10,7 @@ import CloudKit
 
 struct InputDataView: View {
     @EnvironmentObject var journalViewModel: JournalViewModel
-    @State var newJournal =  Journal(userID: CKRecord.Reference(record: CKRecord(recordType: "Journal"), action: .none), date: Date())
+    @State var newJournal =  Journal(date: Date())
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,8 +27,9 @@ struct InputDataView: View {
                     Spacer()
                     
                     Button("Save", action: {
-                        print("Saving new journal entry into cloudkit")
-                        journalViewModel.currentJournal = newJournal
+                        Task {
+                            await journalViewModel.saveJournalEntry(journal: newJournal)
+                        }
                     })
                 }
                 .padding(.bottom, 20)
@@ -38,10 +39,10 @@ struct InputDataView: View {
                 Spacer()
                 
             }
-            .padding(.top, 25)
             .padding(19)
+            .padding(.top)
             .frame(maxWidth: .infinity)
-            .background(Color.ui.black)
+            .background(Color.ui.court_input_data)
             .onAppear {
                 // Fetch journal for current date if it exists
                 newJournal = journalViewModel.currentJournal
@@ -53,6 +54,6 @@ struct InputDataView: View {
 struct InputDataView_Previews: PreviewProvider {
     static var previews: some View {
         InputDataView()
-            .environmentObject(JournalViewModel())
+            .environmentObject(JournalViewModel(journalRepository: JournalRepository()))
     }
 }

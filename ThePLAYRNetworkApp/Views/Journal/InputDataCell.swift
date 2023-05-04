@@ -33,11 +33,6 @@ struct InputDataCell: View {
         .padding([.vertical], 10)
         .fontWeight(.medium)
         .foregroundColor(.white)
-//        .background {
-//            RoundedRectangle(cornerRadius: 7)
-//                .fill(.gray)
-//        }
-        .background(Color.ui.black)
         .frame(height: 40)
     }
 }

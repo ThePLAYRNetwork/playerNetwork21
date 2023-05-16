@@ -11,15 +11,8 @@ struct ConfirmSessionView: View {
     @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var sessionViewModel: SessionViewModel
     @StateObject private var sessionRepo = SessionRepository()
-    
-    
-    
-   // @State var dateStart: Date
-    @State var price: String = ""
-    
     @State var trainingSessionCollection: TrainingSessionCollection = TrainingSessionCollection.sampleSession
-    
-    @State var details: String = ""
+ 
     
     
     var body: some View {

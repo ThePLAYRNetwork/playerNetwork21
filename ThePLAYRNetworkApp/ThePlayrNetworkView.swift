@@ -13,7 +13,7 @@ struct ThePlayrNetworkView: View {
 
     var body: some View {
         TabView(selection: $navigationModel.tabSelection) {
-            NavigationStack(path: $navigationModel.path) {
+            NavigationStack(path: $navigationModel.homePath) {
                 HomeView()
             }
             .tabItem {

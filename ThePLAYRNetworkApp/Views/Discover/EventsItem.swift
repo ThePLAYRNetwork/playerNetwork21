@@ -8,65 +8,134 @@
 import SwiftUI
 
 struct EventsItem: View {
+    @EnvironmentObject var sessionViewModel: SessionViewModel
+    @StateObject private var sessionRepo = SessionRepository()
+    
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Powerlifting w/ Christopher Jones")
-                .font(.title2)
-                .fontWeight(.semibold)
             
-            Text("Tue July 12 · 10:00am - 11:00 am")
-                .font(.system(size: 16))
-            
-            
-            Text("Gym Name")
-                .font(.system(size: 16))
-            
-            
-            
-            HStack {
+            VStack(alignment: .leading) {
+                Text(sessionViewModel.newSession.title)
+                    .font(.title2)
+                    .fontWeight(.semibold)
                 
-                Button {
-                    //action code
-                } label: {
-                    Text("Training")
+                Text("Tue July 12 · 10:00am - 11:00 am")
+                    .font(.system(size: 16))
+                
+                
+                Text("\(sessionViewModel.newSession.place) \(sessionViewModel.newSession.address )")
+                     .font(.system(size: 16))
+                
+                
+                
+                HStack {
                     
-                        .font(.system(size: 15))
-                        .foregroundColor(.black)
-                        .frame(width: 75, height: 22)
-                        .background(.gray.opacity(0.2))
-                        .cornerRadius(5)
-                }
-                
-                Button {
-                    //action code
-                } label: {
-                    Text("Puplic")
+                    Button {
+                        //action code
+                    } label: {
+                        Text("Training")
+                        
+                            .font(.system(size: 15))
+                            .foregroundColor(.black)
+                            .frame(width: 75, height: 22)
+                            .background(.gray.opacity(0.2))
+                            .cornerRadius(5)
+                    }
                     
-                        .font(.system(size: 15))
-                        .foregroundColor(.black)
-                        .frame(width: 75, height: 22)
-                        .background(.gray.opacity(0.2))
-                        .cornerRadius(5)
+                    Button {
+                        //action code
+                    } label: {
+                        Text("Puplic")
+                        
+                            .font(.system(size: 15))
+                            .foregroundColor(.black)
+                            .frame(width: 75, height: 22)
+                            .background(.gray.opacity(0.2))
+                            .cornerRadius(5)
+                    }
+                    
+                    Spacer()
+                    
+                    NavigationLink {
+                        SessionView(session: Session.sampleSessions[0])
+                    } label: {
+                        Text("View")
+                            .font(.system(size: 21))
+                            .bold()
+                            .foregroundColor(.white)
+                            .frame(width: 95, height: 30)
+                            .background(Color.ui.accentColor)
+                            .cornerRadius(5)
+                    }
                 }
+                .padding(.top, -8)
                 
-                Spacer()
-                
-                NavigationLink {
-                    SessionView(session: Session.sampleSessions[0])
-                } label: {
-                    Text("View")
-                        .font(.system(size: 21))
-                        .bold()
-                        .foregroundColor(.white)
-                        .frame(width: 95, height: 30)
-                        .background(Color.ui.accentColor)
-                        .cornerRadius(5)
+            }
+            .onAppear {
+                Task {
+                    try await sessionRepo.getSession()
                 }
             }
-            .padding(.top, -8)
             
+            
+//            VStack(alignment: .leading) {
+//                Text("Powerlifting w/ Christopher Jones")
+//                    .font(.title2)
+//                    .fontWeight(.semibold)
+//
+//                Text("Tue July 12 · 10:00am - 11:00 am")
+//                    .font(.system(size: 16))
+//
+//
+//                Text("Gym Name")
+//                    .font(.system(size: 16))
+//
+//
+//
+//                HStack {
+//
+//                    Button {
+//                        //action code
+//                    } label: {
+//                        Text("Training")
+//
+//                            .font(.system(size: 15))
+//                            .foregroundColor(.black)
+//                            .frame(width: 75, height: 22)
+//                            .background(.gray.opacity(0.2))
+//                            .cornerRadius(5)
+//                    }
+//
+//                    Button {
+//                        //action code
+//                    } label: {
+//                        Text("Puplic")
+//
+//                            .font(.system(size: 15))
+//                            .foregroundColor(.black)
+//                            .frame(width: 75, height: 22)
+//                            .background(.gray.opacity(0.2))
+//                            .cornerRadius(5)
+//                    }
+//
+//                    Spacer()
+//
+//                    NavigationLink {
+//                        SessionView(session: Session.sampleSessions[0])
+//                    } label: {
+//                        Text("View")
+//                            .font(.system(size: 21))
+//                            .bold()
+//                            .foregroundColor(.white)
+//                            .frame(width: 95, height: 30)
+//                            .background(Color.ui.accentColor)
+//                            .cornerRadius(5)
+//                    }
+//                }
+//                .padding(.top, -8)
+//            }
         }
-
         .padding()
         
     }

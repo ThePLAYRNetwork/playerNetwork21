@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ClientManagementView: View {
+    @EnvironmentObject var ckUserViewModel: CloudKitUserViewModel
     @State var text: String = ""
     var filters = ["Sort By"]
     
@@ -16,12 +17,27 @@ struct ClientManagementView: View {
             
             VStack(alignment: .leading) {
                 Group {
-                    Text("Client Management")
-                        .font(.system(size: 24,weight: .bold))
-                        .padding(.top, 5)
-                        .padding(.bottom, 0)
                     
+                    HStack {
+                        Text("Client Management")
+                            .font(.system(size: 24,weight: .bold))
+
+                        Spacer()
+                        
+                        AsyncImage(url: ckUserViewModel.user.profileImage?.fileURL) { phase in
+                            if let image = phase.image {
+                                image
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                    .background {
+                                        Circle().fill(Color.ui.grayD9D9D9)
+                                    }
                     
+                            }
+                        }
+                        
+                    }
                     SearchBar(text: $text)
                     
                     

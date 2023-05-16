@@ -10,6 +10,7 @@ import SwiftUI
 
 class NavigationModel: ObservableObject {
     @Published var path = NavigationPath() // stack of views
+    @Published var homePath = NavigationPath()
     @Published var tabSelection: ThePlayrNetworkDestination = .home
     @Published var showiCloudErrorAlert = false
     @Published var showGameCreatedSuccessAlert = false

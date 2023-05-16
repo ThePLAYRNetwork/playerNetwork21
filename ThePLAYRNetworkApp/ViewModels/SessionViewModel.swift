@@ -35,7 +35,7 @@ class SessionViewModel: NSObject,ObservableObject, CLLocationManagerDelegate {
         let result = await sessionRepository.createSession(session: newSession)
         switch result {
         case .success(let session):
-           self.navigationModel.path.removeLast()
+            self.navigationModel.homePath.removeLast(2)
             self.navigationModel.tabSelection = .home    // show home screen
             self.navigationModel.showSessionCreateSuccessAlert = true
             

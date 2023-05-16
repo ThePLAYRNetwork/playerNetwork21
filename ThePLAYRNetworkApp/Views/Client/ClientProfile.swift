@@ -30,7 +30,8 @@ struct ClientProfile: View {
                                 .background(in: RoundedRectangle(cornerRadius: 5))
                         }
                         
-                        
+    
+
                         NavigationLink {
                             ConversationView()
                         } label: {

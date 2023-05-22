@@ -23,10 +23,10 @@ struct MapView: View {
                     }
             }
         }
-            .onAppear {
-//                locationManager.setRegionToUserPosition()
-            }
-//            .animation(.easeIn)
+//            .onAppear {
+////                locationManager.setRegionToUserPosition()
+//            }
+////            .animation(.easeIn)
     }
 }
 

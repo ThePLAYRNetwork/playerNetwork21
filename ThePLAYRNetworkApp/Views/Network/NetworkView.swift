@@ -7,50 +7,62 @@
 
 import SwiftUI
 
+// TODO: Add divider
 struct NetworkView: View {
-    @State var posts = Post.samplePosts
+    @EnvironmentObject var navigationModel: NavigationModel
+    @EnvironmentObject var networkViewModel: NetworkViewModel
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 0) {
-                    TopSearchBarSection()
-                    
-                    ScrollView {
-                        LazyVStack(alignment: .leading, spacing: 0) {
-                            HStack{
-                                Circle()
-                                    .frame(width: 40, height: 40)
-                                    .foregroundColor(.gray.opacity(0.3))
-                                
-                                
-                                Text("What's on your mind?")
-                                    .fontWeight(.bold)
-                            }
-                            .padding(.horizontal)
+        ScrollView {
+            VStack(spacing: 0) {
+                TopSearchBarSection()
+                
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        divider
+                            .padding(.bottom, 30)
+
+                        
+                        HStack{
+                            Circle()
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(.gray.opacity(0.3))
                             
+                            
+                            Text("What's on your mind?")
+                                .fontWeight(.bold)
+                        }
+                        .padding(.horizontal)
+                        
+                        divider
+                            .padding(.top, 30)
+                        
+                        // PlayersYouMayKnowRow()
+                        
+                        ForEach($networkViewModel.posts) { $post in
+                            PostItem(post: $post)
                             divider
-                                .padding(.top, 30)
-                            
-                            PlayersYouMayKnowRow()
-                            
-                            ForEach($posts, id: \.recordName) { $post in
-                                PostItem(post: $post)
-                                divider
-                            }
                         }
                     }
-                    .navigationTitle("")
-                    .navigationBarHidden(true)
                 }
             }
         }
-    }
-}
-
-struct NetworkView_Previews: PreviewProvider {
-    static var previews: some View {
-        NetworkView()
+        .navigationTitle("")
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    // Navigate to create post view
+                    navigationModel.homePath.append(PostDestination.createPost)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .refreshable {
+            Task {
+                await networkViewModel.fetchPosts()
+            }
+        }
     }
 }
 
@@ -59,3 +71,14 @@ var divider: some View {
         .frame(height: 7)
         .foregroundColor(Color.ui.grayD9D9D9)
 }
+
+struct NetworkView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            NetworkView()
+                .environmentObject(NavigationModel())
+                .environmentObject(NetworkViewModel())
+        }
+    }
+}
+

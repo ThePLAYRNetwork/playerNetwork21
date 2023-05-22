@@ -34,8 +34,12 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var gameCoverImageViewModel = GameCoverImageViewModel()
     
     @StateObject private var journalViewModel = JournalViewModel(journalRepository: JournalRepository())
+    @StateObject private var createPostViewModel = CreatePostViewModel()
+    @StateObject private var networkViewModel = NetworkViewModel()
+
     
     init() {
+        // TODO: Could make inits asynchronous to deal with race conditions?
         let gameRepository = GameRepository()
         let sessionRepository = SessionRepository()
         let userRepository = UserRepository()
@@ -56,7 +60,8 @@ struct ThePLAYRNetworkApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $navigationModel.path) {
+            // Dont nest navigationstack and move navigation destination inside the navigation stack https://developer.apple.com/forums/thread/711138
+//            NavigationStack(path: $navigationModel.path) {
                 Group { // use for conditional
                     // Use full modal
                     if ckUserViewModel.showOnboarding {
@@ -80,20 +85,20 @@ struct ThePLAYRNetworkApp: App {
                 .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
                     ThePlayrNetworkView()
                 }
-                .navigationDestination(for: GameDestination.self) { destination in
-                    switch destination {
-                    case .confirmGame:
-                        ConfirmGameView()
-                    }
-                }
-                .navigationDestination(for: SessionDestination.self) { destination in
-                    switch destination {
-                        
-                    case .confirmSession:
-                        ConfirmSessionView()
-                    }
-                }
-                
+//                .navigationDestination(for: GameDestination.self) { destination in
+//                    switch destination {
+//                    case .confirmGame:
+//                        ConfirmGameView()
+//                    }
+//                }
+//                .navigationDestination(for: SessionDestination.self) { destination in
+//                    switch destination {
+//                        
+//                    case .confirmSession:
+//                        ConfirmSessionView()
+//                    }
+//                }
+//                
                 // note: can only use 1 alert, use enums and switch to show different alert
                 .alert(isPresented : $navigationModel.showiCloudErrorAlert) {
                     Alert(
@@ -107,7 +112,7 @@ struct ThePLAYRNetworkApp: App {
                 //                        message: Text("Your game has been posted.")
                 //                    )
                 //                }
-            }
+//            }
             // Don't put all viewmodels on top heiracrchy
             .environmentObject(navigationModel)
             .environmentObject(ckUserViewModel)
@@ -120,6 +125,8 @@ struct ThePLAYRNetworkApp: App {
             .environmentObject(sessionCoverImageViewModel)
             .environmentObject(gameCoverImageViewModel)
             .environmentObject(journalViewModel)
+            .environmentObject(createPostViewModel)
+            .environmentObject(networkViewModel)
         }
     }
 }

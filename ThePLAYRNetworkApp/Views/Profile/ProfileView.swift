@@ -40,7 +40,7 @@ struct ProfileView: View {
                     .padding(.leading)
                     .padding(.top)
                 
-                ForEach($posts, id: \.recordName) { $post in
+                ForEach($posts) { $post in
                     PostItem(post: $post)
                     divider
                 }
@@ -92,7 +92,7 @@ struct TopSection: View {
             
             
             VStack(alignment: .leading, spacing: 0) {
-                Text(ckUserViewModel.user.name)
+                Text(ckUserViewModel.user.fullName)
                     .bold()
                     .font(.system(size: 24))
                 

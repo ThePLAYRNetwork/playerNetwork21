@@ -15,69 +15,70 @@ struct JournalChartTabItem: View {
     @EnvironmentObject var journalViewModel: JournalViewModel
     @State private var isShowingSheet = false
 
+    
     var body: some View {
         VStack(spacing: 12) {
             HStack {
-                DatePicker(
-                    "Show shooting metric for date..",
-                    selection: $journalViewModel.currentJournal.date,
-                    displayedComponents: [.date]
-                )
-                    .datePickerStyle(.compact)
-                    .fixedSize()
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Start".uppercased())
+                        .font(.system(size: 12, weight: .medium))
+                    
+                    DatePicker(
+                        "Show shooting metric for date..",
+                        selection: $journalViewModel.startDate,
+                        in: journalViewModel.getStartDateRange(),
+                        displayedComponents: .date
+                    )
                     .labelsHidden()
+                }
                 
                 Spacer()
                 
-                Button(action: {
-                    isShowingSheet.toggle()
-                }) {
-                    Text("Input Data")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.white)
-                        .padding(.vertical, 2)
-                        .padding(.horizontal, 10)
-                        .background(Capsule().fill(Color.ui.accentColor))
-                }
-                .buttonStyle(.plain)
-                .sheet(isPresented: $isShowingSheet,
-                       onDismiss: didDismiss) {
-                    InputDataView()
-                        .presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("End".uppercased())
+                        .font(.system(size: 12, weight: .medium))
+                    
+                    DatePicker(
+                        "Show shooting metric for date..",
+                        selection: $journalViewModel.endDate,
+                        in: journalViewModel.getEndDateRange(),
+                        displayedComponents: .date
+                    )
+                    .labelsHidden()
+                    
                 }
             }
             
-            JournalChartView(journalViewModel: journalViewModel) // could use environment
+            JournalChartView() // could use environment
 
-//            HStack {
-//                Menu {
-//                    Picker(selection: $journalViewModel.selectedCourtSection) {
-//                        ForEach(CourtSection.allCases) { value in
-//                            Text(value.rawValue) // use associated string
-//                                .tag(value)
-//                                .font(.largeTitle)
-//                        }
-//                    } label: {}
-//                } label: {
-//                    HStack {
-//                        Text(journalViewModel.selectedCourtSection.rawValue)
-//                            .font(.system(size: 14, weight: .semibold))
-//
-//                        Image(systemName: "chevron.down")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 8, height: 4)
-//                    }
-//                    .foregroundColor(.white)
-//                    .padding(.vertical, 3)
-//                    .padding(.horizontal, 8)
-//                    .background(Capsule().fill(Color.ui.black))
-//                }
-//
-//                Spacer()
-//                
-//            }
+            HStack {
+                Menu {
+                    Picker(selection: $journalViewModel.selectedCourtSection) {
+                        ForEach(CourtSection.allCases) { value in
+                            Text(value.rawValue) // use associated string
+                                .tag(value)
+                                .font(.largeTitle)
+                        }
+                    } label: {}
+                } label: {
+                    HStack {
+                        Text(journalViewModel.selectedCourtSection.rawValue)
+                            .font(.system(size: 14, weight: .semibold))
+
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 8, height: 4)
+                    }
+                    .foregroundColor(.white)
+                    .padding(.vertical, 3)
+                    .padding(.horizontal, 8)
+                    .background(Capsule().fill(Color.ui.black))
+                }
+
+                Spacer()
+                
+            }
 //            .padding(.bottom, 8)
             
 //            JournalCustomSegmentedControl(

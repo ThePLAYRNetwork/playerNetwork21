@@ -128,6 +128,7 @@ struct Game: Hashable, Identifiable { // remove hashable?
         let record = CKRecord(recordType: "Game", recordID: self.recordID)
         record[Game.RecordKey.title] = self.title
         record[Game.RecordKey.place] = self.place
+        record[Game.RecordKey.address] = self.address
         record[Game.RecordKey.location] = self.location
         record[Game.RecordKey.capacity] = self.capacity
         record[Game.RecordKey.date] = self.date

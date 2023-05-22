@@ -38,7 +38,7 @@ class CreateGameViewModel: NSObject, ObservableObject, CLLocationManagerDelegate
         case .success(let game):
             gameRepository.games.append(game)
             // Game created successfully
-            self.navigationModel.path.removeLast()       // remove confirmation screen
+            self.navigationModel.gamePath.removeLast()       // remove confirmation screen
             self.navigationModel.tabSelection = .home    // show home screen
             self.navigationModel.showGameCreatedSuccessAlert = true
             // clear inputs

@@ -17,18 +17,31 @@ protocol SessionApiService {
 }
 
 
-
 class SessionRepository: ObservableObject, SessionApiService {
-    @Published var sessions: [Session] = []
-
+    
     private lazy var container: CKContainer = CKContainer.default()
     private lazy var database: CKDatabase = container.publicCloudDatabase
     
-//    init() {
-//        fetchSession()
-//        
-//    }
-//    
+    func fetchSession() async -> Result<[Session], Error> {
+        do {
+            let predicate = NSPredicate(value: true)
+            let query = CKQuery(recordType: "Session", predicate: predicate)
+            
+            do {
+                var (sessionResults, _) = try await database.records(matching: query)
+                
+                var sessions: [Session] = try sessionResults
+                    .compactMap { _, result in
+                        let record = try result.get()
+                        return try Session(record: record)
+                    }
+                
+                return .success(sessions)
+            } catch {
+                return .failure(error)
+            }
+        }
+    }
     
     func createSession(session: Session) async -> Result<Session, Error> {
         do {
@@ -42,74 +55,69 @@ class SessionRepository: ObservableObject, SessionApiService {
         }
     }
     
-//    func fetchSession() {
-//
-//        let predicate = NSPredicate(value: true)
-//        let query = CKQuery(recordType: "Session", predicate: predicate)
-//        let queryOperation = CKQueryOperation(query: query)
-//
-//        var returnedSessions: [Session] = []
-//
-//        queryOperation.recordMatchedBlock { (returnedRecordID, returnedResult) in
-//            switch returnedResult {
-//            case .success(let record):
-//                guard let session = record["Session"] as? String else { return }
-//                returnedSessions.append(session)
-//            case .failure(let error):
-//               print("Error recordMatchedBlock: \(error)")
-//            }
-//        }
-//
-//
-//        queryOperation.queryResultBlock = { [weak self] returnedResult  in
-//            print("RETURNED RESULT: \(returnedResult)")
-//            self?.sessions = returnedSessions
-//        }
-//
-//        addOperations(operation: queryOperation)
-//    }
-//
-//
-//
-//    func addOperations(operation: CKDatabaseOperation) {
-//        CKContainer.default().publicCloudDatabase.add(operation)
-//
-//    }
     
     
-    
-    
-    
-    
-    
-        func getSession() async throws -> Result<Session, Error> {
-    
-            do {
-                let sessionID = try await container.userRecordID()
-                // fetch our custom user object using user's id
-                let recordToMatch = CKRecord.Reference(recordID: sessionID, action: .none)
-                let predicate = NSPredicate(value: true)
-                //NSPredicate(format: "\(Session.RecordKey.id.rawValue)")
-                let query = CKQuery(recordType: "Session", predicate: predicate)
-    
-                let (results, _) = try await database.records(matching: query, resultsLimit: 1)
-    
-                if let result = results.first {
-                    let record = try result.1.get()
-                    let session = try Session()
-                    print("Succesfully fetched session from CloudKit")
-                    return .success(session)
-                } else {
-                    print("Failed to get session from CloudKit. User has not created account yet.")
-                    return .failure(CloudKitError.userRecordNotFound)
+    func fetchNearByGames(location: CLLocation) async -> Result<[Session], Error> {
+        let radius = 10000 // meters
+        let predicate = NSPredicate(format: "distanceToLocation:fromLocation:(location, %@) < %f", location, radius)
+        let query = CKQuery(recordType: "Sessions", predicate: predicate)
+        
+        do {
+            var (sessionResults, _) = try await database.records(matching: query, resultsLimit: 10)
+            
+            let sessions: [Session] = sessionResults
+                .compactMap { _, result in
+                    guard let record = try? result.get() else { return nil }
+                    return try? Session(record: record)
                 }
-            } catch {
-                print("Failed to get user from cloudkit")
-                return .failure(error)
-            }
+            print("Sucessfully got nearby games")
+            return .success(sessions)
+            
+        } catch {
+            print("Failed to get nearby games: \(error)")
+            return .failure(error)
         }
+    }
     
     
+    func addOperations(operation: CKDatabaseOperation) {
+        CKContainer.default().publicCloudDatabase.add(operation)
+        
+    }
     
+    func getSession() async throws -> Result<Session, Error> {
+        
+        do {
+            //                let sessionID = try await container.userRecordID()
+            // fetch our custom user object using user's id
+            //                let recordToMatch = CKRecord.Reference(recordID: sessionID, action: .none)
+            let predicate = NSPredicate(value: true)
+            //NSPredicate(format: "\(Session.RecordKey.id.rawValue)")
+            let query = CKQuery(recordType: "Session", predicate: predicate)
+            
+            let (results, _) = try await database.records(matching: query, resultsLimit: 1)
+            print(results)
+            if let result = results.first {
+                let record = try result.1.get()
+                let session = try Session()
+                print("Succesfully fetched session from CloudKit")
+                return .success(session)
+            } else {
+                print("Failed to get session from CloudKit. User has not created account yet.")
+                return .failure(CloudKitError.userRecordNotFound)
+            }
+        } catch {
+            print("Failed to get user from cloudkit")
+            return .failure(error)
+        }
+    }
     
+}
+
+
+extension CKRecord {
+    subscript(key: Session.RecordKey) -> Any? {
+        get { return self[key.rawValue] }
+        set { self[key.rawValue] = newValue as? CKRecordValue}
+    }
 }

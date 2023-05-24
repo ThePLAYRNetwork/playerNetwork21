@@ -9,23 +9,20 @@ import SwiftUI
 
 
 struct EventsRow: View {
+    @EnvironmentObject var sessionViewModel: SessionViewModel
+    
     var body: some View {
         
-        
-         VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 10) {
             
-        
-             ForEach(0...3, id: \ .self) { event in
-                        EventsItem()
-                 Divider()
-                    }
-         }
-        
-        
+            ForEach(sessionViewModel.sessions) { session in
+                EventItem(session: session)
+            }
         }
-    
     }
     
+}
+
 
 struct EventsRow_Previews: PreviewProvider {
     static var previews: some View {

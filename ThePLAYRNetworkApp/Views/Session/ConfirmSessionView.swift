@@ -14,7 +14,8 @@ struct ConfirmSessionView: View {
     @State var trainingSessionCollection: TrainingSessionCollection = TrainingSessionCollection.sampleSession
  
     
-    
+    let session: Session
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -170,9 +171,10 @@ struct ConfirmSessionView: View {
                     .padding(.bottom, 20)
             }
             .onAppear {
-                Task {
-                    try await sessionRepo.getSession()
-                }
+                  Task {
+                  //    try await sessionRepo.getSession()
+                      try await sessionViewModel.addSession(session: session)
+                  }
                 
             }
             
@@ -189,8 +191,20 @@ struct ConfirmSessionView: View {
             
             
             
+            Button {
+                  Task {
+                  //    try await sessionRepo.getSession()
+                      try await sessionViewModel.addSession(session: session)
+                  }
+            } label: {
+                Text("Confirm")
+            }
+            .buttonStyle(CustomButton(color: .red, size: .small))
             
-            ConfirmSessionButtons(buttonTitle: "Confirm", session: sessionViewModel.newSession)
+            
+            
+//            ConfirmSessionButtons(buttonTitle: "Confirm",
+//                                  session: sessionViewModel.newSession)
             
             //                            .disabled(isDisabled())
             //                            .opacity(isDisabled() ? 0.5 : 1.0)

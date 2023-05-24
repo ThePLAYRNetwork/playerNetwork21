@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct SheetButtonRow: View {
+    let session: Session
+    
+    var sessions: [Session]
+    
     var body: some View {
         HStack {
             NavigationLink {
-                TrainingView()
+                TrainingView(session: session)
             } label: {
                 RoundedRectangle(cornerRadius: 4)
                     .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
@@ -62,8 +66,8 @@ struct SheetButtonRow: View {
     }
 }
 
-struct SheetButtonRow_Previews: PreviewProvider {
-    static var previews: some View {
-        SheetButtonRow()
-    }
-}
+//struct SheetButtonRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SheetButtonRow()
+//    }
+//}

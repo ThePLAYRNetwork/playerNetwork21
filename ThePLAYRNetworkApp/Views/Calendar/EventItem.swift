@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct EventItem: View {
-    let game: Game
+    @EnvironmentObject private var sessionViewModel : SessionViewModel
+   // let game: Game
     
-    var day: Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: game.date)
-        return components.day ?? 0
-    }
+    let session: Session
     
-    var dayOfWeekShorten: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEE"
-        let dayOfWeek = formatter.string(from: game.date)
-        return dayOfWeek
-    }
-    
+//    var day: Int {
+//        let calendar = Calendar.current
+//        let components = calendar.dateComponents([.day], from: game.date)
+//        return components.day ?? 0
+//    }
+//
+//    var dayOfWeekShorten: String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "EEE"
+//        let dayOfWeek = formatter.string(from: game.date)
+//        return dayOfWeek
+//    }
+//
     
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
@@ -46,19 +49,27 @@ struct EventItem: View {
                         .cornerRadius(10)
                     
                     VStack(alignment: .leading) {
-                        Text(game.getStartEndTime())
+                        Text(session.title)
+                      //  Text(game.getStartEndTime())
                             .font(.system(size: 12))
                         
-                        Text(game.title)
-                            .fontWeight(.semibold)
+//                        Text(game.title)
+//                            .fontWeight(.semibold)
                         
-                        Text(game.place)
+                      // Text(game.place)
+                        Text(session.details)
                             .fontWeight(.semibold)
                             .font(.system(size: 12))
                     }
                     .foregroundColor(.white)
                     .padding()
-                    
+//                    .onAppear {
+//                        
+//                        
+//                        Task {
+//                          try await sessionViewModel.fetchSession()
+//                        }
+//                    }
                 }
                 
             }
@@ -68,8 +79,8 @@ struct EventItem: View {
     }
 }
 
-struct EventItem_Previews: PreviewProvider {
-    static var previews: some View {
-        EventItem(game: Game.sampleGames[0])
-    }
-}
+//struct EventItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EventItem(game: Game.sampleGames[0])
+//    }
+//}

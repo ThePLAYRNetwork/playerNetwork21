@@ -13,15 +13,17 @@ struct HomeSheetView: View {
     @State var expandList: Bool = true
     @State var yDragTranslation: CGFloat = 0
    
+    let session: Session
     
-    
+    var sessions: [Session]
+
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 Spacer()
                 UpcomingGameRow(categoryName: "Nearby Games", items: homeViewModel.nearbyGames)
                 
-                SheetButtonRow()
+                SheetButtonRow(session: session, sessions: sessions)
                     .padding()
                 
                 // List Handle
@@ -62,10 +64,10 @@ struct HomeSheetView: View {
         }
     }
 }
-
-struct HomeSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeSheetView()
-            .environmentObject(HomeViewModel(gameRepository: GameRepository()))
-    }
-}
+//
+//struct HomeSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeSheetView()
+//            .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+//    }
+//}

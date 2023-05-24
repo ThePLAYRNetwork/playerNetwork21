@@ -34,7 +34,10 @@ struct ThePLAYRNetworkApp: App {
     @StateObject private var gameCoverImageViewModel = GameCoverImageViewModel()
     
     @StateObject private var journalViewModel = JournalViewModel()
-    
+
+    let session = Session()
+    var sessions = [Session]()
+
     init() {
         let gameRepository = GameRepository()
         let sessionRepository = SessionRepository()
@@ -61,8 +64,9 @@ struct ThePLAYRNetworkApp: App {
                     // Use full modal
                     if ckUserViewModel.showOnboarding {
                         GetStartedView()
-                    } else {
-                        ThePlayrNetworkView()
+                    }
+                    else {
+                        ThePlayrNetworkView(session: session, sessions: sessions)
                     }
                 }
                 
@@ -80,7 +84,7 @@ struct ThePLAYRNetworkApp: App {
                     }
                 }
                 .navigationDestination(for: ThePlayrNetworkDestination.self) { _ in
-                    ThePlayrNetworkView()
+                    ThePlayrNetworkView(session: session, sessions: sessions)
                 }
 //                .navigationDestination(for: GameDestination.self) { destination in
 //                    switch destination {
@@ -94,7 +98,7 @@ struct ThePLAYRNetworkApp: App {
                     switch destination {
                         
                     case .confirmSession:
-                        ConfirmSessionView()
+                        ConfirmSessionView(session:session)
                     }
                 }
                 

@@ -72,11 +72,11 @@ struct EventsItem: View {
                 .padding(.top, -8)
                 
             }
-            .onAppear {
-                Task {
-                    try await sessionRepo.getSession()
-                }
-            }
+//            .onAppear {
+//                Task {
+//                    try await sessionRepo.getSession()
+//                }
+//            }
             
             
 //            VStack(alignment: .leading) {

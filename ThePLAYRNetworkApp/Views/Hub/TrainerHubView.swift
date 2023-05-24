@@ -17,7 +17,7 @@ struct TrainerHubView: View {
     
     //    @ObservedObject var gameCoverImageViewModel = GameCoverImageViewModel()
     
-    
+    let session: Session
     var body: some View {
         //   GeometryReader { geometry in
         ZStack(alignment: .top) {
@@ -86,7 +86,7 @@ struct TrainerHubView: View {
                             .aspectRatio(1.0, contentMode: .fit)
                             .frame(width: 89, height: 89)
                             .overlay(
-                                NavigationLink(destination: CreateSessionView(coverImageViewModel: SessionCoverImageViewModel())) {
+                                NavigationLink(destination: CreateSessionView(coverImageViewModel: SessionCoverImageViewModel(), session: session)) {
                                     Image("cross.square")
                                         .resizable()
                                         .frame(width: 46.94, height: 47.18)

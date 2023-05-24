@@ -28,6 +28,9 @@ struct CreateSessionView: View {
     @State var invalidTitle = false
     @State var invalidLocation = false
 
+    let session: Session
+
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
@@ -122,37 +125,42 @@ struct CreateSessionView: View {
                     HStack {
                         Spacer()
                         
+                        Button {
+                            invalidTitle = sessionViewModel.newSession.title.isEmpty
+                            invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
+                            
+                            // Check for invalid inputs
+                            if invalidTitle {
+                                sessionFocusedField = .sessionName
+                            }
+                            else if invalidLocation {
+                                sessionFocusedField = .location
+                            } else {
+                                // Valid Input
+                                Task {
+                                    await
+                                    sessionViewModel.convertAddressToCoordinates()
+                                    navigationModel.homePath.append(SessionDestination.confirmSession)
+                                }
+                            }
+                        } label: {
+                            Text("Create")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .buttonStyle(CustomButton(color: .red, size: .small))
+                        
 //                        Button {
-//                            invalidTitle = sessionViewModel.newSession.title.isEmpty
-//                            invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
-//                            
-//                            // Check for invalid inputs
-//                            if invalidTitle {
-//                                sessionFocusedField = .sessionName
-//                            }
-//                            else if invalidLocation {
-//                                sessionFocusedField = .location
-//                            } else {
-//                                // Valid Input
-//                                Task {
-//                                    await
-//                                    sessionViewModel.convertAddressToCoordinates()
-//                                    navigationModel.homePath.append(SessionDestination.confirmSession)
-//                                }
+//                            Task {
+//                                try await sessionViewModel.createSession(session: session)
+//                                
 //                            }
 //                        } label: {
-//                            Text("Create")
+//                            Text("Confirm")
 //                        }
-//                        .frame(maxWidth: .infinity, alignment: .trailing)
 //                        .buttonStyle(CustomButton(color: .red, size: .small))
-                        
-                        
-                        
-                                                NavigationLink("Create") {
-                                                    ConfirmSessionView()
-                                                }
-                        
-                        
+//                        
+//             NavigationLink("Create") { ConfirmSessionView(session: session)}
+
                     }
                     
                 }
@@ -253,9 +261,11 @@ struct ConfirmSessionButtons: View {
             Spacer()
             
             Button {
-                Task {
-                    await sessionViewModel.createSession()
-                }
+              
+                  Task {
+                  //    try await sessionRepo.getSession()
+                      try await sessionViewModel.addSession(session: session)
+                  }
             } label: {
                 Text(buttonTitle)
             }

@@ -384,7 +384,6 @@
 				323A6D7C29D7D65E008723CD /* OnboardingViewModel.swift */,
 				CF6A16DC291ACAA3001D98F5 /* TrainerHubViewModel.swift */,
 				CFB3385028AE92B100610F42 /* TrainingViewModel.swift */,
-				CF9C9A5529DB4276001321AA /* SessionViewModel.swift */,
 				CFB0D4CA29DCA30300D23D81 /* SessionCoverImageViewModel.swift */,
 				CFFBE39029FFFF700090AFA3 /* GameCoverImageViewModel.swift */,
 			);
@@ -414,6 +413,7 @@
 		32862EF928923EE200CDFB3B = {
 			isa = PBXGroup;
 			children = (
+				CF0F99E32A1BE2D9005161C9 /* ICloud */,
 				32862F0428923EE200CDFB3B /* ThePLAYRNetworkApp */,
 				32862F0328923EE200CDFB3B /* Products */,
 				8E10F7A1052D7361ABFEE247 /* Pods */,
@@ -494,7 +494,6 @@
 				CF26301D28EB137F00CAD20D /* Message.swift */,
 				CF6B678C296C532C00BEC347 /* Note.swift */,
 				3271214A28CF83790056E304 /* Post.swift */,
-				CFB3385228AE932900610F42 /* Session.swift */,
 				CF6B678A296C531A00BEC347 /* Specialist.swift */,
 				CFCFF75228AAD6BA002F1D30 /* Task.swift */,
 				CF6B678E296C534D00BEC347 /* TrainingSession.swift */,
@@ -582,6 +581,15 @@
 				E0F6EAA725AA91F9D1E410BF /* Pods-ThePLAYRNetworkApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF0F99E32A1BE2D9005161C9 /* ICloud */ = {
+			isa = PBXGroup;
+			children = (
+				CF9C9A5529DB4276001321AA /* SessionViewModel.swift */,
+				CFB3385228AE932900610F42 /* Session.swift */,
+			);
+			path = ICloud;
 			sourceTree = "<group>";
 		};
 		CF1A19B128BFE49B00D82DC8 /* BookSession */ = {

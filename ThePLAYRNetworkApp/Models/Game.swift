@@ -32,6 +32,7 @@ struct Game: Hashable, Identifiable { // remove hashable?
     }
     
     init(title: String = "", place: String = "", address: String = "", location: CLLocation = CLLocation(), capacity: Int = 0, date: Date = Date(), startTime: Date = Date().nearestHour(), endTime: Date = Date().nearestHour(), details: String = "", playerLevel: PlayerLevel = .recreation, coverImage: CKAsset? = nil, isIndoor: Bool = false, isSpectatorAllowed: Bool = false, isPrivateGame: Bool = false) {
+        
         self.id = UUID().uuidString
         self.title = title
         self.place = place

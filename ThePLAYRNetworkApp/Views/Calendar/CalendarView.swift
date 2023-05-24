@@ -27,6 +27,8 @@ struct CalendarView: View {
         return dayOfWeek
     }
     
+    let session: Session
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -51,7 +53,7 @@ struct CalendarView: View {
                         VStack {
                             ForEach(Game.sampleGames.sorted(by: { $0.date < $1.date })) { game in
                                 if sameDay(d1: date, d2: game.date) {
-                                    EventItem(game: game)
+                                    EventItem(session: session)
                                         .opacity(isPastDate(someDate: game.date) ? 0.7 : 1.0)
                                 }
                             }
@@ -93,10 +95,10 @@ struct CalendarView: View {
     }
 }
 
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
-            .environmentObject(CalendarViewModel(gameRepository: GameRepository()))
-        
-    }
-}
+//struct CalendarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CalendarView()
+//            .environmentObject(CalendarViewModel(gameRepository: GameRepository()))
+//        
+//    }
+//}

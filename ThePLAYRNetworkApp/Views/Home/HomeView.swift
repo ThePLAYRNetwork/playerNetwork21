@@ -13,13 +13,16 @@ struct HomeView: View {
     @State var expandList: Bool = true
     @State var yDragTranslation: CGFloat = 0
     
+    let session: Session
+    var sessions: [Session]
+
     var body: some View {
         
         GeometryReader { geometry in
             ZStack(alignment: .top) {
                 MapView()
                     .ignoresSafeArea(edges: Edge.Set.top)
-                HomeSheetView()
+                HomeSheetView(session: session, sessions: sessions)
                     .shadow(radius: 1)
                 TopBar()
             }
@@ -52,12 +55,12 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            HomeView()
-                .environmentObject(HomeViewModel(gameRepository: GameRepository()))
-                .environmentObject(LocationManager())
-        }
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            HomeView()
+//                .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+//                .environmentObject(LocationManager())
+//        }
+//    }
+//}

@@ -8,6 +8,15 @@
 import Foundation
 import CloudKit
 
+
+//enum SessionRecordKeys: String {
+//    case type = "Sessions"
+//    case title
+//    case place
+//    case address
+//    
+//}
+
 struct Session: Hashable, Identifiable {
     var id: String
     var title: String
@@ -30,7 +39,7 @@ struct Session: Hashable, Identifiable {
     
     
     
-    init(id: String = "", title: String = "", place: String = "", address: String = "", location:  CLLocation = CLLocation(), price: String = "", startDate: Date = Date(), endDate: Date = Date(), duration: String = "", details: String = "", coverImage: CKAsset? = nil) {
+    init(title: String = "", place: String = "", address: String = "", location:  CLLocation = CLLocation(), price: String = "", startDate: Date = Date(), endDate: Date = Date(), duration: String = "", details: String = "", coverImage: CKAsset? = nil) {
         
         self.id = UUID().uuidString
         self.title = title
@@ -48,9 +57,9 @@ struct Session: Hashable, Identifiable {
     
     init(record: CKRecord) throws {
 
-        guard let id = record[.id] as? String else {
-             throw RecordError.missingKey(.id)
-         }
+//        guard let id = record[.id] as? String else {
+//             throw RecordError.missingKey(.id)
+//         }
 
         guard let title = record[Session.RecordKey.title] as? String else {
             throw RecordError.missingKey(.title)
@@ -115,7 +124,7 @@ struct Session: Hashable, Identifiable {
     //Convert Session object to Record
     
     func createSessionRecord() async throws -> CKRecord {
-        let record = CKRecord(recordType: "Session", recordID: self.recordID)
+        let record = CKRecord(recordType: "Sessions", recordID: self.recordID)
         
         record[Session.RecordKey.title] = self.title
         record[Session.RecordKey.place] = self.place
@@ -139,6 +148,31 @@ struct Session: Hashable, Identifiable {
 
 
 extension Session {
+    
+    var record: CKRecord {
+        let record = CKRecord(recordType: "Sessions")
+        record[Session.RecordKey.title] = self.title
+        record[Session.RecordKey.place] = self.place
+        record[Session.RecordKey.address] = self.address
+        record[Session.RecordKey.location] = self.location
+        record[Session.RecordKey.price] = self.price
+        record[Session.RecordKey.startDate] = self.startDate
+        record[Session.RecordKey.endDate] = self.endDate
+        record[Session.RecordKey.details] = self.details
+        record[Session.RecordKey.duration] = self.duration
+        
+        if let coverImage = self.coverImage?.fileURL {
+            record[Session.RecordKey.coverImage] = CKAsset(fileURL: coverImage)
+        }
+        
+
+        return record
+    }
+}
+
+
+
+extension Session {
     struct RecordError: LocalizedError {
         var localizedDescription: String
         
@@ -150,7 +184,7 @@ extension Session {
     
     
     enum RecordKey: String {
-        case id, title, place, address, location,price, startDate, endDate,duration, details, coverImage
+        case title, place, address, location,price, startDate, endDate,duration, details, coverImage
     }
     
     
@@ -161,7 +195,13 @@ extension Session {
     
     
     static let sampleSessions: [Session] = [
-        Session(id: "", title: "", location:  CLLocation(latitude: 32.88507, longitude: -117.24046), price: "", startDate: Date(), endDate: Date(),duration: "", details: ""
+        Session(title: "",
+                location:  CLLocation(latitude: 32.88507, longitude: -117.24046),
+                price: "",
+                startDate: Date(),
+                endDate: Date(),
+                duration: "",
+                details: ""
                // coverImage: CKAsset(fileURL: URL(string: "")!)
                )
     ]
@@ -169,9 +209,3 @@ extension Session {
 
 
 
-extension CKRecord {
-    subscript(key: Session.RecordKey) -> Any? {
-        get { return self[key.rawValue] }
-        set { self[key.rawValue] = newValue as? CKRecordValue}
-    }
-}

@@ -11,10 +11,14 @@ import SwiftUI
 struct ThePlayrNetworkView: View {
     @EnvironmentObject var navigationModel: NavigationModel
 
+    let session: Session
+    var sessions: [Session]
+
+    
     var body: some View {
         TabView(selection: $navigationModel.tabSelection) {
             NavigationStack(path: $navigationModel.homePath) {
-                HomeView()
+                HomeView(session: session, sessions: sessions)
             }
             .tabItem {
                 Image("home")
@@ -22,7 +26,7 @@ struct ThePlayrNetworkView: View {
             .tag(ThePlayrNetworkDestination.home)
             
             NavigationStack(path: $navigationModel.path) {
-                CalendarView()
+                CalendarView(session: session)
                     .background(Color.ui.whiteBg)
             }
             .tabItem {
@@ -60,12 +64,12 @@ struct ThePlayrNetworkView: View {
     }
 }
 
-struct ThePlayrNetworkView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThePlayrNetworkView()
-            .environmentObject(NavigationModel())
-            .environmentObject(HomeViewModel(gameRepository: GameRepository()))
-            .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
-            .environmentObject(SessionViewModel(sessionRepository: SessionRepository(), navigationModel: NavigationModel()))
-    }
-}
+//struct ThePlayrNetworkView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ThePlayrNetworkView()
+//            .environmentObject(NavigationModel())
+//            .environmentObject(HomeViewModel(gameRepository: GameRepository()))
+//            .environmentObject(CreateGameViewModel(gameRepository: GameRepository(), navigationModel: NavigationModel()))
+//            .environmentObject(SessionViewModel(sessionRepository: SessionRepository(), navigationModel: NavigationModel()))
+//    }
+//}

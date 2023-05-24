@@ -12,13 +12,15 @@ struct TrainingView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @State var searchText: String = ""
     
+    
+    let session: Session
     var body: some View {
         ScrollView {
             HStack {
                 SearchBar(text: $searchText)
                 
                 NavigationLink("Trainer Hub") {
-                    TrainerHubView()
+                    TrainerHubView(session: session)
                 }
                 .font(.system(size: 14))
                 .buttonStyle(CustomButton(color: .red, size: .small))
@@ -276,10 +278,10 @@ struct TrainingView: View {
         }        
     }
 }
-
-struct TrainingView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrainingView().preferredColorScheme(.dark)
-       // TrainingView()
-    }
-}
+//
+//struct TrainingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrainingView().preferredColorScheme(.dark)
+//       // TrainingView()
+//    }
+//}

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SheetButtonRow: View {
+    @EnvironmentObject var navigationModel: NavigationModel
+
     var body: some View {
         HStack {
             NavigationLink {
@@ -21,18 +23,31 @@ struct SheetButtonRow: View {
                     }
             }
             .buttonStyle(.plain) // lessens white flash when clicked
-
-            NavigationLink {
-                NetworkView()
+            
+            Button {
+                navigationModel.homePath.append(PostDestination.networkFeed)
             } label: {
-               RoundedRectangle(cornerRadius: 4)
-                    .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
-                    .aspectRatio(1.0, contentMode: .fit)
-                    .overlay {
-                        Image("network_icon")
-                    }
+                RoundedRectangle(cornerRadius: 4)
+                     .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
+                     .aspectRatio(1.0, contentMode: .fit)
+                     .overlay {
+                         Image("network_icon")
+                     }
             }
             .buttonStyle(.plain)
+
+            
+//            NavigationLink {
+//                NetworkView()
+//            } label: {
+//               RoundedRectangle(cornerRadius: 4)
+//                    .shadow(color: Color.ui.grayD9D9D9, radius: 1, x: 0, y: 5)  // drop shadow
+//                    .aspectRatio(1.0, contentMode: .fit)
+//                    .overlay {
+//                        Image("network_icon")
+//                    }
+//            }
+//            .buttonStyle(.plain)
             
             NavigationLink {
                 DiscoverView()

@@ -34,7 +34,7 @@ class UserRepository: UserApiService {
         }
     }
     
-    func getUser() async -> Result<User, Error> {
+    func getUser() async -> Result<User, Error> { // equivalent to throws -> User?
         do {
             let userID = try await container.userRecordID()
             // fetch our custom user object using user's id

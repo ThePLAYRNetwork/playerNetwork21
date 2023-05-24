@@ -26,7 +26,7 @@ struct CreateGameView: View {
     @FocusState private var focusedField: Field?
     @State var invalidTitle = false
     @State var invalidLocation = false
-
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
@@ -51,9 +51,9 @@ struct CreateGameView: View {
                             field: .location,
                             isInvalid: $invalidLocation
                         )
-                            .frame(width: geometry.size.width * 0.60)
-                            .focused($focusedField, equals: .location)
-
+                        .frame(width: geometry.size.width * 0.60)
+                        .focused($focusedField, equals: .location)
+                        
                         Spacer()
                         
                         GameCapacityMenu(
@@ -105,8 +105,8 @@ struct CreateGameView: View {
                             )
                             .labelsHidden()
                         }
-                    }                    
-
+                    }
+                    
                     GameTextField(
                         text: $createGameViewModel.newGame.details,
                         title: "Details",
@@ -126,29 +126,29 @@ struct CreateGameView: View {
                     
                     
                     Button {
-                                            invalidTitle = createGameViewModel.newGame.title.isEmpty
-                                            invalidLocation = createGameViewModel.locationSearchService.selectedCompletion == nil
-                                            
-                                            // Check for invalid inputs
-                                            if invalidTitle {
-                                                focusedField = .gameName
-                                            }
-                                            else if invalidLocation {
-                                                focusedField = .location
-                                            } else {
-                                                // Valid Input
-                                                Task {
-                                                    await createGameViewModel.convertAddressToCoordinates()
-                                                    navigationModel.path.append(GameDestination.confirmGame)
-                                                }
-                                            }
-                                        } label: {
-                                            Text("Continue")
-                                        }
-                                        .frame(maxWidth: .infinity, alignment: .trailing)
-                                        .buttonStyle(CustomButton(color: .red, size: .small))
-
-                
+                        invalidTitle = createGameViewModel.newGame.title.isEmpty
+                        invalidLocation = createGameViewModel.locationSearchService.selectedCompletion == nil
+                        
+                        // Check for invalid inputs
+                        if invalidTitle {
+                            focusedField = .gameName
+                        }
+                        else if invalidLocation {
+                            focusedField = .location
+                        } else {
+                            // Valid Input
+                            Task {
+                                await createGameViewModel.convertAddressToCoordinates()
+                                navigationModel.gamePath.append(GameDestination.confirmGame)
+                            }
+                        }
+                    } label: {
+                        Text("Continue")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .buttonStyle(CustomButton(color: .red, size: .small))
+                    
+                    
                 }
                 .padding()
             }
@@ -176,7 +176,7 @@ struct PlayerLevelRow: View {
         VStack(alignment: .leading, spacing: 3) {
             Text("Player Level".uppercased())
                 .font(.system(size: 12))
-
+            
             HStack {
                 Button(action: { selection = .recreation }) {
                     RoundedRectangle(cornerRadius: 40, style: .continuous)
@@ -185,7 +185,7 @@ struct PlayerLevelRow: View {
                                 .foregroundColor(selection == .recreation ? Color.white : .gray)
                         }
                         .foregroundColor(selection == .recreation ? Color.ui.accent : Color.ui.grayF6F6F6)
-
+                    
                 }
                 .disabled(selection == .recreation)
                 
@@ -198,7 +198,7 @@ struct PlayerLevelRow: View {
                         .foregroundColor(selection == .competitive ? Color.ui.accent : Color.ui.grayF6F6F6)
                 }
                 .disabled(selection == .competitive)
-
+                
                 Button(action: { selection = .elite }) {
                     RoundedRectangle(cornerRadius: 40, style: .continuous)
                         .overlay {
@@ -235,7 +235,7 @@ struct GameOptions: View {
                     .padding([.trailing, .leading])
                 }
                 .foregroundColor(Color.ui.grayF6F6F6)
-
+            
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: 40)
                 .overlay {
@@ -246,12 +246,12 @@ struct GameOptions: View {
                         Toggle("Spectators Allowed", isOn: $game.isSpectatorAllowed)
                             .labelsHidden()
                             .tint(Color.ui.accent)
-
+                        
                     }
                     .padding([.trailing, .leading])
                 }
                 .foregroundColor(Color.ui.grayF6F6F6)
-
+            
             RoundedRectangle(cornerRadius: 8)
                 .frame(height: 40)
                 .overlay {
@@ -266,7 +266,7 @@ struct GameOptions: View {
                     .padding([.trailing, .leading])
                 }
                 .foregroundColor(Color.ui.grayF6F6F6)
-
+            
             NavigationLink(destination: InvitePlayersView()) {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(height: 40)
@@ -316,7 +316,7 @@ struct GameTextField: View {
                     text: $text
                 )
                 .focused($focusedField, equals: field)
-
+                
             }
             .modifier(CreateLabel())
         }
@@ -328,7 +328,7 @@ struct GameCapacityMenu: View {
     let title: String
     let placeholder: Int
     let limit = 30
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             Text(title.uppercased())
@@ -352,7 +352,7 @@ struct GameCapacityMenu: View {
                         .frame(width: 12, height: 6)
                 }
                 .modifier(CreateLabel())
-
+                
             }
         }
     }

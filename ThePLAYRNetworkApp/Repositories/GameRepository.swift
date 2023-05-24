@@ -42,13 +42,14 @@ class GameRepository: ObservableObject, GameApiService {
         
         do {
             var (gameResults, _) = try await database.records(matching: query, resultsLimit: 10)
-            
-            let games: [Game] = gameResults
-                .compactMap { _, result in
-                    guard let record = try? result.get() else { return nil }
-                    return try? Game(record: record)
+            print(gameResults.count)
+            let games: [Game] = try gameResults
+                .map { _, result in
+                    let record = try result.get()
+                    return try Game(record: record)
                 }
             print("Sucessfully got nearby games")
+            print(games.count)
             return .success(games)
             
         } catch {

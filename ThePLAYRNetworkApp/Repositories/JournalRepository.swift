@@ -79,25 +79,32 @@ class JournalRepository: ObservableObject {
         }
     }
     
-    func getJournalEntry(startDate: Date, endDate: Date) async -> Result<Journal, Error> {
+    func getJournalEntries(startDate: Date, endDate: Date) async -> Result<[Journal], Error> {
         do {
             print(startDate.formatted(date: .abbreviated, time: .omitted))
             print(endDate.formatted(date: .abbreviated, time: .omitted))
             
+            // Offset start by 1? kinda hacky
+            guard let start = Calendar.current.date(byAdding: .day, value: -1, to: startDate),
+                  let end = Calendar.current.date(byAdding: .day, value: 0, to: endDate) else { return .failure(JournalError.badDate) }
+
+            print(start.formatted(date: .abbreviated, time: .omitted))
+            print(end.formatted(date: .abbreviated, time: .omitted))
+            
             let userID = try await container.userRecordID()
             let predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND creatorUserRecordID == %@",
-                                        startDate as NSDate, endDate as NSDate, userID)
+                                        start as NSDate, end as NSDate, userID)
             let query = CKQuery(recordType: "Journal", predicate: predicate)
             
             let (results, _) = try await database.records(matching: query)
-            print("Number of records between \(startDate.formatted(date: .abbreviated, time: .omitted)) and \(endDate.formatted(date: .abbreviated, time: .omitted)): \(results.count)")
-            if let record = try results.first?.1.get() {
-                print("Successfully found journal entry")
-                return .success(try Journal(record: record)) // existing journal
-            } else {
-                print("No journal entry found")
-                return .success(Journal())    // empty journal
-            }
+            
+            let journals: [Journal] = try results
+                .map { try $0.1.get() }
+                .map { try Journal(record: $0) }
+            
+            print("Number of records between \(startDate.formatted(date: .abbreviated, time: .omitted)) and \(endDate.formatted(date: .abbreviated, time: .omitted)): \(journals.count)")
+            print(journals)
+            return .success(journals)
             
         } catch {
             print("Erroring fetching journal entry: \(error)")

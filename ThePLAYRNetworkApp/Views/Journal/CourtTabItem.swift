@@ -84,12 +84,12 @@ struct CourtTabItem: View {
                         Capsule().fill(Color.ui.grayDADADA)
                     }
             }
-            .padding(.bottom, 8)
+//            .padding(.bottom, 8)
             
-            JournalCustomSegmentedControl(
-                selectedDateRange: $journalViewModel.selectedDateRange,
-                spacing: 15.0
-            )
+//            JournalCustomSegmentedControl(
+//                selectedDateRange: $journalViewModel.selectedDateRange,
+//                spacing: 15.0
+//            )
             
             //            CustomSegmentedControl(
             //                selectedIndex: $journalViewModel.selectedDateType,

@@ -31,7 +31,7 @@ struct User: Identifiable {
         CKRecord.ID(recordName: id)
     }
     
-    var name: String {
+    var fullName: String {
         "\(firstName) \(lastName)"
     }
     
@@ -208,6 +208,7 @@ extension User {
 
 extension User {
     static let sampleUsers: [User] = [
-        User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "140..150", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playsLike: "Kobe Bryant")
+        User(firstName: "LeBron", lastName: "James", email: "james123@gmail.com", role: .player, height: "6'9\"", weight: "140..150", age: 38, highestLevelPlayed: .professional, skillLevel: .elite, school: "St. Vincent-St. Mary High School", position: .forward, playsLike: "Kobe Bryant"),
+        User(firstName: "Timmy", lastName: "Nguyen", email: "timmypass123@gmail.com", phoneNumber: "123456553", role: .player, height: "5'6\"", weight: "160", age: 21, highestLevelPlayed: .high_school, skillLevel: .recreation, school: "California State University, East Bay", position: .forward, playsLike: "LeBron James")
     ]
 }

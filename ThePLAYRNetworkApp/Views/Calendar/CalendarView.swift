@@ -49,12 +49,12 @@ struct CalendarView: View {
                         .frame(width: 40)
                         
                         VStack {
-                            ForEach(Game.sampleGames.sorted(by: { $0.date < $1.date })) { game in
-                                if sameDay(d1: date, d2: game.date) {
-                                    EventItem(game: game)
-                                        .opacity(isPastDate(someDate: game.date) ? 0.7 : 1.0)
-                                }
-                            }
+//                            ForEach(Game.sampleGames.sorted(by: { $0.date < $1.date })) { game in
+//                                if sameDay(d1: date, d2: game.date) {
+//                                    EventItem(game: game)
+//                                        .opacity(isPastDate(someDate: game.date) ? 0.7 : 1.0)
+//                                }
+//                            }
                         }
                     }
                     .padding(.horizontal)

@@ -122,32 +122,6 @@ struct CreateSessionView: View {
                     HStack {
                         Spacer()
                         
-                        Button {
-                            invalidTitle = sessionViewModel.newSession.title.isEmpty
-                            invalidLocation = sessionViewModel.locationSearchService.selectedCompletion == nil
-                            
-                            // Check for invalid inputs
-                            if invalidTitle {
-                                sessionFocusedField = .sessionName
-                            }
-                            else if invalidLocation {
-                                sessionFocusedField = .location
-                            } else {
-                                // Valid Input
-                                Task {
-                                    await
-                                    sessionViewModel.convertAddressToCoordinates()
-                                    navigationModel.path.append(SessionDestination.confirmSession)
-                                }
-                            }
-                        } label: {
-                            Text("Create")
-                        }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .buttonStyle(CustomButton(color: .red, size: .small))
-                        
-                        
-                        
                         //                        NavigationLink(destination: ConfirmSessionView()) {
                         //
                         //                            Button {

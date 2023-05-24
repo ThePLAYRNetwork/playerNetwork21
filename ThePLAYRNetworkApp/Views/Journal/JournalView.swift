@@ -33,7 +33,7 @@ struct JournalView: View {
                 .frame(height: 430)
                 //                    .border(.green)
                 .padding(.bottom, 20)
-                
+
                 VStack(alignment: .leading, spacing: 0) {
                     CustomSegmentedControl(
                         selectedIndex: $journalViewModel.selectedNotes,
@@ -50,11 +50,6 @@ struct JournalView: View {
                         Text("Showing Drills")
                     } else {
                         Text("Showing Trends")
-                    }
-                    
-                    HStack {
-                        Text(sunday.formatted(date: .abbreviated, time: .omitted))
-                        Text(saturday.formatted(date: .abbreviated, time: .omitted))
                     }
                     
                     Spacer()
@@ -95,30 +90,24 @@ struct JournalView: View {
         }
         .onReceive(journalViewModel.$selectedDate) { newValue in
             Task {
-                if journalViewModel.selectedDateRange == .day {
-                    await journalViewModel.getJournalEntry(date: newValue)
-                } else {
-                    let (startDate, endDate) = getSundayAndSaturday(for: newValue)
-                    // Fetch journal entry using new date
-                    await journalViewModel.getJournalEntry(startDate: startDate, endDate: endDate)
-                }
+                await journalViewModel.getJournalEntry(date: newValue)
             }
         }
-        .onReceive(journalViewModel.$selectedDateRange) { newValue in
+        .onReceive(journalViewModel.$startDate) { newValue in
             Task {
-                switch newValue {
-                case .day:
-                    await journalViewModel.getJournalEntry(date: journalViewModel.selectedDate)
-                case .week:
-                    let (startDate, endDate) = getSundayAndSaturday(for: journalViewModel.selectedDate)
-                    await journalViewModel.getJournalEntry(startDate: startDate, endDate: endDate)
-
-                    self.sunday = startDate
-                    self.saturday = endDate
-                default:
-                    print("Other date range")
-                    return
-                }
+                await journalViewModel.getJournalEntries(
+                    startDate: newValue,
+                    endDate: journalViewModel.endDate
+                )
+            }
+        }
+        .onReceive(journalViewModel.$endDate) { newValue in
+            Task {
+                await journalViewModel.getJournalEntries(
+                    startDate: journalViewModel.startDate,
+                    endDate: newValue
+                )
+                
             }
         }
     }

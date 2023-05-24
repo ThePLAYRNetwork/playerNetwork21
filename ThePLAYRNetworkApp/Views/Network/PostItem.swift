@@ -11,15 +11,30 @@ struct PostItem: View {
     @Binding var post: Post
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
-                Circle()
-                    .fill(Color.ui.grayD9D9D9)
-                    .frame(width: 51, height: 51)
+                
+                AsyncImage(url: post.author?.profileImage?.fileURL) { phase in
+                    if let image = phase.image {
+                        // Displays the loaded image./
+                        image
+                            .resizable()
+                    } else {
+                        // Acts as a placeholder.
+                        Image(systemName: "person.fill")
+                            .font(.system(size: 25))
+                            .foregroundColor(Color.ui.grayECECEC)
+                    }
+                }
+                .frame(width: 51, height: 51)
+                .clipShape(Circle())
+                .background {
+                    Circle().fill(Color.ui.grayD9D9D9)
+                }
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
-                        Text("Jared Mills")
+                        Text(post.author?.fullName ?? "User not found")
                             .fontWeight(.semibold)
                         
                         Spacer()
@@ -31,9 +46,9 @@ struct PostItem: View {
                         }
                         .buttonStyle(.plain)
                     }
-                    Text("Point Guard @school, San Diego")
+                    Text("\(post.author?.position.rawValue.capitalized ?? "") @\(post.author?.school ?? "")")
                         .font(.system(size: 12))
-                    Text("5h ago")
+                    Text("\(formatTwitterDate(post.createdAt))")
                         .font(.system(size: 12))
                 }
             }
@@ -41,16 +56,21 @@ struct PostItem: View {
             Text(post.message)
                 .padding(.top, 12)
             
+            Rectangle()
+                .frame(height: 200)
+                .foregroundColor(Color.ui.grayD9D9D9)
+                .padding(.top, 12)
+            
             HStack {
                 Circle()
                     .fill(Color.ui.grayD9D9D9)
                     .frame(width: 14, height: 14)
                 
-                Text("10")
+                Text("\(post.likes)")
                 
                 Spacer()
                 
-                Text("3 comments")
+                Text("0 comments")
             }
             .padding(.top, 16)
             .foregroundColor(.gray)
@@ -97,6 +117,31 @@ struct PostItem: View {
         }
         .padding()
         .padding(.top)
+    }
+    
+    func formatTwitterDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Format of your input date
+        
+        let now = Date()
+        let components = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day, .hour, .minute], from: date, to: now)
+        
+        if let year = components.year, year > 0 {
+            return formatter.string(from: date)
+        } else if let month = components.month, month > 0 {
+            return formatter.string(from: date)
+        } else if let weekOfYear = components.weekOfYear, weekOfYear > 0 {
+            return "\(weekOfYear)w ago"
+        } else if let day = components.day, day > 0 {
+            return "\(day)d ago"
+        } else if let hour = components.hour, hour > 0 {
+            return "\(hour)h ago"
+        } else if let minute = components.minute, minute > 0 {
+            return "\(minute)m ago"
+        } else {
+            return "Now"
+        }
     }
 }
 

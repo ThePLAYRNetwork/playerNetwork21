@@ -13,8 +13,23 @@ struct ThePlayrNetworkView: View {
 
     var body: some View {
         TabView(selection: $navigationModel.tabSelection) {
-            NavigationStack(path: $navigationModel.path) {
+            NavigationStack(path: $navigationModel.homePath) {
                 HomeView()
+                    .navigationDestination(for: SessionDestination.self) { destination in
+                        switch destination {
+                            
+                        case .confirmSession:
+                            ConfirmSessionView()
+                        }
+                    }
+                    .navigationDestination(for: PostDestination.self) { destination in
+                        switch destination {
+                        case .networkFeed:
+                            NetworkView()
+                        case .createPost:
+                            CreatePostView()
+                        }
+                    }
             }
             .tabItem {
                 Image("home")
@@ -30,8 +45,14 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.calendar)
             
-            NavigationStack(path: $navigationModel.path) {
+            NavigationStack(path: $navigationModel.gamePath) {
                 CreateGameView()
+                    .navigationDestination(for: GameDestination.self) { destination in
+                        switch destination {
+                        case .confirmGame:
+                            ConfirmGameView()
+                        }
+                    }
             }
             .padding(.top, 20)
             .tabItem {

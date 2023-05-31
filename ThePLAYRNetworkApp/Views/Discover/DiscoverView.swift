@@ -20,7 +20,7 @@ struct DiscoverView: View {
             ScrollView(.vertical) {
                 VStack {
                     DiscoverTopSection()
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 2)
                     
                     EventsRow()
                     

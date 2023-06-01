@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct EventsItem: View {
+    @EnvironmentObject var sessionViewModel: SessionViewModel
+    let session: Session
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Powerlifting w/ Christopher Jones")
+            Text(session.title)
                 .font(.title2)
                 .fontWeight(.semibold)
             
             Text("Tue July 12 · 10:00am - 11:00 am")
                 .font(.system(size: 16))
             
-            
-            Text("Gym Name")
+            Text(session.address)
                 .font(.system(size: 16))
             
             
@@ -30,11 +32,12 @@ struct EventsItem: View {
                 } label: {
                     Text("Training")
                     
-                        .font(.system(size: 15))
+                        .font(.system(size: 12))
                         .foregroundColor(.black)
-                        .frame(width: 75, height: 22)
+                        .frame(width: 66, height: 25)
                         .background(.gray.opacity(0.2))
                         .cornerRadius(5)
+                        .offset(y: 4)
                 }
                 
                 Button {
@@ -42,11 +45,12 @@ struct EventsItem: View {
                 } label: {
                     Text("Puplic")
                     
-                        .font(.system(size: 15))
+                        .font(.system(size: 12))
                         .foregroundColor(.black)
-                        .frame(width: 75, height: 22)
+                        .frame(width: 55, height: 25)
                         .background(.gray.opacity(0.2))
                         .cornerRadius(5)
+                        .offset(y: 4)
                 }
                 
                 Spacer()
@@ -58,22 +62,22 @@ struct EventsItem: View {
                         .font(.system(size: 21))
                         .bold()
                         .foregroundColor(.white)
-                        .frame(width: 95, height: 30)
+                        .frame(width: 68, height: 33)
                         .background(Color.ui.accentColor)
-                        .cornerRadius(5)
+                        .cornerRadius(10)
                 }
             }
-            .padding(.top, -8)
-            
+
         }
 
-        .padding()
+        .padding(.horizontal)
+        Divider()
         
     }
 }
 
-struct EventsItem_Previews: PreviewProvider {
-    static var previews: some View {
-        EventsItem()
-    }
-}
+//struct EventsItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EventsItem()
+//    }
+//}

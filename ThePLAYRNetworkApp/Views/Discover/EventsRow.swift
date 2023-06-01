@@ -16,7 +16,7 @@ struct EventsRow: View {
         VStack(alignment: .leading, spacing: 10) {
             
             ForEach(sessionViewModel.sessions) { session in
-                EventItem(session: session)
+                EventsItem(session: session)
             }
         }
     }

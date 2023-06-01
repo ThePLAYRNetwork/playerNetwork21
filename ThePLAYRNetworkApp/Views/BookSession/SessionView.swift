@@ -26,7 +26,8 @@ struct SessionView: View {
                 
                 
                 
-                SessionInfo(session: Session.sampleSessions[0])
+               SessionInfo(session: Session.sampleSessions[0])
+            
                 
                 ScrollView {
                     Text("Description of session from the coach. Could include info like: personal words and advertising of the session, what customers will get out of the session, any equipment they need to bring, cancellation policies, etc.")
@@ -103,12 +104,15 @@ struct BookTrainingButton: View {
 
 
 struct SessionInfo: View {
-    @State var session: Session
+  //  @State var session: Session
+    
+    @EnvironmentObject var sessionViewModel: SessionViewModel
+    let session: Session
     
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Powerlifting")
+            Text(session.title)
                 .font(.system(size: 24))
                 .bold()
             HStack{
@@ -130,7 +134,7 @@ struct SessionInfo: View {
                 
             }
             
-            Text("Gym Name, San Diego")
+            Text(session.address)
                 .font(.system(size: 16))
             
             HStack {

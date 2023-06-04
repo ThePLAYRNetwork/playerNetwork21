@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct PostItem: View {
-    @Binding var post: Post
-    
+    @EnvironmentObject var navigationModel: NavigationModel
+    @ObservedObject var postViewModel: PostViewModel
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
                 
-                AsyncImage(url: post.author?.profileImage?.fileURL) { phase in
+                AsyncImage(url: postViewModel.post.author?.profileImage?.fileURL) { phase in
                     if let image = phase.image {
                         // Displays the loaded image./
                         image
@@ -34,7 +35,7 @@ struct PostItem: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
-                        Text(post.author?.fullName ?? "User not found")
+                        Text(postViewModel.post.author?.fullName ?? "User not found")
                             .fontWeight(.semibold)
                         
                         Spacer()
@@ -46,14 +47,14 @@ struct PostItem: View {
                         }
                         .buttonStyle(.plain)
                     }
-                    Text("\(post.author?.position.rawValue.capitalized ?? "") @\(post.author?.school ?? "")")
+                    Text("\(postViewModel.post.author?.position.rawValue.capitalized ?? "") @\(postViewModel.post.author?.school ?? "")")
                         .font(.system(size: 12))
-                    Text("\(formatTwitterDate(post.createdAt))")
+                    Text("\(formatTwitterDate(postViewModel.post.createdAt))")
                         .font(.system(size: 12))
                 }
             }
             
-            Text(post.message)
+            Text(postViewModel.post.message)
                 .padding(.top, 12)
             
             Rectangle()
@@ -66,11 +67,11 @@ struct PostItem: View {
                     .fill(Color.ui.grayD9D9D9)
                     .frame(width: 14, height: 14)
                 
-                Text("\(post.likes)")
+                Text("\(postViewModel.post.likes)")
                 
                 Spacer()
                 
-                Text("0 comments")
+                Text("\(postViewModel.post.numberOfComments) comments")
             }
             .padding(.top, 16)
             .foregroundColor(.gray)
@@ -83,18 +84,31 @@ struct PostItem: View {
 
             
             HStack(alignment: .bottom) {
-                VStack {
-                    Image(systemName: "hand.thumbsup")
-                    Text("Like")
+                Button {
+                    Task {
+                        await postViewModel.onTappedLikeButton()
+                    }
+                } label: {
+                    VStack {
+                        Image(systemName: "hand.thumbsup")
+                        Text("Like")
+                    }
+                    .foregroundColor(postViewModel.post.isLiked ? .accentColor : .gray)
+                    .symbolVariant(postViewModel.post.isLiked ? .fill : .none)
                 }
                 
                 Spacer()
 
-                VStack {
-                    Image(systemName: "message")
-                    Text("Comment")
+                NavigationLink {
+                    CommentsList(originalPost: postViewModel.post)
+                        .environmentObject(postViewModel)
+                } label: {
+                    VStack {
+                        Image(systemName: "message")
+                        Text("Comment")
+                    }
                 }
-                
+
                 Spacer()
                 
                 VStack {
@@ -119,35 +133,35 @@ struct PostItem: View {
         .padding(.top)
     }
     
-    func formatTwitterDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Format of your input date
-        
-        let now = Date()
-        let components = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day, .hour, .minute], from: date, to: now)
-        
-        if let year = components.year, year > 0 {
-            return formatter.string(from: date)
-        } else if let month = components.month, month > 0 {
-            return formatter.string(from: date)
-        } else if let weekOfYear = components.weekOfYear, weekOfYear > 0 {
-            return "\(weekOfYear)w ago"
-        } else if let day = components.day, day > 0 {
-            return "\(day)d ago"
-        } else if let hour = components.hour, hour > 0 {
-            return "\(hour)h ago"
-        } else if let minute = components.minute, minute > 0 {
-            return "\(minute)m ago"
-        } else {
-            return "Now"
-        }
-    }
 }
 
+func formatTwitterDate(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Format of your input date
+    
+    let now = Date()
+    let components = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day, .hour, .minute], from: date, to: now)
+    
+    if let year = components.year, year > 0 {
+        return formatter.string(from: date)
+    } else if let month = components.month, month > 0 {
+        return formatter.string(from: date)
+    } else if let weekOfYear = components.weekOfYear, weekOfYear > 0 {
+        return "\(weekOfYear)w ago"
+    } else if let day = components.day, day > 0 {
+        return "\(day)d ago"
+    } else if let hour = components.hour, hour > 0 {
+        return "\(hour)h ago"
+    } else if let minute = components.minute, minute > 0 {
+        return "\(minute)m ago"
+    } else {
+        return "Now"
+    }
+}
 struct PostItem_Previews: PreviewProvider {
     static var previews: some View {
-        PostItem(post: .constant(Post.samplePosts[0]))
+        PostItem(postViewModel: PostViewModel(post: Post.samplePosts[0]))
             .previewLayout(.sizeThatFits)
     }
 }

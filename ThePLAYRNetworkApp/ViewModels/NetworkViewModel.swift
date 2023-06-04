@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import CloudKit
 
 @MainActor
 class NetworkViewModel: ObservableObject {
-    @Published var posts: [Post] = []
+    @Published var postViewModels: [PostViewModel] = []
     let postRepository = PostRepository()
     
     init() {
@@ -22,7 +23,7 @@ class NetworkViewModel: ObservableObject {
         let results = await postRepository.fetchPosts()
         switch results {
         case .success(let posts):
-            self.posts = posts
+            self.postViewModels = posts.map { PostViewModel(post: $0)}
             print("Successfully fetched posts: \(posts.count)")
         case .failure(let error):
             print("Error fetching posts: \(error)")

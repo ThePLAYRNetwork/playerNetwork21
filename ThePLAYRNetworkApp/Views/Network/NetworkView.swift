@@ -39,8 +39,8 @@ struct NetworkView: View {
                         
                         // PlayersYouMayKnowRow()
                         
-                        ForEach($networkViewModel.posts) { $post in
-                            PostItem(post: $post)
+                        ForEach(networkViewModel.postViewModels) { postViewModel in
+                            PostItem(postViewModel: postViewModel)
                             divider
                         }
                     }

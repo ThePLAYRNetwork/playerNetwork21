@@ -40,10 +40,10 @@ struct ProfileView: View {
                     .padding(.leading)
                     .padding(.top)
                 
-                ForEach($posts) { $post in
-                    PostItem(post: $post)
-                    divider
-                }
+//                ForEach(posts) { post in
+//                    PostItem(post: post)
+//                    divider
+//                }
                 
                 Spacer()
             }

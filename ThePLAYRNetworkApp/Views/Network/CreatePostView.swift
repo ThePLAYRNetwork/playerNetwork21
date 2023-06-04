@@ -56,6 +56,9 @@ struct CreatePostView: View {
             }
             .padding()
         }
+        .onAppear {
+            createPostViewModel.post = Post() // clear inputs each time user opens create
+        }
     }
 }
 

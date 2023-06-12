@@ -12,14 +12,19 @@ struct Comment: Identifiable {
     var id: String = UUID().uuidString
     var message: String = ""
     var postID: CKRecord.Reference
-    
+    var numberOfLikes = 0
+    var numberOfReplies = 0
+
     var author: User?
     var authorID: CKRecord.ID? // metadata
     var createdAt = Date() // metadata
 
+    var isLiked = false
+
     var recordID: CKRecord.ID {
         CKRecord.ID(recordName: id)
     }
+    
     
     init(message: String = "", postID: CKRecord.ID = CKRecord.ID(recordName: "Comment"), author: User? = nil) {
         self.message = message
@@ -30,6 +35,8 @@ struct Comment: Identifiable {
     init?(record: CKRecord) {
         guard let message = record[Comment.RecordKey.message] as? String,
               let postID = record[Comment.RecordKey.postID] as? CKRecord.Reference,
+              let numberOfLikes = record[Comment.RecordKey.numberOfLikes] as? Int,
+              let numberOfReplies = record[Comment.RecordKey.numberOfReplies] as? Int,
               let authorID = record.creatorUserRecordID,
               let createdAt = record.creationDate
         else {
@@ -38,6 +45,8 @@ struct Comment: Identifiable {
         
         self.id = record.recordID.recordName
         self.message = message
+        self.numberOfLikes = numberOfLikes
+        self.numberOfReplies = numberOfReplies
         self.postID = postID
         self.authorID = authorID
         self.createdAt = createdAt
@@ -47,13 +56,17 @@ struct Comment: Identifiable {
         let record = CKRecord(recordType: "Comment", recordID: self.recordID)
         record[Comment.RecordKey.message] = message
         record[Comment.RecordKey.postID] = postID
+        record[Comment.RecordKey.numberOfLikes] = numberOfLikes
+        record[Comment.RecordKey.numberOfReplies] = numberOfReplies
+
         return record
     }
+
 }
 
 extension Comment {
     enum RecordKey: String {
-        case message, postID
+        case message, postID, numberOfLikes, numberOfReplies
     }
     
     static let sampleComments: [Comment] = [

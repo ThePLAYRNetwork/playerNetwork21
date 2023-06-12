@@ -1,20 +1,19 @@
 //
-//  CommentCell.swift
+//  ReplyCell.swift
 //  ThePLAYRNetworkApp
 //
-//  Created by Timmy Nguyen on 5/28/23.
+//  Created by Timmy Nguyen on 6/4/23.
 //
 
 import SwiftUI
-import CloudKit
 
-struct CommentCell: View {
-    @ObservedObject var commentViewModel: CommentViewModel
-    var isOriginalPost = false
+struct ReplyCell: View {
+    @ObservedObject var replyViewModel: ReplyViewModel
+    var isOriginalComment = false
     
     var body: some View {
         HStack(alignment: .top, spacing: 9) {
-            AsyncImage(url: commentViewModel.comment.author?.profileImage?.fileURL) { phase in
+            AsyncImage(url: replyViewModel.reply.author?.profileImage?.fileURL) { phase in
                 if let image = phase.image {
                     // Displays the loaded image./
                     image
@@ -34,40 +33,34 @@ struct CommentCell: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 HStack {
-                    Text(commentViewModel.comment.author?.fullName ?? "User not found")
+                    Text(replyViewModel.reply.author?.fullName ?? "User not found")
                     Spacer()
 //                    Text(formatTwitterDate(comment.createdAt))
-                    Text(commentViewModel.comment.createdAt.formatted(date: .abbreviated, time: .shortened))
+                    Text(replyViewModel.reply.createdAt.formatted(date: .abbreviated, time: .shortened))
                 }
                 .foregroundColor(Color.ui.gray959595)
                 .font(.system(size: 12))
                 
-                Text(commentViewModel.comment.message)
+                Text(replyViewModel.reply.message)
                     .font(.system(size: 14))
                 
-                if !isOriginalPost {
+                if !isOriginalComment {
                     HStack {
-                        Text("\(commentViewModel.comment.numberOfReplies) replies  |")
-                        
-                        NavigationLink {
-                            ReplyList(originalComment: commentViewModel.comment)
-                        } label: {
-                            Text("Reply")
-                        }
                         
                         Spacer()
                         
                         Button {
+                            // Handle likes
                             Task {
-                                await commentViewModel.onTappedLikeButton()
+                                await replyViewModel.onTappedLikeButton()
                             }
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "hand.thumbsup")
-                                Text("\(commentViewModel.comment.numberOfLikes)")
+                                Text("\(replyViewModel.reply.numberOfLikes)")
                             }
-                            .foregroundColor(commentViewModel.comment.isLiked ? .accentColor : .gray)
-                            .symbolVariant(commentViewModel.comment.isLiked ? .fill : .none)
+                            .foregroundColor(replyViewModel.reply.isLiked ? .accentColor : .gray)
+                            .symbolVariant(replyViewModel.reply.isLiked ? .fill : .none)
                         }
                         .padding(.trailing)
                     }
@@ -80,10 +73,10 @@ struct CommentCell: View {
         .padding(.vertical, 15)
     }
 }
-
-struct CommentCell_Previews: PreviewProvider {
-    static var previews: some View {
-        CommentCell(commentViewModel: CommentViewModel(comment: Comment.sampleComments[0]))
-            .previewLayout(.sizeThatFits)
-    }
-}
+//
+//struct ReplyCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReplyCell(reply: <#Reply#>, commentViewModel: CommentViewModel(comment: Comment.sampleComments[0]))
+//            .previewLayout(.sizeThatFits)
+//    }
+//}

@@ -36,7 +36,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.home)
             
-            NavigationStack(path: $navigationModel.path) {
+            NavigationStack(path: $navigationModel.calendarPath) {
                 CalendarView()
                     .background(Color.ui.whiteBg)
             }
@@ -60,7 +60,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.create)
 
-            NavigationStack(path: $navigationModel.path) {
+            NavigationStack(path: $navigationModel.messagePath) {
                 MessagesView()
                     .background(Color.ui.whiteBg)
             }
@@ -69,7 +69,7 @@ struct ThePlayrNetworkView: View {
             }
             .tag(ThePlayrNetworkDestination.inbox)
 
-            NavigationStack(path: $navigationModel.path) {
+            NavigationStack(path: $navigationModel.profilePath) {
                 ProfileView()
             }
             .tabItem {

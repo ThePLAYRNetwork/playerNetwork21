@@ -13,9 +13,31 @@ class PostRepository {
     private lazy var container: CKContainer = CKContainer.default()
     private lazy var database: CKDatabase = container.publicCloudDatabase
     
+    func createReply(reply: Reply) async -> Result<Reply, Error> {
+        do {
+            var latestCommentRecord = try await fetchComment(commentID: reply.commentID.recordID).get()
+            var numberOfReplies = latestCommentRecord[Comment.RecordKey.numberOfReplies] as! Int
+            latestCommentRecord[Comment.RecordKey.numberOfReplies] = numberOfReplies + 1
+
+            let replyRecord = await reply.convertToRecord()
+            
+            let result = try await database.modifyRecords(saving: [replyRecord, latestCommentRecord], deleting: [])
+
+            print("Successfully created reply")
+            return .success(reply)
+        } catch {
+            print("Error creating reply")
+            return .failure(error)
+        }
+    }
+    
     func createComment(comment: Comment) async -> Result<Comment, Error> {
         do {
-            var latestPostRecord = try await fetchPost(postID: comment.postID.recordID).get()
+            let currentUser = try await UserRepository().getUser().get()
+            var commentToAdd = comment
+            commentToAdd.author = currentUser
+            
+            var latestPostRecord = try await fetchPost(postID: commentToAdd.postID.recordID).get()
             var numberOfComments = latestPostRecord[Post.RecordKey.numberOfComments] as! Int
             latestPostRecord[Post.RecordKey.numberOfComments] = numberOfComments + 1
 
@@ -24,22 +46,27 @@ class PostRepository {
             let result = try await database.modifyRecords(saving: [commentRecord, latestPostRecord], deleting: [])
 
             print("Successfully created comment")
-            return .success(comment)
+            return .success(commentToAdd)
         } catch {
             print("Error creating comment")
             return .failure(error)
         }
     }
     
-    func fetchPosts() async -> Result<[Post], Error> { // throw -> Post?
+    func fetchPosts(cursor: CKQueryOperation.Cursor? = nil) async -> Result<([Post], CKQueryOperation.Cursor?), Error> { // throw -> Post?
         do {
             let predicate = NSPredicate(value: true)
             let query = CKQuery(recordType: "Post", predicate: predicate)
-            // TODO: make creationDate sortable on CloudKit
             query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             
             do {
-                var (postResults, _) = try await database.records(matching: query)
+                var (postResults, nextCursor): ([(CKRecord.ID, Result<CKRecord, Error>)], CKQueryOperation.Cursor?)
+                
+                if let cursor = cursor {
+                    (postResults, nextCursor) = try await database.records(continuingMatchFrom: cursor, resultsLimit: 3)
+                } else {
+                    (postResults, nextCursor) = try await database.records(matching: query, resultsLimit: 3)
+                }
 
                 var posts: [Post] = try postResults
                     .compactMap { _, result in
@@ -50,7 +77,7 @@ class PostRepository {
                 // Fetch post's author
                 for i in posts.indices {
                     if let authorID = posts[i].authorID {
-                        posts[i].author = try await fetchAuthor(authorID: authorID)
+                        posts[i].author = try await fetchUser(userID: authorID)
                     }
                 }
                 
@@ -61,8 +88,12 @@ class PostRepository {
                         print("User liked post: \(posts[i].id)")
                     }
                 }
-                                
-                return .success(posts)
+                
+                // Even if we finished processing list
+                if posts.count == 0 {
+                    nextCursor = nil
+                }
+                return .success((posts, nextCursor))
             } catch {
                 print("Failed to get posts: \(error)")
                 return .failure(error)
@@ -88,13 +119,62 @@ class PostRepository {
                 // Fetch author info
                 for i in comments.indices {
                     if let authorID = comments[i].authorID {
-                        comments[i].author = try await fetchAuthor(authorID: authorID)
+                        comments[i].author = try await fetchUser(userID: authorID)
+                    }
+                }
+                
+                // Fetch if current user liked post
+                for i in comments.indices {
+                    comments[i].isLiked = try await isPostLiked(postID: comments[i].recordID).get() != nil
+                    if comments[i].isLiked {
+                        print("User liked comment: \(comments[i].id)")
                     }
                 }
                 
                 
                 print("Successfully fetched comments: \(comments.count)")
                 return .success(comments)
+            } catch {
+                print("Failed to get comments: \(error)")
+                return .failure(error)
+            }
+        }
+
+    }
+    
+    func fetchReplies(commentID: CKRecord.ID) async -> Result<[Reply], Error> {
+        do {
+            let predicate = NSPredicate(format: "\(Reply.RecordKey.commentID) == %@", commentID)
+            let query = CKQuery(recordType: "Reply", predicate: predicate)
+            query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            
+            do {
+                var (replyResults, _) = try await database.records(matching: query)
+
+                var replies: [Reply] = try replyResults
+                    .compactMap { _, result in
+                        let record = try result.get()
+                        return Reply(record: record)
+                    }
+                
+                // Fetch author info
+                for i in replies.indices {
+                    if let authorID = replies[i].authorID {
+                        replies[i].author = try await fetchUser(userID: authorID)
+                    }
+                }
+                
+                // Fetch if current user liked post
+                for i in replies.indices {
+                    replies[i].isLiked = try await isPostLiked(postID: replies[i].recordID).get() != nil
+                    if replies[i].isLiked {
+                        print("User liked comment: \(replies[i].id)")
+                    }
+                }
+                
+                
+                print("Successfully fetched comments: \(replies.count)")
+                return .success(replies)
             } catch {
                 print("Failed to get comments: \(error)")
                 return .failure(error)
@@ -117,9 +197,9 @@ class PostRepository {
         }
     }
     
-    func fetchAuthor(authorID: CKRecord.ID) async throws -> User {
+    func fetchUser(userID: CKRecord.ID) async throws -> User {
         do {
-            let predicate = NSPredicate(format: "\(User.RecordKey.userID.rawValue) == %@", authorID)
+            let predicate = NSPredicate(format: "\(User.RecordKey.userID.rawValue) == %@", userID)
             let query = CKQuery(recordType: "User", predicate: predicate)
             
             let (userResults, _) = try await database.records(matching: query, resultsLimit: 1)
@@ -145,8 +225,8 @@ class PostRepository {
             let likeRecord = like.convertToRecord()
             
             var latestPostRecord = try await fetchPost(postID: post.recordID).get()
-            let numberOfLikes = latestPostRecord[.likes] as! Int
-            latestPostRecord[.likes] = numberOfLikes + 1
+            let numberOfLikes = latestPostRecord[Post.RecordKey.numberOfLikes] as! Int
+            latestPostRecord[Post.RecordKey.numberOfLikes] = numberOfLikes + 1
 
             // creates record if it does not exists
             let result = try await database.modifyRecords(saving: [likeRecord, latestPostRecord], deleting: [])
@@ -164,13 +244,63 @@ class PostRepository {
         }
     }
     
+    func likeComment(comment: Comment) async -> Result<Comment, Error> {
+        do {
+            let like = Likes(postID: comment.recordID)
+            let likeRecord = like.convertToRecord()
+            
+            var latestCommentRecord = try await fetchComment(commentID: comment.recordID).get()
+            let numberOfLikes = latestCommentRecord[Comment.RecordKey.numberOfLikes] as! Int
+            latestCommentRecord[Comment.RecordKey.numberOfLikes] = numberOfLikes + 1
+
+            // creates record if it does not exists
+            let result = try await database.modifyRecords(saving: [likeRecord, latestCommentRecord], deleting: [])
+            
+            if let latestComment = Comment(record: latestCommentRecord) {
+                print("Succesfully liked comment: \(comment.id)")
+                return .success(latestComment)
+            }
+            
+            print("Failed to like comment")
+            return .failure(CloudKitError.userRecordNotFound)
+        } catch {
+            print("Error liking comment: \(error)")
+            return .failure(error)
+        }
+    }
+
+    func likeReply(reply: Reply) async -> Result<Reply, Error> {
+        do {
+            let like = Likes(postID: reply.recordID)
+            let likeRecord = like.convertToRecord()
+
+            var latestReplyRecord = try await fetchReply(replyID: reply.recordID).get()
+            let numberOfLikes = latestReplyRecord[Reply.RecordKey.numberOfLikes] as! Int
+            latestReplyRecord[Reply.RecordKey.numberOfLikes] = numberOfLikes + 1
+
+            // creates record if it does not exists
+            let result = try await database.modifyRecords(saving: [likeRecord, latestReplyRecord], deleting: [])
+
+            if let latestReply = Reply(record: latestReplyRecord) {
+                print("Succesfully liked reply: \(reply.id)")
+                return .success(latestReply)
+            }
+
+            print("Failed to like reply")
+            return .failure(CloudKitError.userRecordNotFound)
+        } catch {
+            print("Error liking reply: \(error)")
+            return .failure(error)
+        }
+    }
+    
     func unlikePost(post: Post) async -> Result<Post, Error> {
         do {
             guard let likeRecordID = try await isPostLiked(postID: post.recordID).get() else { return .failure(CloudKitError.userRecordNotFound) }
             
             let latestPostRecord = try await fetchPost(postID: post.recordID).get()
-            let numberOfLikes = latestPostRecord[.likes] as! Int
-            latestPostRecord[.likes] = numberOfLikes - 1
+            let numberOfLikes = latestPostRecord[Post.RecordKey.numberOfLikes] as! Int
+            latestPostRecord[Post.RecordKey.numberOfLikes] = numberOfLikes - 1
 
             let result = try await database.modifyRecords(saving: [latestPostRecord], deleting: [likeRecordID])
             
@@ -183,6 +313,52 @@ class PostRepository {
             return .failure(CloudKitError.userRecordNotFound)
         } catch {
             print("Error unliking post: \(error)")
+            return .failure(error)
+        }
+    }
+    
+    func unlikeComment(comment: Comment) async -> Result<Comment, Error> {
+        do {
+            guard let likeRecordID = try await isPostLiked(postID: comment.recordID).get() else { return .failure(CloudKitError.userRecordNotFound) }
+            
+            let latestCommentRecord = try await fetchComment(commentID: comment.recordID).get()
+            let numberOfLikes = latestCommentRecord[Comment.RecordKey.numberOfLikes] as! Int
+            latestCommentRecord[Comment.RecordKey.numberOfLikes] = numberOfLikes - 1
+
+            let result = try await database.modifyRecords(saving: [latestCommentRecord], deleting: [likeRecordID])
+            
+            if let latestComment = Comment(record: latestCommentRecord) {
+                print("Succesfully unliked post: \(latestComment.id)")
+                return .success(latestComment)
+            }
+            
+            print("Failed to unlike post")
+            return .failure(CloudKitError.userRecordNotFound)
+        } catch {
+            print("Error unliking post: \(error)")
+            return .failure(error)
+        }
+    }
+    
+    func unlikeReply(reply: Reply) async -> Result<Reply, Error> {
+        do {
+            guard let likeRecordID = try await isPostLiked(postID: reply.recordID).get() else { return .failure(CloudKitError.userRecordNotFound) }
+            
+            let latestReplyRecord = try await fetchComment(commentID: reply.recordID).get()
+            let numberOfLikes = latestReplyRecord[Reply.RecordKey.numberOfLikes] as! Int
+            latestReplyRecord[Reply.RecordKey.numberOfLikes] = numberOfLikes - 1
+
+            let result = try await database.modifyRecords(saving: [latestReplyRecord], deleting: [likeRecordID])
+            
+            if let latestReply = Reply(record: latestReplyRecord) {
+                print("Succesfully unliked reply: \(latestReply.id)")
+                return .success(latestReply)
+            }
+            
+            print("Failed to unlike reply")
+            return .failure(CloudKitError.userRecordNotFound)
+        } catch {
+            print("Error unliking reply: \(error)")
             return .failure(error)
         }
     }
@@ -206,7 +382,7 @@ class PostRepository {
             return .failure(error)
         }
     }
-    
+
     func fetchPost(postID: CKRecord.ID) async -> Result<CKRecord, Error> {
         do {
             let predicate = NSPredicate(format: "recordID == %@", postID)
@@ -219,6 +395,39 @@ class PostRepository {
             return .failure(CloudKitError.userRecordNotFound)
         } catch {
             print("Failed to get like: \(error)")
+            return .failure(error)
+        }
+    }
+    
+    func fetchComment(commentID: CKRecord.ID) async -> Result<CKRecord, Error> {
+        do {
+            let predicate = NSPredicate(format: "recordID == %@", commentID)
+            let query = CKQuery(recordType: "Comment", predicate: predicate)
+            
+            let (commentResults, _) = try await database.records(matching: query, resultsLimit: 1)
+            if let record = try commentResults.first?.1.get() {
+                return .success(record)
+            }
+            return .failure(CloudKitError.userRecordNotFound)
+        } catch {
+            print("Failed to get comment: \(error)")
+            return .failure(error)
+        }
+    }
+    
+    // TODO: might use fetch by id instead of matching because we know recordID
+    func fetchReply(replyID: CKRecord.ID) async -> Result<CKRecord, Error> {
+        do {
+            let predicate = NSPredicate(format: "recordID == %@", replyID)
+            let query = CKQuery(recordType: "Reply", predicate: predicate)
+            
+            let (replyResults, _) = try await database.records(matching: query, resultsLimit: 1)
+            if let record = try replyResults.first?.1.get() {
+                return .success(record)
+            }
+            return .failure(CloudKitError.userRecordNotFound)
+        } catch {
+            print("Failed to get reply: \(error)")
             return .failure(error)
         }
     }

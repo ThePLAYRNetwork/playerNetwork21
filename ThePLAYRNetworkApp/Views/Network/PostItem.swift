@@ -14,7 +14,6 @@ struct PostItem: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
-                
                 AsyncImage(url: postViewModel.post.author?.profileImage?.fileURL) { phase in
                     if let image = phase.image {
                         // Displays the loaded image./
@@ -67,7 +66,7 @@ struct PostItem: View {
                     .fill(Color.ui.grayD9D9D9)
                     .frame(width: 14, height: 14)
                 
-                Text("\(postViewModel.post.likes)")
+                Text("\(postViewModel.post.numberOfLikes)")
                 
                 Spacer()
                 
@@ -91,6 +90,7 @@ struct PostItem: View {
                 } label: {
                     VStack {
                         Image(systemName: "hand.thumbsup")
+                            .font(.system(size: 14))
                         Text("Like")
                     }
                     .foregroundColor(postViewModel.post.isLiked ? .accentColor : .gray)
@@ -100,11 +100,11 @@ struct PostItem: View {
                 Spacer()
 
                 NavigationLink {
-                    CommentsList(originalPost: postViewModel.post)
-                        .environmentObject(postViewModel)
+                    CommentsList(originalPost: $postViewModel.post)
                 } label: {
                     VStack {
                         Image(systemName: "message")
+                            .font(.system(size: 14))
                         Text("Comment")
                     }
                 }
@@ -112,14 +112,17 @@ struct PostItem: View {
                 Spacer()
                 
                 VStack {
-                    Image(systemName: "arrowshape.turn.up.right")
-                    Text("Share")
+                    Image(systemName: "arrow.2.squarepath")
+                        .font(.system(size: 14))
+
+                    Text("Repost")
                 }
                 
                 Spacer()
                 
                 VStack {
                     Image(systemName: "paperplane")
+                        .font(.system(size: 14))
                     Text("Send")
                 }
             }

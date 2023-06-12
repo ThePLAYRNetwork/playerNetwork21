@@ -11,7 +11,7 @@ import CloudKit
 struct Post: Identifiable {
     var id: String = UUID().uuidString
     var message: String = ""
-    var likes: Int = 0
+    var numberOfLikes: Int = 0
     var numberOfComments = 0
     var authorID: CKRecord.ID? // metadata
     var author: User?
@@ -28,7 +28,7 @@ struct Post: Identifiable {
     // record.parent? might be usefull
     init?(record: CKRecord) {
         guard let message = record[Post.RecordKey.message] as? String,
-              let likes = record[Post.RecordKey.likes] as? Int,
+              let numberOfLikes = record[Post.RecordKey.numberOfLikes] as? Int,
               let numberOfComments = record[Post.RecordKey.numberOfComments] as? Int,
               let creatorID = record.creatorUserRecordID,
               let createdAt = record.creationDate
@@ -38,7 +38,7 @@ struct Post: Identifiable {
         
         self.id = record.recordID.recordName
         self.message = message
-        self.likes = likes
+        self.numberOfLikes = numberOfLikes
         self.numberOfComments = numberOfComments
         self.authorID = creatorID
         self.createdAt = createdAt
@@ -48,7 +48,7 @@ struct Post: Identifiable {
     func convertToRecord() async -> CKRecord {
         let record = CKRecord(recordType: "Post", recordID: self.recordID)
         record[Post.RecordKey.message] = self.message
-        record[Post.RecordKey.likes] = likes
+        record[Post.RecordKey.numberOfLikes] = numberOfLikes
         record[Post.RecordKey.numberOfComments] = numberOfComments
         return record
     }
@@ -75,7 +75,7 @@ extension Post {
     ]
     
     enum RecordKey: String {
-        case message, likes, numberOfComments
+        case message, numberOfLikes, numberOfComments
     }
 }
 

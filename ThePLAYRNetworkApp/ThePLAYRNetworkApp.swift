@@ -17,6 +17,7 @@ enum Tab {
     case profile
 }
 
+// TODO: replace trainer button with calendar. Replace bottom calendar with notification. Calendar colors
 // TODO: Schedule, refresh button on home page
 @main
 struct ThePLAYRNetworkApp: App {
@@ -71,6 +72,7 @@ struct ThePLAYRNetworkApp: App {
                     }
                 }
                 .navigationDestination(for: OnboardingDestination.self) { destination in
+                    // TODO: Remove these, can use regular navigationLink, not required
                     switch destination {
                     case .onboarding:
                         OnboardingView()

@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-// TODO: Add divider
+// TODO:
+//  - Infinite scrolling  (done)
+//  - Network feed is currenlty ALL post (bc smaller community, more like forum)
+//  - Change 'share' to 'repost', with text above saying "reposted by"
+
 struct NetworkView: View {
     @EnvironmentObject var navigationModel: NavigationModel
     @EnvironmentObject var networkViewModel: NetworkViewModel
@@ -17,37 +21,47 @@ struct NetworkView: View {
             VStack(spacing: 0) {
                 TopSearchBarSection()
                 
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 0) {
-                        divider
-                            .padding(.bottom, 30)
-
+                LazyVStack(spacing: 0) {
+                    divider
+                        .padding(.bottom, 30)
+                    
+                    
+                    HStack{
+                        Circle()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.gray.opacity(0.3))
                         
-                        HStack{
-                            Circle()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.gray.opacity(0.3))
-                            
-                            
-                            Text("What's on your mind?")
-                                .fontWeight(.bold)
-                        }
-                        .padding(.horizontal)
                         
-                        divider
-                            .padding(.top, 30)
-                        
-                        // PlayersYouMayKnowRow()
-                        
-                        ForEach(networkViewModel.postViewModels) { postViewModel in
-                            PostItem(postViewModel: postViewModel)
-                            divider
-                        }
+                        Text("What's on your mind?")
+                            .fontWeight(.bold)
                     }
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    divider
+                        .padding(.top, 30)
+                    
+                    // PlayersYouMayKnowRow()
+                    
+                    ForEach(networkViewModel.postViewModels) { postViewModel in
+                        PostItem(postViewModel: postViewModel)
+                        divider
+                    }
+                    
+                    if let cursor = networkViewModel.cursor {
+                        ProgressView()
+                            .padding(.top)
+                            .onAppear {
+                                Task {
+                                    networkViewModel.postViewModels.append(contentsOf: await networkViewModel.fetchPosts(cursor: cursor))
+                                }
+                            }
+                    }
+                    
                 }
             }
         }
-        .navigationTitle("")
+        .navigationTitle("Home")
         .toolbar {
             ToolbarItem {
                 Button {
@@ -60,7 +74,7 @@ struct NetworkView: View {
         }
         .refreshable {
             Task {
-                await networkViewModel.fetchPosts()
+                networkViewModel.postViewModels = await networkViewModel.fetchPosts()
             }
         }
     }
